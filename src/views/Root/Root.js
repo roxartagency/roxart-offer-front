@@ -3,7 +3,7 @@ import "./index.css";
 import styles from "./Root.module.scss";
 import AppContext from "../../context";
 import axios from "axios";
-import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import BriefsView from "../BriefsView/BriefsView";
 import LoginView from "../LoginView/LoginView";
 import SingleBriefView from "../BriefsView/SingleBrief";
@@ -26,12 +26,14 @@ class Root extends React.Component {
     // });
   }
 
-  addItem = (e, newItem) => {
+  addItem = (e, user, newItem) => {
     e.preventDefault();
 
-    this.setState(prevState => ({
-      brief: [...prevState.brief, newItem]
-    }));
+    console.log(user);
+
+    // this.setState(prevState => ({
+    //   brief: [...prevState.brief, newItem]
+    // }));
 
     axios
       .post(`http://localhost:1337/briefs`, newItem, {
@@ -47,7 +49,7 @@ class Root extends React.Component {
       .then(
         this.sendMail(
           e,
-          "dominik.s@roxart.pl, koderzy@roxart.pl",
+          "dominik.s@roxart.pl",
           "Dodano nowego briefa: " + newItem.title,
           "Zaloguj się do aplikacji i wyceń go!"
         )
@@ -74,7 +76,7 @@ class Root extends React.Component {
       .then(this.fetchBriefs());
   };
 
-  wycenKoder = (e, id, wycena) => {
+  wycenKoder = (e, id, title, user, wycena) => {
     e.preventDefault();
 
     axios
@@ -99,9 +101,26 @@ class Root extends React.Component {
           this.fetchBriefs();
         }, 500)
       );
+
+    if (wycena.status_kodera === 'zwrot_do_handlowca') {
+      this.sendMail(
+        e,
+        user.email,
+        "Koder zwrócił wycenę do poprawy: " + title,
+        "Zaloguj się do aplikacji i popraw briefa!"
+      );
+    } else if (wycena.status_kodera === 'wycenione') {
+      this.sendMail(
+        e,
+        "dominik.s@roxart.pl",
+        "Koder dodał nową wycenę: " + title,
+        "Zaloguj się do aplikacji i sprawdź czy oferta jest gotowa."
+      )
+    }
+
   };
 
-  wycenGrafik = (e, id, wycena) => {
+  wycenGrafik = (e, id, title, user, wycena) => {
     e.preventDefault();
 
     axios
@@ -126,6 +145,22 @@ class Root extends React.Component {
           this.fetchBriefs();
         }, 500)
       );
+
+    if (wycena.status_grafika === 'zwrot_do_handlowca') {
+      this.sendMail(
+        e,
+        user.email,
+        "Grafik zwrócił wycenę do poprawy: " + title,
+        "Zaloguj się do aplikacji i popraw briefa!"
+      )
+    } else if (wycena.status_grafika === 'wycenione') {
+      this.sendMail(
+        e,
+        "dominik.s@roxart.pl",
+        "Grafik dodał nową wycenę: " + title,
+        "Zaloguj się do aplikacji i wyceń godziny kodera!"
+      )
+    }
   };
 
   editItem = (e, id, editItem) => {
@@ -169,7 +204,7 @@ class Root extends React.Component {
     console.log(this.state.userToken);
 
     axios
-      .get("http://localhost:1337/briefs", {
+      .get("http://localhost:1337/briefs?_sort=created_at:DESC", {
         headers: {
           Authorization: `Bearer ${this.state.userToken}`
         }
@@ -178,7 +213,7 @@ class Root extends React.Component {
         // Handle success.
         console.log("Data: ", response.data);
         const brief = response.data;
-        this.setState({brief});
+        this.setState({ brief });
       })
       .catch(error => {
         // Handle error.
@@ -236,7 +271,7 @@ class Root extends React.Component {
   };
 
   render() {
-    const {isModalOpen} = this.state;
+    const { isModalOpen } = this.state;
     const contextElements = {
       ...this.state,
       fetchBriefs: this.fetchBriefs,

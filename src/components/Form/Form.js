@@ -6,11 +6,16 @@ import Button from "../Button/Button";
 
 
 class Form extends React.Component {
-  state = {};
+
+  static contextType = AppContext;
+
+  state = {
+    user: this.context.user
+  };
 
   handleInputChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -19,11 +24,18 @@ class Form extends React.Component {
       <AppContext.Consumer>
         {context => (
           <div className={styles.wrapper}>
-  
+
             <form
               autoComplete="off"
               className={styles.form}
-              onSubmit={e => context.addItem(e, this.state)}>
+              onSubmit={e => context.addItem(e, context.user, this.state)}>
+              {/* <Input
+                onChange={this.handleInputChange}
+                name="user"
+                required
+                defaultValue={context.user}
+                label="Dodane przez"
+              /> */}
               <Input
                 onChange={this.handleInputChange}
                 name="title"
