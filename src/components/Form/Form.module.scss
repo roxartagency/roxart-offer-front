@@ -1,0 +1,23 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  h2 {
+    margin-bottom: 30px;
+  }
+}
+
+.form {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  input,
+  textarea {
+    margin-bottom: 30px;
+  }
+}
