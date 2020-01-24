@@ -322,11 +322,7 @@ class Root extends React.Component {
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>
           <Header openModalFn={this.openModal} />
-          <Button
-            condition={this.state.installButton}
-            onClick={this.installApp}>
-            Install As Application
-          </Button>
+
           <div className={styles.wrapper}>
             <Switch>
               <Route exact path="/" component={LoginView} />
@@ -335,6 +331,11 @@ class Root extends React.Component {
               <Route path="/briefs/:id/edit" component={LoginView} />
               <Redirect to="/" />
             </Switch>
+            <Button
+              condition={this.state.installButton}
+              onClick={this.installApp}>
+              Install As Application
+            </Button>
           </div>
           {isModalOpen && <Modal closeModalFn={this.closeModal} />}
         </AppContext.Provider>
