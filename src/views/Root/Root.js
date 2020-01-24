@@ -332,9 +332,7 @@ class Root extends React.Component {
               <Redirect to="/" />
             </Switch>
             {this.state.installButton === "true" ? (
-              <Button
-                condition={this.state.installButton}
-                onClick={this.installApp}>
+              <Button onClick={this.installApp}>
                 Install As Application test
               </Button>
             ) : null}
