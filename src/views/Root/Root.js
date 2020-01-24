@@ -17,7 +17,8 @@ class Root extends React.Component {
     user: [],
     userToken: "",
     isUserLogged: false,
-    isModalOpen: false
+    isModalOpen: false,
+    installButton: true
   };
 
   installPrompt = null;
