@@ -3,12 +3,13 @@ import "./index.css";
 import styles from "./Root.module.scss";
 import AppContext from "../../context";
 import axios from "axios";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import BriefsView from "../BriefsView/BriefsView";
 import LoginView from "../LoginView/LoginView";
 import SingleBriefView from "../BriefsView/SingleBrief";
 import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/Modal";
+import Button from "../../components/Button/Button";
 
 class Root extends React.Component {
   state = {
@@ -16,15 +17,49 @@ class Root extends React.Component {
     user: [],
     userToken: "",
     isUserLogged: false,
-    isModalOpen: false
+    isModalOpen: false,
+    installButton: false
   };
 
+  installPrompt = null;
   componentDidMount() {
-    // axios.get(`http://localhost:1337/briefs`).then(res => {
-    //   const brief = res.data;
-    //   this.setState({brief});
-    // });
+    console.log("Listening for Install prompt");
+    window.addEventListener("beforeinstallprompt", e => {
+      // For older browsers
+      e.preventDefault();
+      console.log("Install Prompt fired");
+      this.installPrompt = e;
+      // See if the app is already installed, in that case, do nothing
+      if (
+        (window.matchMedia &&
+          window.matchMedia("(display-mode: standalone)").matches) ||
+        window.navigator.standalone === true
+      ) {
+        return false;
+      }
+      // Set the state variable to make button visible
+      this.setState({
+        installButton: true
+      });
+    });
   }
+
+  installApp = async () => {
+    if (!this.installPrompt) return false;
+    this.installPrompt.prompt();
+    let outcome = await this.installPrompt.userChoice;
+    if (outcome.outcome == "accepted") {
+      console.log("App Installed");
+    } else {
+      console.log("App not installed");
+    }
+    // Remove the event reference
+    this.installPrompt = null;
+    // Hide the button
+    this.setState({
+      installButton: false
+    });
+  };
 
   addItem = (e, user, newItem) => {
     e.preventDefault();
@@ -102,22 +137,21 @@ class Root extends React.Component {
         }, 500)
       );
 
-    if (wycena.status_kodera === 'zwrot_do_handlowca') {
+    if (wycena.status_kodera === "zwrot_do_handlowca") {
       this.sendMail(
         e,
         user.email,
         "Koder zwrócił wycenę do poprawy: " + title,
         "Zaloguj się do aplikacji i popraw briefa!"
       );
-    } else if (wycena.status_kodera === 'wycenione') {
+    } else if (wycena.status_kodera === "wycenione") {
       this.sendMail(
         e,
         "dominik.s@roxart.pl",
         "Koder dodał nową wycenę: " + title,
         "Zaloguj się do aplikacji i sprawdź czy oferta jest gotowa."
-      )
+      );
     }
-
   };
 
   wycenGrafik = (e, id, title, user, wycena) => {
@@ -146,20 +180,20 @@ class Root extends React.Component {
         }, 500)
       );
 
-    if (wycena.status_grafika === 'zwrot_do_handlowca') {
+    if (wycena.status_grafika === "zwrot_do_handlowca") {
       this.sendMail(
         e,
         user.email,
         "Grafik zwrócił wycenę do poprawy: " + title,
         "Zaloguj się do aplikacji i popraw briefa!"
-      )
-    } else if (wycena.status_grafika === 'wycenione') {
+      );
+    } else if (wycena.status_grafika === "wycenione") {
       this.sendMail(
         e,
         "dominik.s@roxart.pl",
         "Grafik dodał nową wycenę: " + title,
         "Zaloguj się do aplikacji i wyceń godziny kodera!"
-      )
+      );
     }
   };
 
@@ -213,7 +247,7 @@ class Root extends React.Component {
         // Handle success.
         console.log("Data: ", response.data);
         const brief = response.data;
-        this.setState({ brief });
+        this.setState({brief});
       })
       .catch(error => {
         // Handle error.
@@ -271,7 +305,7 @@ class Root extends React.Component {
   };
 
   render() {
-    const { isModalOpen } = this.state;
+    const {isModalOpen} = this.state;
     const contextElements = {
       ...this.state,
       fetchBriefs: this.fetchBriefs,
@@ -288,6 +322,11 @@ class Root extends React.Component {
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>
           <Header openModalFn={this.openModal} />
+          <Button
+            condition={this.state.installButton}
+            onClick={this.installApp}>
+            Install As Application
+          </Button>
           <div className={styles.wrapper}>
             <Switch>
               <Route exact path="/" component={LoginView} />
