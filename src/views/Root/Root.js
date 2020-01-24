@@ -331,7 +331,7 @@ class Root extends React.Component {
               <Route path="/briefs/:id/edit" component={LoginView} />
               <Redirect to="/" />
             </Switch>
-            {this.state.installButton === "true" ? (
+            {this.state.installButton === true ? (
               <Button onClick={this.installApp}>
                 Install As Application test
               </Button>
