@@ -9,6 +9,7 @@ import LoginView from "../LoginView/LoginView";
 import SingleBriefView from "../BriefsView/SingleBrief";
 import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/Modal";
+import PWAPrompt from "react-ios-pwa-prompt";
 
 class Root extends React.Component {
   state = {
@@ -323,8 +324,8 @@ class Root extends React.Component {
       <BrowserRouter>
         <AppContext.Provider value={contextElements}>
           <Header openModalFn={this.openModal} />
-
           <div className={styles.wrapper}>
+            <PWAPrompt />
             <Switch>
               <Route exact path="/" component={LoginView} />
               <Route exact path="/briefs" component={BriefsView} />
