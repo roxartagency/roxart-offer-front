@@ -65,12 +65,6 @@ class Root extends React.Component {
   addItem = (e, user, newItem) => {
     e.preventDefault();
 
-    console.log(user);
-
-    // this.setState(prevState => ({
-    //   brief: [...prevState.brief, newItem]
-    // }));
-
     axios
       .post(`http://localhost:1337/briefs`, newItem, {
         headers: {
@@ -245,13 +239,11 @@ class Root extends React.Component {
         }
       })
       .then(response => {
-        // Handle success.
         console.log("Data: ", response.data);
         const brief = response.data;
         this.setState({brief});
       })
       .catch(error => {
-        // Handle error.
         console.log("An error occurred:", error);
       });
   };
@@ -278,7 +270,6 @@ class Root extends React.Component {
         this.fetchBriefs();
       })
       .catch(error => {
-        // Handle error.
         console.log("An error occurred:", error);
         alert("Błędne dane logowania.");
       });
@@ -289,9 +280,6 @@ class Root extends React.Component {
 
     axios
       .post("http://localhost:1337/email", {
-        // headers: {
-        //   Authorization: `Bearer ${this.state.userToken}`
-        // },
         to: to,
         subject: subject,
         text: text
@@ -300,7 +288,6 @@ class Root extends React.Component {
         console.log(response);
       })
       .catch(error => {
-        // Handle error.
         console.log("An error occurred:", error);
       });
   };
