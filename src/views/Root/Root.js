@@ -331,11 +331,13 @@ class Root extends React.Component {
               <Route path="/briefs/:id/edit" component={LoginView} />
               <Redirect to="/" />
             </Switch>
-            <Button
-              condition={this.state.installButton}
-              onClick={this.installApp}>
-              Install As Application test
-            </Button>
+            {this.state.installButton === "true" ? (
+              <Button
+                condition={this.state.installButton}
+                onClick={this.installApp}>
+                Install As Application test
+              </Button>
+            ) : null}
           </div>
           {isModalOpen && <Modal closeModalFn={this.closeModal} />}
         </AppContext.Provider>
