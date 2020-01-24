@@ -334,7 +334,7 @@ class Root extends React.Component {
             <Button
               condition={this.state.installButton}
               onClick={this.installApp}>
-              Install As Application
+              Install As Application test
             </Button>
           </div>
           {isModalOpen && <Modal closeModalFn={this.closeModal} />}
