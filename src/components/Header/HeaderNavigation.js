@@ -14,7 +14,7 @@ const HeaderNavigation = () => (
                 activeClassName={styles.navItemLinkActive}
                 className={styles.navItemLink}
                 to="/">
-                Zalogowany jako: {context.user.username}
+                Zalogowany: {context.user.username}
               </NavLink>
             ) : (
               <NavLink

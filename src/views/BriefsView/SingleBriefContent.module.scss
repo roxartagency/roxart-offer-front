@@ -78,3 +78,14 @@
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+  .wrapper {
+    .row {
+      grid-template-columns: 100%;
+      .label {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
