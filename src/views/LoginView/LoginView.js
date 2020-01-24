@@ -45,6 +45,11 @@ class LoginView extends React.Component {
               />
               <Button>Zaloguj się</Button>
               <Button onClick={this.redirectBriefs}>Zobacz briefy</Button>
+              {context.installButton === true ? (
+                <Button onClick={e => context.installApp(e)}>
+                  Zainstaluj aplikację PWA
+                </Button>
+              ) : null}
             </form>
           </>
         )}

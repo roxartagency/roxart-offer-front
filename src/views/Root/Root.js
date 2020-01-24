@@ -9,7 +9,6 @@ import LoginView from "../LoginView/LoginView";
 import SingleBriefView from "../BriefsView/SingleBrief";
 import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/Modal";
-import Button from "../../components/Button/Button";
 
 class Root extends React.Component {
   state = {
@@ -44,11 +43,12 @@ class Root extends React.Component {
     });
   }
 
-  installApp = async () => {
+  installApp = async e => {
+    e.preventDefault();
     if (!this.installPrompt) return false;
     this.installPrompt.prompt();
     let outcome = await this.installPrompt.userChoice;
-    if (outcome.outcome == "accepted") {
+    if (outcome.outcome === "accepted") {
       console.log("App Installed");
     } else {
       console.log("App not installed");
@@ -309,6 +309,7 @@ class Root extends React.Component {
     const contextElements = {
       ...this.state,
       fetchBriefs: this.fetchBriefs,
+      installApp: this.installApp,
       addItem: this.addItem,
       removeItem: this.removeItem,
       editItem: this.editItem,
@@ -331,11 +332,6 @@ class Root extends React.Component {
               <Route path="/briefs/:id/edit" component={LoginView} />
               <Redirect to="/" />
             </Switch>
-            {this.state.installButton === true ? (
-              <Button onClick={this.installApp}>
-                Install As Application test
-              </Button>
-            ) : null}
           </div>
           {isModalOpen && <Modal closeModalFn={this.closeModal} />}
         </AppContext.Provider>
