@@ -44,7 +44,7 @@ class LoginView extends React.Component {
                 type="password"
               />
               <Button>Zaloguj się</Button>
-              <Button onClick={this.redirectBriefs}>Zobacz briefy 2</Button>
+              <Button onClick={this.redirectBriefs}>Zobacz briefy</Button>
             </form>
           </>
         )}
