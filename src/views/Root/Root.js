@@ -37,9 +37,7 @@ class Root extends React.Component {
           window.matchMedia("(display-mode: standalone)").matches) ||
         window.navigator.standalone === true
       ) {
-        this.setState({
-          installButton: false
-        });
+        console.log(window.matchMedia);
         return false;
       }
       // Set the state variable to make button visible
