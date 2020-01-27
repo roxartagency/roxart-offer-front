@@ -19,7 +19,7 @@ class Root extends React.Component {
     userToken: "",
     isUserLogged: false,
     isModalOpen: false,
-    installButton: true,
+    installButton: false,
     filterActive: false
   };
 
