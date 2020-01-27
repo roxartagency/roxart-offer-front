@@ -14,11 +14,13 @@ import PWAPrompt from "react-ios-pwa-prompt";
 class Root extends React.Component {
   state = {
     brief: [],
+    filteredBrief: [],
     user: [],
     userToken: "",
     isUserLogged: false,
     isModalOpen: false,
-    installButton: true
+    installButton: true,
+    filterActive: false
   };
 
   installPrompt = null;
@@ -62,8 +64,27 @@ class Root extends React.Component {
     });
   };
 
+  filterList = e => {
+    var updatedList = this.state.brief;
+    updatedList = updatedList.filter(function(item) {
+      return (
+        item.title.toLowerCase().search(e.target.value.toLowerCase()) !== -1
+      );
+    });
+    if (e.target.value.length) {
+      this.setState({filterActive: true});
+    } else {
+      this.setState({filterActive: false});
+    }
+    this.setState({filteredBrief: updatedList});
+  };
+
   addItem = (e, user, newItem) => {
     e.preventDefault();
+
+    this.setState(prevState => ({
+      brief: [...prevState.brief, newItem]
+    }));
 
     axios
       .post(`http://localhost:1337/briefs`, newItem, {
@@ -296,6 +317,7 @@ class Root extends React.Component {
     const {isModalOpen} = this.state;
     const contextElements = {
       ...this.state,
+      filterList: this.filterList,
       fetchBriefs: this.fetchBriefs,
       installApp: this.installApp,
       addItem: this.addItem,
@@ -317,7 +339,6 @@ class Root extends React.Component {
               <Route exact path="/" component={LoginView} />
               <Route exact path="/briefs" component={BriefsView} />
               <Route path="/briefs/:id" component={SingleBriefView} />
-              <Route path="/briefs/:id/edit" component={LoginView} />
               <Redirect to="/" />
             </Switch>
           </div>

@@ -20,12 +20,12 @@ class List extends React.Component {
               <p className={styles.link}>Działania</p>
             </li>
             {items.map(item => (
-              <ListItem key={item.title} {...item} />
+              <ListItem key={item.id} {...item} />
             ))}
           </ul>
         ) : (
           <h1 className={styles.noItems}>
-            Zaloguj się aby uzyskać dostęp do briefów.
+            Brak wyników spełniających podane wymagania.
           </h1>
         )}
       </>

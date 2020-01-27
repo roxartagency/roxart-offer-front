@@ -1,0 +1,18 @@
+.filters {
+  display: block;
+  background-color: #ff8200;
+  margin-bottom: 20px;
+  .singleFilter {
+    padding: 20px;
+    color: #fff;
+  }
+}
+
+.noItems {
+  font-size: 1.2em;
+  color: darkgrey;
+  display: block;
+  width: 100%;
+  margin-top: 100px;
+  text-align: center;
+}
