@@ -16,22 +16,13 @@ class ListItem extends React.Component {
         {context => (
           <li className={styles.wrapper}>
             <p>{props.id}</p>
-            {/* <img
-              src={
-                props.image
-                  ? "http://localhost:1337" + props.image.url
-                  : "https://unsplash.it/200/200/"
-              }
-              className={styles.image}
-              alt={props.title}
-            /> */}
             <Title>{props.title}</Title>
             <p className={styles.description}>{props.description}</p>
             <p>{date.toLocaleDateString()}</p>
             <p>{props.status_grafika}</p>
             <p>{props.status_kodera}</p>
             <p>
-              <Link className={styles.button} to={`briefs/${props.id}`}>
+              <Link className={styles.button} to={`/${props.id}`}>
                 Zobacz
               </Link>
             </p>

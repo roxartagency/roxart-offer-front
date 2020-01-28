@@ -9,30 +9,23 @@ const HeaderNavigation = () => (
       <nav>
         <ul className={styles.wrapper}>
           <li className={styles.navItem}>
-            {context.user.username ? (
-              <NavLink
-                activeClassName={styles.navItemLinkActive}
-                className={styles.navItemLink}
-                to="/">
-                Zalogowany: {context.user.username}
-              </NavLink>
-            ) : (
-              <NavLink
-                activeClassName={styles.navItemLinkActive}
-                className={styles.navItemLink}
-                to="/">
-                login
-              </NavLink>
-            )}
-          </li>
-          <li className={styles.navItem}>
             <NavLink
               activeClassName={styles.navItemLinkActive}
               className={styles.navItemLink}
-              to="/briefs">
+              to="/">
               briefy
             </NavLink>
           </li>
+
+          {context.user.username ? (
+            <>
+              <li className={styles.navItem + " " + styles.navItem_logged}>
+                <p onClick={e => context.logout(e)}>
+                  Wyloguj: {context.user.username}
+                </p>
+              </li>
+            </>
+          ) : null}
         </ul>
       </nav>
     )}

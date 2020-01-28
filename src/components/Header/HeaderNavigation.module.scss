@@ -6,14 +6,23 @@
     margin-right: 50px;
     list-style: none;
 
-    &Link {
+    &Link,
+    p {
       text-decoration: none;
       color: #818181;
       font-size: 0.8em;
+      margin-top: 0;
+      margin-bottom: 0;
 
       &Active {
         font-weight: 700;
       }
+    }
+  }
+  .navItem_logged {
+    margin-left: auto;
+    p {
+      cursor: pointer;
     }
   }
 }

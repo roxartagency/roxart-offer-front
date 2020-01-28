@@ -10,6 +10,7 @@ import SingleBriefView from "../BriefsView/SingleBrief";
 import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/Modal";
 import PWAPrompt from "react-ios-pwa-prompt";
+import Cookies from "js-cookie";
 
 class Root extends React.Component {
   state = {
@@ -45,6 +46,22 @@ class Root extends React.Component {
         installButton: true
       });
     });
+
+    const userToken = Cookies.get("userToken");
+    const user = Cookies.get("user");
+
+    if (user) {
+      const userJSON = JSON.parse(user);
+      this.setState({
+        user: userJSON
+      });
+    }
+
+    if (userToken) {
+      this.setState({
+        userToken: userToken
+      });
+    }
   }
 
   installApp = async e => {
@@ -284,6 +301,8 @@ class Root extends React.Component {
           user: response.data.user,
           isUserLogged: true
         }));
+        Cookies.set("userToken", response.data.jwt);
+        Cookies.set("user", response.data.user);
         console.log("Set userToken");
         console.log(this.state.user);
         console.log("Zalogowano jako: " + this.state.user.username);
@@ -295,6 +314,17 @@ class Root extends React.Component {
         console.log("An error occurred:", error);
         alert("Błędne dane logowania.");
       });
+  };
+
+  logout = e => {
+    e.preventDefault();
+    this.setState({
+      userToken: "",
+      user: "",
+      isUserLogged: false
+    });
+    Cookies.remove("userToken");
+    Cookies.remove("user");
   };
 
   sendMail = (e, to, subject, text) => {
@@ -325,6 +355,7 @@ class Root extends React.Component {
       removeItem: this.removeItem,
       editItem: this.editItem,
       login: this.login,
+      logout: this.logout,
       sendMail: this.sendMail,
       wycenKoder: this.wycenKoder,
       wycenGrafik: this.wycenGrafik
@@ -337,9 +368,9 @@ class Root extends React.Component {
           <div className={styles.wrapper}>
             <PWAPrompt />
             <Switch>
-              <Route exact path="/" component={LoginView} />
-              <Route exact path="/briefs" component={BriefsView} />
-              <Route path="/briefs/:id" component={SingleBriefView} />
+              <Route exact path="/login" component={LoginView} />
+              <Route exact path="/" component={BriefsView} />
+              <Route path="/:id" component={SingleBriefView} />
               <Redirect to="/" />
             </Switch>
           </div>

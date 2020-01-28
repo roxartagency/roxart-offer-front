@@ -5,8 +5,6 @@ import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import styles from "./SingleBrief.module.scss";
 
-
-
 class SingleBriefView extends React.Component {
   state = {
     // wycena_kodera: ""
@@ -777,12 +775,6 @@ class SingleBriefView extends React.Component {
                         <div className={styles.row}>
                           <span className={styles.label}>Działania</span>
                           <span className={styles.content}>
-                            {item.email && (
-                              <Button href={"mailto:" + item.email}>
-                                wyślij maila do klienta
-                              </Button>
-                            )}
-
                             {context.user.role.name === "Administrator" ||
                             context.user.role.name === "Handlowiec" ? (
                               <>
@@ -800,7 +792,7 @@ class SingleBriefView extends React.Component {
                               </>
                             ) : null}
 
-                            <Link className={styles.button} to={"/briefs"}>
+                            <Link className={styles.button} to={"/"}>
                               powrót
                             </Link>
                           </span>
@@ -817,7 +809,5 @@ class SingleBriefView extends React.Component {
     );
   }
 }
-
-
 
 export default SingleBriefView;

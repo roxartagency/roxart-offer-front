@@ -18,7 +18,7 @@ class LoginView extends React.Component {
   };
 
   redirectBriefs = e => {
-    this.props.history.push("/briefs");
+    this.props.history.push("/");
   };
 
   render() {

@@ -5,6 +5,9 @@
   .singleFilter {
     padding: 20px;
     color: #fff;
+    input {
+      margin-left: 10px;
+    }
   }
 }
 
@@ -13,6 +16,7 @@
   color: darkgrey;
   display: block;
   width: 100%;
-  margin-top: 100px;
+  margin-top: 60px;
+  margin-bottom: 25px;
   text-align: center;
 }

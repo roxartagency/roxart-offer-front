@@ -12,7 +12,7 @@ const Header = ({ openModalFn }) => (
         <img className={styles.logo} src={logoImage} alt="Roxart logo" />
         <HeaderNavigation />
         <div className={styles.buttons}>
-          {context.isUserLogged ? (
+          {context.user.username ? (
             <>
               <Button onClick={e => context.fetchBriefs(e)} secondary>
                 Odśwież briefy

@@ -1,6 +1,7 @@
 import React from "react";
 import AppContext from "../../context";
 import List from "../../components/List/List";
+import LoginView from "../LoginView/LoginView";
 import styles from "./BriefsView.module.scss";
 
 class BriefsView extends React.Component {
@@ -17,7 +18,38 @@ class BriefsView extends React.Component {
       <AppContext.Consumer>
         {context => (
           <>
-            {context.brief.length ? (
+            {context.user.username ? (
+              <>
+                <div className={styles.filters}>
+                  <div className={styles.singleFilter}>
+                    <label htmlFor="title">Filtruj po nazwie firmy:</label>
+                    <input
+                      type="text"
+                      id="title"
+                      placeholder="Szukaj"
+                      name="title"
+                      onChange={e => context.filterList(e)}
+                    />
+                  </div>
+                </div>
+                <List
+                  items={
+                    context.filterActive === true
+                      ? context.filteredBrief
+                      : context.brief
+                  }
+                />
+              </>
+            ) : (
+              <>
+                <h1 className={styles.noItems}>
+                  Zaloguj się aby uzyskać dostęp do briefów.
+                </h1>
+                <LoginView />
+              </>
+            )}
+
+            {/* {context.brief.length ? (
               <>
                 <div className={styles.filters}>
                   <div className={styles.singleFilter}>
@@ -43,7 +75,7 @@ class BriefsView extends React.Component {
               <h1 className={styles.noItems}>
                 Zaloguj się aby uzyskać dostęp do briefów.
               </h1>
-            )}
+            )} */}
           </>
         )}
       </AppContext.Consumer>
