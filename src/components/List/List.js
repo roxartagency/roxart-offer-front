@@ -11,9 +11,9 @@ class List extends React.Component {
         {items.length ? (
           <ul className={styles.wrapper}>
             <li className={styles.listHead}>
-              <p className={styles.id}>Numer ID</p>
-              <p className={styles.title}>Nazwa firmy</p>
-              <p className={styles.adres}>Adres firmy</p>
+              <p className={styles.id}>ID</p>
+              <p className={styles.title}>Klient</p>
+              <p className={styles.adres}>Dodane przez</p>
               <p className={styles.utworzono}>Data dodania</p>
               <p className={styles.status_grafika}>Status grafika</p>
               <p className={styles.status_kodera}>Status kodera</p>

@@ -7,13 +7,14 @@ import styles from "./SingleBrief.module.scss";
 
 class SingleBriefView extends React.Component {
   state = {
-    // wycena_kodera: ""
+
   };
 
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(this.state);
   };
 
   render() {
@@ -24,7 +25,7 @@ class SingleBriefView extends React.Component {
           <>
             {context.brief.map(item => (
               <>
-                {context.isUserLogged ? (
+                {context.user.username ? (
                   <>
                     {item.id == match.params.id ? (
                       <div key={item.id} className={styles.wrapper}>
@@ -681,8 +682,9 @@ class SingleBriefView extends React.Component {
                               <form
                                 autoComplete="off"
                                 className=""
+                                id="wycenGrafik"
                                 onSubmit={e =>
-                                  context.wycenGrafik(
+                                  context.wycen(
                                     e,
                                     match.params.id,
                                     item.title,
@@ -708,7 +710,7 @@ class SingleBriefView extends React.Component {
                                     Zwrot do handlowca
                                   </option>
                                 </select>
-                                <Button type="submit">Wyceń</Button>
+                                <Button type="submit" form="wycenGrafik">Wyceń</Button>
                               </form>
                             </span>
                           </div>
@@ -739,8 +741,9 @@ class SingleBriefView extends React.Component {
                               <form
                                 autoComplete="off"
                                 className=""
+                                id="wycenKoder"
                                 onSubmit={e =>
-                                  context.wycenKoder(
+                                  context.wycen(
                                     e,
                                     match.params.id,
                                     item.title,
@@ -766,7 +769,7 @@ class SingleBriefView extends React.Component {
                                     Zwrot do handlowca
                                   </option>
                                 </select>
-                                <Button type="submit">Wyceń</Button>
+                                <Button type="submit" form="wycenKoder">Wyceń</Button>
                               </form>
                             </span>
                           </div>

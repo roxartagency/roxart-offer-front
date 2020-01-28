@@ -11,6 +11,7 @@ import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/Modal";
 import PWAPrompt from "react-ios-pwa-prompt";
 import Cookies from "js-cookie";
+import {API_URL} from "../../api";
 
 class Root extends React.Component {
   state = {
@@ -61,6 +62,9 @@ class Root extends React.Component {
       this.setState({
         userToken: userToken
       });
+      setTimeout(() => {
+        this.fetchBriefs();
+      });
     }
   }
 
@@ -105,7 +109,7 @@ class Root extends React.Component {
     }));
 
     axios
-      .post(`https://roxart-offer.herokuapp.com/briefs`, newItem, {
+      .post(`${API_URL}/briefs`, newItem, {
         headers: {
           Authorization: `Bearer ${this.state.userToken}`
         }
@@ -133,7 +137,7 @@ class Root extends React.Component {
     e.preventDefault();
 
     axios
-      .delete(`https://roxart-offer.herokuapp.com/briefs/${id}`, {
+      .delete(`${API_URL}/briefs/${id}`, {
         headers: {
           Authorization: `Bearer ${this.state.userToken}`
         }
@@ -145,22 +149,15 @@ class Root extends React.Component {
       .then(this.fetchBriefs());
   };
 
-  wycenKoder = (e, id, title, user, wycena) => {
+  wycen = (e, id, title, user, wycena) => {
     e.preventDefault();
 
     axios
-      .put(
-        `https://roxart-offer.herokuapp.com/briefs/${id}`,
-        {
-          wycena_kodera: wycena.wycena_kodera,
-          status_kodera: wycena.status_kodera
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${this.state.userToken}`
-          }
+      .put(`${API_URL}/briefs/${id}`, wycena, {
+        headers: {
+          Authorization: `Bearer ${this.state.userToken}`
         }
-      )
+      })
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -168,56 +165,13 @@ class Root extends React.Component {
       .then(
         setTimeout(() => {
           this.fetchBriefs();
-        }, 500)
-      );
-
-    if (wycena.status_kodera === "zwrot_do_handlowca") {
-      this.sendMail(
-        e,
-        user.email,
-        "Koder zwrócił wycenę do poprawy: " + title,
-        "Zaloguj się do aplikacji i popraw briefa!"
-      );
-    } else if (wycena.status_kodera === "wycenione") {
-      this.sendMail(
-        e,
-        "dominik.s@roxart.pl",
-        "Koder dodał nową wycenę: " + title,
-        "Zaloguj się do aplikacji i sprawdź czy oferta jest gotowa."
-      );
-    }
-  };
-
-  wycenGrafik = (e, id, title, user, wycena) => {
-    e.preventDefault();
-
-    axios
-      .put(
-        `https://roxart-offer.herokuapp.com/briefs/${id}`,
-        {
-          wycena_grafika: wycena.wycena_grafika,
-          status_grafika: wycena.status_grafika
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${this.state.userToken}`
-          }
-        }
-      )
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-      .then(
-        setTimeout(() => {
-          this.fetchBriefs();
-        }, 500)
+        }, 300)
       );
 
     if (wycena.status_grafika === "zwrot_do_handlowca") {
       this.sendMail(
         e,
-        user.email,
+        "dominik.s@roxart.pl",
         "Grafik zwrócił wycenę do poprawy: " + title,
         "Zaloguj się do aplikacji i popraw briefa!"
       );
@@ -228,6 +182,20 @@ class Root extends React.Component {
         "Grafik dodał nową wycenę: " + title,
         "Zaloguj się do aplikacji i wyceń godziny kodera!"
       );
+    } else if (wycena.status_kodera === "zwrot_do_handlowca") {
+      this.sendMail(
+        e,
+        "dominik.s@roxart.pl",
+        "Koder zwrócił wycenę do poprawy: " + title,
+        "Zaloguj się do aplikacji i popraw briefa!"
+      );
+    } else if (wycena.status_kodera === "wycenione") {
+      this.sendMail(
+        e,
+        "dominik.s@roxart.pl",
+        "Koder dodał nową wycenę: " + title,
+        "Zaloguj się do aplikacji i przygotuj ofertę."
+      );
     }
   };
 
@@ -235,7 +203,7 @@ class Root extends React.Component {
     e.preventDefault();
 
     axios
-      .put(`https://roxart-offer.herokuapp.com/briefs/${id}`, editItem, {
+      .put(`${API_URL}/briefs/${id}`, editItem, {
         headers: {
           Authorization: `Bearer ${this.state.userToken}`
         }
@@ -248,10 +216,10 @@ class Root extends React.Component {
       .then(
         setTimeout(() => {
           this.fetchBriefs();
-        }, 500)
+        }, 300)
       )
       .catch(error => {
-        alert("Wystąpił błąd zapisywania: " + error);
+        alert("Wystąpił błąd zapisywania zmian w: " + error);
       });
   };
 
@@ -272,7 +240,7 @@ class Root extends React.Component {
     console.log(this.state.userToken);
 
     axios
-      .get("https://roxart-offer.herokuapp.com/briefs?_sort=created_at:DESC", {
+      .get(`${API_URL}/briefs?_sort=created_at:DESC`, {
         headers: {
           Authorization: `Bearer ${this.state.userToken}`
         }
@@ -291,7 +259,7 @@ class Root extends React.Component {
     e.preventDefault();
 
     axios
-      .post("https://roxart-offer.herokuapp.com/auth/local", {
+      .post(`${API_URL}/auth/local`, {
         identifier: userData.login,
         password: userData.password
       })
@@ -331,7 +299,7 @@ class Root extends React.Component {
     e.preventDefault();
 
     axios
-      .post("https://roxart-offer.herokuapp.com/email", {
+      .post(`${API_URL}/email`, {
         to: to,
         subject: subject,
         text: text
@@ -357,8 +325,7 @@ class Root extends React.Component {
       login: this.login,
       logout: this.logout,
       sendMail: this.sendMail,
-      wycenKoder: this.wycenKoder,
-      wycenGrafik: this.wycenGrafik
+      wycen: this.wycen
     };
 
     return (

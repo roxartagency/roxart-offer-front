@@ -17,7 +17,7 @@ class ListItem extends React.Component {
           <li className={styles.wrapper}>
             <p>{props.id}</p>
             <Title>{props.title}</Title>
-            <p className={styles.description}>{props.description}</p>
+            <p>{props.user.username}</p>
             <p>{date.toLocaleDateString()}</p>
             <p>{props.status_grafika}</p>
             <p>{props.status_kodera}</p>

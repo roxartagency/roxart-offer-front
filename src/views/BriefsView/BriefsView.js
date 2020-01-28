@@ -32,6 +32,7 @@ class BriefsView extends React.Component {
                     />
                   </div>
                 </div>
+
                 <List
                   items={
                     context.filterActive === true
