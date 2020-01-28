@@ -88,7 +88,7 @@ class Root extends React.Component {
     }));
 
     axios
-      .post(`http://localhost:1337/briefs`, newItem, {
+      .post(`https://roxart-offer.herokuapp.com/briefs`, newItem, {
         headers: {
           Authorization: `Bearer ${this.state.userToken}`
         }
@@ -116,7 +116,7 @@ class Root extends React.Component {
     e.preventDefault();
 
     axios
-      .delete(`http://localhost:1337/briefs/${id}`, {
+      .delete(`https://roxart-offer.herokuapp.com/briefs/${id}`, {
         headers: {
           Authorization: `Bearer ${this.state.userToken}`
         }
@@ -133,7 +133,7 @@ class Root extends React.Component {
 
     axios
       .put(
-        `http://localhost:1337/briefs/${id}`,
+        `https://roxart-offer.herokuapp.com/briefs/${id}`,
         {
           wycena_kodera: wycena.wycena_kodera,
           status_kodera: wycena.status_kodera
@@ -176,7 +176,7 @@ class Root extends React.Component {
 
     axios
       .put(
-        `http://localhost:1337/briefs/${id}`,
+        `https://roxart-offer.herokuapp.com/briefs/${id}`,
         {
           wycena_grafika: wycena.wycena_grafika,
           status_grafika: wycena.status_grafika
@@ -218,7 +218,7 @@ class Root extends React.Component {
     e.preventDefault();
 
     axios
-      .put(`http://localhost:1337/briefs/${id}`, editItem, {
+      .put(`https://roxart-offer.herokuapp.com/briefs/${id}`, editItem, {
         headers: {
           Authorization: `Bearer ${this.state.userToken}`
         }
@@ -255,7 +255,7 @@ class Root extends React.Component {
     console.log(this.state.userToken);
 
     axios
-      .get("http://localhost:1337/briefs?_sort=created_at:DESC", {
+      .get("https://roxart-offer.herokuapp.com/briefs?_sort=created_at:DESC", {
         headers: {
           Authorization: `Bearer ${this.state.userToken}`
         }
@@ -274,7 +274,7 @@ class Root extends React.Component {
     e.preventDefault();
 
     axios
-      .post("http://localhost:1337/auth/local", {
+      .post("https://roxart-offer.herokuapp.com/auth/local", {
         identifier: userData.login,
         password: userData.password
       })
@@ -301,7 +301,7 @@ class Root extends React.Component {
     e.preventDefault();
 
     axios
-      .post("http://localhost:1337/email", {
+      .post("https://roxart-offer.herokuapp.com/email", {
         to: to,
         subject: subject,
         text: text
