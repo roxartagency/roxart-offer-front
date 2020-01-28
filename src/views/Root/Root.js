@@ -5,7 +5,6 @@ import AppContext from "../../context";
 import axios from "axios";
 import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import BriefsView from "../BriefsView/BriefsView";
-import LoginView from "../LoginView/LoginView";
 import SingleBriefView from "../BriefsView/SingleBrief";
 import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/Modal";
@@ -48,16 +47,14 @@ class Root extends React.Component {
       });
     });
 
-    const userToken = Cookies.get("userToken");
     const user = Cookies.get("user");
-
     if (user) {
       const userJSON = JSON.parse(user);
       this.setState({
         user: userJSON
       });
     }
-
+    const userToken = Cookies.get("userToken");
     if (userToken) {
       this.setState({
         userToken: userToken
@@ -335,7 +332,6 @@ class Root extends React.Component {
           <div className={styles.wrapper}>
             <PWAPrompt />
             <Switch>
-              <Route exact path="/login" component={LoginView} />
               <Route exact path="/" component={BriefsView} />
               <Route path="/:id" component={SingleBriefView} />
               <Redirect to="/" />

@@ -1,11 +1,11 @@
 import React from "react";
 import AppContext from "../../context";
-import styles from "./LoginView.module.scss";
+import styles from "./Login.module.scss";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import {withRouter} from "react-router-dom";
 
-class LoginView extends React.Component {
+class Login extends React.Component {
   state = {
     login: "",
     password: ""
@@ -58,4 +58,4 @@ class LoginView extends React.Component {
   }
 }
 
-export default withRouter(LoginView);
+export default withRouter(Login);

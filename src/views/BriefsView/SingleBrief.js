@@ -6,15 +6,12 @@ import Input from "../../components/Input/Input";
 import styles from "./SingleBrief.module.scss";
 
 class SingleBriefView extends React.Component {
-  state = {
-
-  };
+  state = {};
 
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state);
   };
 
   render() {
@@ -710,7 +707,9 @@ class SingleBriefView extends React.Component {
                                     Zwrot do handlowca
                                   </option>
                                 </select>
-                                <Button type="submit" form="wycenGrafik">Wyceń</Button>
+                                <Button type="submit" form="wycenGrafik">
+                                  Wyceń
+                                </Button>
                               </form>
                             </span>
                           </div>
@@ -769,7 +768,9 @@ class SingleBriefView extends React.Component {
                                     Zwrot do handlowca
                                   </option>
                                 </select>
-                                <Button type="submit" form="wycenKoder">Wyceń</Button>
+                                <Button type="submit" form="wycenKoder">
+                                  Wyceń
+                                </Button>
                               </form>
                             </span>
                           </div>
