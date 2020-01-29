@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import AppContext from "../../context";
+import AppContext from "context";
 import styles from "./ListItem.module.scss";
-import Title from "../Title/Title";
+import Title from "components/Title/Title";
 
 class ListItem extends React.Component {
   render() {

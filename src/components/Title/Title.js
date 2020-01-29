@@ -1,10 +1,10 @@
-import React from 'react';
-import styles from './Title.module.scss';
+import React, {useContext} from "react";
+import AppContext from "context";
+import styles from "./Title.module.scss";
 
-const Title = ({children}) => (
-  <h2 className={styles.title}>
-    {children}
-  </h2>
-);
+const Title = ({children}) => {
+  const context = useContext(AppContext);
+  return <h2 className={styles.title}>{children}</h2>;
+};
 
 export default Title;

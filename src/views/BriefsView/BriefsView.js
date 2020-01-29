@@ -1,7 +1,7 @@
 import React from "react";
-import AppContext from "../../context";
-import List from "../../components/List/List";
-import Login from "../../components/Login/Login";
+import AppContext from "context";
+import List from "components/List/List";
+import Login from "components/Login/Login";
 import styles from "./BriefsView.module.scss";
 
 class BriefsView extends React.Component {

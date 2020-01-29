@@ -1,8 +1,8 @@
 import React from "react";
-import AppContext from "../../context";
+import AppContext from "context";
 import styles from "./Login.module.scss";
-import Button from "../../components/Button/Button";
-import Input from "../../components/Input/Input";
+import Button from "components/Button/Button";
+import Input from "components/Input/Input";
 import {withRouter} from "react-router-dom";
 
 class Login extends React.Component {

@@ -1,11 +1,11 @@
 import React from "react";
-import Button from "../Button/Button";
-import HeaderNavigation from "./HeaderNavigation";
-import AppContext from "../../context";
+import Button from "components/Button/Button";
+import HeaderNavigation from "components/Header/HeaderNavigation";
+import AppContext from "context";
 import styles from "./Header.module.scss";
-import logoImage from "../../assets/images/logo.svg";
+import logoImage from "assets/images/logo.svg";
 
-const Header = ({ openModalFn }) => (
+const Header = ({openModalFn}) => (
   <AppContext.Consumer>
     {context => (
       <header className={styles.wrapper}>
@@ -18,13 +18,13 @@ const Header = ({ openModalFn }) => (
                 Odśwież briefy
               </Button>
               {context.user.role.name === "Administrator" ||
-                context.user.role.name === "Handlowiec" ? (
-                  <>
-                    <Button onClick={openModalFn} secondary>
-                      Dodaj nowy brief
+              context.user.role.name === "Handlowiec" ? (
+                <>
+                  <Button onClick={openModalFn} secondary>
+                    Dodaj nowy brief
                   </Button>
-                  </>
-                ) : null}
+                </>
+              ) : null}
             </>
           ) : null}
         </div>

@@ -1,8 +1,8 @@
 import React from "react";
-import AppContext from "../../context";
+import AppContext from "context";
 import {Link} from "react-router-dom";
-import Button from "../../components/Button/Button";
-import Input from "../../components/Input/Input";
+import Button from "components/Button/Button";
+import Input from "components/Input/Input";
 import styles from "./SingleBrief.module.scss";
 
 class SingleBriefView extends React.Component {
