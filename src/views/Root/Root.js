@@ -8,6 +8,7 @@ import BriefsView from "../../views/BriefsView/BriefsView";
 import SingleBriefView from "../../views/BriefsView/SingleBrief";
 import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/Modal";
+import Notification from "../../components/Notification/Notification";
 import PWAPrompt from "react-ios-pwa-prompt";
 import Cookies from "js-cookie";
 import {API_URL} from "../../api";
@@ -21,7 +22,9 @@ class Root extends React.Component {
     isUserLogged: false,
     isModalOpen: false,
     installButton: false,
-    filterActive: false
+    filterActive: false,
+    notificationActive: false,
+    notificationContent: "testowy tekst"
   };
 
   installPrompt = null;
@@ -127,7 +130,7 @@ class Root extends React.Component {
         )
       );
 
-    alert("Dodano nowy brief: " + newItem.title);
+    this.showNotification("Dodano nowy brief: " + newItem.title);
 
     this.closeModal();
   };
@@ -210,7 +213,7 @@ class Root extends React.Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
-        alert("Zapisano poprawnie zmiany w: " + res.data.title);
+        this.showNotification("Zapisano poprawnie zmiany w: " + res.data.title);
       })
       .then(
         setTimeout(() => {
@@ -218,7 +221,7 @@ class Root extends React.Component {
         }, 300)
       )
       .catch(error => {
-        alert("Wystąpił błąd zapisywania zmian w: " + error);
+        this.showNotification("Wystąpił błąd zapisywania zmian w: " + error);
       });
   };
 
@@ -275,14 +278,14 @@ class Root extends React.Component {
 
         console.log("Set userToken");
         console.log(this.state.user);
-        console.log("Zalogowano jako: " + this.state.user.username);
+        this.showNotification("Zalogowano jako: " + this.state.user.username);
       })
       .then(() => {
         this.fetchBriefs();
       })
       .catch(error => {
         console.log("An error occurred:", error);
-        alert("Błędne dane logowania.");
+        this.showNotification("Błędne dane logowania!");
       });
   };
 
@@ -297,6 +300,7 @@ class Root extends React.Component {
     Cookies.remove("userName");
     Cookies.remove("userEmail");
     Cookies.remove("userRole");
+    this.showNotification("Wylogowano.");
   };
 
   sendMail = (e, to, subject, text) => {
@@ -316,10 +320,21 @@ class Root extends React.Component {
       });
   };
 
+  showNotification = content => {
+    this.setState({
+      notificationActive: true,
+      notificationContent: content
+    });
+    setTimeout(() => {
+      this.setState({notificationActive: false});
+    }, 2500);
+  };
+
   render() {
     const {isModalOpen} = this.state;
     const contextElements = {
       ...this.state,
+      showNotification: this.showNotification,
       filterList: this.filterList,
       fetchBriefs: this.fetchBriefs,
       installApp: this.installApp,
@@ -338,6 +353,9 @@ class Root extends React.Component {
           <Header openModalFn={this.openModal} />
           <div className={styles.wrapper}>
             <PWAPrompt />
+            <Notification active={this.state.notificationActive}>
+              {this.state.notificationContent}
+            </Notification>
             <Switch>
               <Route exact path="/" component={BriefsView} />
               <Route path="/:id" component={SingleBriefView} />

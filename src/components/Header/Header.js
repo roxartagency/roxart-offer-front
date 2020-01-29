@@ -14,7 +14,12 @@ const Header = ({openModalFn}) => (
         <div className={styles.buttons}>
           {context.user.username ? (
             <>
-              <Button onClick={e => context.fetchBriefs(e)} secondary>
+              <Button
+                onClick={(e) => {
+                  context.fetchBriefs(e);
+                  context.showNotification("Odświeżono briefy")
+                }}
+                secondary>
                 Odśwież briefy
               </Button>
               {context.user.role.name === "Administrator" ||
