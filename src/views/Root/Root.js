@@ -1,16 +1,16 @@
 import React from "react";
 import "./index.css";
 import styles from "./Root.module.scss";
-import AppContext from "context";
+import AppContext from "../../context";
 import axios from "axios";
 import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
-import BriefsView from "views/BriefsView/BriefsView";
-import SingleBriefView from "views/BriefsView/SingleBrief";
-import Header from "components/Header/Header";
-import Modal from "components/Modal/Modal";
+import BriefsView from "../../views/BriefsView/BriefsView";
+import SingleBriefView from "../../views/BriefsView/SingleBrief";
+import Header from "../../components/Header/Header";
+import Modal from "../../components/Modal/Modal";
 import PWAPrompt from "react-ios-pwa-prompt";
 import Cookies from "js-cookie";
-import {API_URL} from "api";
+import {API_URL} from "../../api";
 
 class Root extends React.Component {
   state = {

@@ -1,8 +1,8 @@
 import React from "react";
-import AppContext from "context";
+import AppContext from "../../context";
 import styles from "./Form.module.scss";
-import Input from "components/Input/Input";
-import Button from "components/Button/Button";
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
 
 class Form extends React.Component {
   static contextType = AppContext;

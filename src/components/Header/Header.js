@@ -1,9 +1,9 @@
 import React from "react";
-import Button from "components/Button/Button";
-import HeaderNavigation from "components/Header/HeaderNavigation";
-import AppContext from "context";
+import Button from "../../components/Button/Button";
+import HeaderNavigation from "../../components/Header/HeaderNavigation";
+import AppContext from "../../context";
 import styles from "./Header.module.scss";
-import logoImage from "assets/images/logo.svg";
+import logoImage from "../../assets/images/logo.svg";
 
 const Header = ({openModalFn}) => (
   <AppContext.Consumer>
