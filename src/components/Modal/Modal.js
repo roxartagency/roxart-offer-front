@@ -3,7 +3,7 @@ import styles from "./Modal.module.scss";
 import Form from "../../components/Form/Form";
 import Title from "../../components/Title/Title";
 
-const Modal = ({closeModalFn}) => (
+const Modal = ({ closeModalFn }) => (
   <div className={styles.wrapper}>
     <div className={styles.header}>
       <Title>Wypełnij nowy brief</Title>

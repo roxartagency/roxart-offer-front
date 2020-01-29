@@ -1,14 +1,21 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
+import styled from "styled-components";
 // import AppContext from "context";
-import styles from "./Title.module.scss";
 
-const Title = ({children}) => {
+const StyledTitle = styled.h2`
+  margin: 0;
+  color: #1e58ff;
+  font-weight: 700;
+  font-size: 20px;
+`;
+
+const Title = ({ children }) => {
   // const context = useContext(AppContext);
   return (
-    <h2 className={styles.title}>
+    <StyledTitle>
       {children}
       {/* {context.userToken} */}
-    </h2>
+    </StyledTitle>
   );
 };
 

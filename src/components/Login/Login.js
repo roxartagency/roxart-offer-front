@@ -3,7 +3,7 @@ import AppContext from "../../context";
 import styles from "./Login.module.scss";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
-import {withRouter} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class Login extends React.Component {
   state = {
@@ -29,7 +29,8 @@ class Login extends React.Component {
             <form
               autoComplete="off"
               className={styles.wrapper}
-              onSubmit={e => context.login(e, this.state)}>
+              onSubmit={e => context.login(e, this.state)}
+            >
               <Input
                 onChange={this.handleInputChange}
                 name="login"
@@ -44,7 +45,6 @@ class Login extends React.Component {
                 type="password"
               />
               <Button>Zaloguj się</Button>
-              <Button onClick={this.redirectBriefs}>Zobacz briefy</Button>
               {context.installButton === true ? (
                 <Button onClick={e => context.installApp(e)}>
                   Zainstaluj aplikację PWA
