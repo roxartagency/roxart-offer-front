@@ -47,11 +47,13 @@ class Root extends React.Component {
       });
     });
 
-    const user = Cookies.get("user");
-    if (user) {
-      const userJSON = JSON.parse(user);
+    const userName = Cookies.get("userName");
+    const userEmail = Cookies.get("userEmail");
+    const userRole = Cookies.get("userRole");
+    if (userName) {
+      const userRoleJSON = JSON.parse(userRole);
       this.setState({
-        user: userJSON
+        user: {username: userName, email: userEmail, role: userRoleJSON}
       });
     }
     const userToken = Cookies.get("userToken");
@@ -267,8 +269,12 @@ class Root extends React.Component {
           isUserLogged: true
         }));
         Cookies.set("userToken", response.data.jwt);
-        Cookies.set("user", response.data.user);
+        Cookies.set("userName", response.data.user.username);
+        Cookies.set("userEmail", response.data.user.email);
+        Cookies.set("userRole", response.data.user.role);
+
         console.log("Set userToken");
+        console.log(this.state.user);
         console.log("Zalogowano jako: " + this.state.user.username);
       })
       .then(() => {
@@ -288,7 +294,9 @@ class Root extends React.Component {
       isUserLogged: false
     });
     Cookies.remove("userToken");
-    Cookies.remove("user");
+    Cookies.remove("userName");
+    Cookies.remove("userEmail");
+    Cookies.remove("userRole");
   };
 
   sendMail = (e, to, subject, text) => {
