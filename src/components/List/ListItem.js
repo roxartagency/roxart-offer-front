@@ -1,9 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import styled from "styled-components";
 import AppContext from "../../context";
-import styles from "./ListItem.module.scss";
 import Title from "../../components/Title/Title";
+import Button from "../../components/Button/Button";
+
+const ListItemCol = styled.div`
+  padding: 0 10px;
+  margin: 10px 0;
+`;
+
+const StyledListItem = styled.li`
+  list-style: none;
+  display: grid;
+  grid-template-columns: 8% 20% 15% 11% 15% 15% auto;
+  grid-auto-flow: row;
+  width: 100%;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  &:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  > ${ListItemCol} {
+    padding: 0 10px;
+  }
+`;
 
 class ListItem extends React.Component {
   render() {
@@ -14,19 +36,21 @@ class ListItem extends React.Component {
     return (
       <AppContext.Consumer>
         {context => (
-          <li className={styles.wrapper}>
-            <p>{props.id}</p>
-            <Title>{props.title}</Title>
-            <p>{props.user.username}</p>
-            <p>{date.toLocaleDateString()}</p>
-            <p>{props.status_grafika}</p>
-            <p>{props.status_kodera}</p>
-            <p>
-              <Link className={styles.button} to={`/${props.id}`}>
-                Zobacz
+          <StyledListItem>
+            <ListItemCol>{props.id}</ListItemCol>
+            <ListItemCol>
+              <Title>{props.title}</Title>
+            </ListItemCol>
+            <ListItemCol>{props.user.username}</ListItemCol>
+            <ListItemCol>{date.toLocaleDateString()}</ListItemCol>
+            <ListItemCol>{props.status_grafika}</ListItemCol>
+            <ListItemCol>{props.status_kodera}</ListItemCol>
+            <ListItemCol>
+              <Link to={`/${props.id}`}>
+                <Button>Zobacz</Button>
               </Link>
-            </p>
-          </li>
+            </ListItemCol>
+          </StyledListItem>
         )}
       </AppContext.Consumer>
     );

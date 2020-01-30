@@ -1,8 +1,17 @@
-import { createGlobalStyle } from "styled-components";
+import {createGlobalStyle} from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
-
+@keyframes appear {
+  0% {
+    opacity: 0;
+    top: 35px;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
 
 *,
 *::before,
@@ -21,5 +30,3 @@ body {
 `;
 
 export default GlobalStyle;
-
-

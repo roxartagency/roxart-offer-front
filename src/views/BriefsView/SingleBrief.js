@@ -3,7 +3,84 @@ import AppContext from "../../context";
 import {Link} from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
-import styles from "./SingleBrief.module.scss";
+import styled from "styled-components";
+
+const BriefWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  max-width: 990px;
+  margin: auto;
+  box-shadow: ${props => `${props.theme.boxShadow}`};
+`;
+
+const Row = styled.div`
+  padding: 20px 0;
+  display: grid;
+  grid-template-columns: 50% auto;
+
+  &:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  @media (max-width: 767px) {
+    grid-template-columns: 100%;
+  }
+`;
+
+const Label = styled.span`
+  display: block;
+  padding: 0 20px;
+  font-weight: 700;
+  @media (max-width: 767px) {
+    margin-bottom: 10px;
+  }
+`;
+
+const Content = styled.span`
+  padding: 0 20px;
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const Select = styled.select`
+  color: #000;
+  font-size: 15px;
+  padding: 5px 15px;
+  border: 1px solid #7d7d7d;
+  border-radius: 5px;
+  line-height: 22px;
+  width: 100%;
+  background: #fff;
+  transition: 0.2s ease-out all;
+  margin-bottom: 10px;
+  &:focus {
+    border-color: ${props => `${props.theme.colors.mainBlue}`};
+    outline: none;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  display: inline-block;
+  max-width: 200px;
+  text-align: center;
+  font-size: 10px;
+  text-decoration: none;
+  padding: 7px 12px;
+  font-weight: 500;
+  background: none;
+  border: ${props => `2px solid ${props.theme.colors.mainBlue}`};
+  color: ${props => `${props.theme.colors.mainBlue}`};
+  cursor: pointer;
+  margin-right: 5px;
+  transition: 0.2s ease-out all;
+  margin-bottom: ${props => props.marginBottom || "unset"};
+  &:hover {
+    background: ${props => `${props.theme.colors.mainBlue}`};
+    color: #fff;
+  }
+`;
 
 class SingleBriefView extends React.Component {
   state = {};
@@ -25,7 +102,7 @@ class SingleBriefView extends React.Component {
                 {context.user.username ? (
                   <>
                     {item.id == match.params.id ? (
-                      <div key={item.id} className={styles.wrapper}>
+                      <BriefWrapper key={item.id}>
                         <form
                           id="editBrief"
                           autoComplete="off"
@@ -33,26 +110,20 @@ class SingleBriefView extends React.Component {
                           onSubmit={e =>
                             context.editItem(e, match.params.id, this.state)
                           }>
-                          <div className={styles.row}>
-                            <span className={styles.label}>Id:</span>
-                            <span className={styles.content}>
-                              {match.params.id}
-                            </span>
-                          </div>
+                          <Row>
+                            <Label>Id:</Label>
+                            <Content>{match.params.id}</Content>
+                          </Row>
                           {item.user ? (
-                            <div className={styles.row}>
-                              <span className={styles.label}>
-                                Dodane przez:
-                              </span>
-                              <span className={styles.content}>
-                                {item.user.email}
-                              </span>
-                            </div>
+                            <Row>
+                              <Label>Dodane przez:</Label>
+                              <Content>{item.user.email}</Content>
+                            </Row>
                           ) : null}
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>Nazwa firmy:</span>
-                            <span className={styles.content}>
+                          <Row>
+                            <Label>Nazwa firmy:</Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -63,12 +134,12 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.title
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>Adres:</span>
-                            <span className={styles.content}>
+                          <Row>
+                            <Label>Adres:</Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -80,14 +151,12 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.description
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
-                              Adres e-mail osoby kontaktowej:
-                            </span>
-                            <span className={styles.content}>
+                          <Row>
+                            <Label>Adres e-mail osoby kontaktowej:</Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -98,28 +167,24 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.email
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>Utworzono:</span>
-                            <span className={styles.content}>
-                              {item.created_at}
-                            </span>
-                          </div>
-                          <div className={styles.row}>
-                            <span className={styles.label}>Status:</span>
-                            <span className={styles.content}>
-                              {item.status}
-                            </span>
-                          </div>
+                          <Row>
+                            <Label>Utworzono:</Label>
+                            <Content>{item.created_at}</Content>
+                          </Row>
+                          <Row>
+                            <Label>Status:</Label>
+                            <Content>{item.status}</Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Jaki jest adres (URL) Twojej strony internetowej?
                               (obecny lub planowany):
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -131,14 +196,12 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.adres_url
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
-                              Czym zajmuje się Twoja firma?
-                            </span>
-                            <span className={styles.content}>
+                          <Row>
+                            <Label>Czym zajmuje się Twoja firma?</Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -150,14 +213,12 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.czym_zajmuje
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
-                              W jakiej branży działa Twoja firma?
-                            </span>
-                            <span className={styles.content}>
+                          <Row>
+                            <Label>W jakiej branży działa Twoja firma?</Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -169,15 +230,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.branza
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Ile lat Państwa firma jest na rynku i ilu
                               zatrudnia pracowników?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -189,15 +250,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.ile_lat
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Jakie produkty/usługi oferuje Twoja firma swoim
                               klientom?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -209,15 +270,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.jakie_produkty
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Kim są Twoi klienci (dotychczasowi lub
                               potencjalni) oraz jaka jest grupa docelowa?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -229,15 +290,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.kim_sa_klienci
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Kim są główni konkurenci (lokalnie i globalnie)?
                               (można podać adresy internetowe)
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -249,15 +310,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.konkurenci
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Jaki jest określony budżet na realizację projektu
                               netto?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -269,15 +330,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.budzet
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Jaki jest określony czas zakończenia realizacji
                               projektu?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -289,16 +350,16 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.czas_realizacji
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Czy firma posiada logo? Jeśli tak, czy firma
                               posiada logo w formie pliku wektorowego oraz
                               księgę znaku?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -310,15 +371,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.logo
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Jakie są założenia i podstawowy cel nowej strony
                               internetowej?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -330,15 +391,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.zalozenia
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Jaki ma być charakter strony internetowej
                               (sprzedażowa, wizerunkowa, informacyjna itp.)?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -350,15 +411,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.charakter
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Czy strona ma mieć możliwość samodzielnej edycji
                               treści strony lub jej elementów (system CMS)?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -370,14 +431,12 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.czy_cms
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
-                              Jaki ma być podstawowy język strony?
-                            </span>
-                            <span className={styles.content}>
+                          <Row>
+                            <Label>Jaki ma być podstawowy język strony?</Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -389,15 +448,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.jezyk_podstawowy
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Czy strona posiadać dodatkowe języki? Jeśli tak,
                               to jakie?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -409,15 +468,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.jezyki_dodatkowe
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Jakie mają być główne podstrony menu/zakładki w
                               nawigacji górnej?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -429,15 +488,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.podstrony_menu
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Jaka jest orientacyjna liczba wszystkich podstron
                               (mapa strony)?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -449,15 +508,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.liczba_podstron
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Jakie są Twoje oczekiwania co do kolorystyki
                               strony?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -469,16 +528,16 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.kolorystyka
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Przykłady istniejących stron internetowych, które
                               podobają się Tobie. Podaj minimum trzy przykłady.
                               (nie muszą być związane z branżą)
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -490,15 +549,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.przyklady_stron
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Elementy na istniejących stronach internetowych,
                               które podobają się Tobie.
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -510,14 +569,12 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.elementy
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
-                              Czy otrzymamy zdjęcia do strony?
-                            </span>
-                            <span className={styles.content}>
+                          <Row>
+                            <Label>Czy otrzymamy zdjęcia do strony?</Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -529,14 +586,12 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.zdjecia
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
-                              Czy otrzymamy teksty do strony?
-                            </span>
-                            <span className={styles.content}>
+                          <Row>
+                            <Label>Czy otrzymamy teksty do strony?</Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -548,16 +603,16 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.teksty
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Elementy zewnętrzne do umieszczenia na stronie?
                               (np. link do fanpage Facebook'a, link Youtube,
                               itp.)
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -569,15 +624,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.elementy_zewnetrzne
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Czy strona ma mieć dodatkową zaawansowaną
                               funkcjonalność? Jeśli tak to jaką?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -591,15 +646,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.zaawansowana_funkcjonalnosc
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Czy firma posiada wykupioną domenę (adres
                               internetowy URL)?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -611,15 +666,15 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.czy_domena
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
+                          <Row>
+                            <Label>
                               Czy firma posiada wykupiony hosting/serwer
                               (miejsce w którym znajdują się pliki strony)?
-                            </span>
-                            <span className={styles.content}>
+                            </Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -631,14 +686,12 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.czy_hosting
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
 
-                          <div className={styles.row}>
-                            <span className={styles.label}>
-                              Inne ważne uwagi:
-                            </span>
-                            <span className={styles.content}>
+                          <Row>
+                            <Label>Inne ważne uwagi:</Label>
+                            <Content>
                               {context.user.role.name === "Administrator" ||
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
@@ -650,32 +703,24 @@ class SingleBriefView extends React.Component {
                               ) : (
                                 item.uwagi
                               )}
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
                         </form>
 
-                        <div className={styles.row}>
-                          <span className={styles.label}>
-                            Status wyceny grafika:
-                          </span>
-                          <span className={styles.content}>
-                            {item.status_grafika}
-                          </span>
-                        </div>
+                        <Row>
+                          <Label>Status wyceny grafika:</Label>
+                          <Content>{item.status_grafika}</Content>
+                        </Row>
 
-                        <div className={styles.row}>
-                          <span className={styles.label}>Wycena grafika:</span>
-                          <span className={styles.content}>
-                            {item.wycena_grafika}
-                          </span>
-                        </div>
+                        <Row>
+                          <Label>Wycena grafika:</Label>
+                          <Content>{item.wycena_grafika}</Content>
+                        </Row>
 
                         {context.user.role.name === "Grafik" ? (
-                          <div className={styles.row}>
-                            <span className={styles.label}>
-                              Nowa wycena grafika:
-                            </span>
-                            <span className={styles.content}>
+                          <Row>
+                            <Label>Nowa wycena grafika:</Label>
+                            <Content>
                               <form
                                 autoComplete="off"
                                 className=""
@@ -694,8 +739,9 @@ class SingleBriefView extends React.Component {
                                   name="wycena_grafika"
                                   tag="textarea"
                                   defaultValue={item.wycena_grafika}
+                                  marginBottom="10px"
                                 />
-                                <select
+                                <Select
                                   name="status_grafika"
                                   value={this.state.status_grafika}
                                   onChange={this.handleInputChange}>
@@ -706,40 +752,31 @@ class SingleBriefView extends React.Component {
                                   <option value="zwrot_do_handlowca">
                                     Zwrot do handlowca
                                   </option>
-                                </select>
+                                </Select>
                                 <Button type="submit" form="wycenGrafik">
                                   Wyceń
                                 </Button>
                               </form>
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
                         ) : null}
 
-                        <div className={styles.row}>
-                          <span className={styles.label}>
-                            Status wyceny kodera:
-                          </span>
-                          <span className={styles.content}>
-                            {item.status_kodera}
-                          </span>
-                        </div>
+                        <Row>
+                          <Label>Status wyceny kodera:</Label>
+                          <Content>{item.status_kodera}</Content>
+                        </Row>
 
-                        <div className={styles.row}>
-                          <span className={styles.label}>Wycena kodera:</span>
-                          <span className={styles.content}>
-                            {item.wycena_kodera}
-                          </span>
-                        </div>
+                        <Row>
+                          <Label>Wycena kodera:</Label>
+                          <Content>{item.wycena_kodera}</Content>
+                        </Row>
 
                         {context.user.role.name === "Koder" ? (
-                          <div className={styles.row}>
-                            <span className={styles.label}>
-                              Nowa wycena kodera:
-                            </span>
-                            <span className={styles.content}>
+                          <Row>
+                            <Label>Nowa wycena kodera:</Label>
+                            <Content>
                               <form
                                 autoComplete="off"
-                                className=""
                                 id="wycenKoder"
                                 onSubmit={e =>
                                   context.wycen(
@@ -755,8 +792,9 @@ class SingleBriefView extends React.Component {
                                   name="wycena_kodera"
                                   tag="textarea"
                                   defaultValue={item.wycena_kodera}
+                                  marginBottom="10px"
                                 />
-                                <select
+                                <Select
                                   name="status_kodera"
                                   value={this.state.status_kodera}
                                   onChange={this.handleInputChange}>
@@ -767,18 +805,18 @@ class SingleBriefView extends React.Component {
                                   <option value="zwrot_do_handlowca">
                                     Zwrot do handlowca
                                   </option>
-                                </select>
+                                </Select>
                                 <Button type="submit" form="wycenKoder">
                                   Wyceń
                                 </Button>
                               </form>
-                            </span>
-                          </div>
+                            </Content>
+                          </Row>
                         ) : null}
 
-                        <div className={styles.row}>
-                          <span className={styles.label}>Działania</span>
-                          <span className={styles.content}>
+                        <Row>
+                          <Label>Działania</Label>
+                          <Content>
                             {context.user.role.name === "Administrator" ||
                             context.user.role.name === "Handlowiec" ? (
                               <>
@@ -796,12 +834,12 @@ class SingleBriefView extends React.Component {
                               </>
                             ) : null}
 
-                            <Link className={styles.button} to={"/"}>
+                            <StyledLink to={"/"} secondary>
                               powrót
-                            </Link>
-                          </span>
-                        </div>
-                      </div>
+                            </StyledLink>
+                          </Content>
+                        </Row>
+                      </BriefWrapper>
                     ) : null}
                   </>
                 ) : null}

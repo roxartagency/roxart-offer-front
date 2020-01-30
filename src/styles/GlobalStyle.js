@@ -1,4 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,500,700&display=swap&subset=latin-ext');
+import {createGlobalStyle} from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    top: 35px;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
 
 *,
 *::before,
@@ -14,3 +27,6 @@ body {
   padding: 0;
   font-family: "Montserrat", sans-serif !important;
 }
+`;
+
+export default GlobalStyle;

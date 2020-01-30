@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 const theme = {
   colors: {
     mainBlue: "#1e58ff",
+    orange: "#ff8200",
     onyx: "#36313D"
   },
   boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.3)",

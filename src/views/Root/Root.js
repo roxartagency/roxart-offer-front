@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import AppContext from "../../context";
 import axios from "axios";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import BriefsView from "../../views/BriefsView/BriefsView";
 import SingleBriefView from "../../views/BriefsView/SingleBrief";
 import Header from "../../components/Header/Header";
@@ -10,9 +10,10 @@ import Modal from "../../components/Modal/Modal";
 import Notification from "../../components/Notification/Notification";
 import PWAPrompt from "react-ios-pwa-prompt";
 import Cookies from "js-cookie";
-import { API_URL } from "../../api";
-import GlobalStyle from "../../styles/globalStyle";
+import {API_URL} from "../../api";
+import GlobalStyle from "../../styles/GlobalStyle";
 import Theme from "../../styles/Theme";
+import routes from "../../routes";
 
 const Wrapper = styled.div`
   padding: 110px 30px 40px;
@@ -61,7 +62,7 @@ class Root extends React.Component {
     if (userName) {
       const userRoleJSON = JSON.parse(userRole);
       this.setState({
-        user: { username: userName, email: userEmail, role: userRoleJSON }
+        user: {username: userName, email: userEmail, role: userRoleJSON}
       });
     }
     const userToken = Cookies.get("userToken");
@@ -101,11 +102,11 @@ class Root extends React.Component {
       );
     });
     if (e.target.value.length) {
-      this.setState({ filterActive: true });
+      this.setState({filterActive: true});
     } else {
-      this.setState({ filterActive: false });
+      this.setState({filterActive: false});
     }
-    this.setState({ filteredBrief: updatedList });
+    this.setState({filteredBrief: updatedList});
   };
 
   addItem = (e, user, newItem) => {
@@ -173,7 +174,8 @@ class Root extends React.Component {
         setTimeout(() => {
           this.fetchBriefs();
         }, 300)
-      );
+      )
+      .then(this.showNotification("Wycena zapisana"));
 
     if (wycena.status_grafika === "zwrot_do_handlowca") {
       this.sendMail(
@@ -255,7 +257,7 @@ class Root extends React.Component {
       .then(response => {
         console.log("Data: ", response.data);
         const brief = response.data;
-        this.setState({ brief });
+        this.setState({brief});
       })
       .catch(error => {
         console.log("An error occurred:", error);
@@ -305,7 +307,7 @@ class Root extends React.Component {
     Cookies.remove("userName");
     Cookies.remove("userEmail");
     Cookies.remove("userRole");
-    this.showNotification("Wylogowano.");
+    this.showNotification("Wylogowano");
   };
 
   sendMail = (e, to, subject, text) => {
@@ -331,12 +333,11 @@ class Root extends React.Component {
       notificationContent: content
     });
     setTimeout(() => {
-      this.setState({ notificationActive: false });
+      this.setState({notificationActive: false});
     }, 2500);
   };
 
   render() {
-    const { isModalOpen } = this.state;
     const contextElements = {
       ...this.state,
       showNotification: this.showNotification,
@@ -364,12 +365,15 @@ class Root extends React.Component {
                 {this.state.notificationContent}
               </Notification>
               <Switch>
-                <Route exact path="/" component={BriefsView} />
-                <Route path="/:id" component={SingleBriefView} />
-                <Redirect to="/" />
+                <Route exact path={routes.briefs} component={BriefsView} />
+                <Route path={routes.brief} component={SingleBriefView} />
+                <Redirect to={routes.briefs} />
               </Switch>
             </Wrapper>
-            {isModalOpen && <Modal closeModalFn={this.closeModal} />}
+            <Modal
+              isActive={this.state.isModalOpen}
+              closeModalFn={this.closeModal}
+            />
           </Theme>
         </AppContext.Provider>
       </BrowserRouter>

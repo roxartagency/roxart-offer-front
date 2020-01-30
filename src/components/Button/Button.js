@@ -11,10 +11,11 @@ const StyledButton = styled.button`
   font-weight: 500;
   background: none;
   border: ${props => `2px solid ${props.theme.colors.mainBlue}`};
-  color: #1e58ff;
+  color: ${props => `${props.theme.colors.mainBlue}`};
   cursor: pointer;
   margin-right: 5px;
   transition: 0.2s ease-out all;
+  margin-bottom: ${props => props.marginBottom || "unset"};
   &:hover {
     background: ${props => `${props.theme.colors.mainBlue}`};
     color: #fff;
@@ -29,13 +30,13 @@ const SecondaryButton = styled(StyledButton)`
   color: white;
   font-weight: 700;
   font-size: 0.8em;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: ${props => `${props.theme.boxShadow}`};
   &:hover {
     background-color: transparent;
     color: ${props => `${props.theme.colors.mainBlue}`};
   }
 `;
-const Button = ({ children, href, secondary, ...props }) => {
+const Button = ({children, href, secondary, ...props}) => {
   return (
     <>
       {href ? (

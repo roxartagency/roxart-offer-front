@@ -1,9 +1,17 @@
 import React from "react";
 import AppContext from "../../context";
-import styles from "./Login.module.scss";
+import styled from "styled-components";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
-import { withRouter } from "react-router-dom";
+import {withRouter} from "react-router-dom";
+
+const Form = styled.form`
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  box-shadow: ${props => `${props.theme.boxShadow}`};
+  padding: 40px 30px;
+`;
 
 class Login extends React.Component {
   state = {
@@ -26,16 +34,15 @@ class Login extends React.Component {
       <AppContext.Consumer>
         {context => (
           <>
-            <form
+            <Form
               autoComplete="off"
-              className={styles.wrapper}
-              onSubmit={e => context.login(e, this.state)}
-            >
+              onSubmit={e => context.login(e, this.state)}>
               <Input
                 onChange={this.handleInputChange}
                 name="login"
                 value={this.state.login}
                 label="Login"
+                marginBottom="15px"
               />
               <Input
                 onChange={this.handleInputChange}
@@ -43,14 +50,15 @@ class Login extends React.Component {
                 value={this.state.password}
                 label="Hasło"
                 type="password"
+                marginBottom="15px"
               />
-              <Button>Zaloguj się</Button>
+              <Button marginBottom="5px">Zaloguj się</Button>
               {context.installButton === true ? (
-                <Button onClick={e => context.installApp(e)}>
+                <Button onClick={e => context.installApp(e)} marginBottom="5px">
                   Zainstaluj aplikację PWA
                 </Button>
               ) : null}
-            </form>
+            </Form>
           </>
         )}
       </AppContext.Consumer>

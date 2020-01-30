@@ -1,32 +1,62 @@
 import React from "react";
 import AppContext from "../../context";
 import {NavLink} from "react-router-dom";
-import styles from "./HeaderNavigation.module.scss";
+import styled from "styled-components";
+
+const MenuWrapper = styled.ul`
+  margin-left: 80px;
+  padding: 0;
+  @media (max-width: 991px) {
+    margin-left: 25px;
+  }
+`;
+
+const NavItem = styled.li`
+  display: inline-block;
+  margin-right: 50px;
+  list-style: none;
+  @media (max-width: 991px) {
+    margin-right: 20px;
+  }
+`;
+
+const activeClassName = "nav-item-active";
+
+const StyledLink = styled(NavLink).attrs({activeClassName})`
+  text-decoration: none;
+  color: #818181;
+  font-size: 0.8em;
+  margin-top: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  transition: 0.2s ease-out all;
+  &.${activeClassName} {
+    font-weight: 700;
+  }
+  &:hover {
+    color: ${props => `${props.theme.colors.mainBlue}`};
+  }
+`;
 
 const HeaderNavigation = () => (
   <AppContext.Consumer>
     {context => (
       <nav>
-        <ul className={styles.wrapper}>
-          <li className={styles.navItem}>
-            <NavLink
-              activeClassName={styles.navItemLinkActive}
-              className={styles.navItemLink}
-              to="/">
-              briefy
-            </NavLink>
-          </li>
+        <MenuWrapper>
+          <NavItem>
+            <StyledLink to="/">briefy</StyledLink>
+          </NavItem>
 
           {context.user.username ? (
             <>
-              <li className={styles.navItem + " " + styles.navItem_logged}>
-                <p onClick={e => context.logout(e)}>
+              <NavItem>
+                <StyledLink onClick={e => context.logout(e)} to="/">
                   Wyloguj: {context.user.username}
-                </p>
-              </li>
+                </StyledLink>
+              </NavItem>
             </>
           ) : null}
-        </ul>
+        </MenuWrapper>
       </nav>
     )}
   </AppContext.Consumer>
