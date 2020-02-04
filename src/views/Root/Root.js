@@ -248,6 +248,9 @@ class Root extends React.Component {
     console.log("Fetch briefs");
     console.log(this.state.userToken);
 
+    console.log("You just got poked!");
+    new Notification("You just got poked!");
+
     axios
       .get(`${API_URL}/briefs?_sort=created_at:DESC`, {
         headers: {
@@ -336,6 +339,7 @@ class Root extends React.Component {
       this.setState({notificationActive: false});
     }, 2500);
   };
+
 
   render() {
     const contextElements = {
