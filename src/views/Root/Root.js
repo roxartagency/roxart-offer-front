@@ -74,7 +74,42 @@ class Root extends React.Component {
         this.fetchBriefs();
       });
     }
+
+    this.check();
+    this.requestNotificationPermission();
   }
+
+  check = () => {
+    if (!("serviceWorker" in navigator)) {
+      throw new Error("No Service Worker support!");
+    }
+    if (!("PushManager" in window)) {
+      throw new Error("No Push API Support!");
+    }
+  };
+
+  displayNotification = async (title, data) => {
+    const reg = await navigator.serviceWorker.getRegistration();
+    reg.showNotification(title, data);
+  };
+
+  requestNotificationPermission = async () => {
+    const permission = await window.Notification.requestPermission();
+    // value of permission can be 'granted', 'default', 'denied'
+    // granted: user has accepted the request
+    // default: user has dismissed the notification permission popup by clicking on x
+    // denied: user has denied the request.
+    if (permission !== "granted") {
+      throw new Error("Permission not granted for Notification");
+    }
+  };
+
+  showLocalNotification = (title, body, swRegistration) => {
+    const options = {
+      body
+    };
+    swRegistration.showNotification(title, options);
+  };
 
   installApp = async e => {
     e.preventDefault();
@@ -248,9 +283,6 @@ class Root extends React.Component {
     console.log("Fetch briefs");
     console.log(this.state.userToken);
 
-    console.log("You just got poked!");
-    new Notification("You just got poked!");
-
     axios
       .get(`${API_URL}/briefs?_sort=created_at:DESC`, {
         headers: {
@@ -265,6 +297,10 @@ class Root extends React.Component {
       .catch(error => {
         console.log("An error occurred:", error);
       });
+
+    this.displayNotification("Odświeżono briefy", {
+      icon: "/roxart192.png"
+    });
   };
 
   login = (e, userData) => {
@@ -289,6 +325,13 @@ class Root extends React.Component {
         console.log("Set userToken");
         console.log(this.state.user);
         this.showNotification("Zalogowano jako: " + this.state.user.username);
+
+        this.displayNotification(
+          "Zalogowano jako: " + this.state.user.username,
+          {
+            icon: "/roxart192.png"
+          }
+        );
       })
       .then(() => {
         this.fetchBriefs();
@@ -311,6 +354,9 @@ class Root extends React.Component {
     Cookies.remove("userEmail");
     Cookies.remove("userRole");
     this.showNotification("Wylogowano");
+    this.displayNotification("Wylogowałeś się", {
+      icon: "/roxart192.png"
+    });
   };
 
   sendMail = (e, to, subject, text) => {
@@ -339,7 +385,6 @@ class Root extends React.Component {
       this.setState({notificationActive: false});
     }, 2500);
   };
-
 
   render() {
     const contextElements = {
