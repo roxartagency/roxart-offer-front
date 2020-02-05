@@ -81,37 +81,36 @@ class Root extends React.Component {
       });
     }
 
-    console.log("User:");
-    console.log(this.state.user);
-
-    // this.check();
-    // this.requestNotificationPermission();
+    this.check();
+    this.requestNotificationPermission();
   }
 
-  // check = () => {
-  //   if (!("serviceWorker" in navigator)) {
-  //     throw new Error("No Service Worker support!");
-  //   }
-  //   if (!("PushManager" in window)) {
-  //     throw new Error("No Push API Support!");
-  //   }
-  // };
+  check = () => {
+    if (!("serviceWorker" in navigator)) {
+      console.log("No Service Worker support!");
+    }
+    if (!("PushManager" in window)) {
+      console.log("No Push API Support!");
+    }
+  };
 
-  // displayNotification = async (title, data) => {
-  //   const reg = await navigator.serviceWorker.getRegistration();
-  //   reg.showNotification(title, data);
-  // };
+  displayNotification = async (title, data) => {
+    const reg = await navigator.serviceWorker.getRegistration();
+    if (reg) {
+      reg.showNotification(title, data);
+    }
+  };
 
-  // requestNotificationPermission = async () => {
-  //   const permission = await window.Notification.requestPermission();
-  //   // value of permission can be 'granted', 'default', 'denied'
-  //   // granted: user has accepted the request
-  //   // default: user has dismissed the notification permission popup by clicking on x
-  //   // denied: user has denied the request.
-  //   if (permission !== "granted") {
-  //     throw new Error("Permission not granted for Notification");
-  //   }
-  // };
+  requestNotificationPermission = async () => {
+    const permission = await window.Notification.requestPermission();
+    // value of permission can be 'granted', 'default', 'denied'
+    // granted: user has accepted the request
+    // default: user has dismissed the notification permission popup by clicking on x
+    // denied: user has denied the request.
+    if (permission !== "granted") {
+      console.log("Permission not granted for Notification");
+    }
+  };
 
   installApp = async e => {
     e.preventDefault();
@@ -148,8 +147,6 @@ class Root extends React.Component {
 
   addItem = (e, newItem) => {
     e.preventDefault();
-
-    console.log(newItem);
 
     axios
       .post(
@@ -292,9 +289,6 @@ class Root extends React.Component {
         console.log("An error occurred:", error);
       });
 
-    console.log("User:");
-    console.log(this.state.user);
-
     // this.displayNotification("Odświeżono briefy", {
     //   icon: "/roxart192.png"
     // });
@@ -320,18 +314,18 @@ class Root extends React.Component {
         Cookies.set("userRole", response.data.user.role);
         Cookies.set("userID", response.data.user.id);
 
-        console.log("Set User:");
-        console.log(this.state.user);
+        // console.log("Set User:");
+        // console.log(this.state.user);
         this.showNotification("Zalogowano jako: " + this.state.user.username);
 
         this.fetchBriefs();
 
-        // this.displayNotification(
-        //   "Zalogowano jako: " + this.state.user.username,
-        //   {
-        //     icon: "/roxart192.png"
-        //   }
-        // );
+        this.displayNotification(
+          "Zalogowano jako: " + this.state.user.username,
+          {
+            icon: "/roxart192.png"
+          }
+        );
       })
       .catch(error => {
         console.log("An error occurred:", error);
@@ -352,9 +346,9 @@ class Root extends React.Component {
     Cookies.remove("userRole");
     Cookies.remove("userID");
     this.showNotification("Wylogowano");
-    // this.displayNotification("Wylogowałeś się", {
-    //   icon: "/roxart192.png"
-    // });
+    this.displayNotification("Wylogowałeś się", {
+      icon: "/roxart192.png"
+    });
   };
 
   sendMail = (e, to, subject, text) => {

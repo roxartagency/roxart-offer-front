@@ -45,7 +45,7 @@ class BriefsView extends React.Component {
                     <label htmlFor="title">Filtruj po kliencie:</label>
                     <input
                       type="text"
-                      id="title"
+                      id=""
                       placeholder="Szukaj"
                       name="title"
                       onChange={e => context.filterList(e)}
