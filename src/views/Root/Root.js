@@ -59,10 +59,16 @@ class Root extends React.Component {
     const userName = Cookies.get("userName");
     const userEmail = Cookies.get("userEmail");
     const userRole = Cookies.get("userRole");
+    const userID = Cookies.get("userID");
     if (userName) {
       const userRoleJSON = JSON.parse(userRole);
       this.setState({
-        user: {username: userName, email: userEmail, role: userRoleJSON}
+        user: {
+          id: userID,
+          username: userName,
+          email: userEmail,
+          role: userRoleJSON
+        }
       });
     }
     const userToken = Cookies.get("userToken");
@@ -75,41 +81,37 @@ class Root extends React.Component {
       });
     }
 
-    this.check();
-    this.requestNotificationPermission();
+    console.log("User:");
+    console.log(this.state.user);
+
+    // this.check();
+    // this.requestNotificationPermission();
   }
 
-  check = () => {
-    if (!("serviceWorker" in navigator)) {
-      throw new Error("No Service Worker support!");
-    }
-    if (!("PushManager" in window)) {
-      throw new Error("No Push API Support!");
-    }
-  };
+  // check = () => {
+  //   if (!("serviceWorker" in navigator)) {
+  //     throw new Error("No Service Worker support!");
+  //   }
+  //   if (!("PushManager" in window)) {
+  //     throw new Error("No Push API Support!");
+  //   }
+  // };
 
-  displayNotification = async (title, data) => {
-    const reg = await navigator.serviceWorker.getRegistration();
-    reg.showNotification(title, data);
-  };
+  // displayNotification = async (title, data) => {
+  //   const reg = await navigator.serviceWorker.getRegistration();
+  //   reg.showNotification(title, data);
+  // };
 
-  requestNotificationPermission = async () => {
-    const permission = await window.Notification.requestPermission();
-    // value of permission can be 'granted', 'default', 'denied'
-    // granted: user has accepted the request
-    // default: user has dismissed the notification permission popup by clicking on x
-    // denied: user has denied the request.
-    if (permission !== "granted") {
-      throw new Error("Permission not granted for Notification");
-    }
-  };
-
-  showLocalNotification = (title, body, swRegistration) => {
-    const options = {
-      body
-    };
-    swRegistration.showNotification(title, options);
-  };
+  // requestNotificationPermission = async () => {
+  //   const permission = await window.Notification.requestPermission();
+  //   // value of permission can be 'granted', 'default', 'denied'
+  //   // granted: user has accepted the request
+  //   // default: user has dismissed the notification permission popup by clicking on x
+  //   // denied: user has denied the request.
+  //   if (permission !== "granted") {
+  //     throw new Error("Permission not granted for Notification");
+  //   }
+  // };
 
   installApp = async e => {
     e.preventDefault();
@@ -144,53 +146,57 @@ class Root extends React.Component {
     this.setState({filteredBrief: updatedList});
   };
 
-  addItem = (e, user, newItem) => {
+  addItem = (e, newItem) => {
     e.preventDefault();
 
-    this.setState(prevState => ({
-      brief: [...prevState.brief, newItem]
-    }));
+    console.log(newItem);
 
     axios
-      .post(`${API_URL}/briefs`, newItem, {
-        headers: {
-          Authorization: `Bearer ${this.state.userToken}`
+      .post(
+        `${API_URL}/briefs`,
+        {
+          ...newItem,
+          user: this.state.user
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.state.userToken}`
+          }
         }
-      })
+      )
       .then(res => {
         console.log(res);
         console.log(res.data);
-      })
-      .then(this.fetchBriefs())
-      .then(
+        this.showNotification("Dodano nowy brief: " + newItem.title);
         this.sendMail(
           e,
           "dominik.s@roxart.pl",
           "Dodano nowego briefa: " + newItem.title,
           "Zaloguj się do aplikacji i wyceń go!"
-        )
-      );
-
-    this.showNotification("Dodano nowy brief: " + newItem.title);
-
-    this.closeModal();
+        );
+        this.fetchBriefs();
+        this.closeModal();
+      })
+      .catch(error => {
+        this.showNotification("Wystąpił błąd zapisywania zmian w: " + error);
+      });
   };
 
-  removeItem = (e, id) => {
-    e.preventDefault();
+  // removeItem = (e, id) => {
+  //   e.preventDefault();
 
-    axios
-      .delete(`${API_URL}/briefs/${id}`, {
-        headers: {
-          Authorization: `Bearer ${this.state.userToken}`
-        }
-      })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-      .then(this.fetchBriefs());
-  };
+  //   axios
+  //     .delete(`${API_URL}/briefs/${id}`, {
+  //       headers: {
+  //         Authorization: `Bearer ${this.state.userToken}`
+  //       }
+  //     })
+  //     .then(res => {
+  //       console.log(res);
+  //       console.log(res.data);
+  //     })
+  //     .then(this.fetchBriefs());
+  // };
 
   wycen = (e, id, title, user, wycena) => {
     e.preventDefault();
@@ -202,45 +208,40 @@ class Root extends React.Component {
         }
       })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-      .then(
+        this.showNotification("Wycena zapisana");
         setTimeout(() => {
           this.fetchBriefs();
-        }, 300)
-      )
-      .then(this.showNotification("Wycena zapisana"));
-
-    if (wycena.status_grafika === "zwrot_do_handlowca") {
-      this.sendMail(
-        e,
-        "dominik.s@roxart.pl",
-        "Grafik zwrócił wycenę do poprawy: " + title,
-        "Zaloguj się do aplikacji i popraw briefa!"
-      );
-    } else if (wycena.status_grafika === "wycenione") {
-      this.sendMail(
-        e,
-        "dominik.s@roxart.pl",
-        "Grafik dodał nową wycenę: " + title,
-        "Zaloguj się do aplikacji i wyceń godziny kodera!"
-      );
-    } else if (wycena.status_kodera === "zwrot_do_handlowca") {
-      this.sendMail(
-        e,
-        "dominik.s@roxart.pl",
-        "Koder zwrócił wycenę do poprawy: " + title,
-        "Zaloguj się do aplikacji i popraw briefa!"
-      );
-    } else if (wycena.status_kodera === "wycenione") {
-      this.sendMail(
-        e,
-        "dominik.s@roxart.pl",
-        "Koder dodał nową wycenę: " + title,
-        "Zaloguj się do aplikacji i przygotuj ofertę."
-      );
-    }
+        }, 300);
+        if (wycena.status_grafika === "zwrot_do_handlowca") {
+          this.sendMail(
+            e,
+            "dominik.s@roxart.pl",
+            "Grafik zwrócił wycenę do poprawy: " + title,
+            "Zaloguj się do aplikacji i popraw briefa!"
+          );
+        } else if (wycena.status_grafika === "wycenione") {
+          this.sendMail(
+            e,
+            "dominik.s@roxart.pl",
+            "Grafik dodał nową wycenę: " + title,
+            "Zaloguj się do aplikacji i wyceń godziny kodera!"
+          );
+        } else if (wycena.status_kodera === "zwrot_do_handlowca") {
+          this.sendMail(
+            e,
+            "dominik.s@roxart.pl",
+            "Koder zwrócił wycenę do poprawy: " + title,
+            "Zaloguj się do aplikacji i popraw briefa!"
+          );
+        } else if (wycena.status_kodera === "wycenione") {
+          this.sendMail(
+            e,
+            "dominik.s@roxart.pl",
+            "Koder dodał nową wycenę: " + title,
+            "Zaloguj się do aplikacji i przygotuj ofertę."
+          );
+        }
+      });
   };
 
   editItem = (e, id, editItem) => {
@@ -253,15 +254,11 @@ class Root extends React.Component {
         }
       })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
-        this.showNotification("Zapisano poprawnie zmiany w: " + res.data.title);
-      })
-      .then(
         setTimeout(() => {
           this.fetchBriefs();
-        }, 300)
-      )
+        }, 300);
+        this.showNotification("Zapisano poprawnie zmiany w: " + res.data.title);
+      })
       .catch(error => {
         this.showNotification("Wystąpił błąd zapisywania zmian w: " + error);
       });
@@ -281,8 +278,6 @@ class Root extends React.Component {
 
   fetchBriefs = () => {
     console.log("Fetch briefs");
-    console.log(this.state.userToken);
-
     axios
       .get(`${API_URL}/briefs?_sort=created_at:DESC`, {
         headers: {
@@ -290,7 +285,6 @@ class Root extends React.Component {
         }
       })
       .then(response => {
-        console.log("Data: ", response.data);
         const brief = response.data;
         this.setState({brief});
       })
@@ -298,9 +292,12 @@ class Root extends React.Component {
         console.log("An error occurred:", error);
       });
 
-    this.displayNotification("Odświeżono briefy", {
-      icon: "/roxart192.png"
-    });
+    console.log("User:");
+    console.log(this.state.user);
+
+    // this.displayNotification("Odświeżono briefy", {
+    //   icon: "/roxart192.png"
+    // });
   };
 
   login = (e, userData) => {
@@ -321,20 +318,20 @@ class Root extends React.Component {
         Cookies.set("userName", response.data.user.username);
         Cookies.set("userEmail", response.data.user.email);
         Cookies.set("userRole", response.data.user.role);
+        Cookies.set("userID", response.data.user.id);
 
-        console.log("Set userToken");
+        console.log("Set User:");
         console.log(this.state.user);
         this.showNotification("Zalogowano jako: " + this.state.user.username);
 
-        this.displayNotification(
-          "Zalogowano jako: " + this.state.user.username,
-          {
-            icon: "/roxart192.png"
-          }
-        );
-      })
-      .then(() => {
         this.fetchBriefs();
+
+        // this.displayNotification(
+        //   "Zalogowano jako: " + this.state.user.username,
+        //   {
+        //     icon: "/roxart192.png"
+        //   }
+        // );
       })
       .catch(error => {
         console.log("An error occurred:", error);
@@ -353,10 +350,11 @@ class Root extends React.Component {
     Cookies.remove("userName");
     Cookies.remove("userEmail");
     Cookies.remove("userRole");
+    Cookies.remove("userID");
     this.showNotification("Wylogowano");
-    this.displayNotification("Wylogowałeś się", {
-      icon: "/roxart192.png"
-    });
+    // this.displayNotification("Wylogowałeś się", {
+    //   icon: "/roxart192.png"
+    // });
   };
 
   sendMail = (e, to, subject, text) => {
@@ -368,9 +366,7 @@ class Root extends React.Component {
         subject: subject,
         text: text
       })
-      .then(response => {
-        console.log(response);
-      })
+      .then(response => {})
       .catch(error => {
         console.log("An error occurred:", error);
       });

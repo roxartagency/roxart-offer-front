@@ -41,7 +41,7 @@ class ListItem extends React.Component {
             <ListItemCol>
               <Title>{props.title}</Title>
             </ListItemCol>
-            <ListItemCol>{props.user.username}</ListItemCol>
+            <ListItemCol>{props.user ? props.user.username : null}</ListItemCol>
             <ListItemCol>{date.toLocaleDateString()}</ListItemCol>
             <ListItemCol>{props.status_grafika}</ListItemCol>
             <ListItemCol>{props.status_kodera}</ListItemCol>

@@ -23,9 +23,9 @@ const StyledForm = styled.form`
 class Form extends React.Component {
   static contextType = AppContext;
 
-  state = {
-    user: this.context.user
-  };
+  state = {};
+
+  componentDidMount() {}
 
   handleInputChange = e => {
     this.setState({
@@ -40,7 +40,7 @@ class Form extends React.Component {
           <FormWrapper>
             <StyledForm
               autoComplete="off"
-              onSubmit={e => context.addItem(e, context.user, this.state)}>
+              onSubmit={e => context.addItem(e, this.state)}>
               <Input
                 onChange={this.handleInputChange}
                 name="title"
@@ -288,5 +288,7 @@ class Form extends React.Component {
     );
   }
 }
+
+Form.contextType = AppContext;
 
 export default Form;
