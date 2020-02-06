@@ -208,7 +208,7 @@ class Root extends React.Component {
         this.showNotification("Wycena zapisana");
         setTimeout(() => {
           this.fetchBriefs();
-        }, 300);
+        }, 500);
         if (wycena.status_grafika === "zwrot_do_handlowca") {
           this.sendMail(
             e,
@@ -276,7 +276,7 @@ class Root extends React.Component {
   fetchBriefs = () => {
     console.log("Fetch briefs");
     axios
-      .get(`${API_URL}/briefs?_sort=created_at:DESC`, {
+      .get(`${API_URL}/briefs?_sort=created_at:ASC`, {
         headers: {
           Authorization: `Bearer ${this.state.userToken}`
         }
