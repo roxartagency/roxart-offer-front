@@ -12,7 +12,7 @@ const ListHead = styled.li`
   color: #fff;
   list-style: none;
   display: grid;
-  grid-template-columns: 8% 20% 15% 11% 15% 15% auto;
+  grid-template-columns: 5% 15% 10% 15% 11% 15% 15% auto;
   grid-auto-flow: row;
   grid-template-rows: 70px;
   width: 100%;
@@ -45,6 +45,7 @@ class List extends React.Component {
             <ListHead>
               <ListHeadCol>ID</ListHeadCol>
               <ListHeadCol>Klient</ListHeadCol>
+              <ListHeadCol>Kategoria</ListHeadCol>
               <ListHeadCol>Dodane przez</ListHeadCol>
               <ListHeadCol>Data dodania</ListHeadCol>
               <ListHeadCol>Status grafika</ListHeadCol>

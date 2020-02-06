@@ -2,6 +2,7 @@ import React from "react";
 import AppContext from "../../context";
 import {Link} from "react-router-dom";
 import Button from "../../components/Button/Button";
+import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
 import styled from "styled-components";
 
@@ -17,7 +18,7 @@ const BriefWrapper = styled.div`
 const Row = styled.div`
   padding: 20px 0;
   display: grid;
-  grid-template-columns: 50% auto;
+  grid-template-columns: 100%;
 
   &:nth-of-type(odd) {
     background-color: rgba(0, 0, 0, 0.05);
@@ -29,6 +30,7 @@ const Row = styled.div`
 
 const Label = styled.span`
   display: block;
+  margin-bottom: 20px;
   padding: 0 20px;
   font-weight: 700;
   @media (max-width: 767px) {
@@ -41,23 +43,6 @@ const Content = styled.span`
   form {
     display: flex;
     flex-direction: column;
-  }
-`;
-
-const Select = styled.select`
-  color: #000;
-  font-size: 15px;
-  padding: 5px 15px;
-  border: 1px solid #7d7d7d;
-  border-radius: 5px;
-  line-height: 22px;
-  width: 100%;
-  background: #fff;
-  transition: 0.2s ease-out all;
-  margin-bottom: 10px;
-  &:focus {
-    border-color: ${props => `${props.theme.colors.mainBlue}`};
-    outline: none;
   }
 `;
 
@@ -89,6 +74,7 @@ class SingleBriefView extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(this.state);
   };
 
   render() {
@@ -113,6 +99,10 @@ class SingleBriefView extends React.Component {
                           <Row>
                             <Label>Id:</Label>
                             <Content>{match.params.id}</Content>
+                          </Row>
+                          <Row>
+                            <Label>Kategoria:</Label>
+                            <Content>{item.kategoria.name}</Content>
                           </Row>
                           {item.user ? (
                             <Row>
@@ -709,7 +699,17 @@ class SingleBriefView extends React.Component {
 
                         <Row>
                           <Label>Status wyceny grafika:</Label>
-                          <Content>{item.status_grafika}</Content>
+                          <Content>
+                            {item.status_grafika === "nie_wycenione"
+                              ? "Nie wycenione"
+                              : null}
+                            {item.status_grafika === "zwrot_do_handlowca"
+                              ? "Zwrot"
+                              : null}
+                            {item.status_grafika === "wycenione"
+                              ? "Wycenione"
+                              : null}
+                          </Content>
                         </Row>
 
                         <Row>
@@ -763,7 +763,17 @@ class SingleBriefView extends React.Component {
 
                         <Row>
                           <Label>Status wyceny kodera:</Label>
-                          <Content>{item.status_kodera}</Content>
+                          <Content>
+                            {item.status_kodera === "nie_wycenione"
+                              ? "Nie wycenione"
+                              : null}
+                            {item.status_kodera === "zwrot_do_handlowca"
+                              ? "Zwrot"
+                              : null}
+                            {item.status_kodera === "wycenione"
+                              ? "Wycenione"
+                              : null}
+                          </Content>
                         </Row>
 
                         <Row>

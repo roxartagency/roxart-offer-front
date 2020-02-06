@@ -153,6 +153,9 @@ class Root extends React.Component {
         `${API_URL}/briefs`,
         {
           ...newItem,
+          kategoria: {
+            id: newItem.kategoria
+          },
           user: this.state.user
         },
         {
@@ -284,6 +287,7 @@ class Root extends React.Component {
       .then(response => {
         const brief = response.data;
         this.setState({brief});
+        console.log(response.data);
       })
       .catch(error => {
         console.log("An error occurred:", error);

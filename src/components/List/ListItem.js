@@ -14,7 +14,7 @@ const ListItemCol = styled.div`
 const StyledListItem = styled.li`
   list-style: none;
   display: grid;
-  grid-template-columns: 8% 20% 15% 11% 15% 15% auto;
+  grid-template-columns: 5% 15% 10% 15% 11% 15% 15% auto;
   grid-auto-flow: row;
   width: 100%;
   align-items: center;
@@ -41,10 +41,21 @@ class ListItem extends React.Component {
             <ListItemCol>
               <Title>{props.title}</Title>
             </ListItemCol>
+            <ListItemCol>{props.kategoria.name}</ListItemCol>
             <ListItemCol>{props.user ? props.user.username : null}</ListItemCol>
             <ListItemCol>{date.toLocaleDateString()}</ListItemCol>
-            <ListItemCol>{props.status_grafika}</ListItemCol>
-            <ListItemCol>{props.status_kodera}</ListItemCol>
+            <ListItemCol>
+              {props.status_grafika === "nie_wycenione"
+                ? "Nie wycenione"
+                : null}
+              {props.status_grafika === "zwrot_do_handlowca" ? "Zwrot" : null}
+              {props.status_grafika === "wycenione" ? "Wycenione" : null}
+            </ListItemCol>
+            <ListItemCol>
+              {props.status_kodera === "nie_wycenione" ? "Nie wycenione" : null}
+              {props.status_kodera === "zwrot_do_handlowca" ? "Zwrot" : null}
+              {props.status_kodera === "wycenione" ? "Wycenione" : null}
+            </ListItemCol>
             <ListItemCol>
               <Link to={`/${props.id}`}>
                 <Button>Zobacz</Button>

@@ -1,6 +1,7 @@
 import React from "react";
 import AppContext from "../../context";
 import Input from "../../components/Input/Input";
+import Select from "../../components/Select/Select";
 import Button from "../../components/Button/Button";
 import styled from "styled-components";
 
@@ -23,12 +24,15 @@ const StyledForm = styled.form`
 class Form extends React.Component {
   static contextType = AppContext;
 
-  state = {};
+  state = {
+    kategoria: "1"
+  };
 
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(this.state);
   };
 
   render() {
@@ -39,6 +43,15 @@ class Form extends React.Component {
             <StyledForm
               autoComplete="off"
               onSubmit={e => context.addItem(e, this.state)}>
+              <Select
+                name="kategoria"
+                value={this.state.kategoria}
+                onChange={this.handleInputChange}
+                label="Kategoria briefa"
+                marginBottom="30px">
+                <option value="1">Strona internetowa</option>
+                <option value="2">Katalog</option>
+              </Select>
               <Input
                 onChange={this.handleInputChange}
                 name="title"
@@ -62,14 +75,27 @@ class Form extends React.Component {
                 label="E-mail osoby kontaktowej"
                 marginBottom="30px"
               />
-              <Input
-                onChange={this.handleInputChange}
-                tag="textarea"
-                name="adres_url"
-                value={this.state.adres_url}
-                label="Jaki jest adres (URL) Twojej strony internetowej? (obecny lub planowany)"
-                marginBottom="30px"
-              />
+              {this.state.kategoria == 1 ? (
+                <Input
+                  onChange={this.handleInputChange}
+                  tag="textarea"
+                  name="adres_url"
+                  value={this.state.adres_url}
+                  label="Jaki jest adres (URL) Twojej strony internetowej? (obecny lub planowany)"
+                  marginBottom="30px"
+                />
+              ) : null}
+
+              {this.state.kategoria == 2 ? (
+                <Input
+                  onChange={this.handleInputChange}
+                  tag="textarea"
+                  name="adres_url"
+                  value={this.state.adres_url}
+                  label="Jaki jest tytuł katalogu?"
+                  marginBottom="30px"
+                />
+              ) : null}
               <Input
                 onChange={this.handleInputChange}
                 tag="textarea"
