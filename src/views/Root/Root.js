@@ -167,11 +167,11 @@ class Root extends React.Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
-        this.showNotification("Dodano nowy brief: " + newItem.title);
+        this.showNotification("Dodano nowy brief: " + newItem.wsp_nazwa);
         this.sendMail(
           e,
           "dominik.s@roxart.pl",
-          "Dodano nowego briefa: " + newItem.title,
+          "Dodano nowego briefa: " + newItem.wsp_nazwa,
           "Zaloguj się do aplikacji i wyceń go!"
         );
         this.fetchBriefs();

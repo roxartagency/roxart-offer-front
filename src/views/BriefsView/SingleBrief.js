@@ -118,8 +118,8 @@ class SingleBriefView extends React.Component {
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="title"
-                                  defaultValue={item.title}
+                                  name="wsp_nazwa"
+                                  defaultValue={item.wsp_nazwa}
                                 />
                               ) : (
                                 item.title
@@ -134,12 +134,12 @@ class SingleBriefView extends React.Component {
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="description"
+                                  name="wsp_adres"
                                   tag="textarea"
-                                  defaultValue={item.description}
+                                  defaultValue={item.wsp_adres}
                                 />
                               ) : (
-                                item.description
+                                item.wsp_adres
                               )}
                             </Content>
                           </Row>
@@ -151,11 +151,11 @@ class SingleBriefView extends React.Component {
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="email"
-                                  defaultValue={item.email}
+                                  name="wsp_email"
+                                  defaultValue={item.wsp_email}
                                 />
                               ) : (
-                                item.email
+                                item.wsp_email
                               )}
                             </Content>
                           </Row>
@@ -179,12 +179,12 @@ class SingleBriefView extends React.Component {
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="adres_url"
+                                  name="wsp_adres_url"
                                   tag="textarea"
-                                  defaultValue={item.adres_url}
+                                  defaultValue={item.wsp_adres_url}
                                 />
                               ) : (
-                                item.adres_url
+                                item.wsp_adres_url
                               )}
                             </Content>
                           </Row>
@@ -196,12 +196,12 @@ class SingleBriefView extends React.Component {
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="czym_zajmuje"
+                                  name="wsp_czym_zajmuje"
                                   tag="textarea"
-                                  defaultValue={item.czym_zajmuje}
+                                  defaultValue={item.wsp_czym_zajmuje}
                                 />
                               ) : (
-                                item.czym_zajmuje
+                                item.wsp_czym_zajmuje
                               )}
                             </Content>
                           </Row>
@@ -213,12 +213,12 @@ class SingleBriefView extends React.Component {
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="branza"
+                                  name="wsp_branza"
                                   tag="textarea"
-                                  defaultValue={item.branza}
+                                  defaultValue={item.wsp_branza}
                                 />
                               ) : (
-                                item.branza
+                                item.wsp_branza
                               )}
                             </Content>
                           </Row>
@@ -233,12 +233,12 @@ class SingleBriefView extends React.Component {
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="ile_lat"
+                                  name="wsp_ile_lat"
                                   tag="textarea"
-                                  defaultValue={item.ile_lat}
+                                  defaultValue={item.wsp_ile_lat}
                                 />
                               ) : (
-                                item.ile_lat
+                                item.wsp_ile_lat
                               )}
                             </Content>
                           </Row>
@@ -253,12 +253,12 @@ class SingleBriefView extends React.Component {
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="jakie_produkty"
+                                  name="wsp_jakie_produkty"
                                   tag="textarea"
-                                  defaultValue={item.jakie_produkty}
+                                  defaultValue={item.wsp_jakie_produkty}
                                 />
                               ) : (
-                                item.jakie_produkty
+                                item.wsp_jakie_produkty
                               )}
                             </Content>
                           </Row>
@@ -273,12 +273,12 @@ class SingleBriefView extends React.Component {
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="kim_sa_klienci"
+                                  name="wsp_kim_sa_klienci"
                                   tag="textarea"
-                                  defaultValue={item.kim_sa_klienci}
+                                  defaultValue={item.wsp_kim_sa_klienci}
                                 />
                               ) : (
-                                item.kim_sa_klienci
+                                item.wsp_kim_sa_klienci
                               )}
                             </Content>
                           </Row>
@@ -293,12 +293,12 @@ class SingleBriefView extends React.Component {
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="konkurenci"
+                                  name="wsp_konkurenci"
                                   tag="textarea"
-                                  defaultValue={item.konkurenci}
+                                  defaultValue={item.wsp_konkurenci}
                                 />
                               ) : (
-                                item.konkurenci
+                                item.wsp_konkurenci
                               )}
                             </Content>
                           </Row>
@@ -313,12 +313,12 @@ class SingleBriefView extends React.Component {
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="budzet"
+                                  name="wsp_budzet"
                                   tag="textarea"
-                                  defaultValue={item.budzet}
+                                  defaultValue={item.wsp_budzet}
                                 />
                               ) : (
-                                item.budzet
+                                item.wsp_budzet
                               )}
                             </Content>
                           </Row>
@@ -333,12 +333,12 @@ class SingleBriefView extends React.Component {
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="czas_realizacji"
+                                  name="wsp_czas_realizacji"
                                   tag="textarea"
-                                  defaultValue={item.czas_realizacji}
+                                  defaultValue={item.wsp_czas_realizacji}
                                 />
                               ) : (
-                                item.czas_realizacji
+                                item.wsp_czas_realizacji
                               )}
                             </Content>
                           </Row>
@@ -364,320 +364,362 @@ class SingleBriefView extends React.Component {
                             </Content>
                           </Row>
 
-                          <Row>
-                            <Label>
-                              Jakie są założenia i podstawowy cel nowej strony
-                              internetowej?
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="zalozenia"
-                                  tag="textarea"
-                                  defaultValue={item.zalozenia}
-                                />
-                              ) : (
-                                item.zalozenia
-                              )}
-                            </Content>
-                          </Row>
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Jakie są założenia i podstawowy cel nowej strony
+                                internetowej?
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="zalozenia"
+                                    tag="textarea"
+                                    defaultValue={item.zalozenia}
+                                  />
+                                ) : (
+                                  item.zalozenia
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Jaki ma być charakter strony internetowej
+                                (sprzedażowa, wizerunkowa, informacyjna itp.)?
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="charakter"
+                                    tag="textarea"
+                                    defaultValue={item.charakter}
+                                  />
+                                ) : (
+                                  item.charakter
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Czy strona ma mieć możliwość samodzielnej edycji
+                                treści strony lub jej elementów (system CMS)?
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="czy_cms"
+                                    tag="textarea"
+                                    defaultValue={item.czy_cms}
+                                  />
+                                ) : (
+                                  item.czy_cms
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Jaki ma być podstawowy język strony?
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="jezyk_podstawowy"
+                                    tag="textarea"
+                                    defaultValue={item.jezyk_podstawowy}
+                                  />
+                                ) : (
+                                  item.jezyk_podstawowy
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Czy strona posiadać dodatkowe języki? Jeśli tak,
+                                to jakie?
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="jezyki_dodatkowe"
+                                    tag="textarea"
+                                    defaultValue={item.jezyki_dodatkowe}
+                                  />
+                                ) : (
+                                  item.jezyki_dodatkowe
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Jakie mają być główne podstrony menu/zakładki w
+                                nawigacji górnej?
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="podstrony_menu"
+                                    tag="textarea"
+                                    defaultValue={item.podstrony_menu}
+                                  />
+                                ) : (
+                                  item.podstrony_menu
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Jaka jest orientacyjna liczba wszystkich
+                                podstron (mapa strony)?
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="liczba_podstron"
+                                    tag="textarea"
+                                    defaultValue={item.liczba_podstron}
+                                  />
+                                ) : (
+                                  item.liczba_podstron
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Jakie są Twoje oczekiwania co do kolorystyki
+                                strony?
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="kolorystyka"
+                                    tag="textarea"
+                                    defaultValue={item.kolorystyka}
+                                  />
+                                ) : (
+                                  item.kolorystyka
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Przykłady istniejących stron internetowych,
+                                które podobają się Tobie. Podaj minimum trzy
+                                przykłady. (nie muszą być związane z branżą)
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="przyklady_stron"
+                                    tag="textarea"
+                                    defaultValue={item.przyklady_stron}
+                                  />
+                                ) : (
+                                  item.przyklady_stron
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Elementy na istniejących stronach internetowych,
+                                które podobają się Tobie.
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="elementy"
+                                    tag="textarea"
+                                    defaultValue={item.elementy}
+                                  />
+                                ) : (
+                                  item.elementy
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>Czy otrzymamy zdjęcia do strony?</Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="zdjecia"
+                                    tag="textarea"
+                                    defaultValue={item.zdjecia}
+                                  />
+                                ) : (
+                                  item.zdjecia
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>Czy otrzymamy teksty do strony?</Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="teksty"
+                                    tag="textarea"
+                                    defaultValue={item.teksty}
+                                  />
+                                ) : (
+                                  item.teksty
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Elementy zewnętrzne do umieszczenia na stronie?
+                                (np. link do fanpage Facebook'a, link Youtube,
+                                itp.)
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="elementy_zewnetrzne"
+                                    tag="textarea"
+                                    defaultValue={item.elementy_zewnetrzne}
+                                  />
+                                ) : (
+                                  item.elementy_zewnetrzne
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Czy strona ma mieć dodatkową zaawansowaną
+                                funkcjonalność? Jeśli tak to jaką?
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="zaawansowana_funkcjonalnosc"
+                                    tag="textarea"
+                                    defaultValue={
+                                      item.zaawansowana_funkcjonalnosc
+                                    }
+                                  />
+                                ) : (
+                                  item.zaawansowana_funkcjonalnosc
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Czy firma posiada wykupioną domenę (adres
+                                internetowy URL)?
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="czy_domena"
+                                    tag="textarea"
+                                    defaultValue={item.czy_domena}
+                                  />
+                                ) : (
+                                  item.czy_domena
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
+                          {item.kategoria.id === 1 ? (
+                            <Row>
+                              <Label>
+                                Czy firma posiada wykupiony hosting/serwer
+                                (miejsce w którym znajdują się pliki strony)?
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="czy_hosting"
+                                    tag="textarea"
+                                    defaultValue={item.czy_hosting}
+                                  />
+                                ) : (
+                                  item.czy_hosting
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
 
-                          <Row>
-                            <Label>
-                              Jaki ma być charakter strony internetowej
-                              (sprzedażowa, wizerunkowa, informacyjna itp.)?
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="charakter"
-                                  tag="textarea"
-                                  defaultValue={item.charakter}
-                                />
-                              ) : (
-                                item.charakter
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>
-                              Czy strona ma mieć możliwość samodzielnej edycji
-                              treści strony lub jej elementów (system CMS)?
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="czy_cms"
-                                  tag="textarea"
-                                  defaultValue={item.czy_cms}
-                                />
-                              ) : (
-                                item.czy_cms
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>Jaki ma być podstawowy język strony?</Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="jezyk_podstawowy"
-                                  tag="textarea"
-                                  defaultValue={item.jezyk_podstawowy}
-                                />
-                              ) : (
-                                item.jezyk_podstawowy
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>
-                              Czy strona posiadać dodatkowe języki? Jeśli tak,
-                              to jakie?
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="jezyki_dodatkowe"
-                                  tag="textarea"
-                                  defaultValue={item.jezyki_dodatkowe}
-                                />
-                              ) : (
-                                item.jezyki_dodatkowe
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>
-                              Jakie mają być główne podstrony menu/zakładki w
-                              nawigacji górnej?
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="podstrony_menu"
-                                  tag="textarea"
-                                  defaultValue={item.podstrony_menu}
-                                />
-                              ) : (
-                                item.podstrony_menu
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>
-                              Jaka jest orientacyjna liczba wszystkich podstron
-                              (mapa strony)?
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="liczba_podstron"
-                                  tag="textarea"
-                                  defaultValue={item.liczba_podstron}
-                                />
-                              ) : (
-                                item.liczba_podstron
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>
-                              Jakie są Twoje oczekiwania co do kolorystyki
-                              strony?
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="kolorystyka"
-                                  tag="textarea"
-                                  defaultValue={item.kolorystyka}
-                                />
-                              ) : (
-                                item.kolorystyka
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>
-                              Przykłady istniejących stron internetowych, które
-                              podobają się Tobie. Podaj minimum trzy przykłady.
-                              (nie muszą być związane z branżą)
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="przyklady_stron"
-                                  tag="textarea"
-                                  defaultValue={item.przyklady_stron}
-                                />
-                              ) : (
-                                item.przyklady_stron
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>
-                              Elementy na istniejących stronach internetowych,
-                              które podobają się Tobie.
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="elementy"
-                                  tag="textarea"
-                                  defaultValue={item.elementy}
-                                />
-                              ) : (
-                                item.elementy
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>Czy otrzymamy zdjęcia do strony?</Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="zdjecia"
-                                  tag="textarea"
-                                  defaultValue={item.zdjecia}
-                                />
-                              ) : (
-                                item.zdjecia
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>Czy otrzymamy teksty do strony?</Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="teksty"
-                                  tag="textarea"
-                                  defaultValue={item.teksty}
-                                />
-                              ) : (
-                                item.teksty
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>
-                              Elementy zewnętrzne do umieszczenia na stronie?
-                              (np. link do fanpage Facebook'a, link Youtube,
-                              itp.)
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="elementy_zewnetrzne"
-                                  tag="textarea"
-                                  defaultValue={item.elementy_zewnetrzne}
-                                />
-                              ) : (
-                                item.elementy_zewnetrzne
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>
-                              Czy strona ma mieć dodatkową zaawansowaną
-                              funkcjonalność? Jeśli tak to jaką?
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="zaawansowana_funkcjonalnosc"
-                                  tag="textarea"
-                                  defaultValue={
-                                    item.zaawansowana_funkcjonalnosc
-                                  }
-                                />
-                              ) : (
-                                item.zaawansowana_funkcjonalnosc
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>
-                              Czy firma posiada wykupioną domenę (adres
-                              internetowy URL)?
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="czy_domena"
-                                  tag="textarea"
-                                  defaultValue={item.czy_domena}
-                                />
-                              ) : (
-                                item.czy_domena
-                              )}
-                            </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>
-                              Czy firma posiada wykupiony hosting/serwer
-                              (miejsce w którym znajdują się pliki strony)?
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="czy_hosting"
-                                  tag="textarea"
-                                  defaultValue={item.czy_hosting}
-                                />
-                              ) : (
-                                item.czy_hosting
-                              )}
-                            </Content>
-                          </Row>
+                          {item.kategoria.id === 2 ? (
+                            <Row>
+                              <Label>
+                                Czy firma obecnie posiada katalog? Jeśli tak,
+                                prosimy o link do wersji online lub o przesłanie
+                                pliku w załączniku.
+                              </Label>
+                              <Content>
+                                {context.user.role.name === "Administrator" ||
+                                context.user.role.name === "Handlowiec" ? (
+                                  <Input
+                                    onChange={this.handleInputChange}
+                                    name="kat_czy_katalog"
+                                    tag="textarea"
+                                    defaultValue={item.kat_czy_katalog}
+                                  />
+                                ) : (
+                                  item.kat_czy_katalog
+                                )}
+                              </Content>
+                            </Row>
+                          ) : null}
 
                           <Row>
                             <Label>Inne ważne uwagi:</Label>

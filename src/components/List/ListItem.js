@@ -39,7 +39,7 @@ class ListItem extends React.Component {
           <StyledListItem>
             <ListItemCol>{props.id}</ListItemCol>
             <ListItemCol>
-              <Title>{props.title}</Title>
+              <Title>{props.wsp_nazwa}</Title>
             </ListItemCol>
             <ListItemCol>{props.kategoria.name}</ListItemCol>
             <ListItemCol>{props.user ? props.user.username : null}</ListItemCol>
