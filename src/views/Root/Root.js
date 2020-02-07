@@ -213,28 +213,28 @@ class Root extends React.Component {
         setTimeout(() => {
           this.fetchBriefs();
         }, 500);
-        if (wycena.status_grafika === "zwrot_do_handlowca") {
+        if (wycena.wsp_status_grafika === "zwrot_do_handlowca") {
           this.sendMail(
             e,
             "dominik.s@roxart.pl",
             "Grafik zwrócił wycenę do poprawy: " + title,
             "Zaloguj się do aplikacji i popraw briefa!"
           );
-        } else if (wycena.status_grafika === "wycenione") {
+        } else if (wycena.wsp_status_grafika === "wycenione") {
           this.sendMail(
             e,
             "dominik.s@roxart.pl",
             "Grafik dodał nową wycenę: " + title,
             "Zaloguj się do aplikacji i wyceń godziny kodera!"
           );
-        } else if (wycena.status_kodera === "zwrot_do_handlowca") {
+        } else if (wycena.wsp_status_kodera === "zwrot_do_handlowca") {
           this.sendMail(
             e,
             "dominik.s@roxart.pl",
             "Koder zwrócił wycenę do poprawy: " + title,
             "Zaloguj się do aplikacji i popraw briefa!"
           );
-        } else if (wycena.status_kodera === "wycenione") {
+        } else if (wycena.wsp_status_kodera === "wycenione") {
           this.sendMail(
             e,
             "dominik.s@roxart.pl",
