@@ -42,12 +42,12 @@ class BriefsView extends React.Component {
               <>
                 <Filters>
                   <SingleFilter>
-                    <label htmlFor="title">Filtruj po kliencie:</label>
+                    <label htmlFor="wsp_nazwa">Filtruj po kliencie:</label>
                     <input
                       type="text"
                       id=""
                       placeholder="Szukaj"
-                      name="title"
+                      name="wsp_nazwa"
                       onChange={e => context.filterList(e)}
                     />
                   </SingleFilter>

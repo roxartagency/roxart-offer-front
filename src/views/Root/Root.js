@@ -135,7 +135,7 @@ class Root extends React.Component {
     var updatedList = this.state.brief;
     updatedList = updatedList.filter(function(item) {
       return (
-        item.title.toLowerCase().search(e.target.value.toLowerCase()) !== -1
+        item.wsp_nazwa.toLowerCase().search(e.target.value.toLowerCase()) !== -1
       );
     });
     if (e.target.value.length) {
