@@ -25,7 +25,7 @@ class Form extends React.Component {
   static contextType = AppContext;
 
   state = {
-    kategoria: 1
+    kategoria: "1"
   };
 
   handleInputChange = e => {
@@ -147,193 +147,357 @@ class Form extends React.Component {
                 label="Jaki jest określony czas zakończenia realizacji projektu?"
                 marginBottom="30px"
               />
-              <Input
-                onChange={this.handleInputChange}
-                tag="textarea"
-                name="logo"
-                value={this.state.logo}
-                label="Czy firma posiada logo? Jeśli tak, czy firma posiada logo w formie pliku wektorowego oraz księgę znaku?"
-                marginBottom="30px"
-              />
 
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="zalozenia"
-                  value={this.state.zalozenia}
-                  label="Jakie są założenia i podstawowy cel nowej strony internetowej?"
-                  marginBottom="30px"
-                />
+              {this.state.kategoria === "1" ? (
+                <>
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_logo"
+                    value={this.state.str_logo}
+                    label="Czy firma posiada logo? Jeśli tak, czy firma posiada logo w formie pliku wektorowego oraz księgę znaku?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_zalozenia"
+                    value={this.state.str_zalozenia}
+                    label="Jakie są założenia i podstawowy cel nowej strony internetowej?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_charakter"
+                    value={this.state.str_charakter}
+                    label="Jaki ma być charakter strony internetowej (sprzedażowa, wizerunkowa, informacyjna itp.)?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_czy_cms"
+                    value={this.state.str_czy_cms}
+                    label="Czy strona ma mieć możliwość samodzielnej edycji treści strony lub jej elementów (system CMS)?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_jezyk_podstawowy"
+                    value={this.state.str_jezyk_podstawowy}
+                    label="Jaki ma być podstawowy język strony?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_jezyki_dodatkowe"
+                    value={this.state.str_jezyki_dodatkowe}
+                    label="Czy strona posiadać dodatkowe języki? Jeśli tak, to jakie?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_podstrony_menu"
+                    value={this.state.str_podstrony_menu}
+                    label="Jakie mają być główne podstrony menu/zakładki w nawigacji górnej?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_liczba_podstron"
+                    value={this.state.str_liczba_podstron}
+                    label="Jaka jest orientacyjna liczba wszystkich podstron (mapa strony)?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_kolorystyka"
+                    value={this.state.str_kolorystyka}
+                    label="Jakie są Twoje oczekiwania co do kolorystyki strony?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_przyklady_stron"
+                    value={this.state.str_przyklady_stron}
+                    label="Przykłady istniejących stron internetowych, które podobają się Tobie. Podaj minimum trzy przykłady. (nie muszą być związane z branżą)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_elementy"
+                    value={this.state.str_elementy}
+                    label="Elementy na istniejących stronach internetowych, które podobają się Tobie."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_zdjecia"
+                    value={this.state.str_zdjecia}
+                    label="Czy otrzymamy zdjęcia do strony?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_teksty"
+                    value={this.state.str_teksty}
+                    label="Czy otrzymamy teksty do strony?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_elementy_zewnetrzne"
+                    value={this.state.str_elementy_zewnetrzne}
+                    label="Elementy zewnętrzne do umieszczenia na stronie? (np. link do fanpage Facebook'a, link Youtube, itp.)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_zaawansowana_funkcjonalnosc"
+                    value={this.state.str_zaawansowana_funkcjonalnosc}
+                    label="Czy strona ma mieć dodatkową zaawansowaną funkcjonalność? Jeśli tak to jaką?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_czy_domena"
+                    value={this.state.str_czy_domena}
+                    label="Czy firma posiada wykupioną domenę (adres internetowy URL)?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="str_czy_hosting"
+                    value={this.state.str_czy_hosting}
+                    label="Czy firma posiada wykupiony hosting/serwer (miejsce w którym znajdują się pliki strony)?"
+                    marginBottom="30px"
+                  />
+                </>
               ) : null}
 
-              {this.state.kategoria === 2 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="kat_czy_katalog"
-                  value={this.state.kat_czy_katalog}
-                  label="Czy firma obecnie posiada katalog?
+              {this.state.kategoria === "2" ? (
+                <>
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_czy_logo"
+                    value={this.state.kat_czy_logo}
+                    label="Czy firma posiada logo? (Jeśli tak, czy firma posiada logo w formie pliku wektorowego oraz czy macie do logo wykonaną księgę znaku?)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_czy_katalog"
+                    value={this.state.kat_czy_katalog}
+                    label="Czy firma obecnie posiada katalog?
                   Jeśli tak, prosimy o link do wersji online lub o przesłanie pliku w załączniku."
-                  marginBottom="30px"
-                />
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_czy_do_druku"
+                    value={this.state.kat_czy_do_druku}
+                    label="Czy katalog ma być przygotowany do druku? lub
+                    Czy katalog ma być przygotowany  tylko na potrzeby internetu? 
+                    Posiadamy w standardzie przygotowanie wersji do druku oraz internetu, gdy podstawowe przygotowanie jest do druku."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_drukarnia_naklad"
+                    value={this.state.kat_drukarnia_naklad}
+                    label="Czy wybrali już Państwo drukarnię do wydruku katalogów? 
+                    Jaki nakład katalogów jest przewidywany? 
+                    Prosimy o podanie ilość sztuk. 
+                    Jeśli będzie to np. tylko 10 sztuk to katalog może być inaczej przygotowany do druku. Jeśli wydruk ma być niestandardowy, będziemy potrzebować wytycznych od drukarni tuż przed rozpoczęciem projektowania."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_format"
+                    value={this.state.kat_format}
+                    label="*Jaki format powinien mieć katalog? 
+                    Standardowe formaty: A4, A5, A6, kwadrat.
+                    Jeśli inny, prosimy podać dokładne wymiary.
+                    (Miej na uwadze: Jeśli format będzie inny niż standardowy to koszy wydruku mogą wzrosnąć nawet 100%)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_orientacja"
+                    value={this.state.kat_orientacja}
+                    label="Jaka będzie orientacja katalogu?
+                    (pionowa, pozioma, kwadrat, inna?)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_uszlachetnienie"
+                    value={this.state.kat_uszlachetnienie}
+                    label="*Czy przewidują Państwo  uszlachetnienie lakierem wybiórczym np. na okładce lub  innych stronach?
+                    (Jeśli tak, opracujemy dla drukarni makietę z wybranymi elementami, które mają być lakierowane)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_ile_stron"
+                    value={this.state.kat_ile_stron}
+                    label="*Ile stron powinien zawierać katalog? 
+                    Aby katalog został wydrukowany i złożony, ilość stron musi być podzielna przez 4. Przykład: 8 stron czyli 4 strony okładki + 4 strony środka. 
+                    (Przykłady standardowych rozmiarów stron: 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52 … 88, 92,96, 100)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_cel"
+                    value={this.state.kat_cel}
+                    label="*Jaki jest cel nowego katalogu? 
+                    Prosimy opisać jakie mają Państwo oczekiwania co do katalogu, co będzie zawierał, jakie ma spełnić zadania i do czego będzie służył. ( Przykład: katalog będzie służ przedstawicielom na spotkaniach z klientem oraz na targach. będzie zawierał informacje o firmie jej historia i strukturę. Przedstawimy koło 20 najlepszych produktów z dokładnym podziałem na 3 kategorie. Każdy produkt będzie zawierał dokładny opis zdjęcie warianty i cennik. Chcemy zamieścić referencje i loga partnerów, mapkę dojazdu galerię zdjęć.)."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_nawiazanie"
+                    value={this.state.kat_nawiazanie}
+                    label="Czy katalog ma nawiązywać do strony internetowej lub sklepu internetowego? 
+                    Jeśli tak, prosimy opisać pod jakim względem."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_jezyk_podstawowy"
+                    value={this.state.kat_jezyk_podstawowy}
+                    label="*W jakim języku będą treści do katalogu?
+                    Lub 
+                    Czy katalog będzie zawierał kilka języków w jednym katalogu?Jeśli tak prosimy podać w jakich."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_jezyki_obce"
+                    value={this.state.kat_jezyki_obce}
+                    label="*Czy katalog również ma być projektowany w innych językach niż standardowy? 
+                    Jeśli tak to w jakim jeszcze."
+                    marginBottom="30px"
+                  />
+
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_czy_tabele"
+                    value={this.state.kat_czy_tabele}
+                    label="*Czy katalog będzie zawierał tabele/cenniki/itp.? 
+                    (Jeśli tak prosimy opisać i podać orientacyjną ilość tabel, orientacyjną ilość wierszy i kolumn w każdej z nich)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_przyklady"
+                    value={this.state.kat_przyklady}
+                    label="*Przykłady istniejących katalogów, które się Państwu podobają. Podaj minimum trzy przykłady. (Nie muszą być związane z branżą. Prosimy podać adres url lub nazwę katalogu oraz wysłać go do nas mailem)
+                    Chcemy poznać Państwa gust."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_elementy"
+                    value={this.state.kat_elementy}
+                    label="Elementy na istniejących katalogach, które się Państwu podobają.
+                    Prosimy o wskazanie co się Państwu w nich podoba."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_etap"
+                    value={this.state.kat_etap}
+                    label="Na jakim etapie gromadzenia materiałów do katalogu są Państwo?
+                    (Przykład: jesteśmy w połowie pisania treści resztę mamy przygotowane / wszystko mamy gotowe, tylko projektować)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_zdjecia"
+                    value={this.state.kat_zdjecia}
+                    label="*Czy otrzymamy zdjęcia do katalogu przed realizacją? 
+                    Koniecznie w dobrej jakości, nadającej się pod wydruk."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_teksty"
+                    value={this.state.kat_teksty}
+                    label="*Czy otrzymamy teksty do katalogu przed projektowaniem w docelowej wersji? 
+                    (Jeśli nie to w jakiej jakości i proszę opisać)
+                    Jeśli treści będą dostarczone później, proces projektowania może się wydłużyć dwukrotnie. 
+                    * Po otrzymaniu docelowych treści nie ma możliwości całkowitej zmiany tekstu na etapie projektowania. Istnieje możliwość korekty przesłanych treści (literówki, przecinki, stylistyka)."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_materialy"
+                    value={this.state.kat_materialy}
+                    label="*Jakie dodatkowe materiały do projektowania dostaniemy? 
+                    Np. loga firm, hasła reklamowe, itp. które są niezbędne do zrealizowania projektu."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_pliki"
+                    value={this.state.kat_pliki}
+                    label="Czy potrzebują Państwo pliki edytowalne (źródłowe)?
+                    (Jeśli tak, prosimy określić w jakim programie mamy przygotować katalog: InDesign, CorelDraw, Illustrator. Jeśli katalog będzie miał powyżej 20 stron: InDesign, CorelDraw. Jeśli zależy Państwu na programie CorelDraw, prosimy określić wersję (np. wersja 15, 16, 17).)
+                    W standardzie przygotowujemy projekty wyłącznie do druku i internetu."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="kat_dodatkowe"
+                    value={this.state.kat_dodatkowe}
+                    label="Prosimy podać inne dodatkowe informacje, które mogą okazać się przydatne na etapie wyceny
+                    (Czy mamy wykonać rysunki konturowe zamiast zdjęć? Rysunki techniczne, obrys produktu, itp.)"
+                    marginBottom="30px"
+                  />
+                </>
               ) : null}
 
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="charakter"
-                  value={this.state.charakter}
-                  label="Jaki ma być charakter strony internetowej (sprzedażowa, wizerunkowa, informacyjna itp.)?"
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="czy_cms"
-                  value={this.state.czy_cms}
-                  label="Czy strona ma mieć możliwość samodzielnej edycji treści strony lub jej elementów (system CMS)?"
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="jezyk_podstawowy"
-                  value={this.state.jezyk_podstawowy}
-                  label="Jaki ma być podstawowy język strony?"
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="jezyki_dodatkowe"
-                  value={this.state.jezyki_dodatkowe}
-                  label="Czy strona posiadać dodatkowe języki? Jeśli tak, to jakie?"
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="podstrony_menu"
-                  value={this.state.podstrony_menu}
-                  label="Jakie mają być główne podstrony menu/zakładki w nawigacji górnej?"
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="liczba_podstron"
-                  value={this.state.liczba_podstron}
-                  label="Jaka jest orientacyjna liczba wszystkich podstron (mapa strony)?"
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="kolorystyka"
-                  value={this.state.kolorystyka}
-                  label="Jakie są Twoje oczekiwania co do kolorystyki strony?"
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="przyklady_stron"
-                  value={this.state.przyklady_stron}
-                  label="Przykłady istniejących stron internetowych, które podobają się Tobie. Podaj minimum trzy przykłady. (nie muszą być związane z branżą)"
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="elementy"
-                  value={this.state.elementy}
-                  label="Elementy na istniejących stronach internetowych, które podobają się Tobie."
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="zdjecia"
-                  value={this.state.zdjecia}
-                  label="Czy otrzymamy zdjęcia do strony?"
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="teksty"
-                  value={this.state.teksty}
-                  label="Czy otrzymamy teksty do strony?"
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="elementy_zewnetrzne"
-                  value={this.state.elementy_zewnetrzne}
-                  label="Elementy zewnętrzne do umieszczenia na stronie? (np. link do fanpage Facebook'a, link Youtube, itp.)"
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="zaawansowana_funkcjonalnosc"
-                  value={this.state.zaawansowana_funkcjonalnosc}
-                  label="Czy strona ma mieć dodatkową zaawansowaną funkcjonalność? Jeśli tak to jaką?"
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="czy_domena"
-                  value={this.state.czy_domena}
-                  label="Czy firma posiada wykupioną domenę (adres internetowy URL)?"
-                  marginBottom="30px"
-                />
-              ) : null}
-              {this.state.kategoria === 1 ? (
-                <Input
-                  onChange={this.handleInputChange}
-                  tag="textarea"
-                  name="czy_hosting"
-                  value={this.state.czy_hosting}
-                  label="Czy firma posiada wykupiony hosting/serwer (miejsce w którym znajdują się pliki strony)?"
-                  marginBottom="30px"
-                />
-              ) : null}
               <Input
                 onChange={this.handleInputChange}
                 tag="textarea"
-                name="uwagi"
-                value={this.state.uwagi}
+                name="wsp_uwagi"
+                value={this.state.wsp_uwagi}
                 label="Inne ważne uwagi:"
                 marginBottom="30px"
               />

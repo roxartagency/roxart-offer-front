@@ -5,6 +5,8 @@ import Button from "../../components/Button/Button";
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
 import styled from "styled-components";
+import StronaBriefContent from "./StronaBriefContent";
+import KatalogBriefContent from "./KatalogBriefContent";
 
 const BriefWrapper = styled.div`
   display: flex;
@@ -166,7 +168,7 @@ class SingleBriefView extends React.Component {
                           </Row>
                           <Row>
                             <Label>Status:</Label>
-                            <Content>{item.status}</Content>
+                            <Content>{item.wsp_status}</Content>
                           </Row>
 
                           <Row>
@@ -343,382 +345,15 @@ class SingleBriefView extends React.Component {
                             </Content>
                           </Row>
 
-                          <Row>
-                            <Label>
-                              Czy firma posiada logo? Jeśli tak, czy firma
-                              posiada logo w formie pliku wektorowego oraz
-                              księgę znaku?
-                            </Label>
-                            <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
-                                <Input
-                                  onChange={this.handleInputChange}
-                                  name="logo"
-                                  tag="textarea"
-                                  defaultValue={item.logo}
-                                />
-                              ) : (
-                                item.logo
-                              )}
-                            </Content>
-                          </Row>
-
                           {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Jakie są założenia i podstawowy cel nowej strony
-                                internetowej?
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="zalozenia"
-                                    tag="textarea"
-                                    defaultValue={item.zalozenia}
-                                  />
-                                ) : (
-                                  item.zalozenia
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Jaki ma być charakter strony internetowej
-                                (sprzedażowa, wizerunkowa, informacyjna itp.)?
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="charakter"
-                                    tag="textarea"
-                                    defaultValue={item.charakter}
-                                  />
-                                ) : (
-                                  item.charakter
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Czy strona ma mieć możliwość samodzielnej edycji
-                                treści strony lub jej elementów (system CMS)?
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="czy_cms"
-                                    tag="textarea"
-                                    defaultValue={item.czy_cms}
-                                  />
-                                ) : (
-                                  item.czy_cms
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Jaki ma być podstawowy język strony?
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="jezyk_podstawowy"
-                                    tag="textarea"
-                                    defaultValue={item.jezyk_podstawowy}
-                                  />
-                                ) : (
-                                  item.jezyk_podstawowy
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Czy strona posiadać dodatkowe języki? Jeśli tak,
-                                to jakie?
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="jezyki_dodatkowe"
-                                    tag="textarea"
-                                    defaultValue={item.jezyki_dodatkowe}
-                                  />
-                                ) : (
-                                  item.jezyki_dodatkowe
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Jakie mają być główne podstrony menu/zakładki w
-                                nawigacji górnej?
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="podstrony_menu"
-                                    tag="textarea"
-                                    defaultValue={item.podstrony_menu}
-                                  />
-                                ) : (
-                                  item.podstrony_menu
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Jaka jest orientacyjna liczba wszystkich
-                                podstron (mapa strony)?
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="liczba_podstron"
-                                    tag="textarea"
-                                    defaultValue={item.liczba_podstron}
-                                  />
-                                ) : (
-                                  item.liczba_podstron
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Jakie są Twoje oczekiwania co do kolorystyki
-                                strony?
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="kolorystyka"
-                                    tag="textarea"
-                                    defaultValue={item.kolorystyka}
-                                  />
-                                ) : (
-                                  item.kolorystyka
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Przykłady istniejących stron internetowych,
-                                które podobają się Tobie. Podaj minimum trzy
-                                przykłady. (nie muszą być związane z branżą)
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="przyklady_stron"
-                                    tag="textarea"
-                                    defaultValue={item.przyklady_stron}
-                                  />
-                                ) : (
-                                  item.przyklady_stron
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Elementy na istniejących stronach internetowych,
-                                które podobają się Tobie.
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="elementy"
-                                    tag="textarea"
-                                    defaultValue={item.elementy}
-                                  />
-                                ) : (
-                                  item.elementy
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>Czy otrzymamy zdjęcia do strony?</Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="zdjecia"
-                                    tag="textarea"
-                                    defaultValue={item.zdjecia}
-                                  />
-                                ) : (
-                                  item.zdjecia
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>Czy otrzymamy teksty do strony?</Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="teksty"
-                                    tag="textarea"
-                                    defaultValue={item.teksty}
-                                  />
-                                ) : (
-                                  item.teksty
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Elementy zewnętrzne do umieszczenia na stronie?
-                                (np. link do fanpage Facebook'a, link Youtube,
-                                itp.)
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="elementy_zewnetrzne"
-                                    tag="textarea"
-                                    defaultValue={item.elementy_zewnetrzne}
-                                  />
-                                ) : (
-                                  item.elementy_zewnetrzne
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Czy strona ma mieć dodatkową zaawansowaną
-                                funkcjonalność? Jeśli tak to jaką?
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="zaawansowana_funkcjonalnosc"
-                                    tag="textarea"
-                                    defaultValue={
-                                      item.zaawansowana_funkcjonalnosc
-                                    }
-                                  />
-                                ) : (
-                                  item.zaawansowana_funkcjonalnosc
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Czy firma posiada wykupioną domenę (adres
-                                internetowy URL)?
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="czy_domena"
-                                    tag="textarea"
-                                    defaultValue={item.czy_domena}
-                                  />
-                                ) : (
-                                  item.czy_domena
-                                )}
-                              </Content>
-                            </Row>
-                          ) : null}
-                          {item.kategoria.id === 1 ? (
-                            <Row>
-                              <Label>
-                                Czy firma posiada wykupiony hosting/serwer
-                                (miejsce w którym znajdują się pliki strony)?
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="czy_hosting"
-                                    tag="textarea"
-                                    defaultValue={item.czy_hosting}
-                                  />
-                                ) : (
-                                  item.czy_hosting
-                                )}
-                              </Content>
-                            </Row>
+                            <StronaBriefContent context={context} item={item} />
                           ) : null}
 
                           {item.kategoria.id === 2 ? (
-                            <Row>
-                              <Label>
-                                Czy firma obecnie posiada katalog? Jeśli tak,
-                                prosimy o link do wersji online lub o przesłanie
-                                pliku w załączniku.
-                              </Label>
-                              <Content>
-                                {context.user.role.name === "Administrator" ||
-                                context.user.role.name === "Handlowiec" ? (
-                                  <Input
-                                    onChange={this.handleInputChange}
-                                    name="kat_czy_katalog"
-                                    tag="textarea"
-                                    defaultValue={item.kat_czy_katalog}
-                                  />
-                                ) : (
-                                  item.kat_czy_katalog
-                                )}
-                              </Content>
-                            </Row>
+                            <KatalogBriefContent
+                              context={context}
+                              item={item}
+                            />
                           ) : null}
 
                           <Row>
@@ -728,12 +363,12 @@ class SingleBriefView extends React.Component {
                               context.user.role.name === "Handlowiec" ? (
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="uwagi"
+                                  name="wsp_uwagi"
                                   tag="textarea"
-                                  defaultValue={item.uwagi}
+                                  defaultValue={item.wsp_uwagi}
                                 />
                               ) : (
-                                item.uwagi
+                                item.wsp_uwagi
                               )}
                             </Content>
                           </Row>
@@ -742,13 +377,13 @@ class SingleBriefView extends React.Component {
                         <Row>
                           <Label>Status wyceny grafika:</Label>
                           <Content>
-                            {item.status_grafika === "nie_wycenione"
+                            {item.wsp_status_grafika === "nie_wycenione"
                               ? "Nie wycenione"
                               : null}
-                            {item.status_grafika === "zwrot_do_handlowca"
+                            {item.wsp_status_grafika === "zwrot_do_handlowca"
                               ? "Zwrot"
                               : null}
-                            {item.status_grafika === "wycenione"
+                            {item.wsp_status_grafika === "wycenione"
                               ? "Wycenione"
                               : null}
                           </Content>
@@ -756,7 +391,7 @@ class SingleBriefView extends React.Component {
 
                         <Row>
                           <Label>Wycena grafika:</Label>
-                          <Content>{item.wycena_grafika}</Content>
+                          <Content>{item.wsp_wycena_grafika}</Content>
                         </Row>
 
                         {context.user.role.name === "Grafik" ? (
@@ -778,14 +413,14 @@ class SingleBriefView extends React.Component {
                                 }>
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="wycena_grafika"
+                                  name="wsp_wycena_grafika"
                                   tag="textarea"
-                                  defaultValue={item.wycena_grafika}
+                                  defaultValue={item.wsp_wycena_grafika}
                                   marginBottom="10px"
                                 />
                                 <Select
-                                  name="status_grafika"
-                                  value={this.state.status_grafika}
+                                  name="wsp_status_grafika"
+                                  value={this.state.wsp_status_grafika}
                                   onChange={this.handleInputChange}>
                                   <option value="nie_wycenione">
                                     Nie wycenione
@@ -806,13 +441,13 @@ class SingleBriefView extends React.Component {
                         <Row>
                           <Label>Status wyceny kodera:</Label>
                           <Content>
-                            {item.status_kodera === "nie_wycenione"
+                            {item.wsp_status_kodera === "nie_wycenione"
                               ? "Nie wycenione"
                               : null}
-                            {item.status_kodera === "zwrot_do_handlowca"
+                            {item.wsp_status_kodera === "zwrot_do_handlowca"
                               ? "Zwrot"
                               : null}
-                            {item.status_kodera === "wycenione"
+                            {item.wsp_status_kodera === "wycenione"
                               ? "Wycenione"
                               : null}
                           </Content>
@@ -820,7 +455,7 @@ class SingleBriefView extends React.Component {
 
                         <Row>
                           <Label>Wycena kodera:</Label>
-                          <Content>{item.wycena_kodera}</Content>
+                          <Content>{item.wsp_wycena_kodera}</Content>
                         </Row>
 
                         {context.user.role.name === "Koder" ? (
@@ -841,14 +476,14 @@ class SingleBriefView extends React.Component {
                                 }>
                                 <Input
                                   onChange={this.handleInputChange}
-                                  name="wycena_kodera"
+                                  name="wsp_wycena_kodera"
                                   tag="textarea"
-                                  defaultValue={item.wycena_kodera}
+                                  defaultValue={item.wsp_wycena_kodera}
                                   marginBottom="10px"
                                 />
                                 <Select
-                                  name="status_kodera"
-                                  value={this.state.status_kodera}
+                                  name="wsp_status_kodera"
+                                  value={this.state.wsp_status_kodera}
                                   onChange={this.handleInputChange}>
                                   <option value="nie_wycenione">
                                     Nie wycenione

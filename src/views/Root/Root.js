@@ -83,6 +83,7 @@ class Root extends React.Component {
 
     this.check();
     this.requestNotificationPermission();
+    
   }
 
   check = () => {
@@ -257,7 +258,7 @@ class Root extends React.Component {
         setTimeout(() => {
           this.fetchBriefs();
         }, 300);
-        this.showNotification("Zapisano poprawnie zmiany w: " + res.data.title);
+        this.showNotification("Zapisano poprawnie zmiany w: " + res.data.wsp_nazwa);
       })
       .catch(error => {
         this.showNotification("Wystąpił błąd zapisywania zmian w: " + error);

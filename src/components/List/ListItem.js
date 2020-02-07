@@ -45,16 +45,16 @@ class ListItem extends React.Component {
             <ListItemCol>{props.user ? props.user.username : null}</ListItemCol>
             <ListItemCol>{date.toLocaleDateString()}</ListItemCol>
             <ListItemCol>
-              {props.status_grafika === "nie_wycenione"
+              {props.wsp_status_grafika === "nie_wycenione"
                 ? "Nie wycenione"
                 : null}
-              {props.status_grafika === "zwrot_do_handlowca" ? "Zwrot" : null}
-              {props.status_grafika === "wycenione" ? "Wycenione" : null}
+              {props.wsp_status_grafika === "zwrot_do_handlowca" ? "Zwrot" : null}
+              {props.wsp_status_grafika === "wycenione" ? "Wycenione" : null}
             </ListItemCol>
             <ListItemCol>
-              {props.status_kodera === "nie_wycenione" ? "Nie wycenione" : null}
-              {props.status_kodera === "zwrot_do_handlowca" ? "Zwrot" : null}
-              {props.status_kodera === "wycenione" ? "Wycenione" : null}
+              {props.wsp_status_kodera === "nie_wycenione" ? "Nie wycenione" : null}
+              {props.wsp_status_kodera === "zwrot_do_handlowca" ? "Zwrot" : null}
+              {props.wsp_status_kodera === "wycenione" ? "Wycenione" : null}
             </ListItemCol>
             <ListItemCol>
               <Link to={`/${props.id}`}>
