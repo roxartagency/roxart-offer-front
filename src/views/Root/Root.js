@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import AppContext from "../../context";
 import axios from "axios";
-import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import BriefsView from "../../views/BriefsView/BriefsView";
 import SingleBriefView from "../../views/BriefsView/SingleBrief";
 import Header from "../../components/Header/Header";
@@ -10,10 +10,11 @@ import Modal from "../../components/Modal/Modal";
 import Notification from "../../components/Notification/Notification";
 import PWAPrompt from "react-ios-pwa-prompt";
 import Cookies from "js-cookie";
-import {API_URL} from "../../api";
+import { API_URL } from "../../api";
 import GlobalStyle from "../../styles/GlobalStyle";
 import Theme from "../../styles/Theme";
 import routes from "../../routes";
+import utils from "../../utils/Utils";
 
 const Wrapper = styled.div`
   padding: 110px 30px 40px;
@@ -81,37 +82,9 @@ class Root extends React.Component {
       });
     }
 
-    this.check();
-    this.requestNotificationPermission();
-    
+    utils.check();
+    utils.requestNotificationPermission();
   }
-
-  check = () => {
-    if (!("serviceWorker" in navigator)) {
-      console.log("No Service Worker support!");
-    }
-    if (!("PushManager" in window)) {
-      console.log("No Push API Support!");
-    }
-  };
-
-  displayNotification = async (title, data) => {
-    const reg = await navigator.serviceWorker.getRegistration();
-    if (reg) {
-      reg.showNotification(title, data);
-    }
-  };
-
-  requestNotificationPermission = async () => {
-    const permission = await window.Notification.requestPermission();
-    // value of permission can be 'granted', 'default', 'denied'
-    // granted: user has accepted the request
-    // default: user has dismissed the notification permission popup by clicking on x
-    // denied: user has denied the request.
-    if (permission !== "granted") {
-      console.log("Permission not granted for Notification");
-    }
-  };
 
   installApp = async e => {
     e.preventDefault();
@@ -139,11 +112,11 @@ class Root extends React.Component {
       );
     });
     if (e.target.value.length) {
-      this.setState({filterActive: true});
+      this.setState({ filterActive: true });
     } else {
-      this.setState({filterActive: false});
+      this.setState({ filterActive: false });
     }
-    this.setState({filteredBrief: updatedList});
+    this.setState({ filteredBrief: updatedList });
   };
 
   addItem = (e, newItem) => {
@@ -182,22 +155,6 @@ class Root extends React.Component {
         this.showNotification("Wystąpił błąd zapisywania zmian w: " + error);
       });
   };
-
-  // removeItem = (e, id) => {
-  //   e.preventDefault();
-
-  //   axios
-  //     .delete(`${API_URL}/briefs/${id}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${this.state.userToken}`
-  //       }
-  //     })
-  //     .then(res => {
-  //       console.log(res);
-  //       console.log(res.data);
-  //     })
-  //     .then(this.fetchBriefs());
-  // };
 
   wycen = (e, id, title, user, wycena) => {
     e.preventDefault();
@@ -258,11 +215,24 @@ class Root extends React.Component {
         setTimeout(() => {
           this.fetchBriefs();
         }, 300);
-        this.showNotification("Zapisano poprawnie zmiany w: " + res.data.wsp_nazwa);
+        this.showNotification(
+          "Zapisano poprawnie zmiany w: " + res.data.wsp_nazwa
+        );
       })
       .catch(error => {
         this.showNotification("Wystąpił błąd zapisywania zmian w: " + error);
       });
+  };
+
+  allowEdit = () => {
+    if (
+      this.state.user.role.name === "Administrator" ||
+      this.state.user.role.name === "Handlowiec"
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   };
 
   openModal = () => {
@@ -287,14 +257,14 @@ class Root extends React.Component {
       })
       .then(response => {
         const brief = response.data;
-        this.setState({brief});
+        this.setState({ brief });
         console.log(response.data);
       })
       .catch(error => {
         console.log("An error occurred:", error);
       });
 
-    // this.displayNotification("Odświeżono briefy", {
+    // utils.displayNotification("Odświeżono briefy", {
     //   icon: "/roxart192.png"
     // });
   };
@@ -308,7 +278,7 @@ class Root extends React.Component {
         password: userData.password
       })
       .then(response => {
-        this.setState(prevState => ({
+        this.setState(() => ({
           userToken: response.data.jwt,
           user: response.data.user,
           isUserLogged: true
@@ -325,7 +295,7 @@ class Root extends React.Component {
 
         this.fetchBriefs();
 
-        this.displayNotification(
+        utils.displayNotification(
           "Zalogowano jako: " + this.state.user.username,
           {
             icon: "/roxart192.png"
@@ -351,7 +321,7 @@ class Root extends React.Component {
     Cookies.remove("userRole");
     Cookies.remove("userID");
     this.showNotification("Wylogowano");
-    this.displayNotification("Wylogowałeś się", {
+    utils.displayNotification("Wylogowałeś się", {
       icon: "/roxart192.png"
     });
   };
@@ -377,7 +347,7 @@ class Root extends React.Component {
       notificationContent: content
     });
     setTimeout(() => {
-      this.setState({notificationActive: false});
+      this.setState({ notificationActive: false });
     }, 2500);
   };
 
@@ -394,7 +364,8 @@ class Root extends React.Component {
       login: this.login,
       logout: this.logout,
       sendMail: this.sendMail,
-      wycen: this.wycen
+      wycen: this.wycen,
+      allowEdit: this.allowEdit
     };
 
     return (

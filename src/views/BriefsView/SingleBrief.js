@@ -1,9 +1,10 @@
 import React from "react";
 import AppContext from "../../context";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
+import { handleStatus } from "../../utils/Utils";
 import styled from "styled-components";
 import StronaBriefContent from "./StronaBriefContent";
 import KatalogBriefContent from "./KatalogBriefContent";
@@ -79,7 +80,7 @@ class SingleBriefView extends React.Component {
   };
 
   render() {
-    const {match} = this.props;
+    const { match } = this.props;
     return (
       <AppContext.Consumer>
         {context => (
@@ -96,7 +97,8 @@ class SingleBriefView extends React.Component {
                           className=""
                           onSubmit={e =>
                             context.editItem(e, match.params.id, this.state)
-                          }>
+                          }
+                        >
                           <Row>
                             <Label>Id:</Label>
                             <Content>{match.params.id}</Content>
@@ -115,15 +117,14 @@ class SingleBriefView extends React.Component {
                           <Row>
                             <Label>Nazwa firmy:</Label>
                             <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
+                              {context.allowEdit() === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_nazwa"
                                   defaultValue={item.wsp_nazwa}
                                 />
                               ) : (
-                                item.title
+                                item.wsp_nazwa
                               )}
                             </Content>
                           </Row>
@@ -131,8 +132,7 @@ class SingleBriefView extends React.Component {
                           <Row>
                             <Label>Adres:</Label>
                             <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
+                              {context.allowEdit() === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_adres"
@@ -148,8 +148,7 @@ class SingleBriefView extends React.Component {
                           <Row>
                             <Label>Adres e-mail osoby kontaktowej:</Label>
                             <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
+                              {context.allowEdit() === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_email"
@@ -176,8 +175,7 @@ class SingleBriefView extends React.Component {
                               (obecny lub planowany):
                             </Label>
                             <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
+                              {context.allowEdit() === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_adres_url"
@@ -193,8 +191,7 @@ class SingleBriefView extends React.Component {
                           <Row>
                             <Label>Czym zajmuje się Twoja firma?</Label>
                             <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
+                              {context.allowEdit() === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_czym_zajmuje"
@@ -210,8 +207,7 @@ class SingleBriefView extends React.Component {
                           <Row>
                             <Label>W jakiej branży działa Twoja firma?</Label>
                             <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
+                              {context.allowEdit() === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_branza"
@@ -230,8 +226,7 @@ class SingleBriefView extends React.Component {
                               zatrudnia pracowników?
                             </Label>
                             <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
+                              {context.allowEdit() === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_ile_lat"
@@ -250,8 +245,7 @@ class SingleBriefView extends React.Component {
                               klientom?
                             </Label>
                             <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
+                              {context.allowEdit() === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_jakie_produkty"
@@ -270,8 +264,7 @@ class SingleBriefView extends React.Component {
                               potencjalni) oraz jaka jest grupa docelowa?
                             </Label>
                             <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
+                              {context.allowEdit() === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_kim_sa_klienci"
@@ -290,8 +283,7 @@ class SingleBriefView extends React.Component {
                               (można podać adresy internetowe)
                             </Label>
                             <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
+                              {context.allowEdit() === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_konkurenci"
@@ -310,8 +302,7 @@ class SingleBriefView extends React.Component {
                               netto?
                             </Label>
                             <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
+                              {context.allowEdit() === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_budzet"
@@ -330,8 +321,7 @@ class SingleBriefView extends React.Component {
                               projektu?
                             </Label>
                             <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
+                              {context.allowEdit() === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_czas_realizacji"
@@ -358,8 +348,7 @@ class SingleBriefView extends React.Component {
                           <Row>
                             <Label>Inne ważne uwagi:</Label>
                             <Content>
-                              {context.user.role.name === "Administrator" ||
-                              context.user.role.name === "Handlowiec" ? (
+                              {context.allowEdit() === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_uwagi"
@@ -376,15 +365,7 @@ class SingleBriefView extends React.Component {
                         <Row>
                           <Label>Status wyceny grafika:</Label>
                           <Content>
-                            {item.wsp_status_grafika === "nie_wycenione"
-                              ? "Nie wycenione"
-                              : null}
-                            {item.wsp_status_grafika === "zwrot_do_handlowca"
-                              ? "Zwrot"
-                              : null}
-                            {item.wsp_status_grafika === "wycenione"
-                              ? "Wycenione"
-                              : null}
+                            {handleStatus(item.wsp_status_grafika)}
                           </Content>
                         </Row>
 
@@ -409,7 +390,8 @@ class SingleBriefView extends React.Component {
                                     item.user,
                                     this.state
                                   )
-                                }>
+                                }
+                              >
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_wycena_grafika"
@@ -420,7 +402,8 @@ class SingleBriefView extends React.Component {
                                 <Select
                                   name="wsp_status_grafika"
                                   value={this.state.wsp_status_grafika}
-                                  onChange={this.handleInputChange}>
+                                  onChange={this.handleInputChange}
+                                >
                                   <option value="nie_wycenione">
                                     Nie wycenione
                                   </option>
@@ -440,15 +423,7 @@ class SingleBriefView extends React.Component {
                         <Row>
                           <Label>Status wyceny kodera:</Label>
                           <Content>
-                            {item.wsp_status_kodera === "nie_wycenione"
-                              ? "Nie wycenione"
-                              : null}
-                            {item.wsp_status_kodera === "zwrot_do_handlowca"
-                              ? "Zwrot"
-                              : null}
-                            {item.wsp_status_kodera === "wycenione"
-                              ? "Wycenione"
-                              : null}
+                            {handleStatus(item.wsp_status_kodera)}
                           </Content>
                         </Row>
 
@@ -472,7 +447,8 @@ class SingleBriefView extends React.Component {
                                     item.user,
                                     this.state
                                   )
-                                }>
+                                }
+                              >
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_wycena_kodera"
@@ -483,7 +459,8 @@ class SingleBriefView extends React.Component {
                                 <Select
                                   name="wsp_status_kodera"
                                   value={this.state.wsp_status_kodera}
-                                  onChange={this.handleInputChange}>
+                                  onChange={this.handleInputChange}
+                                >
                                   <option value="nie_wycenione">
                                     Nie wycenione
                                   </option>
@@ -503,26 +480,10 @@ class SingleBriefView extends React.Component {
                         <Row>
                           <Label>Działania</Label>
                           <Content>
-                            {context.user.role.name === "Administrator" ||
-                            context.user.role.name === "Handlowiec" ? (
-                              <>
-                                {/* <Button
-                                      onClick={e =>
-                                        context.removeItem(
-                                          e,
-                                          match.params.id,
-                                          item.title
-                                        )
-                                      }>
-                                      Usuń brief
-                                    </Button> */}
-                                <Button form="editBrief">Zapisz zmiany</Button>
-                              </>
+                            {context.allowEdit() === true ? (
+                              <Button form="editBrief">Zapisz zmiany</Button>
                             ) : null}
-
-                            <StyledLink to={"/"} secondary>
-                              powrót
-                            </StyledLink>
+                            <StyledLink to={"/"}>powrót</StyledLink>
                           </Content>
                         </Row>
                       </BriefWrapper>

@@ -5,7 +5,10 @@ const theme = {
   colors: {
     mainBlue: "#1e58ff",
     orange: "#ff8200",
-    onyx: "#36313D"
+    onyx: "#36313D",
+    red: "#d62d20",
+    green: "#008744",
+    yellow: "#ffa700"
   },
   boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.3)",
   fonts: ["sans-serif", "Montserrat"],
