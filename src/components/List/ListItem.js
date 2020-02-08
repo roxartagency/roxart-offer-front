@@ -46,7 +46,7 @@ class ListItem extends React.Component {
         <ListItemCol>{handleStatus(props.wsp_status_grafika)}</ListItemCol>
         <ListItemCol>{handleStatus(props.wsp_status_kodera)}</ListItemCol>
         <ListItemCol>
-          <Link to={`/${props.id}`}>
+          <Link to={`/brief/${props.id}`}>
             <Button>Zobacz</Button>
           </Link>
         </ListItemCol>

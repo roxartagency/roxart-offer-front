@@ -1,6 +1,7 @@
 const routes = {
   briefs: "/",
-  brief: "/:id"
+  files: "/files",
+  brief: "/brief/:id"
 };
 
 export default routes;

@@ -5,6 +5,7 @@ import axios from "axios";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import BriefsView from "../../views/BriefsView/BriefsView";
 import SingleBriefView from "../../views/BriefsView/SingleBrief";
+import FilesView from "../../views/FilesView/FilesView";
 import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/Modal";
 import Notification from "../../components/Notification/Notification";
@@ -381,7 +382,8 @@ class Root extends React.Component {
               </Notification>
               <Switch>
                 <Route exact path={routes.briefs} component={BriefsView} />
-                <Route path={routes.brief} component={SingleBriefView} />
+                <Route exact path={routes.brief} component={SingleBriefView} />
+                <Route exact path={routes.files} component={FilesView} />
                 <Redirect to={routes.briefs} />
               </Switch>
             </Wrapper>
