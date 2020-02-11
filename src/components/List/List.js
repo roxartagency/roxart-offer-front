@@ -12,9 +12,10 @@ const ListHead = styled.li`
   color: #fff;
   list-style: none;
   display: grid;
-  grid-template-columns: 5% 15% 10% 15% 11% 15% 15% auto;
+  grid-template-columns: 5% 15% 13% 10% 11% 15% 15% auto;
   grid-auto-flow: row;
-  grid-template-rows: 70px;
+  grid-template-rows: 60px;
+  font-size: 14px;
   width: 100%;
   align-items: center;
 `;

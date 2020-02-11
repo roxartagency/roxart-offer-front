@@ -11,12 +11,13 @@ import {handleStatus} from "../../utils/Utils";
 const ListItemCol = styled.div`
   padding: 0 10px;
   margin: 10px 0;
+  font-size: 14px;
 `;
 
 const StyledListItem = styled.li`
   list-style: none;
   display: grid;
-  grid-template-columns: 5% 15% 10% 15% 11% 15% 15% auto;
+  grid-template-columns: 5% 15% 13% 10% 11% 15% 15% auto;
   grid-auto-flow: row;
   width: 100%;
   align-items: center;
