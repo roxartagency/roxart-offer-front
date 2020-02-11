@@ -174,28 +174,28 @@ class Root extends React.Component {
         if (wycena.wsp_status_grafika === "zwrot_do_handlowca") {
           this.sendMail(
             e,
-            "dominik.s@roxart.pl",
+            user.email,
             "Grafik zwrócił wycenę do poprawy: " + title,
             "Zaloguj się do aplikacji i popraw briefa!"
           );
         } else if (wycena.wsp_status_grafika === "wycenione") {
           this.sendMail(
             e,
-            "dominik.s@roxart.pl",
+            "koder@roxart.pl",
             "Grafik dodał nową wycenę: " + title,
             "Zaloguj się do aplikacji i wyceń godziny kodera!"
           );
         } else if (wycena.wsp_status_kodera === "zwrot_do_handlowca") {
           this.sendMail(
             e,
-            "dominik.s@roxart.pl",
+            user.email,
             "Koder zwrócił wycenę do poprawy: " + title,
             "Zaloguj się do aplikacji i popraw briefa!"
           );
         } else if (wycena.wsp_status_kodera === "wycenione") {
           this.sendMail(
             e,
-            "dominik.s@roxart.pl",
+            "admin@roxart.pl",
             "Koder dodał nową wycenę: " + title,
             "Zaloguj się do aplikacji i przygotuj ofertę."
           );
@@ -336,7 +336,9 @@ class Root extends React.Component {
         subject: subject,
         text: text
       })
-      .then(response => {})
+      .then(response => {
+        console.log(response);
+      })
       .catch(error => {
         console.log("An error occurred:", error);
       });

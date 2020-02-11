@@ -386,7 +386,7 @@ class SingleBriefView extends React.Component {
                                   context.wycen(
                                     e,
                                     match.params.id,
-                                    item.title,
+                                    item.wsp_nazwa,
                                     item.user,
                                     this.state
                                   )
@@ -443,7 +443,7 @@ class SingleBriefView extends React.Component {
                                   context.wycen(
                                     e,
                                     match.params.id,
-                                    item.title,
+                                    item.wsp_nazwa,
                                     item.user,
                                     this.state
                                   )
