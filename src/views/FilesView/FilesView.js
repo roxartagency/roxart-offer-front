@@ -25,16 +25,7 @@ class FilesView extends React.Component {
               <>
                 <h3>
                   <a
-                    href="https://roxart-offer.roxapps.usermd.net/uploads/b04d2261fe4648bb8c26bf7fdc52b8fe.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Oferta
-                  </a>
-                </h3>
-                <h3>
-                  <a
-                    href="https://roxart-offer.roxapps.usermd.net/uploads/b04d2261fe4648bb8c26bf7fdc52b8fe.pdf"
+                    href="https://roxart-offer.roxapps.usermd.net/uploads/ddc69d2ebc304d14b190c35d427e6f2d.odt"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -43,7 +34,7 @@ class FilesView extends React.Component {
                 </h3>
                 <h3>
                   <a
-                    href="https://roxart-offer.roxapps.usermd.net/uploads/b04d2261fe4648bb8c26bf7fdc52b8fe.pdf"
+                    href="https://roxart-offer.roxapps.usermd.net/uploads/5baf365d811e4a0181c9a38fd1d9d067.odt"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

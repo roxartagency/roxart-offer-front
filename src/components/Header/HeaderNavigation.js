@@ -1,6 +1,6 @@
 import React from "react";
 import AppContext from "../../context";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 
 const MenuWrapper = styled.ul`
@@ -22,7 +22,7 @@ const NavItem = styled.li`
 
 const activeClassName = "nav-item-active";
 
-const StyledLink = styled(NavLink).attrs({ activeClassName })`
+const StyledLink = styled(NavLink).attrs({activeClassName})`
   text-decoration: none;
   color: #818181;
   font-size: 0.8em;
@@ -46,12 +46,12 @@ const HeaderNavigation = () => (
           <NavItem>
             <StyledLink to="/">briefy</StyledLink>
           </NavItem>
-          <NavItem>
-            <StyledLink to="/files">pliki</StyledLink>
-          </NavItem>
 
           {context.user.username ? (
             <>
+              <NavItem>
+                <StyledLink to="/files">pliki</StyledLink>
+              </NavItem>
               <NavItem>
                 <StyledLink onClick={e => context.logout(e)} to="/">
                   Wyloguj: {context.user.username}
