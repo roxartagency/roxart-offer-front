@@ -1,13 +1,15 @@
 import React from "react";
 import AppContext from "../../context";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
-import { handleStatus } from "../../utils/Utils";
+import {handleStatus} from "../../utils/Utils";
 import styled from "styled-components";
 import StronaBriefContent from "./StronaBriefContent";
 import KatalogBriefContent from "./KatalogBriefContent";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faArrowAltCircleLeft, faSave} from "@fortawesome/free-solid-svg-icons";
 
 const BriefWrapper = styled.div`
   display: flex;
@@ -68,6 +70,9 @@ const StyledLink = styled(Link)`
     background: ${props => `${props.theme.colors.mainBlue}`};
     color: #fff;
   }
+  svg {
+    margin-right: 5px;
+  }
 `;
 
 class SingleBriefView extends React.Component {
@@ -80,7 +85,7 @@ class SingleBriefView extends React.Component {
   };
 
   render() {
-    const { match } = this.props;
+    const {match} = this.props;
     return (
       <AppContext.Consumer>
         {context => (
@@ -97,8 +102,7 @@ class SingleBriefView extends React.Component {
                           className=""
                           onSubmit={e =>
                             context.editItem(e, match.params.id, this.state)
-                          }
-                        >
+                          }>
                           <Row>
                             <Label>Id:</Label>
                             <Content>{match.params.id}</Content>
@@ -390,8 +394,7 @@ class SingleBriefView extends React.Component {
                                     item.user,
                                     this.state
                                   )
-                                }
-                              >
+                                }>
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_wycena_grafika"
@@ -402,8 +405,7 @@ class SingleBriefView extends React.Component {
                                 <Select
                                   name="wsp_status_grafika"
                                   value={this.state.wsp_status_grafika}
-                                  onChange={this.handleInputChange}
-                                >
+                                  onChange={this.handleInputChange}>
                                   <option value="nie_wycenione">
                                     Nie wycenione
                                   </option>
@@ -413,6 +415,7 @@ class SingleBriefView extends React.Component {
                                   </option>
                                 </Select>
                                 <Button type="submit" form="wycenGrafik">
+                                  <FontAwesomeIcon icon={faSave} size="1x" />
                                   Wyceń
                                 </Button>
                               </form>
@@ -447,8 +450,7 @@ class SingleBriefView extends React.Component {
                                     item.user,
                                     this.state
                                   )
-                                }
-                              >
+                                }>
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_wycena_kodera"
@@ -459,8 +461,7 @@ class SingleBriefView extends React.Component {
                                 <Select
                                   name="wsp_status_kodera"
                                   value={this.state.wsp_status_kodera}
-                                  onChange={this.handleInputChange}
-                                >
+                                  onChange={this.handleInputChange}>
                                   <option value="nie_wycenione">
                                     Nie wycenione
                                   </option>
@@ -470,6 +471,7 @@ class SingleBriefView extends React.Component {
                                   </option>
                                 </Select>
                                 <Button type="submit" form="wycenKoder">
+                                  <FontAwesomeIcon icon={faSave} size="1x" />
                                   Wyceń
                                 </Button>
                               </form>
@@ -481,9 +483,18 @@ class SingleBriefView extends React.Component {
                           <Label>Działania</Label>
                           <Content>
                             {context.allowEdit() === true ? (
-                              <Button form="editBrief">Zapisz zmiany</Button>
+                              <Button form="editBrief">
+                                <FontAwesomeIcon icon={faSave} size="1x" />
+                                Zapisz zmiany
+                              </Button>
                             ) : null}
-                            <StyledLink to={"/"}>powrót</StyledLink>
+                            <StyledLink to={"/"}>
+                              <FontAwesomeIcon
+                                icon={faArrowAltCircleLeft}
+                                size="1x"
+                              />
+                              powrót
+                            </StyledLink>
                           </Content>
                         </Row>
                       </BriefWrapper>

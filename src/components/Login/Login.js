@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import {withRouter} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSignInAlt, faPlusCircle} from "@fortawesome/free-solid-svg-icons";
 
 const Form = styled.form`
   max-width: 400px;
@@ -40,21 +42,25 @@ class Login extends React.Component {
               <Input
                 onChange={this.handleInputChange}
                 name="login"
+                placeholder="login/e-mail"
                 value={this.state.login}
-                label="Login"
                 marginBottom="15px"
               />
               <Input
                 onChange={this.handleInputChange}
                 name="password"
+                placeholder="hasło"
                 value={this.state.password}
-                label="Hasło"
                 type="password"
                 marginBottom="15px"
               />
-              <Button marginBottom="5px">Zaloguj się</Button>
+              <Button marginBottom="5px">
+                <FontAwesomeIcon icon={faSignInAlt} size="1x" />
+                Zaloguj się
+              </Button>
               {context.installButton === true ? (
                 <Button onClick={e => context.installApp(e)} marginBottom="5px">
+                  <FontAwesomeIcon icon={faPlusCircle} size="1x" />
                   Zainstaluj aplikację PWA
                 </Button>
               ) : null}

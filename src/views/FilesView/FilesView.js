@@ -2,6 +2,8 @@ import React from "react";
 import AppContext from "../../context";
 import Login from "../../components/Login/Login";
 import styled from "styled-components";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faDownload} from "@fortawesome/free-solid-svg-icons";
 
 const NoItems = styled.h2`
   font-size: 1.2em;
@@ -27,8 +29,8 @@ class FilesView extends React.Component {
                   <a
                     href="https://roxart-offer.roxapps.usermd.net/uploads/ddc69d2ebc304d14b190c35d427e6f2d.odt"
                     target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                    rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faDownload} size="1x" />
                     Brief na stronę
                   </a>
                 </h3>
@@ -36,8 +38,8 @@ class FilesView extends React.Component {
                   <a
                     href="https://roxart-offer.roxapps.usermd.net/uploads/5baf365d811e4a0181c9a38fd1d9d067.odt"
                     target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                    rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faDownload} size="1x" />
                     Brief na katalog
                   </a>
                 </h3>

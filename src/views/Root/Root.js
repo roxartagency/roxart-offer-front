@@ -17,6 +17,7 @@ import Theme from "../../styles/Theme";
 import routes from "../../routes";
 import utils from "../../utils/Utils";
 
+
 const Wrapper = styled.div`
   padding: 110px 30px 40px;
 `;

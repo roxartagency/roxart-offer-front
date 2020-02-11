@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 import Title from "../../components/Title/Title";
 import Button from "../../components/Button/Button";
-import {handleStatus} from '../../utils/Utils'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEye, faGlobe, faBookOpen} from "@fortawesome/free-solid-svg-icons";
+import {handleStatus} from "../../utils/Utils";
 
 const ListItemCol = styled.div`
   padding: 0 10px;
@@ -25,12 +27,14 @@ const StyledListItem = styled.li`
   > ${ListItemCol} {
     padding: 0 10px;
   }
+  svg {
+    margin-right: 5px;
+  }
 `;
-
 
 class ListItem extends React.Component {
   render() {
-    const { ...props } = this.props;
+    const {...props} = this.props;
 
     const date = new Date(props.created_at);
 
@@ -40,14 +44,25 @@ class ListItem extends React.Component {
         <ListItemCol>
           <Title>{props.wsp_nazwa}</Title>
         </ListItemCol>
-        <ListItemCol>{props.kategoria.name}</ListItemCol>
+        <ListItemCol>
+          {props.kategoria.name === "Strona internetowa" ? (
+            <FontAwesomeIcon icon={faGlobe} size="1x" />
+          ) : null}
+          {props.kategoria.name === "Katalog" ? (
+            <FontAwesomeIcon icon={faBookOpen} size="1x" />
+          ) : null}
+          {props.kategoria.name}
+        </ListItemCol>
         <ListItemCol>{props.user ? props.user.username : null}</ListItemCol>
         <ListItemCol>{date.toLocaleDateString()}</ListItemCol>
         <ListItemCol>{handleStatus(props.wsp_status_grafika)}</ListItemCol>
         <ListItemCol>{handleStatus(props.wsp_status_kodera)}</ListItemCol>
         <ListItemCol>
           <Link to={`/brief/${props.id}`}>
-            <Button>Zobacz</Button>
+            <Button>
+              <FontAwesomeIcon icon={faEye} size="1x" />
+              Zobacz
+            </Button>
           </Link>
         </ListItemCol>
       </StyledListItem>

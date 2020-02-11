@@ -4,6 +4,8 @@ import Input from "../../components/Input/Input";
 import Select from "../../components/Select/Select";
 import Button from "../../components/Button/Button";
 import styled from "styled-components";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";
 
 const FormWrapper = styled.div`
   width: 100%;
@@ -500,7 +502,10 @@ class Form extends React.Component {
                 label="Inne ważne uwagi:"
                 marginBottom="30px"
               />
-              <Button>Dodaj brief</Button>
+              <Button>
+                <FontAwesomeIcon icon={faPlusCircle} size="1x" />
+                Dodaj brief
+              </Button>
             </StyledForm>
           </FormWrapper>
         )}

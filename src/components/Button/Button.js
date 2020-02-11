@@ -20,6 +20,9 @@ const StyledButton = styled.button`
     background: ${props => `${props.theme.colors.mainBlue}`};
     color: #fff;
   }
+  svg {
+    margin-right: 5px;
+  }
 `;
 
 const StyledAnchor = styled(StyledButton)``;

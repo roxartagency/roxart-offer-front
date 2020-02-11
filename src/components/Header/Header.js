@@ -3,6 +3,8 @@ import Button from "../../components/Button/Button";
 import HeaderNavigation from "../../components/Header/HeaderNavigation";
 import AppContext from "../../context";
 import styled from "styled-components";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSyncAlt, faPlusCircle} from "@fortawesome/free-solid-svg-icons";
 import logoImage from "../../assets/images/logo.svg";
 
 const StyledHeader = styled.div`
@@ -50,12 +52,14 @@ const Header = ({openModalFn}) => (
                   context.showNotification("Odświeżono briefy");
                 }}
                 secondary>
+                <FontAwesomeIcon icon={faSyncAlt} size="sm" />
                 Odśwież briefy
               </Button>
               {context.user.role.name === "Administrator" ||
               context.user.role.name === "Handlowiec" ? (
                 <>
                   <Button onClick={openModalFn} secondary>
+                    <FontAwesomeIcon icon={faPlusCircle} size="sm" />
                     Dodaj nowy brief
                   </Button>
                 </>
