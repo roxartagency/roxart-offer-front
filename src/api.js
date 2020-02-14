@@ -1,1 +1,1 @@
-export const API_URL="https://roxart-offer.roxapps.usermd.net"
+export const API_URL="http://roxapps.usermd.net:38521"
