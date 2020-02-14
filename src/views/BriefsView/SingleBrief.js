@@ -95,7 +95,7 @@ class SingleBriefView extends React.Component {
                 {context.user.username ? (
                   <>
                     {item.id == match.params.id ? (
-                      <BriefWrapper key={item.id}>
+                      <BriefWrapper id="printarea" key={item.id}>
                         <form
                           id="editBrief"
                           autoComplete="off"
