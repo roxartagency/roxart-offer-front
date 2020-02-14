@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import AppContext from "../../context";
 import axios from "axios";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import BriefsView from "../../views/BriefsView/BriefsView";
 import SingleBriefView from "../../views/BriefsView/SingleBrief";
 import FilesView from "../../views/FilesView/FilesView";
@@ -11,12 +11,11 @@ import Modal from "../../components/Modal/Modal";
 import Notification from "../../components/Notification/Notification";
 import PWAPrompt from "react-ios-pwa-prompt";
 import Cookies from "js-cookie";
-import { API_URL } from "../../api";
+import {API_URL} from "../../api";
 import GlobalStyle from "../../styles/GlobalStyle";
 import Theme from "../../styles/Theme";
 import routes from "../../routes";
 import utils from "../../utils/Utils";
-
 
 const Wrapper = styled.div`
   padding: 110px 30px 40px;
@@ -114,11 +113,11 @@ class Root extends React.Component {
       );
     });
     if (e.target.value.length) {
-      this.setState({ filterActive: true });
+      this.setState({filterActive: true});
     } else {
-      this.setState({ filterActive: false });
+      this.setState({filterActive: false});
     }
-    this.setState({ filteredBrief: updatedList });
+    this.setState({filteredBrief: updatedList});
   };
 
   addItem = (e, newItem) => {
@@ -226,12 +225,18 @@ class Root extends React.Component {
       });
   };
 
-  allowEdit = () => {
-    if (
-      this.state.user.role.name === "Administrator" ||
-      this.state.user.role.name === "Handlowiec"
-    ) {
+  allowEdit = (status_grafika, status_kodera, user) => {
+    if (this.state.user.role.name === "Administrator") {
       return true;
+    } else if (this.state.user.role.name === "Handlowiec") {
+      if (
+        this.state.user.email === user &&
+        (status_grafika === "zwrot_do_handlowca" ||
+          status_kodera === "zwrot_do_handlowca")
+      ) {
+        return true;
+      }
+      return false;
     } else {
       return false;
     }
@@ -259,7 +264,7 @@ class Root extends React.Component {
       })
       .then(response => {
         const brief = response.data;
-        this.setState({ brief });
+        this.setState({brief});
         console.log(response.data);
       })
       .catch(error => {
@@ -351,7 +356,7 @@ class Root extends React.Component {
       notificationContent: content
     });
     setTimeout(() => {
-      this.setState({ notificationActive: false });
+      this.setState({notificationActive: false});
     }, 2500);
   };
 

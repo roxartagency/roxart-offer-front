@@ -121,7 +121,12 @@ class SingleBriefView extends React.Component {
                           <Row>
                             <Label>Nazwa firmy:</Label>
                             <Content>
-                              {context.allowEdit() === true ? (
+                              {context.allowEdit(
+                                item.wsp_status_grafika,
+                                item.wsp_status_kodera,
+                                item.user.email,
+                                item.user.email
+                              ) === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_nazwa"
@@ -136,7 +141,11 @@ class SingleBriefView extends React.Component {
                           <Row>
                             <Label>Adres:</Label>
                             <Content>
-                              {context.allowEdit() === true ? (
+                              {context.allowEdit(
+                                item.wsp_status_grafika,
+                                item.wsp_status_kodera,
+                                item.user.email
+                              ) === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_adres"
@@ -152,7 +161,11 @@ class SingleBriefView extends React.Component {
                           <Row>
                             <Label>Adres e-mail osoby kontaktowej:</Label>
                             <Content>
-                              {context.allowEdit() === true ? (
+                              {context.allowEdit(
+                                item.wsp_status_grafika,
+                                item.wsp_status_kodera,
+                                item.user.email
+                              ) === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_email"
@@ -179,7 +192,11 @@ class SingleBriefView extends React.Component {
                               (obecny lub planowany):
                             </Label>
                             <Content>
-                              {context.allowEdit() === true ? (
+                              {context.allowEdit(
+                                item.wsp_status_grafika,
+                                item.wsp_status_kodera,
+                                item.user.email
+                              ) === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_adres_url"
@@ -195,7 +212,11 @@ class SingleBriefView extends React.Component {
                           <Row>
                             <Label>Czym zajmuje się Twoja firma?</Label>
                             <Content>
-                              {context.allowEdit() === true ? (
+                              {context.allowEdit(
+                                item.wsp_status_grafika,
+                                item.wsp_status_kodera,
+                                item.user.email
+                              ) === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_czym_zajmuje"
@@ -211,7 +232,11 @@ class SingleBriefView extends React.Component {
                           <Row>
                             <Label>W jakiej branży działa Twoja firma?</Label>
                             <Content>
-                              {context.allowEdit() === true ? (
+                              {context.allowEdit(
+                                item.wsp_status_grafika,
+                                item.wsp_status_kodera,
+                                item.user.email
+                              ) === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_branza"
@@ -230,7 +255,11 @@ class SingleBriefView extends React.Component {
                               zatrudnia pracowników?
                             </Label>
                             <Content>
-                              {context.allowEdit() === true ? (
+                              {context.allowEdit(
+                                item.wsp_status_grafika,
+                                item.wsp_status_kodera,
+                                item.user.email
+                              ) === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_ile_lat"
@@ -249,7 +278,11 @@ class SingleBriefView extends React.Component {
                               klientom?
                             </Label>
                             <Content>
-                              {context.allowEdit() === true ? (
+                              {context.allowEdit(
+                                item.wsp_status_grafika,
+                                item.wsp_status_kodera,
+                                item.user.email
+                              ) === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_jakie_produkty"
@@ -268,7 +301,11 @@ class SingleBriefView extends React.Component {
                               potencjalni) oraz jaka jest grupa docelowa?
                             </Label>
                             <Content>
-                              {context.allowEdit() === true ? (
+                              {context.allowEdit(
+                                item.wsp_status_grafika,
+                                item.wsp_status_kodera,
+                                item.user.email
+                              ) === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_kim_sa_klienci"
@@ -287,7 +324,11 @@ class SingleBriefView extends React.Component {
                               (można podać adresy internetowe)
                             </Label>
                             <Content>
-                              {context.allowEdit() === true ? (
+                              {context.allowEdit(
+                                item.wsp_status_grafika,
+                                item.wsp_status_kodera,
+                                item.user.email
+                              ) === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_konkurenci"
@@ -306,7 +347,11 @@ class SingleBriefView extends React.Component {
                               netto?
                             </Label>
                             <Content>
-                              {context.allowEdit() === true ? (
+                              {context.allowEdit(
+                                item.wsp_status_grafika,
+                                item.wsp_status_kodera,
+                                item.user.email
+                              ) === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_budzet"
@@ -325,7 +370,11 @@ class SingleBriefView extends React.Component {
                               projektu?
                             </Label>
                             <Content>
-                              {context.allowEdit() === true ? (
+                              {context.allowEdit(
+                                item.wsp_status_grafika,
+                                item.wsp_status_kodera,
+                                item.user.email
+                              ) === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_czas_realizacji"
@@ -352,7 +401,11 @@ class SingleBriefView extends React.Component {
                           <Row>
                             <Label>Inne ważne uwagi:</Label>
                             <Content>
-                              {context.allowEdit() === true ? (
+                              {context.allowEdit(
+                                item.wsp_status_grafika,
+                                item.wsp_status_kodera,
+                                item.user.email
+                              ) === true ? (
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_uwagi"
@@ -482,7 +535,10 @@ class SingleBriefView extends React.Component {
                         <Row>
                           <Label>Działania</Label>
                           <Content>
-                            {context.allowEdit() === true ? (
+                            {context.allowEdit(
+                              item.wsp_status_grafika,
+                              item.wsp_status_kodera
+                            ) === true ? (
                               <Button form="editBrief">
                                 <FontAwesomeIcon icon={faSave} size="1x" />
                                 Zapisz zmiany

@@ -43,7 +43,7 @@ class StronaBriefContent extends React.Component {
   };
 
   render() {
-    const { context, item } = this.props;
+    const {context, item} = this.props;
     return (
       <>
         <Row>
@@ -52,7 +52,11 @@ class StronaBriefContent extends React.Component {
             pliku wektorowego oraz księgę znaku?
           </Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_logo"
@@ -69,7 +73,11 @@ class StronaBriefContent extends React.Component {
             Jakie są założenia i podstawowy cel nowej strony internetowej?
           </Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_zalozenia"
@@ -87,7 +95,11 @@ class StronaBriefContent extends React.Component {
             informacyjna itp.)?
           </Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_charakter"
@@ -105,7 +117,11 @@ class StronaBriefContent extends React.Component {
             jej elementów (system CMS)?
           </Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_czy_cms"
@@ -120,7 +136,11 @@ class StronaBriefContent extends React.Component {
         <Row>
           <Label>Jaki ma być podstawowy język strony?</Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_jezyk_podstawowy"
@@ -137,7 +157,11 @@ class StronaBriefContent extends React.Component {
             Czy strona posiadać dodatkowe języki? Jeśli tak, to jakie?
           </Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_jezyki_dodatkowe"
@@ -154,7 +178,11 @@ class StronaBriefContent extends React.Component {
             Jakie mają być główne podstrony menu/zakładki w nawigacji górnej?
           </Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_podstrony_menu"
@@ -171,7 +199,11 @@ class StronaBriefContent extends React.Component {
             Jaka jest orientacyjna liczba wszystkich podstron (mapa strony)?
           </Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_liczba_podstron"
@@ -186,7 +218,11 @@ class StronaBriefContent extends React.Component {
         <Row>
           <Label>Jakie są Twoje oczekiwania co do kolorystyki strony?</Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_kolorystyka"
@@ -205,7 +241,11 @@ class StronaBriefContent extends React.Component {
             branżą)
           </Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_przyklady_stron"
@@ -223,7 +263,11 @@ class StronaBriefContent extends React.Component {
             Tobie.
           </Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_elementy"
@@ -238,7 +282,11 @@ class StronaBriefContent extends React.Component {
         <Row>
           <Label>Czy otrzymamy zdjęcia do strony?</Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_zdjecia"
@@ -253,7 +301,11 @@ class StronaBriefContent extends React.Component {
         <Row>
           <Label>Czy otrzymamy teksty do strony?</Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_teksty"
@@ -271,7 +323,11 @@ class StronaBriefContent extends React.Component {
             Facebook'a, link Youtube, itp.)
           </Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_elementy_zewnetrzne"
@@ -289,7 +345,11 @@ class StronaBriefContent extends React.Component {
             to jaką?
           </Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_zaawansowana_funkcjonalnosc"
@@ -306,7 +366,11 @@ class StronaBriefContent extends React.Component {
             Czy firma posiada wykupioną domenę (adres internetowy URL)?
           </Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_czy_domena"
@@ -324,7 +388,11 @@ class StronaBriefContent extends React.Component {
             znajdują się pliki strony)?
           </Label>
           <Content>
-            {context.allowEdit() === true ? (
+            {context.allowEdit(
+              item.wsp_status_grafika,
+              item.wsp_status_kodera,
+              item.user.email
+            ) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="str_czy_hosting"
