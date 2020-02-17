@@ -1,17 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Title from "../../components/Title/Title";
+import Status from "../../components/Status/Status";
 import Button from "../../components/Button/Button";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEye,
   faGlobe,
   faBookOpen,
   faExclamationCircle
 } from "@fortawesome/free-solid-svg-icons";
-import {handleStatus} from "../../utils/Utils";
+import { handleStatus } from "../../utils/Utils";
 
 const ListItemCol = styled.div`
   padding: 0 10px;
@@ -38,29 +39,33 @@ const StyledListItem = styled.li`
   }
 `;
 
-const StatusSpan = styled.span`
-  color: ${props => props.color || "#000000"};
-`;
-
 class ListItem extends React.Component {
   render() {
-    const {...props} = this.props;
+    const { ...props } = this.props;
 
     const date = new Date(props.created_at);
 
     const twoDays =
       new Date(props.created_at).getTime() + 2 * 24 * 60 * 60 * 1000;
 
-    const checkValidDate = (twoDays, statusGrafika, statusKodera) => {
+    const checkValidDate = (
+      twoDays,
+      kategoria,
+      statusGrafika,
+      statusKodera
+    ) => {
       if (twoDays < Date.now()) {
-        if (
-          statusGrafika === "nie_wycenione" ||
-          statusKodera === "nie_wycenione"
-        ) {
-          console.log("starsze niż 2 dni");
+        if (kategoria === "Katalog" && statusGrafika === "nie_wycenione") {
           return true;
+        } else if (
+          kategoria === "Strona internetowa" &&
+          (statusGrafika === "nie_wycenione" ||
+            statusKodera === "nie_wycenione")
+        ) {
+          return true;
+        } else {
+          return false;
         }
-        return false;
       } else {
         console.log("nowsze niż 2 dni");
         return false;
@@ -86,19 +91,26 @@ class ListItem extends React.Component {
         <ListItemCol>
           {checkValidDate(
             twoDays,
+            props.kategoria.name,
             props.wsp_status_grafika,
             props.wsp_status_kodera
           ) === true ? (
-            <StatusSpan color="#d62d20">
+            <Status color="red">
               <FontAwesomeIcon icon={faExclamationCircle} size="1x" />
               {date.toLocaleDateString()}
-            </StatusSpan>
+            </Status>
           ) : (
-            <StatusSpan>{date.toLocaleDateString()}</StatusSpan>
+            <Status>{date.toLocaleDateString()}</Status>
           )}
         </ListItemCol>
         <ListItemCol>{handleStatus(props.wsp_status_grafika)}</ListItemCol>
-        <ListItemCol>{handleStatus(props.wsp_status_kodera)}</ListItemCol>
+        <ListItemCol>
+          {props.kategoria.name === "Katalog" ? (
+            <Status color="green">---</Status>
+          ) : (
+            handleStatus(props.wsp_status_kodera)
+          )}
+        </ListItemCol>
         <ListItemCol>
           <Link to={`/brief/${props.id}`}>
             <Button>

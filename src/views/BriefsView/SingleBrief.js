@@ -1,15 +1,18 @@
 import React from "react";
 import AppContext from "../../context";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
-import {handleStatus} from "../../utils/Utils";
+import { handleStatus } from "../../utils/Utils";
 import styled from "styled-components";
 import StronaBriefContent from "./StronaBriefContent";
 import KatalogBriefContent from "./KatalogBriefContent";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowAltCircleLeft, faSave} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowAltCircleLeft,
+  faSave
+} from "@fortawesome/free-solid-svg-icons";
 
 const BriefWrapper = styled.div`
   display: flex;
@@ -85,7 +88,7 @@ class SingleBriefView extends React.Component {
   };
 
   render() {
-    const {match} = this.props;
+    const { match } = this.props;
     return (
       <AppContext.Consumer>
         {context => (
@@ -124,7 +127,6 @@ class SingleBriefView extends React.Component {
                               {context.allowEdit(
                                 item.wsp_status_grafika,
                                 item.wsp_status_kodera,
-                                item.user.email,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -431,7 +433,9 @@ class SingleBriefView extends React.Component {
                           <Content>{item.wsp_wycena_grafika}</Content>
                         </Row>
 
-                        {context.user.role.name === "Grafik" ? (
+                        {context.allowEditWycenaGrafika(
+                          item.wsp_status_grafika
+                        ) === true ? (
                           <Row>
                             <Label>Nowa wycena grafika:</Label>
                             <Content>
@@ -459,6 +463,9 @@ class SingleBriefView extends React.Component {
                                   name="wsp_status_grafika"
                                   value={this.state.wsp_status_grafika}
                                   onChange={this.handleInputChange}>
+                                  <option value="wybierz" disabled selected>
+                                    Wybierz opcję
+                                  </option>
                                   <option value="nie_wycenione">
                                     Nie wycenione
                                   </option>
@@ -476,19 +483,26 @@ class SingleBriefView extends React.Component {
                           </Row>
                         ) : null}
 
-                        <Row>
-                          <Label>Status wyceny kodera:</Label>
-                          <Content>
-                            {handleStatus(item.wsp_status_kodera)}
-                          </Content>
-                        </Row>
+                        {item.kategoria.name === "Strona internetowa" ? (
+                          <>
+                            <Row>
+                              <Label>Status wyceny kodera:</Label>
+                              <Content>
+                                {handleStatus(item.wsp_status_kodera)}
+                              </Content>
+                            </Row>
 
-                        <Row>
-                          <Label>Wycena kodera:</Label>
-                          <Content>{item.wsp_wycena_kodera}</Content>
-                        </Row>
+                            <Row>
+                              <Label>Wycena kodera:</Label>
+                              <Content>{item.wsp_wycena_kodera}</Content>
+                            </Row>
+                          </>
+                        ) : null}
 
-                        {context.user.role.name === "Koder" ? (
+                        {context.allowEditWycenaKodera(
+                          item.wsp_status_kodera
+                        ) === true &&
+                        item.kategoria.name === "Strona internetowa" ? (
                           <Row>
                             <Label>Nowa wycena kodera:</Label>
                             <Content>
@@ -514,7 +528,11 @@ class SingleBriefView extends React.Component {
                                 <Select
                                   name="wsp_status_kodera"
                                   value={this.state.wsp_status_kodera}
-                                  onChange={this.handleInputChange}>
+                                  onChange={this.handleInputChange}
+                                  required>
+                                  <option value="wybierz" disabled selected>
+                                    Wybierz opcję
+                                  </option>
                                   <option value="nie_wycenione">
                                     Nie wycenione
                                   </option>

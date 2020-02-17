@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import AppContext from "../../context";
 import axios from "axios";
-import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import BriefsView from "../../views/BriefsView/BriefsView";
 import SingleBriefView from "../../views/BriefsView/SingleBrief";
 import FilesView from "../../views/FilesView/FilesView";
@@ -11,7 +11,7 @@ import Modal from "../../components/Modal/Modal";
 import Notification from "../../components/Notification/Notification";
 import PWAPrompt from "react-ios-pwa-prompt";
 import Cookies from "js-cookie";
-import {API_URL} from "../../api";
+import { API_URL } from "../../api";
 import GlobalStyle from "../../styles/GlobalStyle";
 import Theme from "../../styles/Theme";
 import routes from "../../routes";
@@ -113,11 +113,11 @@ class Root extends React.Component {
       );
     });
     if (e.target.value.length) {
-      this.setState({filterActive: true});
+      this.setState({ filterActive: true });
     } else {
-      this.setState({filterActive: false});
+      this.setState({ filterActive: false });
     }
-    this.setState({filteredBrief: updatedList});
+    this.setState({ filteredBrief: updatedList });
   };
 
   addItem = (e, newItem) => {
@@ -242,6 +242,32 @@ class Root extends React.Component {
     }
   };
 
+  allowEditWycenaKodera = status_kodera => {
+    if (this.state.user.role.name === "Administrator") {
+      return true;
+    } else if (
+      this.state.user.role.name === "Koder" &&
+      status_kodera === "nie_wycenione"
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  allowEditWycenaGrafika = status_grafika => {
+    if (this.state.user.role.name === "Administrator") {
+      return true;
+    } else if (
+      this.state.user.role.name === "Grafik" &&
+      status_grafika === "nie_wycenione"
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   openModal = () => {
     this.setState({
       isModalOpen: true
@@ -264,7 +290,7 @@ class Root extends React.Component {
       })
       .then(response => {
         const brief = response.data;
-        this.setState({brief});
+        this.setState({ brief });
         console.log(response.data);
       })
       .catch(error => {
@@ -356,7 +382,7 @@ class Root extends React.Component {
       notificationContent: content
     });
     setTimeout(() => {
-      this.setState({notificationActive: false});
+      this.setState({ notificationActive: false });
     }, 2500);
   };
 
@@ -374,7 +400,9 @@ class Root extends React.Component {
       logout: this.logout,
       sendMail: this.sendMail,
       wycen: this.wycen,
-      allowEdit: this.allowEdit
+      allowEdit: this.allowEdit,
+      allowEditWycenaKodera: this.allowEditWycenaKodera,
+      allowEditWycenaGrafika: this.allowEditWycenaGrafika
     };
 
     return (
