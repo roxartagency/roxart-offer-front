@@ -5,7 +5,12 @@ import styled from "styled-components";
 import Title from "../../components/Title/Title";
 import Button from "../../components/Button/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEye, faGlobe, faBookOpen} from "@fortawesome/free-solid-svg-icons";
+import {
+  faEye,
+  faGlobe,
+  faBookOpen,
+  faExclamationCircle
+} from "@fortawesome/free-solid-svg-icons";
 import {handleStatus} from "../../utils/Utils";
 
 const ListItemCol = styled.div`
@@ -33,11 +38,34 @@ const StyledListItem = styled.li`
   }
 `;
 
+const StatusSpan = styled.span`
+  color: ${props => props.color || "#000000"};
+`;
+
 class ListItem extends React.Component {
   render() {
     const {...props} = this.props;
 
     const date = new Date(props.created_at);
+
+    const twoDays =
+      new Date(props.created_at).getTime() + 2 * 24 * 60 * 60 * 1000;
+
+    const checkValidDate = (twoDays, statusGrafika, statusKodera) => {
+      if (twoDays < Date.now()) {
+        if (
+          statusGrafika === "nie_wycenione" ||
+          statusKodera === "nie_wycenione"
+        ) {
+          console.log("starsze niż 2 dni");
+          return true;
+        }
+        return false;
+      } else {
+        console.log("nowsze niż 2 dni");
+        return false;
+      }
+    };
 
     return (
       <StyledListItem>
@@ -55,7 +83,20 @@ class ListItem extends React.Component {
           {props.kategoria.name}
         </ListItemCol>
         <ListItemCol>{props.user ? props.user.username : null}</ListItemCol>
-        <ListItemCol>{date.toLocaleDateString()}</ListItemCol>
+        <ListItemCol>
+          {checkValidDate(
+            twoDays,
+            props.wsp_status_grafika,
+            props.wsp_status_kodera
+          ) === true ? (
+            <StatusSpan color="#d62d20">
+              <FontAwesomeIcon icon={faExclamationCircle} size="1x" />
+              {date.toLocaleDateString()}
+            </StatusSpan>
+          ) : (
+            <StatusSpan>{date.toLocaleDateString()}</StatusSpan>
+          )}
+        </ListItemCol>
         <ListItemCol>{handleStatus(props.wsp_status_grafika)}</ListItemCol>
         <ListItemCol>{handleStatus(props.wsp_status_kodera)}</ListItemCol>
         <ListItemCol>
