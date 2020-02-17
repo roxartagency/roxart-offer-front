@@ -67,7 +67,6 @@ class ListItem extends React.Component {
           return false;
         }
       } else {
-        console.log("nowsze niż 2 dni");
         return false;
       }
     };
