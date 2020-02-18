@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ListItem from "../../components/List/ListItem";
+import PricedListItem from "../../components/List/PricedListItem";
 
 const StyledList = styled.ul`
   padding: 0;
@@ -37,7 +38,7 @@ const NoItems = styled.h1`
 
 class List extends React.Component {
   render() {
-    const {items} = this.props;
+    const { items, priced } = this.props;
 
     return (
       <>
@@ -53,9 +54,13 @@ class List extends React.Component {
               <ListHeadCol>Status kodera</ListHeadCol>
               <ListHeadCol>Działania</ListHeadCol>
             </ListHead>
-            {items.map(item => (
-              <ListItem key={item.id} {...item} />
-            ))}
+            {priced
+              ? items.map(item => (
+                  <PricedListItem key={item.id} priced={priced} {...item} />
+                ))
+              : items.map(item => (
+                  <ListItem key={item.id} priced={priced} {...item} />
+                ))}
           </StyledList>
         ) : (
           <NoItems>Brak wyników spełniających podane wymagania.</NoItems>

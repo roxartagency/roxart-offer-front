@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Title from "../../components/Title/Title";
-import Status from "../../components/Status/Status";
-import Button from "../../components/Button/Button";
+import Title from "../Title/Title";
+import Status from "../Status/Status";
+import Button from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEye,
@@ -39,7 +39,7 @@ const StyledListItem = styled.li`
   }
 `;
 
-class ListItem extends React.Component {
+class PricedListItem extends React.Component {
   render() {
     const { ...props } = this.props;
 
@@ -88,7 +88,7 @@ class ListItem extends React.Component {
       props.kategoria.name,
       props.wsp_status_grafika,
       props.wsp_status_kodera
-    ) === true ? null : (
+    ) === true ? (
       <StyledListItem>
         <ListItemCol>{props.id}</ListItemCol>
         <ListItemCol>
@@ -136,20 +136,20 @@ class ListItem extends React.Component {
           </Link>
         </ListItemCol>
       </StyledListItem>
-    );
+    ) : null;
   }
 }
 
-ListItem.propTypes = {
+PricedListItem.propTypes = {
   image: PropTypes.object,
   title: PropTypes.string,
   description: PropTypes.string,
   email: PropTypes.string
 };
 
-ListItem.defaultProps = {
+PricedListItem.defaultProps = {
   imageUrl: "https://via.placeholder.com/150",
   email: "test@deafult.pl"
 };
 
-export default ListItem;
+export default PricedListItem;

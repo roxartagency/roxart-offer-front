@@ -4,6 +4,7 @@ import AppContext from "../../context";
 import axios from "axios";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import BriefsView from "../../views/BriefsView/BriefsView";
+import PricedBriefsView from "../../views/BriefsView/PricedBriefsView";
 import SingleBriefView from "../../views/BriefsView/SingleBrief";
 import FilesView from "../../views/FilesView/FilesView";
 import Header from "../../components/Header/Header";
@@ -418,6 +419,7 @@ class Root extends React.Component {
               </Notification>
               <Switch>
                 <Route exact path={routes.briefs} component={BriefsView} />
+                <Route exact path={routes.priced} component={PricedBriefsView} />
                 <Route exact path={routes.brief} component={SingleBriefView} />
                 <Route exact path={routes.files} component={FilesView} />
                 <Redirect to={routes.briefs} />
