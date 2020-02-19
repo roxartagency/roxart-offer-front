@@ -448,6 +448,7 @@ class SingleBriefView extends React.Component {
                                     e,
                                     match.params.id,
                                     item.wsp_nazwa,
+                                    item.kategoria.name,
                                     item.user,
                                     this.state
                                   )
@@ -514,6 +515,7 @@ class SingleBriefView extends React.Component {
                                     e,
                                     match.params.id,
                                     item.wsp_nazwa,
+                                    item.kategoria.name,
                                     item.user,
                                     this.state
                                   )
@@ -562,7 +564,7 @@ class SingleBriefView extends React.Component {
                                 Zapisz zmiany
                               </Button>
                             ) : null}
-                            <StyledLink to={"/"}>
+                            <StyledLink to={"/briefs/"}>
                               <FontAwesomeIcon
                                 icon={faArrowAltCircleLeft}
                                 size="1x"

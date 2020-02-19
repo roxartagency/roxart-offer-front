@@ -1,5 +1,7 @@
 import React from "react";
 import Status from "../components/Status/Status";
+import axios from "axios";
+import { API_URL } from "../api";
 
 export const handleStatus = status => {
   switch (status) {
@@ -41,12 +43,29 @@ export const requestNotificationPermission = async () => {
   }
 };
 
+export const sendMail = (e, to, subject, text) => {
+  e.preventDefault();
+
+  axios
+    .post(`${API_URL}/email`, {
+      to: to,
+      subject: subject,
+      text: text
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log("An error occurred:", error);
+    });
+};
 
 const utils = {
   handleStatus: handleStatus,
   check: check,
   displayNotification: displayNotification,
-  requestNotificationPermission: requestNotificationPermission
+  requestNotificationPermission: requestNotificationPermission,
+  sendMail: sendMail
 };
 
 export default utils;

@@ -79,9 +79,7 @@ class Root extends React.Component {
       this.setState({
         userToken: userToken
       });
-      setTimeout(() => {
-        this.fetchBriefs();
-      });
+      this.fetchBriefs();
     }
 
     utils.check();
@@ -144,7 +142,7 @@ class Root extends React.Component {
         console.log(res);
         console.log(res.data);
         this.showNotification("Dodano nowy brief: " + newItem.wsp_nazwa);
-        this.sendMail(
+        utils.sendMail(
           e,
           "dominik.s@roxart.pl",
           "Dodano nowego briefa: " + newItem.wsp_nazwa,
@@ -158,7 +156,7 @@ class Root extends React.Component {
       });
   };
 
-  wycen = (e, id, title, user, wycena) => {
+  wycen = (e, id, title, kategoria, user, wycena) => {
     e.preventDefault();
 
     axios
@@ -169,32 +167,42 @@ class Root extends React.Component {
       })
       .then(res => {
         this.showNotification("Wycena zapisana");
-        setTimeout(() => {
-          this.fetchBriefs();
-        }, 500);
+        this.fetchBriefs();
+
         if (wycena.wsp_status_grafika === "zwrot_do_handlowca") {
-          this.sendMail(
+          utils.sendMail(
             e,
             user.email,
             "Grafik zwrócił wycenę do poprawy: " + title,
             "Zaloguj się do aplikacji i popraw briefa!"
           );
         } else if (wycena.wsp_status_grafika === "wycenione") {
-          this.sendMail(
-            e,
-            "koder@roxart.pl",
-            "Grafik dodał nową wycenę: " + title,
-            "Zaloguj się do aplikacji i wyceń godziny kodera!"
-          );
+          if (kategoria === "Katalog") {
+            console.log("Mail do admina!");
+            utils.sendMail(
+              e,
+              "koder@roxart.pl",
+              "Grafik dodał nową wycenę: " + title,
+              "Zaloguj się do aplikacji i wyceń godziny kodera!"
+            );
+          } else {
+            console.log("Mail do kodera!");
+            utils.sendMail(
+              e,
+              "koder@roxart.pl",
+              "Grafik dodał nową wycenę: " + title,
+              "Zaloguj się do aplikacji i wyceń godziny kodera!"
+            );
+          }
         } else if (wycena.wsp_status_kodera === "zwrot_do_handlowca") {
-          this.sendMail(
+          utils.sendMail(
             e,
             user.email,
             "Koder zwrócił wycenę do poprawy: " + title,
             "Zaloguj się do aplikacji i popraw briefa!"
           );
         } else if (wycena.wsp_status_kodera === "wycenione") {
-          this.sendMail(
+          utils.sendMail(
             e,
             "admin@roxart.pl",
             "Koder dodał nową wycenę: " + title,
@@ -214,9 +222,7 @@ class Root extends React.Component {
         }
       })
       .then(res => {
-        setTimeout(() => {
-          this.fetchBriefs();
-        }, 300);
+        this.fetchBriefs();
         this.showNotification(
           "Zapisano poprawnie zmiany w: " + res.data.wsp_nazwa
         );
@@ -283,20 +289,23 @@ class Root extends React.Component {
 
   fetchBriefs = () => {
     console.log("Fetch briefs");
-    axios
-      .get(`${API_URL}/briefs?_sort=created_at:ASC`, {
-        headers: {
-          Authorization: `Bearer ${this.state.userToken}`
-        }
-      })
-      .then(response => {
-        const brief = response.data;
-        this.setState({ brief });
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.log("An error occurred:", error);
-      });
+
+    setTimeout(() => {
+      axios
+        .get(`${API_URL}/briefs?_sort=created_at:ASC`, {
+          headers: {
+            Authorization: `Bearer ${this.state.userToken}`
+          }
+        })
+        .then(response => {
+          const brief = response.data;
+          this.setState({ brief });
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log("An error occurred:", error);
+        });
+    }, 300);
 
     // utils.displayNotification("Odświeżono briefy", {
     //   icon: "/roxart192.png"
@@ -360,23 +369,6 @@ class Root extends React.Component {
     });
   };
 
-  sendMail = (e, to, subject, text) => {
-    e.preventDefault();
-
-    axios
-      .post(`${API_URL}/email`, {
-        to: to,
-        subject: subject,
-        text: text
-      })
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log("An error occurred:", error);
-      });
-  };
-
   showNotification = content => {
     this.setState({
       notificationActive: true,
@@ -399,7 +391,7 @@ class Root extends React.Component {
       editItem: this.editItem,
       login: this.login,
       logout: this.logout,
-      sendMail: this.sendMail,
+      sendMail: utils.sendMail,
       wycen: this.wycen,
       allowEdit: this.allowEdit,
       allowEditWycenaKodera: this.allowEditWycenaKodera,
@@ -419,7 +411,11 @@ class Root extends React.Component {
               </Notification>
               <Switch>
                 <Route exact path={routes.briefs} component={BriefsView} />
-                <Route exact path={routes.priced} component={PricedBriefsView} />
+                <Route
+                  exact
+                  path={routes.priced}
+                  component={PricedBriefsView}
+                />
                 <Route exact path={routes.brief} component={SingleBriefView} />
                 <Route exact path={routes.files} component={FilesView} />
                 <Redirect to={routes.briefs} />

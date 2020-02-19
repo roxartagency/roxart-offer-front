@@ -44,19 +44,19 @@ const HeaderNavigation = () => (
       <nav>
         <MenuWrapper>
           <NavItem>
-            <StyledLink to="/">briefy</StyledLink>
+            <StyledLink to="/briefs/">briefy</StyledLink>
           </NavItem>
 
           {context.user.username ? (
             <>
               <NavItem>
-                <StyledLink to="/priced">wycenione</StyledLink>
+                <StyledLink to="/briefs/priced">wycenione</StyledLink>
               </NavItem>
               <NavItem>
-                <StyledLink to="/files">pliki</StyledLink>
+                <StyledLink to="/briefs/files">pliki</StyledLink>
               </NavItem>
               <NavItem>
-                <StyledLink onClick={e => context.logout(e)} to="/">
+                <StyledLink onClick={e => context.logout(e)} to="/briefs/">
                   Wyloguj: {context.user.username}
                 </StyledLink>
               </NavItem>

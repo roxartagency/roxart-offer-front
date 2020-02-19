@@ -128,7 +128,7 @@ class ListItem extends React.Component {
           )}
         </ListItemCol>
         <ListItemCol>
-          <Link to={`/brief/${props.id}`}>
+          <Link to={`/briefs/brief/${props.id}`}>
             <Button>
               <FontAwesomeIcon icon={faEye} size="1x" />
               Zobacz
