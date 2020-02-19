@@ -181,7 +181,7 @@ class Root extends React.Component {
             console.log("Mail do admina!");
             utils.sendMail(
               e,
-              "koder@roxart.pl",
+              "wyceny@roxart.pl",
               "Grafik dodał nową wycenę: " + title,
               "Zaloguj się do aplikacji i wyceń godziny kodera!"
             );
@@ -189,7 +189,7 @@ class Root extends React.Component {
             console.log("Mail do kodera!");
             utils.sendMail(
               e,
-              "koder@roxart.pl",
+              "lukasz.c@roxart.pl",
               "Grafik dodał nową wycenę: " + title,
               "Zaloguj się do aplikacji i wyceń godziny kodera!"
             );
@@ -204,7 +204,7 @@ class Root extends React.Component {
         } else if (wycena.wsp_status_kodera === "wycenione") {
           utils.sendMail(
             e,
-            "admin@roxart.pl",
+            "wyceny@roxart.pl",
             "Koder dodał nową wycenę: " + title,
             "Zaloguj się do aplikacji i przygotuj ofertę."
           );
