@@ -391,7 +391,6 @@ class Root extends React.Component {
       editItem: this.editItem,
       login: this.login,
       logout: this.logout,
-      sendMail: utils.sendMail,
       wycen: this.wycen,
       allowEdit: this.allowEdit,
       allowEditWycenaKodera: this.allowEditWycenaKodera,
