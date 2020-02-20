@@ -144,7 +144,7 @@ class Root extends React.Component {
         this.showNotification("Dodano nowy brief: " + newItem.wsp_nazwa);
         utils.sendMail(
           e,
-          "dominik.s@roxart.pl",
+          "bartek.w@roxart.pl",
           "Dodano nowego briefa: " + newItem.wsp_nazwa,
           "Zaloguj się do aplikacji i wyceń go!"
         );
