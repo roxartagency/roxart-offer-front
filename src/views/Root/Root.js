@@ -126,11 +126,11 @@ class Root extends React.Component {
       .post(
         `${API_URL}/briefs`,
         {
-          ...newItem,
           kategoria: {
             id: newItem.kategoria
           },
-          user: this.state.user
+          user: this.state.user,
+          ...newItem
         },
         {
           headers: {
@@ -153,6 +153,7 @@ class Root extends React.Component {
       })
       .catch(error => {
         this.showNotification("Wystąpił błąd zapisywania zmian w: " + error);
+        console.log(error);
       });
   };
 
@@ -168,7 +169,7 @@ class Root extends React.Component {
       .then(res => {
         this.showNotification("Wycena zapisana");
         this.fetchBriefs();
-
+        console.log(res);
         if (wycena.wsp_status_grafika === "zwrot_do_handlowca") {
           utils.sendMail(
             e,
@@ -209,6 +210,10 @@ class Root extends React.Component {
             "Zaloguj się do aplikacji i przygotuj ofertę."
           );
         }
+      })
+      .catch(error => {
+        this.showNotification("Wystąpił błąd podczas wyceny: " + error);
+        console.log(error);
       });
   };
 
