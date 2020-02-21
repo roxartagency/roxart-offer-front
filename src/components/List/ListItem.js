@@ -12,7 +12,7 @@ import {
   faBookOpen,
   faExclamationCircle
 } from "@fortawesome/free-solid-svg-icons";
-import { handleStatus } from "../../utils/Utils";
+import { handleStatus, checkStatus, checkValidDate } from "../../utils/Utils";
 
 const ListItemCol = styled.div`
   padding: 0 10px;
@@ -23,7 +23,7 @@ const ListItemCol = styled.div`
 const StyledListItem = styled.li`
   list-style: none;
   display: grid;
-  grid-template-columns: 5% 15% 13% 10% 11% 15% 15% auto;
+  grid-template-columns: 5% 13% 11% 8% 8% 9% 9% 9% auto;
   grid-auto-flow: row;
   width: 100%;
   align-items: center;
@@ -48,47 +48,9 @@ class ListItem extends React.Component {
     const twoDays =
       new Date(props.created_at).getTime() + 2 * 24 * 60 * 60 * 1000;
 
-    const checkValidDate = (
-      twoDays,
-      kategoria,
-      statusGrafika,
-      statusKodera
-    ) => {
-      if (twoDays < Date.now()) {
-        if (kategoria === "Katalog" && statusGrafika === "nie_wycenione") {
-          return true;
-        } else if (
-          kategoria === "Strona internetowa" &&
-          (statusGrafika === "nie_wycenione" ||
-            statusKodera === "nie_wycenione")
-        ) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    };
 
-    const checkIfPriced = (kategoria, statusGrafika, statusKodera) => {
-      if (kategoria === "Katalog" && statusGrafika === "wycenione") {
-        return true;
-      } else if (
-        kategoria === "Strona internetowa" &&
-        (statusGrafika === "wycenione" && statusKodera === "wycenione")
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    };
 
-    return checkIfPriced(
-      props.kategoria.name,
-      props.wsp_status_grafika,
-      props.wsp_status_kodera
-    ) === true ? null : (
+    return checkStatus(props.wsp_statuss) === true ? null : (
       <StyledListItem>
         <ListItemCol>{props.id}</ListItemCol>
         <ListItemCol>
@@ -119,6 +81,7 @@ class ListItem extends React.Component {
             <Status>{date.toLocaleDateString()}</Status>
           )}
         </ListItemCol>
+        <ListItemCol>{props.wsp_statuss}</ListItemCol>
         <ListItemCol>{handleStatus(props.wsp_status_grafika)}</ListItemCol>
         <ListItemCol>
           {props.kategoria.name === "Katalog" ? (

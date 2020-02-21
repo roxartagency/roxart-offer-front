@@ -125,8 +125,7 @@ class SingleBriefView extends React.Component {
                             <Label>Nazwa firmy:</Label>
                             <Content>
                               {context.allowEdit(
-                                item.wsp_status_grafika,
-                                item.wsp_status_kodera,
+                                item.wsp_statuss,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -144,8 +143,7 @@ class SingleBriefView extends React.Component {
                             <Label>Adres:</Label>
                             <Content>
                               {context.allowEdit(
-                                item.wsp_status_grafika,
-                                item.wsp_status_kodera,
+                                item.wsp_statuss,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -164,8 +162,7 @@ class SingleBriefView extends React.Component {
                             <Label>Adres e-mail osoby kontaktowej:</Label>
                             <Content>
                               {context.allowEdit(
-                                item.wsp_status_grafika,
-                                item.wsp_status_kodera,
+                                item.wsp_statuss,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -183,10 +180,6 @@ class SingleBriefView extends React.Component {
                             <Label>Utworzono:</Label>
                             <Content>{item.created_at}</Content>
                           </Row>
-                          <Row>
-                            <Label>Status:</Label>
-                            <Content>{item.wsp_status}</Content>
-                          </Row>
 
                           <Row>
                             <Label>
@@ -195,8 +188,7 @@ class SingleBriefView extends React.Component {
                             </Label>
                             <Content>
                               {context.allowEdit(
-                                item.wsp_status_grafika,
-                                item.wsp_status_kodera,
+                                item.wsp_statuss,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -215,8 +207,7 @@ class SingleBriefView extends React.Component {
                             <Label>Czym zajmuje się Twoja firma?</Label>
                             <Content>
                               {context.allowEdit(
-                                item.wsp_status_grafika,
-                                item.wsp_status_kodera,
+                                item.wsp_statuss,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -235,8 +226,7 @@ class SingleBriefView extends React.Component {
                             <Label>W jakiej branży działa Twoja firma?</Label>
                             <Content>
                               {context.allowEdit(
-                                item.wsp_status_grafika,
-                                item.wsp_status_kodera,
+                                item.wsp_statuss,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -258,8 +248,7 @@ class SingleBriefView extends React.Component {
                             </Label>
                             <Content>
                               {context.allowEdit(
-                                item.wsp_status_grafika,
-                                item.wsp_status_kodera,
+                                item.wsp_statuss,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -281,8 +270,7 @@ class SingleBriefView extends React.Component {
                             </Label>
                             <Content>
                               {context.allowEdit(
-                                item.wsp_status_grafika,
-                                item.wsp_status_kodera,
+                                item.wsp_statuss,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -304,8 +292,7 @@ class SingleBriefView extends React.Component {
                             </Label>
                             <Content>
                               {context.allowEdit(
-                                item.wsp_status_grafika,
-                                item.wsp_status_kodera,
+                                item.wsp_statuss,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -327,8 +314,7 @@ class SingleBriefView extends React.Component {
                             </Label>
                             <Content>
                               {context.allowEdit(
-                                item.wsp_status_grafika,
-                                item.wsp_status_kodera,
+                                item.wsp_statuss,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -350,8 +336,7 @@ class SingleBriefView extends React.Component {
                             </Label>
                             <Content>
                               {context.allowEdit(
-                                item.wsp_status_grafika,
-                                item.wsp_status_kodera,
+                                item.wsp_statuss,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -373,8 +358,7 @@ class SingleBriefView extends React.Component {
                             </Label>
                             <Content>
                               {context.allowEdit(
-                                item.wsp_status_grafika,
-                                item.wsp_status_kodera,
+                                item.wsp_statuss,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -404,8 +388,7 @@ class SingleBriefView extends React.Component {
                             <Label>Inne ważne uwagi:</Label>
                             <Content>
                               {context.allowEdit(
-                                item.wsp_status_grafika,
-                                item.wsp_status_kodera,
+                                item.wsp_statuss,
                                 item.user.email
                               ) === true ? (
                                 <Input
@@ -420,6 +403,26 @@ class SingleBriefView extends React.Component {
                             </Content>
                           </Row>
                         </form>
+
+                        <Row>
+                          <Label>Załączniki:</Label>
+                          <Content>
+                            {item.wsp_zalacznik ? (
+                              <a
+                                href={
+                                  "https://roxart-offer-dev.roxapps.usermd.net" +
+                                  item.wsp_zalacznik
+                                }
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                download>
+                                Pobierz załącznik
+                              </a>
+                            ) : (
+                              "Brak"
+                            )}
+                          </Content>
+                        </Row>
 
                         <Row>
                           <Label>Status wyceny grafika:</Label>
@@ -553,16 +556,70 @@ class SingleBriefView extends React.Component {
                         ) : null}
 
                         <Row>
+                          <Label>Status:</Label>
+                          <Content>{handleStatus(item.wsp_statuss)}</Content>
+                        </Row>
+
+                        {context.user.role.name === "Administrator" ? (
+                          <>
+                            <Row>
+                              <Label>Zmiana statusu:</Label>
+                              <Content>
+                                <form
+                                  autoComplete="off"
+                                  id="changeStatus"
+                                  onSubmit={e =>
+                                    context.changeStatus(
+                                      e,
+                                      match.params.id,
+                                      this.state
+                                    )
+                                  }>
+                                  <Select
+                                    name="wsp_statuss"
+                                    value={this.state.wsp_statuss}
+                                    onChange={this.handleInputChange}
+                                    required>
+                                    <option value="wybierz" disabled selected>
+                                      Wybierz opcję
+                                    </option>
+                                    <option value="wersja_robocza">
+                                      Wersja robocza
+                                    </option>
+                                    <option value="do_wyceny">Do wyceny</option>
+                                    <option value="wycenione">Wycenione</option>
+                                    <option value="archiwum">Archiwum</option>
+                                  </Select>
+                                  <Button type="submit" form="changeStatus">
+                                    <FontAwesomeIcon icon={faSave} size="1x" />
+                                    Zapisz status
+                                  </Button>
+                                </form>
+                              </Content>
+                            </Row>
+                          </>
+                        ) : null}
+
+                        <Row>
                           <Label>Działania</Label>
                           <Content>
                             {context.allowEdit(
-                              item.wsp_status_grafika,
-                              item.wsp_status_kodera
+                              item.wsp_statuss,
+                              item.user.email
                             ) === true ? (
-                              <Button form="editBrief">
-                                <FontAwesomeIcon icon={faSave} size="1x" />
-                                Zapisz zmiany
-                              </Button>
+                              <>
+                                <Button form="editBrief">
+                                  <FontAwesomeIcon icon={faSave} size="1x" />
+                                  Zapisz zmiany
+                                </Button>
+                                <Button
+                                  onClick={e =>
+                                    context.przekazDoWyceny(e, match.params.id)
+                                  }>
+                                  <FontAwesomeIcon icon={faSave} size="1x" />
+                                  Przekaż do wyceny
+                                </Button>
+                              </>
                             ) : null}
                             <StyledLink to={"/briefs/"}>
                               <FontAwesomeIcon

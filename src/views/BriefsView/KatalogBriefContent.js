@@ -53,8 +53,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -75,8 +74,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -99,8 +97,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -125,8 +122,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -149,8 +145,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -170,8 +165,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -193,8 +187,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -218,8 +211,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -247,8 +239,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -269,8 +260,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -292,8 +282,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -314,8 +303,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -337,8 +325,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -361,8 +348,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -383,8 +369,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -406,8 +391,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -428,8 +412,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -454,8 +437,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -477,8 +459,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -503,8 +484,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input
@@ -526,8 +506,7 @@ class KatalogBriefContent extends React.Component {
           </Label>
           <Content>
             {context.allowEdit(
-              item.wsp_status_grafika,
-              item.wsp_status_kodera,
+              item.wsp_statuss,
               item.user.email
             ) === true ? (
               <Input

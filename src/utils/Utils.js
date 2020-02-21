@@ -12,7 +12,7 @@ export const handleStatus = status => {
     case "wycenione":
       return <Status color="green">Wycenione</Status>;
     default:
-      return <Status>Null</Status>;
+      return <Status>{status}</Status>;
   }
 };
 
@@ -60,12 +60,44 @@ export const sendMail = (e, to, subject, text) => {
     });
 };
 
+export const checkStatus = status => {
+  if (status === "wersja_robocza" || status === "do_wyceny") {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+export const checkValidDate = (
+  twoDays,
+  kategoria,
+  statusGrafika,
+  statusKodera
+) => {
+  if (twoDays < Date.now()) {
+    if (kategoria === "Katalog" && statusGrafika === "nie_wycenione") {
+      return true;
+    } else if (
+      kategoria === "Strona internetowa" &&
+      (statusGrafika === "nie_wycenione" || statusKodera === "nie_wycenione")
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+};
+
 const utils = {
   handleStatus: handleStatus,
   check: check,
   displayNotification: displayNotification,
   requestNotificationPermission: requestNotificationPermission,
-  sendMail: sendMail
+  sendMail: sendMail,
+  checkStatus: checkStatus,
+  checkValidDate: checkValidDate
 };
 
 export default utils;

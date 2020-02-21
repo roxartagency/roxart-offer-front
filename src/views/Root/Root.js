@@ -119,6 +119,30 @@ class Root extends React.Component {
     this.setState({ filteredBrief: updatedList });
   };
 
+  // sendFile = file => {
+  //   const formData = new FormData();
+
+  //   Array.from(file).forEach(image => {
+  //     formData.append("files", image);
+  //   });
+
+  //   let returnValue = "";
+
+  //   axios
+  //     .post(`${API_URL}/upload`, formData, {
+  //       headers: { "Content-Type": "multipart/form-data" }
+  //     })
+  //     .then(res => {
+  //       // console.log(res.data[0].url);
+  //       returnValue = res.data[0].url;
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+
+  //   return returnValue;
+  // };
+
   addItem = (e, newItem) => {
     e.preventDefault();
 
@@ -130,6 +154,7 @@ class Root extends React.Component {
             id: newItem.kategoria
           },
           user: this.state.user,
+          wsp_status: "wersja_robocza",
           ...newItem
         },
         {
@@ -144,7 +169,7 @@ class Root extends React.Component {
         this.showNotification("Dodano nowy brief: " + newItem.wsp_nazwa);
         utils.sendMail(
           e,
-          "bartek.w@roxart.pl",
+          "dominik.s@roxart.pl",
           "Dodano nowego briefa: " + newItem.wsp_nazwa,
           "Zaloguj się do aplikacji i wyceń go!"
         );
@@ -182,7 +207,7 @@ class Root extends React.Component {
             console.log("Mail do admina!");
             utils.sendMail(
               e,
-              "wyceny@roxart.pl",
+              "dominik.s@roxart.pl",
               "Grafik dodał nową wycenę: " + title,
               "Zaloguj się do aplikacji i wyceń godziny kodera!"
             );
@@ -190,7 +215,7 @@ class Root extends React.Component {
             console.log("Mail do kodera!");
             utils.sendMail(
               e,
-              "lukasz.c@roxart.pl",
+              "dominik.s@roxart.pl",
               "Grafik dodał nową wycenę: " + title,
               "Zaloguj się do aplikacji i wyceń godziny kodera!"
             );
@@ -198,14 +223,14 @@ class Root extends React.Component {
         } else if (wycena.wsp_status_kodera === "zwrot_do_handlowca") {
           utils.sendMail(
             e,
-            user.email,
+            "dominik.s@roxart.pl",
             "Koder zwrócił wycenę do poprawy: " + title,
             "Zaloguj się do aplikacji i popraw briefa!"
           );
         } else if (wycena.wsp_status_kodera === "wycenione") {
           utils.sendMail(
             e,
-            "wyceny@roxart.pl",
+            "dominik.s@roxart.pl",
             "Koder dodał nową wycenę: " + title,
             "Zaloguj się do aplikacji i przygotuj ofertę."
           );
@@ -237,21 +262,41 @@ class Root extends React.Component {
       });
   };
 
-  allowEdit = (status_grafika, status_kodera, user) => {
+  allowEdit = (status, user) => {
     if (this.state.user.role.name === "Administrator") {
       return true;
     } else if (this.state.user.role.name === "Handlowiec") {
-      if (
-        this.state.user.email === user &&
-        (status_grafika === "zwrot_do_handlowca" ||
-          status_kodera === "zwrot_do_handlowca")
-      ) {
+      if (this.state.user.email === user && status === "wersja_robocza") {
         return true;
       }
       return false;
     } else {
       return false;
     }
+  };
+
+  przekazDoWyceny = (e, id) => {
+    e.preventDefault();
+
+    axios
+      .put(
+        `${API_URL}/briefs/${id}`,
+        {
+          wsp_statuss: "do_wyceny"
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.state.userToken}`
+          }
+        }
+      )
+      .then(res => {
+        this.fetchBriefs();
+        this.showNotification("Przekazano do wyceny: " + res.data.wsp_nazwa);
+      })
+      .catch(error => {
+        this.showNotification("Błąd w zapisywaniu: " + error);
+      });
   };
 
   allowEditWycenaKodera = status_kodera => {
@@ -278,6 +323,24 @@ class Root extends React.Component {
     } else {
       return false;
     }
+  };
+
+  changeStatus = (e, id, status) => {
+    e.preventDefault();
+
+    axios
+      .put(`${API_URL}/briefs/${id}`, status, {
+        headers: {
+          Authorization: `Bearer ${this.state.userToken}`
+        }
+      })
+      .then(res => {
+        this.fetchBriefs();
+        this.showNotification("Status zmieniony na: " + status.wsp_statuss);
+      })
+      .catch(error => {
+        this.showNotification("Wystąpił błąd zapisywania zmian w: " + error);
+      });
   };
 
   openModal = () => {
@@ -397,6 +460,8 @@ class Root extends React.Component {
       login: this.login,
       logout: this.logout,
       wycen: this.wycen,
+      przekazDoWyceny: this.przekazDoWyceny,
+      changeStatus: this.changeStatus,
       allowEdit: this.allowEdit,
       allowEditWycenaKodera: this.allowEditWycenaKodera,
       allowEditWycenaGrafika: this.allowEditWycenaGrafika

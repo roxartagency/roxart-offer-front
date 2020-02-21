@@ -13,7 +13,7 @@ const ListHead = styled.li`
   color: #fff;
   list-style: none;
   display: grid;
-  grid-template-columns: 5% 15% 13% 10% 11% 15% 15% auto;
+  grid-template-columns: 5% 13% 11% 8% 8% 9% 9% 9% auto;
   grid-auto-flow: row;
   grid-template-rows: 60px;
   font-size: 14px;
@@ -50,17 +50,17 @@ class List extends React.Component {
               <ListHeadCol>Kategoria</ListHeadCol>
               <ListHeadCol>Dodane przez</ListHeadCol>
               <ListHeadCol>Data dodania</ListHeadCol>
+              <ListHeadCol>Status</ListHeadCol>
               <ListHeadCol>Status grafika</ListHeadCol>
               <ListHeadCol>Status kodera</ListHeadCol>
               <ListHeadCol>Działania</ListHeadCol>
             </ListHead>
-            {priced
-              ? items.map(item => (
-                  <PricedListItem key={item.id} priced={priced} {...item} />
-                ))
-              : items.map(item => (
-                  <ListItem key={item.id} priced={priced} {...item} />
-                ))}
+            {items.map(item => (
+              <>
+                {item.wsp_statuss ? null : null}
+                <PricedListItem key={item.id} priced={priced} {...item} />
+              </>
+            ))}
           </StyledList>
         ) : (
           <NoItems>Brak wyników spełniających podane wymagania.</NoItems>
