@@ -12,7 +12,7 @@ import {
   faBookOpen,
   faExclamationCircle
 } from "@fortawesome/free-solid-svg-icons";
-import { handleStatus, checkStatus } from "../../utils/Utils";
+import { handleStatus, checkStatus, checkValidDate } from "../../utils/Utils";
 
 const ListItemCol = styled.div`
   padding: 0 10px;
@@ -23,7 +23,7 @@ const ListItemCol = styled.div`
 const StyledListItem = styled.li`
   list-style: none;
   display: grid;
-  grid-template-columns: 5% 13% 11% 8% 8% 9% 9% 9% auto;
+  grid-template-columns: 5% 16% 15% 10% 10% 10% 10% 10% auto;
   grid-auto-flow: row;
   width: 100%;
   align-items: center;
@@ -48,28 +48,28 @@ class PricedListItem extends React.Component {
     const twoDays =
       new Date(props.created_at).getTime() + 2 * 24 * 60 * 60 * 1000;
 
-    const checkValidDate = (
-      twoDays,
-      kategoria,
-      statusGrafika,
-      statusKodera
-    ) => {
-      if (twoDays < Date.now()) {
-        if (kategoria === "Katalog" && statusGrafika === "nie_wycenione") {
-          return true;
-        } else if (
-          kategoria === "Strona internetowa" &&
-          (statusGrafika === "nie_wycenione" ||
-            statusKodera === "nie_wycenione")
-        ) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    };
+    // const checkValidDate = (
+    //   twoDays,
+    //   kategoria,
+    //   statusGrafika,
+    //   statusKodera
+    // ) => {
+    //   if (twoDays < Date.now()) {
+    //     if (kategoria === "Katalog" && statusGrafika === "nie_wycenione") {
+    //       return true;
+    //     } else if (
+    //       kategoria === "Strona internetowa" &&
+    //       (statusGrafika === "nie_wycenione" ||
+    //         statusKodera === "nie_wycenione")
+    //     ) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   } else {
+    //     return false;
+    //   }
+    // };
 
     return checkStatus(props.wsp_statuss) === true ? (
       <StyledListItem>

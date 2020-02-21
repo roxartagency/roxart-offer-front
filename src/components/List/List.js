@@ -13,7 +13,7 @@ const ListHead = styled.li`
   color: #fff;
   list-style: none;
   display: grid;
-  grid-template-columns: 5% 13% 11% 8% 8% 9% 9% 9% auto;
+  grid-template-columns: 5% 16% 15% 10% 10% 10% 10% 10% auto;
   grid-auto-flow: row;
   grid-template-rows: 60px;
   font-size: 14px;
