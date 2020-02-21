@@ -185,24 +185,17 @@ class Root extends React.Component {
   wycen = (e, id, title, kategoria, user, wycena) => {
     e.preventDefault();
 
-    axios
-      .put(`${API_URL}/briefs/${id}`, wycena, {
-        headers: {
-          Authorization: `Bearer ${this.state.userToken}`
-        }
-      })
-      .then(res => {
-        this.showNotification("Wycena zapisana");
-        this.fetchBriefs();
-        console.log(res);
-        if (wycena.wsp_status_grafika === "zwrot_do_handlowca") {
-          utils.sendMail(
-            e,
-            user.email,
-            "Grafik zwrócił wycenę do poprawy: " + title,
-            "Zaloguj się do aplikacji i popraw briefa!"
-          );
-        } else if (wycena.wsp_status_grafika === "wycenione") {
+    if (wycena.wsp_status_grafika === "wycenione") {
+      axios
+        .put(`${API_URL}/briefs/${id}`, wycena, {
+          headers: {
+            Authorization: `Bearer ${this.state.userToken}`
+          }
+        })
+        .then(res => {
+          this.showNotification("Wycena zapisana");
+          this.fetchBriefs();
+          console.log(res);
           if (kategoria === "Katalog") {
             console.log("Mail do admina!");
             utils.sendMail(
@@ -220,26 +213,93 @@ class Root extends React.Component {
               "Zaloguj się do aplikacji i wyceń godziny kodera!"
             );
           }
-        } else if (wycena.wsp_status_kodera === "zwrot_do_handlowca") {
+        })
+        .catch(error => {
+          this.showNotification("Wystąpił błąd podczas wyceny: " + error);
+          console.log(error);
+        });
+    } else if (wycena.wsp_status_grafika === "zwrot_do_handlowca") {
+      axios
+        .put(
+          `${API_URL}/briefs/${id}`,
+          {
+            wsp_statuss: "wersja_robocza",
+            ...wycena
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${this.state.userToken}`
+            }
+          }
+        )
+        .then(res => {
+          this.showNotification("Wycena zapisana");
+          this.fetchBriefs();
+          console.log(res);
           utils.sendMail(
             e,
             "dominik.s@roxart.pl",
-            "Koder zwrócił wycenę do poprawy: " + title,
-            "Zaloguj się do aplikacji i popraw briefa!"
+            "Grafik zwrócił briefa: " + title,
+            "Zaloguj się do aplikacji i popraw go!"
           );
-        } else if (wycena.wsp_status_kodera === "wycenione") {
+        })
+        .catch(error => {
+          this.showNotification("Wystąpił błąd podczas wyceny: " + error);
+          console.log(error);
+        });
+    } else if (wycena.wsp_status_kodera === "wycenione") {
+      axios
+        .put(`${API_URL}/briefs/${id}`, wycena, {
+          headers: {
+            Authorization: `Bearer ${this.state.userToken}`
+          }
+        })
+        .then(res => {
+          this.showNotification("Wycena zapisana");
+          this.fetchBriefs();
+          console.log(res);
           utils.sendMail(
             e,
             "dominik.s@roxart.pl",
             "Koder dodał nową wycenę: " + title,
             "Zaloguj się do aplikacji i przygotuj ofertę."
           );
-        }
-      })
-      .catch(error => {
-        this.showNotification("Wystąpił błąd podczas wyceny: " + error);
-        console.log(error);
-      });
+        })
+        .catch(error => {
+          this.showNotification("Wystąpił błąd podczas wyceny: " + error);
+          console.log(error);
+        });
+    } else if (wycena.wsp_status_kodera === "zwrot_do_handlowca") {
+      axios
+        .put(
+          `${API_URL}/briefs/${id}`,
+          {
+            wsp_statuss: "wersja_robocza",
+            ...wycena
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${this.state.userToken}`
+            }
+          }
+        )
+        .then(res => {
+          this.showNotification("Wycena zapisana");
+          this.fetchBriefs();
+          console.log(res);
+          utils.sendMail(
+            e,
+            "dominik.s@roxart.pl",
+            "Koder zwrócił briefa: " + title,
+            "Zaloguj się do aplikacji i popraw go!"
+          );
+        })
+        .catch(error => {
+          this.showNotification("Wystąpił błąd podczas wyceny: " + error);
+          console.log(error);
+        });
+    } else {
+    }
   };
 
   editItem = (e, id, editItem) => {
@@ -275,14 +335,16 @@ class Root extends React.Component {
     }
   };
 
-  przekazDoWyceny = (e, id) => {
+  przekazDoWyceny = (e, id, title) => {
     e.preventDefault();
 
     axios
       .put(
         `${API_URL}/briefs/${id}`,
         {
-          wsp_statuss: "do_wyceny"
+          wsp_statuss: "do_wyceny",
+          wsp_status_grafika: "nie_wycenione",
+          wsp_status_kodera: "nie_wycenione"
         },
         {
           headers: {
@@ -293,6 +355,12 @@ class Root extends React.Component {
       .then(res => {
         this.fetchBriefs();
         this.showNotification("Przekazano do wyceny: " + res.data.wsp_nazwa);
+        utils.sendMail(
+          e,
+          "dominik.s@roxart.pl",
+          "Handlowiec przekazał briefa do wyceny: " + title,
+          "Zaloguj się do aplikacji i wyceń!"
+        );
       })
       .catch(error => {
         this.showNotification("Błąd w zapisywaniu: " + error);

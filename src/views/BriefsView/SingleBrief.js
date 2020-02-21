@@ -622,7 +622,11 @@ class SingleBriefView extends React.Component {
                                 </Button>
                                 <Button
                                   onClick={e =>
-                                    context.przekazDoWyceny(e, match.params.id)
+                                    context.przekazDoWyceny(
+                                      e,
+                                      match.params.id,
+                                      item.wsp_nazwa
+                                    )
                                   }>
                                   <FontAwesomeIcon icon={faSave} size="1x" />
                                   Przekaż do wyceny
