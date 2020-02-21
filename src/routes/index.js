@@ -1,6 +1,6 @@
 const routes = {
   briefs: "/briefs/",
-  priced: "/briefs/priced",
+  priced: "/briefs/archive",
   files: "/briefs/files",
   brief: "/briefs/brief/:id"
 };

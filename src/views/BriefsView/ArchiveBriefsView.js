@@ -28,7 +28,7 @@ const NoItems = styled.h2`
   text-align: center;
 `;
 
-class PricedBriefsView extends React.Component {
+class ArchiveBriefsView extends React.Component {
   static contextType = AppContext;
 
   state = {};
@@ -74,6 +74,6 @@ class PricedBriefsView extends React.Component {
   }
 }
 
-PricedBriefsView.contextType = AppContext;
+ArchiveBriefsView.contextType = AppContext;
 
-export default PricedBriefsView;
+export default ArchiveBriefsView;

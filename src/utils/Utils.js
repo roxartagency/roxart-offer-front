@@ -61,10 +61,10 @@ export const sendMail = (e, to, subject, text) => {
 };
 
 export const checkStatus = status => {
-  if (status === "wersja_robocza" || status === "do_wyceny") {
-    return false;
-  } else {
+  if (status === "archiwum") {
     return true;
+  } else {
+    return false;
   }
 };
 

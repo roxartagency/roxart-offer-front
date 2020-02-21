@@ -4,7 +4,7 @@ import AppContext from "../../context";
 import axios from "axios";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import BriefsView from "../../views/BriefsView/BriefsView";
-import PricedBriefsView from "../../views/BriefsView/PricedBriefsView";
+import ArchiveBriefsView from "../../views/BriefsView/ArchiveBriefsView";
 import SingleBriefView from "../../views/BriefsView/SingleBrief";
 import FilesView from "../../views/FilesView/FilesView";
 import Header from "../../components/Header/Header";
@@ -483,7 +483,7 @@ class Root extends React.Component {
                 <Route
                   exact
                   path={routes.priced}
-                  component={PricedBriefsView}
+                  component={ArchiveBriefsView}
                 />
                 <Route exact path={routes.brief} component={SingleBriefView} />
                 <Route exact path={routes.files} component={FilesView} />

@@ -55,12 +55,13 @@ class List extends React.Component {
               <ListHeadCol>Status kodera</ListHeadCol>
               <ListHeadCol>Działania</ListHeadCol>
             </ListHead>
-            {items.map(item => (
-              <>
-                {item.wsp_statuss ? null : null}
-                <PricedListItem key={item.id} priced={priced} {...item} />
-              </>
-            ))}
+            {priced
+              ? items.map(item => (
+                  <PricedListItem key={item.id} priced={priced} {...item} />
+                ))
+              : items.map(item => (
+                  <ListItem key={item.id} priced={priced} {...item} />
+                ))}
           </StyledList>
         ) : (
           <NoItems>Brak wyników spełniających podane wymagania.</NoItems>

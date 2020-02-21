@@ -602,7 +602,15 @@ class SingleBriefView extends React.Component {
 
                         <Row>
                           <Label>Działania</Label>
+
                           <Content>
+                            <StyledLink to={"/briefs/"}>
+                              <FontAwesomeIcon
+                                icon={faArrowAltCircleLeft}
+                                size="1x"
+                              />
+                              powrót
+                            </StyledLink>
                             {context.allowEdit(
                               item.wsp_statuss,
                               item.user.email
@@ -621,13 +629,6 @@ class SingleBriefView extends React.Component {
                                 </Button>
                               </>
                             ) : null}
-                            <StyledLink to={"/briefs/"}>
-                              <FontAwesomeIcon
-                                icon={faArrowAltCircleLeft}
-                                size="1x"
-                              />
-                              powrót
-                            </StyledLink>
                           </Content>
                         </Row>
                       </BriefWrapper>
