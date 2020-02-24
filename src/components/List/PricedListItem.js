@@ -105,7 +105,10 @@ class PricedListItem extends React.Component {
         <ListItemCol>{props.wsp_statuss}</ListItemCol>
         <ListItemCol>{handleStatus(props.wsp_status_grafika)}</ListItemCol>
         <ListItemCol>
-          {props.kategoria.name === "Katalog" ? (
+          {props.kategoria.name === "Katalog" ||
+          props.kategoria.name === "Logo" ||
+          props.kategoria.name === "Wideo" ||
+          props.kategoria.name === "Animacja" ? (
             <Status color="green">---</Status>
           ) : (
             handleStatus(props.wsp_status_kodera)

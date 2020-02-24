@@ -48,8 +48,6 @@ class ListItem extends React.Component {
     const twoDays =
       new Date(props.created_at).getTime() + 2 * 24 * 60 * 60 * 1000;
 
-
-
     return checkStatus(props.wsp_statuss) === true ? null : (
       <StyledListItem>
         <ListItemCol>{props.id}</ListItemCol>
@@ -84,7 +82,10 @@ class ListItem extends React.Component {
         <ListItemCol>{props.wsp_statuss}</ListItemCol>
         <ListItemCol>{handleStatus(props.wsp_status_grafika)}</ListItemCol>
         <ListItemCol>
-          {props.kategoria.name === "Katalog" ? (
+          {props.kategoria.name === "Katalog" ||
+          props.kategoria.name === "Logo" ||
+          props.kategoria.name === "Wideo" ||
+          props.kategoria.name === "Animacja" ? (
             <Status color="green">---</Status>
           ) : (
             handleStatus(props.wsp_status_kodera)

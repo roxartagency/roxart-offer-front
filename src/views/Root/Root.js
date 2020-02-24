@@ -335,8 +335,10 @@ class Root extends React.Component {
     }
   };
 
-  przekazDoWyceny = (e, id, title) => {
+  przekazDoWyceny = (e, id, title, kategoria) => {
     e.preventDefault();
+
+    const przekazane = new Date();
 
     axios
       .put(
@@ -344,7 +346,8 @@ class Root extends React.Component {
         {
           wsp_statuss: "do_wyceny",
           wsp_status_grafika: "nie_wycenione",
-          wsp_status_kodera: "nie_wycenione"
+          wsp_status_kodera: "nie_wycenione",
+          wsp_przekazane_do_wyceny: przekazane
         },
         {
           headers: {
@@ -354,38 +357,42 @@ class Root extends React.Component {
       )
       .then(res => {
         this.fetchBriefs();
+        console.log(przekazane);
         this.showNotification("Przekazano do wyceny: " + res.data.wsp_nazwa);
-        utils.sendMail(
-          e,
-          "dominik.s@roxart.pl",
-          "Handlowiec przekazał briefa do wyceny: " + title,
-          "Zaloguj się do aplikacji i wyceń!"
-        );
+        if (kategoria === "Wideo") {
+          utils.sendMail(
+            e,
+            "wideo@roxart.pl",
+            "Handlowiec przekazał briefa do wyceny: " + title,
+            "Zaloguj się do aplikacji i wyceń!"
+          );
+        } else if (kategoria === "Animacja") {
+          utils.sendMail(
+            e,
+            "animator@roxart.pl",
+            "Handlowiec przekazał briefa do wyceny: " + title,
+            "Zaloguj się do aplikacji i wyceń!"
+          );
+        } else {
+          utils.sendMail(
+            e,
+            "grafik@roxart.pl",
+            "Handlowiec przekazał briefa do wyceny: " + title,
+            "Zaloguj się do aplikacji i wyceń!"
+          );
+        }
       })
       .catch(error => {
         this.showNotification("Błąd w zapisywaniu: " + error);
       });
   };
 
-  allowEditWycenaKodera = status_kodera => {
+  allowEditWycena = (status, stanowisko) => {
     if (this.state.user.role.name === "Administrator") {
       return true;
     } else if (
-      this.state.user.role.name === "Koder" &&
-      status_kodera === "nie_wycenione"
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  allowEditWycenaGrafika = status_grafika => {
-    if (this.state.user.role.name === "Administrator") {
-      return true;
-    } else if (
-      this.state.user.role.name === "Grafik" &&
-      status_grafika === "nie_wycenione"
+      this.state.user.role.name === stanowisko &&
+      status === "nie_wycenione"
     ) {
       return true;
     } else {
@@ -531,7 +538,7 @@ class Root extends React.Component {
       przekazDoWyceny: this.przekazDoWyceny,
       changeStatus: this.changeStatus,
       allowEdit: this.allowEdit,
-      allowEditWycenaKodera: this.allowEditWycenaKodera,
+      allowEditWycena: this.allowEditWycena,
       allowEditWycenaGrafika: this.allowEditWycenaGrafika
     };
 

@@ -58,14 +58,11 @@ class Form extends React.Component {
                 marginBottom="30px">
                 <option value="1">Strona internetowa</option>
                 <option value="2">Katalog</option>
+                <option value="3">Logo</option>
+                <option value="4">Sklep</option>
+                <option value="5">Wideo</option>
+                <option value="6">Animacja</option>
               </Select>
-              {/* <Input
-                label="Załącznik"
-                type="file"
-                name="file"
-                onChange={this.onFileChange}
-                marginBottom="30px"
-              /> */}
               <Input
                 onChange={this.handleInputChange}
                 name="wsp_nazwa"
@@ -75,10 +72,30 @@ class Form extends React.Component {
               />
               <Input
                 onChange={this.handleInputChange}
-                tag="textarea"
                 name="wsp_adres"
                 value={this.state.wsp_adres}
-                label="Adres"
+                label="Adres firmy"
+                marginBottom="30px"
+              />
+              <Input
+                onChange={this.handleInputChange}
+                name="wsp_nip"
+                value={this.state.wsp_nip}
+                label="NIP firmy"
+                marginBottom="30px"
+              />
+              <Input
+                onChange={this.handleInputChange}
+                name="wsp_osoba"
+                value={this.state.wsp_osoba}
+                label="Imię i nazwisko osoby kontaktowej"
+                marginBottom="30px"
+              />
+              <Input
+                onChange={this.handleInputChange}
+                name="wsp_telefon"
+                value={this.state.wsp_telefon}
+                label="Numer telefonu osoby kontaktowej"
                 marginBottom="30px"
               />
               <Input
@@ -501,6 +518,553 @@ class Form extends React.Component {
                     value={this.state.kat_dodatkowe}
                     label="Prosimy podać inne dodatkowe informacje, które mogą okazać się przydatne na etapie wyceny
                     (Czy mamy wykonać rysunki konturowe zamiast zdjęć? Rysunki techniczne, obrys produktu, itp.)"
+                    marginBottom="30px"
+                  />
+                </>
+              ) : null}
+
+              {this.state.kategoria === "3" ? (
+                <>
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="logo_projekt"
+                    value={this.state.logo_projekt}
+                    label="Czego ma dotyczyć projekt: Zaprojektowanie nowego logo / Delikatne odświeżenie znaku / Zupełne przeprojektowanie logo"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="logo_nazwa"
+                    value={this.state.logo_nazwa}
+                    label="Jaka dokładna nazwa ma się znajdować w logo?
+                    np. ROXART"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="logo_podpis"
+                    value={this.state.logo_podpis}
+                    label="Czy ma być dodatkowy podpis do głównej nazwy?
+                    np. Agencja Reklamowa"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="logo_propozycje"
+                    value={this.state.logo_propozycje}
+                    label="Ile propozycji logotypów mamy przygotować?
+                    1, 3, 6, więcej?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="logo_ksiega"
+                    value={this.state.logo_ksiega}
+                    label="Czy mamy przygotować księgę znaku? opis budowy logo i przykłady jak należy stosować znak dla prawidłowego używania"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="logo_typlogo"
+                    value={this.state.logo_typlogo}
+                    label="1. Typografia
+                    2. Inicjały
+                    3. Symbol lub Ikona
+                    4. Kombinacja znak + ikona
+                    5. Emblemat
+                    6. Inne. Podaj przykład innego.
+                    Wybieram typ logo numer:"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="logo_preferencje"
+                    value={this.state.logo_preferencje}
+                    label="Jakie są Państwa preferencje kolorystyczne, które chcielibyście użyć w logo?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="logo_gdzie"
+                    value={this.state.logo_gdzie}
+                    label="Gdzie Państwa logo będzie używane? (druk, serwis www, inne)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="logo_nosnik"
+                    value={this.state.logo_nosnik}
+                    label="Jaki jest najważniejszy nośnik, na którym Państwa logo będzie prezentowane?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="logo_przyklady"
+                    value={this.state.logo_przyklady}
+                    label="Przykłady istniejących logo, które podobają się Tobie. Podaj minimum trzy przykłady. (nie muszą być związane z branżą)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="logo_dodatkowe"
+                    value={this.state.logo_dodatkowe}
+                    label="Proszę podać inne dodatkowe informacje, które mogą okazać się przydatne w projektowaniu"
+                    marginBottom="30px"
+                  />
+                </>
+              ) : null}
+
+              {this.state.kategoria === "4" ? (
+                <>
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_logo"
+                    value={this.state.skl_logo}
+                    label="Czy firma posiada logo? Jeśli tak, czy firma posiada logo w formie pliku wektorowego oraz księgę znaku?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_zalozenia"
+                    value={this.state.skl_zalozenia}
+                    label="Jakie są założenia i podstawowy cel sklepu internetowego?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_jezyk_podstawowy"
+                    value={this.state.skl_jezyk_podstawowy}
+                    label="Jaki ma być podstawowy język sklepu?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_jezyki_dodatkowe"
+                    value={this.state.skl_jezyki_dodatkowe}
+                    label="Czy sklep ma posiadać dodatkowe języki? Jeśli tak, to jakie?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_strona_glowna"
+                    value={this.state.skl_strona_glowna}
+                    label="Jakie elementy, funkcjonalności 
+                    powinny pojawić się na stronie głównej sklepu?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_podstrony_menu"
+                    value={this.state.skl_podstrony_menu}
+                    label="Jakie mają być główne podstrony menu/zakładki w nawigacji górnej?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_liczba_kategorii"
+                    value={this.state.skl_liczba_kategorii}
+                    label="Jaka jest orientacyjna liczba wszystkich kategorii oraz podkategorii? (mapa sklepu)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_liczba_produktow"
+                    value={this.state.skl_liczba_produktow}
+                    label="Jaka jest orientacyjna liczba wszystkich produktów w sklepie podczas jego funkcjonowania?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_produkty_do_dodania"
+                    value={this.state.skl_produkty_do_dodania}
+                    label="Jaka jest liczba produktów, które my mamy dodać? (w cenie możemy dodać kilka/kilkanaście)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_cos_wiecej"
+                    value={this.state.skl_cos_wiecej}
+                    label="Czy w podstronie produktu ma być coś więcej niż:
+                    - nazwa produktu,
+                    - opis produktu,
+                    - zdjęcie główne i dodatkowe,
+                    - cena,
+                    - wybór ilości,
+                    - przycisk dodaj do koszyka?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_kolorystyka"
+                    value={this.state.skl_kolorystyka}
+                    label="Jakie są Twoje oczekiwania co do kolorystyki sklepu?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_przyklady_sklepow"
+                    value={this.state.skl_przyklady_sklepow}
+                    label="Przykłady istniejących sklepów internetowych, które podobają się Tobie. Podaj minimum trzy przykłady. (nie muszą być związane z branżą)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_elementy"
+                    value={this.state.skl_elementy}
+                    label="Elementy w istniejących sklepach internetowych, które podobają się Tobie."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_zdjecia"
+                    value={this.state.skl_zdjecia}
+                    label="Czy otrzymamy zdjęcia do wykorzystania w sklepie internetowym? (np. zdjęcia do baneru promującego sklep, do boksów reklamowych, itp.)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_teksty"
+                    value={this.state.skl_teksty}
+                    label="Czy otrzymamy teksty / hasła reklamowe do sklepu internetowego?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_elementy_zewnetrzne"
+                    value={this.state.skl_elementy_zewnetrzne}
+                    label="Elementy zewnętrzne do umieszczenia w sklepie? (np. link do fanpage Facebook'a, link Youtube, itp.)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_platnosci"
+                    value={this.state.skl_platnosci}
+                    label="Czy jest już ustalony system płatności? (np. DotPay, PayU, Przelew standardowy, itp.)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_zaawansowana_funkcjonalnosc"
+                    value={this.state.skl_zaawansowana_funkcjonalnosc}
+                    label="Czy sklep ma mieć dodatkową zaawansowaną funkcjonalność? (Jeśli tak to jaką?)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_czy_domena"
+                    value={this.state.skl_czy_domena}
+                    label="Czy firma posiada wykupioną domenę (adres internetowy URL)?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="skl_czy_hosting"
+                    value={this.state.skl_czy_hosting}
+                    label="Czy firma posiada wykupiony hosting/serwer (miejsce w którym znajdują się pliki sklepu)?"
+                    marginBottom="30px"
+                  />
+                </>
+              ) : null}
+
+              {this.state.kategoria === "5" ? (
+                <>
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_logo"
+                    value={this.state.vid_logo}
+                    label="Czy firma posiada logo? 
+                    (Jeśli tak, czy firma posiada logo w formie pliku wektorowego oraz księgę znaku?)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_intro"
+                    value={this.state.vid_intro}
+                    label="Czy firma posiada już intro? (animowana prezentacja logo dodawana zazwyczaj na początku filmów)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_czy_filmy"
+                    value={this.state.vid_czy_filmy}
+                    label="Czy firma posiada już jakieś filmy promocyjne? 
+                    (Jeśli tak, to prosimy o podanie linku do filmu i odpowiedź czy mamy utrzymywać ten sam styl)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_zalozenia"
+                    value={this.state.vid_zalozenia}
+                    label="Jakie są założenia i podstawowy cel filmu? 
+                    (sprzedażowa – jaki produkt będzie sprzedawany, wizerunkowa – jaki efekt ma być uzyskany, (solidna, luksusowa)
+                    informacyjna – jakie informacje ma zawierać / pokazać cechy, funkcjonalność produktu)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_wizja"
+                    value={this.state.vid_wizja}
+                    label="Czy mają Państwo ogólną
+                    wizje/ szkielet filmu? 
+                    (Jakie ujęcia, kolejność itd.)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_charakter"
+                    value={this.state.vid_charakter}
+                    label="Jaki ma być charakter filmu (wesoły, humorystyczny, poważny itp.)?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_dlugosc"
+                    value={this.state.vid_dlugosc}
+                    label="Jaka ma być przybliżona długość filmu?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_konkurencja"
+                    value={this.state.vid_konkurencja}
+                    label="Kim jest główna konkurencja i czy posiadają takie filmy?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_materialy"
+                    value={this.state.vid_materialy}
+                    label="Czy posiadają Państwo materiały z których mamy korzystać czy my mamy nagrywać?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_my_nagrywamy"
+                    value={this.state.vid_my_nagrywamy}
+                    label="Jeżeli to my mamy nagrywać to jaka jest lokalizacja i kiedy możemy to zrealizować?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_przyklady"
+                    value={this.state.vid_przyklady}
+                    label="Przykłady istniejących filmów, które mogą posłużyć za wzór. (nie muszą być związane z branżą)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_elementy"
+                    value={this.state.vid_elementy}
+                    label="Elementy na istniejących filmach, które podobają się Państwu."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_napisy"
+                    value={this.state.vid_napisy}
+                    label="Czy film ma zawierać napisy?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_scenariusz"
+                    value={this.state.vid_scenariusz}
+                    label="Jeżeli ma zawierać napisy to czy otrzymamy teksty do filmu, czy my mamy wymyślić scenariusz?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_aktor"
+                    value={this.state.vid_aktor}
+                    label="Czy do kwestii mówionych firma zapewnia aktora (kogoś kto będzie mówił do kamery)?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_dron"
+                    value={this.state.vid_dron}
+                    label="Czy firma chce ujęć z drona?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_jezyk_napisow"
+                    value={this.state.vid_jezyk_napisow}
+                    label="Jeżeli film ma zawierać napisy to w jakim mają być języku?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_elementy_dodatkowe"
+                    value={this.state.vid_elementy_dodatkowe}
+                    label="Elementy dodatkowe do umieszczenia na filmie (zdjęcia, loga sponsorów, elementy graficzne itd.)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_gdzie"
+                    value={this.state.vid_gdzie}
+                    label="Gdzie będzie wyświetlany film? (social media, urządzenia mobilne, bannery itd.)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="vid_rozdzielczosc"
+                    value={this.state.vid_rozdzielczosc}
+                    label="W jakiej rozdzielczości mamy wykonać film?
+                    (HD, full HD, 4K)"
+                    marginBottom="30px"
+                  />
+                </>
+              ) : null}
+
+              {this.state.kategoria === "6" ? (
+                <>
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="anim_logo"
+                    value={this.state.anim_logo}
+                    label="Czy firma posiada logo? Jeśli tak, czy firma posiada logo w formie pliku wektorowego oraz księgę znaku?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="anim_zalozenia"
+                    value={this.state.anim_zalozenia}
+                    label="Jakie są założenia i podstawowy cel animacji?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="anim_gdzie"
+                    value={this.state.anim_gdzie}
+                    label="Gdzie będzie publikowana animacja? (YouTube, Facebook, Instagram, TV itp.)?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="anim_lektor"
+                    value={this.state.anim_lektor}
+                    label="Czy animacja wymaga lektora? Jeśli tak, czy zapewnią Państwo lektora?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="anim_muzyka"
+                    value={this.state.anim_muzyka}
+                    label="Czy animacja ma posiadać muzykę w tle?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="anim_dlugosc"
+                    value={this.state.anim_dlugosc}
+                    label="Jaki ma być czas trwania i ilość animacji?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="anim_format"
+                    value={this.state.anim_format}
+                    label="Jaki ma być format animacji? (mp4, avi, gif?)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="anim_styl"
+                    value={this.state.anim_styl}
+                    label="Jakie są Twoje oczekiwania co do tonu i stylu animacji? (nowoczesna, rysunkowa, poważna itd.)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="anim_przyklady"
+                    value={this.state.anim_przyklady}
+                    label="Przykłady istniejących animacji, które podobają się Tobie. Podaj minimum trzy przykłady. (nie muszą być związane z branżą)"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="anim_elementy"
+                    value={this.state.anim_elementy}
+                    label="Elementy na istniejących animacjach, które podobają się Tobie."
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="anim_materialy"
+                    value={this.state.anim_materialy}
+                    label="Jakie materiały zostaną nam przekazane?"
+                    marginBottom="30px"
+                  />
+                  <Input
+                    onChange={this.handleInputChange}
+                    tag="textarea"
+                    name="anim_scenariusz"
+                    value={this.state.anim_scenariusz}
+                    label="Czy otrzymamy scenariusz / tekst dla lektora (jeżeli wymagane)?"
                     marginBottom="30px"
                   />
                 </>

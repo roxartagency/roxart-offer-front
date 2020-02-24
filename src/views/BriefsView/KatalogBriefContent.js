@@ -43,7 +43,7 @@ class KatalogBriefContent extends React.Component {
   };
 
   render() {
-    const {context, item} = this.props;
+    const { context, item } = this.props;
     return (
       <>
         <Row>
@@ -52,10 +52,7 @@ class KatalogBriefContent extends React.Component {
             pliku wektorowego oraz czy macie do logo wykonaną księgę znaku?)
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_czy_logo"
@@ -73,10 +70,7 @@ class KatalogBriefContent extends React.Component {
             wersji online lub o przesłanie pliku w załączniku.
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_czy_katalog"
@@ -96,10 +90,7 @@ class KatalogBriefContent extends React.Component {
             przygotowanie jest do druku.
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_czy_do_druku"
@@ -121,10 +112,7 @@ class KatalogBriefContent extends React.Component {
             projektowania.
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_drukarnia_naklad"
@@ -144,10 +132,7 @@ class KatalogBriefContent extends React.Component {
             mogą wzrosnąć nawet 100%)
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_format"
@@ -164,10 +149,7 @@ class KatalogBriefContent extends React.Component {
             Jaka będzie orientacja katalogu? (pionowa, pozioma, kwadrat, inna?)
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_orientacja"
@@ -186,10 +168,7 @@ class KatalogBriefContent extends React.Component {
             makietę z wybranymi elementami, które mają być lakierowane)
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_uszlachetnienie"
@@ -210,10 +189,7 @@ class KatalogBriefContent extends React.Component {
             92,96, 100)
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_ile_stron"
@@ -238,10 +214,7 @@ class KatalogBriefContent extends React.Component {
             galerię zdjęć.).
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_cel"
@@ -259,10 +232,7 @@ class KatalogBriefContent extends React.Component {
             internetowego? Jeśli tak, prosimy opisać pod jakim względem.
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_nawiazanie"
@@ -281,10 +251,7 @@ class KatalogBriefContent extends React.Component {
             jakich.
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_jezyk_podstawowy"
@@ -302,10 +269,7 @@ class KatalogBriefContent extends React.Component {
             standardowy? Jeśli tak to w jakim jeszcze.
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_jezyki_obce"
@@ -324,10 +288,7 @@ class KatalogBriefContent extends React.Component {
             i kolumn w każdej z nich)
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_czy_tabele"
@@ -347,10 +308,7 @@ class KatalogBriefContent extends React.Component {
             Chcemy poznać Państwa gust.
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_przyklady"
@@ -368,10 +326,7 @@ class KatalogBriefContent extends React.Component {
             Prosimy o wskazanie co się Państwu w nich podoba.
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_elementy"
@@ -390,10 +345,7 @@ class KatalogBriefContent extends React.Component {
             przygotowane / wszystko mamy gotowe, tylko projektować)
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_etap"
@@ -411,10 +363,7 @@ class KatalogBriefContent extends React.Component {
             dobrej jakości, nadającej się pod wydruk.
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_zdjecia"
@@ -436,10 +385,7 @@ class KatalogBriefContent extends React.Component {
             korekty przesłanych treści (literówki, przecinki, stylistyka).
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_teksty"
@@ -458,10 +404,7 @@ class KatalogBriefContent extends React.Component {
             projektu.
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_materialy"
@@ -483,10 +426,7 @@ class KatalogBriefContent extends React.Component {
             standardzie przygotowujemy projekty wyłącznie do druku i internetu.
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_pliki"
@@ -505,10 +445,7 @@ class KatalogBriefContent extends React.Component {
             zamiast zdjęć? Rysunki techniczne, obrys produktu, itp.)
           </Label>
           <Content>
-            {context.allowEdit(
-              item.wsp_statuss,
-              item.user.email
-            ) === true ? (
+            {context.allowEdit(item.wsp_statuss, item.user.email) === true ? (
               <Input
                 onChange={this.handleInputChange}
                 name="kat_dodatkowe"

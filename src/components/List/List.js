@@ -49,7 +49,7 @@ class List extends React.Component {
               <ListHeadCol>Klient</ListHeadCol>
               <ListHeadCol>Kategoria</ListHeadCol>
               <ListHeadCol>Dodane przez</ListHeadCol>
-              <ListHeadCol>Data dodania</ListHeadCol>
+              <ListHeadCol>Data przekazania do wyceny</ListHeadCol>
               <ListHeadCol>Status</ListHeadCol>
               <ListHeadCol>Status grafika</ListHeadCol>
               <ListHeadCol>Status kodera</ListHeadCol>

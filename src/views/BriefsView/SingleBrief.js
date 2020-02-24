@@ -8,6 +8,10 @@ import { handleStatus } from "../../utils/Utils";
 import styled from "styled-components";
 import StronaBriefContent from "./StronaBriefContent";
 import KatalogBriefContent from "./KatalogBriefContent";
+import LogoBriefContent from "./LogoBriefContent";
+import WideoBriefContent from "./WideoBriefContent";
+import SklepBriefContent from "./SklepBriefContent";
+import AnimacjaBriefContent from "./AnimacjaBriefContent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowAltCircleLeft,
@@ -114,6 +118,18 @@ class SingleBriefView extends React.Component {
                             <Label>Kategoria:</Label>
                             <Content>{item.kategoria.name}</Content>
                           </Row>
+                          <Row>
+                            <Label>Utworzono:</Label>
+                            <Content>
+                              {Date(item.created_at)}
+                            </Content>
+                          </Row>
+                          <Row>
+                            <Label>Przekazano do wyceny:</Label>
+                            <Content>
+                              {Date(item.wsp_przekazane_do_wyceny)}
+                            </Content>
+                          </Row>
                           {item.user ? (
                             <Row>
                               <Label>Dodane przez:</Label>
@@ -140,7 +156,7 @@ class SingleBriefView extends React.Component {
                           </Row>
 
                           <Row>
-                            <Label>Adres:</Label>
+                            <Label>Adres firmy:</Label>
                             <Content>
                               {context.allowEdit(
                                 item.wsp_statuss,
@@ -149,11 +165,64 @@ class SingleBriefView extends React.Component {
                                 <Input
                                   onChange={this.handleInputChange}
                                   name="wsp_adres"
-                                  tag="textarea"
                                   defaultValue={item.wsp_adres}
                                 />
                               ) : (
                                 item.wsp_adres
+                              )}
+                            </Content>
+                          </Row>
+
+                          <Row>
+                            <Label>NIP firmy:</Label>
+                            <Content>
+                              {context.allowEdit(
+                                item.wsp_statuss,
+                                item.user.email
+                              ) === true ? (
+                                <Input
+                                  onChange={this.handleInputChange}
+                                  name="wsp_nip"
+                                  defaultValue={item.wsp_nip}
+                                />
+                              ) : (
+                                item.wsp_nip
+                              )}
+                            </Content>
+                          </Row>
+
+                          <Row>
+                            <Label>Imię i nazwisko osoby kontaktowej:</Label>
+                            <Content>
+                              {context.allowEdit(
+                                item.wsp_statuss,
+                                item.user.email
+                              ) === true ? (
+                                <Input
+                                  onChange={this.handleInputChange}
+                                  name="wsp_osoba"
+                                  defaultValue={item.wsp_osoba}
+                                />
+                              ) : (
+                                item.wsp_osoba
+                              )}
+                            </Content>
+                          </Row>
+
+                          <Row>
+                            <Label>Numer telefonu osoby kontaktowej:</Label>
+                            <Content>
+                              {context.allowEdit(
+                                item.wsp_statuss,
+                                item.user.email
+                              ) === true ? (
+                                <Input
+                                  onChange={this.handleInputChange}
+                                  name="wsp_telefon"
+                                  defaultValue={item.wsp_telefon}
+                                />
+                              ) : (
+                                item.wsp_telefon
                               )}
                             </Content>
                           </Row>
@@ -174,11 +243,6 @@ class SingleBriefView extends React.Component {
                                 item.wsp_email
                               )}
                             </Content>
-                          </Row>
-
-                          <Row>
-                            <Label>Utworzono:</Label>
-                            <Content>{item.created_at}</Content>
                           </Row>
 
                           <Row>
@@ -384,6 +448,25 @@ class SingleBriefView extends React.Component {
                             />
                           ) : null}
 
+                          {item.kategoria.id === 3 ? (
+                            <LogoBriefContent context={context} item={item} />
+                          ) : null}
+
+                          {item.kategoria.id === 4 ? (
+                            <SklepBriefContent context={context} item={item} />
+                          ) : null}
+
+                          {item.kategoria.id === 5 ? (
+                            <WideoBriefContent context={context} item={item} />
+                          ) : null}
+
+                          {item.kategoria.id === 6 ? (
+                            <AnimacjaBriefContent
+                              context={context}
+                              item={item}
+                            />
+                          ) : null}
+
                           <Row>
                             <Label>Inne ważne uwagi:</Label>
                             <Content>
@@ -436,8 +519,9 @@ class SingleBriefView extends React.Component {
                           <Content>{item.wsp_wycena_grafika}</Content>
                         </Row>
 
-                        {context.allowEditWycenaGrafika(
-                          item.wsp_status_grafika
+                        {context.allowEditWycena(
+                          item.wsp_status_grafika,
+                          "Grafik"
                         ) === true ? (
                           <Row>
                             <Label>Nowa wycena grafika:</Label>
@@ -487,7 +571,8 @@ class SingleBriefView extends React.Component {
                           </Row>
                         ) : null}
 
-                        {item.kategoria.name === "Strona internetowa" ? (
+                        {item.kategoria.name === "Strona internetowa" ||
+                        item.kategoria.name === "Sklep" ? (
                           <>
                             <Row>
                               <Label>Status wyceny kodera:</Label>
@@ -503,10 +588,12 @@ class SingleBriefView extends React.Component {
                           </>
                         ) : null}
 
-                        {context.allowEditWycenaKodera(
-                          item.wsp_status_kodera
+                        {context.allowEditWycena(
+                          item.wsp_status_kodera,
+                          "Koder"
                         ) === true &&
-                        item.kategoria.name === "Strona internetowa" ? (
+                        (item.kategoria.name === "Strona internetowa" ||
+                          item.kategoria.name === "Sklep") ? (
                           <Row>
                             <Label>Nowa wycena kodera:</Label>
                             <Content>
@@ -625,7 +712,8 @@ class SingleBriefView extends React.Component {
                                     context.przekazDoWyceny(
                                       e,
                                       match.params.id,
-                                      item.wsp_nazwa
+                                      item.wsp_nazwa,
+                                      item.kategoria.name
                                     )
                                   }>
                                   <FontAwesomeIcon icon={faSave} size="1x" />
