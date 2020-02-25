@@ -28,7 +28,7 @@ class Form extends React.Component {
 
   state = {
     kategoria: `1`,
-    czy_pilne: false
+    czy_pilne: 0
   };
 
   handleInputChange = e => {
@@ -70,8 +70,8 @@ class Form extends React.Component {
                 onChange={this.handleInputChange}
                 label="Czy wycena jest pilna?"
                 marginBottom="30px">
-                <option value="false">Nie</option>
-                <option value="true">Tak</option>
+                <option value="0">Nie</option>
+                <option value="1">Tak</option>
               </Select>
               <Input
                 onChange={this.handleInputChange}

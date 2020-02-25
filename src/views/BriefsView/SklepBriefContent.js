@@ -40,6 +40,7 @@ class SklepBriefContent extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(this.state);
   };
 
   render() {
