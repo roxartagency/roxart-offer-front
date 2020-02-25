@@ -6,12 +6,7 @@ import Title from "../../components/Title/Title";
 import Status from "../../components/Status/Status";
 import Button from "../../components/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEye,
-  faGlobe,
-  faBookOpen,
-  faExclamationCircle
-} from "@fortawesome/free-solid-svg-icons";
+import { faEye, faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import {
   handleMainStatus,
   handleStatus,
@@ -60,15 +55,7 @@ class PricedListItem extends React.Component {
         <ListItemCol>
           <Title>{props.wsp_nazwa}</Title>
         </ListItemCol>
-        <ListItemCol>
-          {props.kategoria.name === "Strona internetowa" ? (
-            <FontAwesomeIcon icon={faGlobe} size="1x" />
-          ) : null}
-          {props.kategoria.name === "Katalog" ? (
-            <FontAwesomeIcon icon={faBookOpen} size="1x" />
-          ) : null}
-          {props.kategoria.name}
-        </ListItemCol>
+        <ListItemCol>{props.kategoria.name}</ListItemCol>
         <ListItemCol>{props.user ? props.user.username : null}</ListItemCol>
         <ListItemCol>
           {checkValidDate(
