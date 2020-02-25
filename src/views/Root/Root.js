@@ -153,8 +153,9 @@ class Root extends React.Component {
           kategoria: {
             id: newItem.kategoria
           },
+          wsp_pilne: newItem.czy_pilne,
           user: this.state.user,
-          wsp_status: "wersja_robocza",
+          wsp_statuss: "wersja_robocza",
           ...newItem
         },
         {
@@ -167,12 +168,6 @@ class Root extends React.Component {
         console.log(res);
         console.log(res.data);
         this.showNotification("Dodano nowy brief: " + newItem.wsp_nazwa);
-        utils.sendMail(
-          e,
-          "dominik.s@roxart.pl",
-          "Dodano nowego briefa: " + newItem.wsp_nazwa,
-          "Zaloguj się do aplikacji i wyceń go!"
-        );
         this.fetchBriefs();
         this.closeModal();
       })
@@ -200,15 +195,15 @@ class Root extends React.Component {
             console.log("Mail do admina!");
             utils.sendMail(
               e,
-              "dominik.s@roxart.pl",
+              "admin@roxart.pl",
               "Grafik dodał nową wycenę: " + title,
-              "Zaloguj się do aplikacji i wyceń godziny kodera!"
+              "Zaloguj się do aplikacji i przygotuj ofertę!"
             );
           } else {
             console.log("Mail do kodera!");
             utils.sendMail(
               e,
-              "dominik.s@roxart.pl",
+              "koder@roxart.pl",
               "Grafik dodał nową wycenę: " + title,
               "Zaloguj się do aplikacji i wyceń godziny kodera!"
             );
@@ -236,9 +231,10 @@ class Root extends React.Component {
           this.showNotification("Wycena zapisana");
           this.fetchBriefs();
           console.log(res);
+          console.log("Mail do handlowca!");
           utils.sendMail(
             e,
-            "dominik.s@roxart.pl",
+            "handlowiec@roxart.pl",
             "Grafik zwrócił briefa: " + title,
             "Zaloguj się do aplikacji i popraw go!"
           );
@@ -258,9 +254,10 @@ class Root extends React.Component {
           this.showNotification("Wycena zapisana");
           this.fetchBriefs();
           console.log(res);
+          console.log("Mail do admina!");
           utils.sendMail(
             e,
-            "dominik.s@roxart.pl",
+            "admin@roxart.pl",
             "Koder dodał nową wycenę: " + title,
             "Zaloguj się do aplikacji i przygotuj ofertę."
           );
@@ -287,10 +284,117 @@ class Root extends React.Component {
           this.showNotification("Wycena zapisana");
           this.fetchBriefs();
           console.log(res);
+          console.log("Mail do handlowca!");
           utils.sendMail(
             e,
-            "dominik.s@roxart.pl",
+            "handlowiec@roxart.pl",
             "Koder zwrócił briefa: " + title,
+            "Zaloguj się do aplikacji i popraw go!"
+          );
+        })
+        .catch(error => {
+          this.showNotification("Wystąpił błąd podczas wyceny: " + error);
+          console.log(error);
+        });
+    } else if (wycena.wsp_status_operatora === "wycenione") {
+      axios
+        .put(`${API_URL}/briefs/${id}`, wycena, {
+          headers: {
+            Authorization: `Bearer ${this.state.userToken}`
+          }
+        })
+        .then(res => {
+          this.showNotification("Wycena zapisana");
+          this.fetchBriefs();
+          console.log(res);
+          console.log("Mail do admina!");
+          utils.sendMail(
+            e,
+            "admin@roxart.pl",
+            "Operator dodał nową wycenę: " + title,
+            "Zaloguj się do aplikacji i przygotuj ofertę."
+          );
+        })
+        .catch(error => {
+          this.showNotification("Wystąpił błąd podczas wyceny: " + error);
+          console.log(error);
+        });
+    } else if (wycena.wsp_status_operatora === "zwrot_do_handlowca") {
+      axios
+        .put(
+          `${API_URL}/briefs/${id}`,
+          {
+            wsp_statuss: "wersja_robocza",
+            ...wycena
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${this.state.userToken}`
+            }
+          }
+        )
+        .then(res => {
+          this.showNotification("Wycena zapisana");
+          this.fetchBriefs();
+          console.log(res);
+          console.log("Mail do handlowca!");
+          utils.sendMail(
+            e,
+            "handlowiec@roxart.pl",
+            "Operator zwrócił briefa: " + title,
+            "Zaloguj się do aplikacji i popraw go!"
+          );
+        })
+        .catch(error => {
+          this.showNotification("Wystąpił błąd podczas wyceny: " + error);
+          console.log(error);
+        });
+    } else if (wycena.wsp_status_animatora === "wycenione") {
+      axios
+        .put(`${API_URL}/briefs/${id}`, wycena, {
+          headers: {
+            Authorization: `Bearer ${this.state.userToken}`
+          }
+        })
+        .then(res => {
+          this.showNotification("Wycena zapisana");
+          this.fetchBriefs();
+          console.log(res);
+          console.log("Mail do admina!");
+          utils.sendMail(
+            e,
+            "admin@roxart.pl",
+            "Animator dodał nową wycenę: " + title,
+            "Zaloguj się do aplikacji i przygotuj ofertę."
+          );
+        })
+        .catch(error => {
+          this.showNotification("Wystąpił błąd podczas wyceny: " + error);
+          console.log(error);
+        });
+    } else if (wycena.wsp_status_animatora === "zwrot_do_handlowca") {
+      axios
+        .put(
+          `${API_URL}/briefs/${id}`,
+          {
+            wsp_statuss: "wersja_robocza",
+            ...wycena
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${this.state.userToken}`
+            }
+          }
+        )
+        .then(res => {
+          this.showNotification("Wycena zapisana");
+          this.fetchBriefs();
+          console.log(res);
+          console.log("Mail do handlowca!");
+          utils.sendMail(
+            e,
+            "handlowiec@roxart.pl",
+            "Animator zwrócił briefa: " + title,
             "Zaloguj się do aplikacji i popraw go!"
           );
         })
@@ -347,6 +451,8 @@ class Root extends React.Component {
           wsp_statuss: "do_wyceny",
           wsp_status_grafika: "nie_wycenione",
           wsp_status_kodera: "nie_wycenione",
+          wsp_status_operatora: "nie_wycenione",
+          wsp_status_animatora: "nie_wycenione",
           wsp_przekazane_do_wyceny: przekazane
         },
         {
@@ -360,13 +466,15 @@ class Root extends React.Component {
         console.log(przekazane);
         this.showNotification("Przekazano do wyceny: " + res.data.wsp_nazwa);
         if (kategoria === "Wideo") {
+          console.log("Mail do operatora!");
           utils.sendMail(
             e,
-            "wideo@roxart.pl",
+            "operator@roxart.pl",
             "Handlowiec przekazał briefa do wyceny: " + title,
             "Zaloguj się do aplikacji i wyceń!"
           );
         } else if (kategoria === "Animacja") {
+          console.log("Mail do animatora!");
           utils.sendMail(
             e,
             "animator@roxart.pl",
@@ -374,6 +482,7 @@ class Root extends React.Component {
             "Zaloguj się do aplikacji i wyceń!"
           );
         } else {
+          console.log("Mail do grafika!");
           utils.sendMail(
             e,
             "grafik@roxart.pl",
@@ -435,7 +544,7 @@ class Root extends React.Component {
 
     setTimeout(() => {
       axios
-        .get(`${API_URL}/briefs?_sort=created_at:ASC`, {
+        .get(`${API_URL}/briefs?_sort=wsp_pilne:DESC,wsp_przekazane_do_wyceny:ASC`, {
           headers: {
             Authorization: `Bearer ${this.state.userToken}`
           }
@@ -538,8 +647,7 @@ class Root extends React.Component {
       przekazDoWyceny: this.przekazDoWyceny,
       changeStatus: this.changeStatus,
       allowEdit: this.allowEdit,
-      allowEditWycena: this.allowEditWycena,
-      allowEditWycenaGrafika: this.allowEditWycenaGrafika
+      allowEditWycena: this.allowEditWycena
     };
 
     return (

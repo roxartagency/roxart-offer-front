@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Select from "../../components/Select/Select";
 import Input from "../../components/Input/Input";
-import { handleStatus } from "../../utils/Utils";
+import { handleMainStatus, handleStatus, showDate } from "../../utils/Utils";
 import styled from "styled-components";
 import StronaBriefContent from "./StronaBriefContent";
 import KatalogBriefContent from "./KatalogBriefContent";
@@ -66,7 +66,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   padding: 7px 12px;
   font-weight: 500;
-  background: none;
+  background: #fff;
   border: ${props => `2px solid ${props.theme.colors.mainBlue}`};
   color: ${props => `${props.theme.colors.mainBlue}`};
   cursor: pointer;
@@ -120,14 +120,12 @@ class SingleBriefView extends React.Component {
                           </Row>
                           <Row>
                             <Label>Utworzono:</Label>
-                            <Content>
-                              {Date(item.created_at)}
-                            </Content>
+                            <Content>{showDate(item.created_at)}</Content>
                           </Row>
                           <Row>
                             <Label>Przekazano do wyceny:</Label>
                             <Content>
-                              {Date(item.wsp_przekazane_do_wyceny)}
+                              {showDate(item.wsp_przekazane_do_wyceny)}
                             </Content>
                           </Row>
                           {item.user ? (
@@ -507,22 +505,167 @@ class SingleBriefView extends React.Component {
                           </Content>
                         </Row>
 
-                        <Row>
-                          <Label>Status wyceny grafika:</Label>
-                          <Content>
-                            {handleStatus(item.wsp_status_grafika)}
-                          </Content>
-                        </Row>
+                        {item.kategoria.name === "Wideo" ? (
+                          <>
+                            <Row>
+                              <Label>Status wyceny operatora:</Label>
+                              <Content>
+                                {handleStatus(item.wsp_status_operatora)}
+                              </Content>
+                            </Row>
 
-                        <Row>
-                          <Label>Wycena grafika:</Label>
-                          <Content>{item.wsp_wycena_grafika}</Content>
-                        </Row>
+                            <Row>
+                              <Label>Wycena operatora</Label>
+                              <Content>{item.wsp_wycena_operatora}</Content>
+                            </Row>
+                          </>
+                        ) : null}
+
+                        {context.allowEditWycena(
+                          item.wsp_status_operatora,
+                          "Operator"
+                        ) === true && item.kategoria.name === "Wideo" ? (
+                          <Row>
+                            <Label>Nowa wycena operatora:</Label>
+                            <Content>
+                              <form
+                                autoComplete="off"
+                                className=""
+                                id="wycenOperator"
+                                onSubmit={e =>
+                                  context.wycen(
+                                    e,
+                                    match.params.id,
+                                    item.wsp_nazwa,
+                                    item.kategoria.name,
+                                    item.user,
+                                    this.state
+                                  )
+                                }>
+                                <Input
+                                  onChange={this.handleInputChange}
+                                  name="wsp_wycena_operatora"
+                                  tag="textarea"
+                                  defaultValue={item.wsp_wycena_operatora}
+                                  marginBottom="10px"
+                                />
+                                <Select
+                                  name="wsp_status_operatora"
+                                  value={this.state.wsp_status_operatora}
+                                  onChange={this.handleInputChange}>
+                                  <option value="wybierz" disabled selected>
+                                    Wybierz opcję
+                                  </option>
+                                  <option value="nie_wycenione">
+                                    Nie wycenione
+                                  </option>
+                                  <option value="wycenione">Wycenione</option>
+                                  <option value="zwrot_do_handlowca">
+                                    Zwrot do handlowca
+                                  </option>
+                                </Select>
+                                <Button type="submit" form="wycenOperator">
+                                  <FontAwesomeIcon icon={faSave} size="1x" />
+                                  Wyceń
+                                </Button>
+                              </form>
+                            </Content>
+                          </Row>
+                        ) : null}
+
+                        {item.kategoria.name === "Animacja" ? (
+                          <>
+                            <Row>
+                              <Label>Status wyceny animatora:</Label>
+                              <Content>
+                                {handleStatus(item.wsp_status_animatora)}
+                              </Content>
+                            </Row>
+
+                            <Row>
+                              <Label>Wycena animatora:</Label>
+                              <Content>{item.wsp_wycena_animatora}</Content>
+                            </Row>
+                          </>
+                        ) : null}
+
+                        {context.allowEditWycena(
+                          item.wsp_status_animatora,
+                          "Animator"
+                        ) === true && item.kategoria.name === "Animacja" ? (
+                          <Row>
+                            <Label>Nowa wycena animatora:</Label>
+                            <Content>
+                              <form
+                                autoComplete="off"
+                                className=""
+                                id="wycenAnimator"
+                                onSubmit={e =>
+                                  context.wycen(
+                                    e,
+                                    match.params.id,
+                                    item.wsp_nazwa,
+                                    item.kategoria.name,
+                                    item.user,
+                                    this.state
+                                  )
+                                }>
+                                <Input
+                                  onChange={this.handleInputChange}
+                                  name="wsp_wycena_animatora"
+                                  tag="textarea"
+                                  defaultValue={item.wsp_wycena_animatora}
+                                  marginBottom="10px"
+                                />
+                                <Select
+                                  name="wsp_status_animatora"
+                                  value={this.state.wsp_status_animatora}
+                                  onChange={this.handleInputChange}>
+                                  <option value="wybierz" disabled selected>
+                                    Wybierz opcję
+                                  </option>
+                                  <option value="nie_wycenione">
+                                    Nie wycenione
+                                  </option>
+                                  <option value="wycenione">Wycenione</option>
+                                  <option value="zwrot_do_handlowca">
+                                    Zwrot do handlowca
+                                  </option>
+                                </Select>
+                                <Button type="submit" form="wycenAnimator">
+                                  <FontAwesomeIcon icon={faSave} size="1x" />
+                                  Wyceń
+                                </Button>
+                              </form>
+                            </Content>
+                          </Row>
+                        ) : null}
+
+                        {item.kategoria.name === "Wideo" ||
+                        item.kategoria.name === "Animacja" ? null : (
+                          <>
+                            <Row>
+                              <Label>Status wyceny grafika:</Label>
+                              <Content>
+                                {handleStatus(item.wsp_status_grafika)}
+                              </Content>
+                            </Row>
+
+                            <Row>
+                              <Label>Wycena grafika:</Label>
+                              <Content>{item.wsp_wycena_grafika}</Content>
+                            </Row>
+                          </>
+                        )}
 
                         {context.allowEditWycena(
                           item.wsp_status_grafika,
                           "Grafik"
-                        ) === true ? (
+                        ) === true &&
+                        (item.kategoria.name === "Strona internetowa" ||
+                          item.kategoria.name === "Sklep" ||
+                          item.kategoria.name === "Logo" ||
+                          item.kategoria.name === "Katalog") ? (
                           <Row>
                             <Label>Nowa wycena grafika:</Label>
                             <Content>
@@ -644,7 +787,16 @@ class SingleBriefView extends React.Component {
 
                         <Row>
                           <Label>Status:</Label>
-                          <Content>{handleStatus(item.wsp_statuss)}</Content>
+                          <Content>
+                            {handleMainStatus(item.wsp_statuss)}
+                          </Content>
+                        </Row>
+
+                        <Row>
+                          <Label>Czy pilne:</Label>
+                          <Content>
+                            {item.wsp_pilne === true ? "TAK" : "NIE"}
+                          </Content>
                         </Row>
 
                         {context.user.role.name === "Administrator" ? (

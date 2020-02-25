@@ -16,6 +16,21 @@ export const handleStatus = status => {
   }
 };
 
+export const handleMainStatus = status => {
+  switch (status) {
+    case "wersja_robocza":
+      return <Status>Wersja robocza</Status>;
+    case "do_wyceny":
+      return <Status color="red">Do wyceny</Status>;
+    case "wycenione":
+      return <Status color="green">Wycenione</Status>;
+    case "archiwum":
+      return <Status color="green">Archiwum</Status>;
+    default:
+      return <Status>{status}</Status>;
+  }
+};
+
 export const check = () => {
   if (!("serviceWorker" in navigator)) {
     console.log("No Service Worker support!");
@@ -72,14 +87,26 @@ export const checkValidDate = (
   twoDays,
   kategoria,
   statusGrafika,
-  statusKodera
+  statusKodera,
+  statusOperatora,
+  statusAnimatora
 ) => {
   if (twoDays < Date.now()) {
-    if (kategoria === "Katalog" && statusGrafika === "nie_wycenione") {
+    if (
+      (kategoria === "Katalog" || kategoria === "Logo") &&
+      statusGrafika === "nie_wycenione"
+    ) {
       return true;
     } else if (
-      kategoria === "Strona internetowa" &&
+      (kategoria === "Strona internetowa" || kategoria === "Sklep") &&
       (statusGrafika === "nie_wycenione" || statusKodera === "nie_wycenione")
+    ) {
+      return true;
+    } else if (kategoria === "Wideo" && statusOperatora === "nie_wycenione") {
+      return true;
+    } else if (
+      kategoria === "Animacja" &&
+      statusAnimatora === "nie_wycenione"
     ) {
       return true;
     } else {
@@ -90,14 +117,21 @@ export const checkValidDate = (
   }
 };
 
+export const showDate = data => {
+  const date = new Date(data).toLocaleString();
+  return date;
+};
+
 const utils = {
   handleStatus: handleStatus,
+  handleMainStatus: handleMainStatus,
   check: check,
   displayNotification: displayNotification,
   requestNotificationPermission: requestNotificationPermission,
   sendMail: sendMail,
   checkStatus: checkStatus,
-  checkValidDate: checkValidDate
+  checkValidDate: checkValidDate,
+  showDate: showDate
 };
 
 export default utils;

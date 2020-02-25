@@ -9,7 +9,7 @@ const StyledButton = styled.button`
   text-decoration: none;
   padding: 7px 12px;
   font-weight: 500;
-  background: none;
+  background: #fff;
   border: ${props => `2px solid ${props.theme.colors.mainBlue}`};
   color: ${props => `${props.theme.colors.mainBlue}`};
   cursor: pointer;
@@ -35,7 +35,7 @@ const SecondaryButton = styled(StyledButton)`
   font-size: 0.8em;
   box-shadow: ${props => `${props.theme.boxShadow}`};
   &:hover {
-    background-color: transparent;
+    background-color: #fff;
     color: ${props => `${props.theme.colors.mainBlue}`};
   }
 `;

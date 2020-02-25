@@ -27,7 +27,8 @@ class Form extends React.Component {
   static contextType = AppContext;
 
   state = {
-    kategoria: `1`
+    kategoria: `1`,
+    czy_pilne: false
   };
 
   handleInputChange = e => {
@@ -62,6 +63,15 @@ class Form extends React.Component {
                 <option value="4">Sklep</option>
                 <option value="5">Wideo</option>
                 <option value="6">Animacja</option>
+              </Select>
+              <Select
+                name="czy_pilne"
+                value={this.state.czy_pilne}
+                onChange={this.handleInputChange}
+                label="Czy wycena jest pilna?"
+                marginBottom="30px">
+                <option value="false">Nie</option>
+                <option value="true">Tak</option>
               </Select>
               <Input
                 onChange={this.handleInputChange}
