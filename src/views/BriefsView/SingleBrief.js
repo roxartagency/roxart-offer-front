@@ -3002,7 +3002,7 @@ class SingleBriefView extends React.Component {
                         ) : null}
 
                         <Row>
-                          <Label>Status:</Label>
+                          <Label>Administracja:</Label>
                           <Content>
                             {handleMainStatus(item.wsp_statuss)}
                           </Content>
@@ -3018,7 +3018,7 @@ class SingleBriefView extends React.Component {
                         {context.user.role.name === "Administrator" ? (
                           <>
                             <Row>
-                              <Label>Zmiana statusu:</Label>
+                              <Label>Zmiana statusu administracji:</Label>
                               <Content>
                                 <form
                                   autoComplete="off"
@@ -3043,7 +3043,7 @@ class SingleBriefView extends React.Component {
                                     </option>
                                     <option value="do_wyceny">Do wyceny</option>
                                     <option value="wycenione">Wycenione</option>
-                                    <option value="archiwum">Archiwum</option>
+                                    
                                   </Select>
                                   <Button type="submit" form="changeStatus">
                                     <FontAwesomeIcon icon={faSave} size="1x" />

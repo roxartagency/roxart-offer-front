@@ -24,8 +24,6 @@ export const handleMainStatus = status => {
       return <Status color="red">Do wyceny</Status>;
     case "wycenione":
       return <Status color="green">Wycenione</Status>;
-    case "archiwum":
-      return <Status color="green">Archiwum</Status>;
     default:
       return <Status>{status}</Status>;
   }
@@ -76,7 +74,7 @@ export const sendMail = (e, to, subject, text) => {
 };
 
 export const checkStatus = status => {
-  if (status === "archiwum") {
+  if (status === "wycenione") {
     return true;
   } else {
     return false;

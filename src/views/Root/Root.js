@@ -191,11 +191,11 @@ class Root extends React.Component {
           this.showNotification("Wycena zapisana");
           this.fetchBriefs();
           console.log(res);
-          if (kategoria === "Katalog") {
+          if (kategoria === "Katalog" || kategoria === "Logo") {
             console.log("Mail do admina!");
             utils.sendMail(
               e,
-              "admin@roxart.pl",
+              "wyceny@roxart.pl",
               "Grafik dodał nową wycenę: " + title,
               "Zaloguj się do aplikacji i przygotuj ofertę!"
             );
@@ -203,7 +203,7 @@ class Root extends React.Component {
             console.log("Mail do kodera!");
             utils.sendMail(
               e,
-              "koder@roxart.pl",
+              "lukasz.c@roxart.pl",
               "Grafik dodał nową wycenę: " + title,
               "Zaloguj się do aplikacji i wyceń godziny kodera!"
             );
@@ -234,7 +234,7 @@ class Root extends React.Component {
           console.log("Mail do handlowca!");
           utils.sendMail(
             e,
-            "handlowiec@roxart.pl",
+            user.email,
             "Grafik zwrócił briefa: " + title,
             "Zaloguj się do aplikacji i popraw go!"
           );
@@ -257,7 +257,7 @@ class Root extends React.Component {
           console.log("Mail do admina!");
           utils.sendMail(
             e,
-            "admin@roxart.pl",
+            "wyceny@roxart.pl",
             "Koder dodał nową wycenę: " + title,
             "Zaloguj się do aplikacji i przygotuj ofertę."
           );
@@ -287,7 +287,7 @@ class Root extends React.Component {
           console.log("Mail do handlowca!");
           utils.sendMail(
             e,
-            "handlowiec@roxart.pl",
+            user.email,
             "Koder zwrócił briefa: " + title,
             "Zaloguj się do aplikacji i popraw go!"
           );
@@ -310,7 +310,7 @@ class Root extends React.Component {
           console.log("Mail do admina!");
           utils.sendMail(
             e,
-            "admin@roxart.pl",
+            "wyceny@roxart.pl",
             "Operator dodał nową wycenę: " + title,
             "Zaloguj się do aplikacji i przygotuj ofertę."
           );
@@ -340,7 +340,7 @@ class Root extends React.Component {
           console.log("Mail do handlowca!");
           utils.sendMail(
             e,
-            "handlowiec@roxart.pl",
+            user.email,
             "Operator zwrócił briefa: " + title,
             "Zaloguj się do aplikacji i popraw go!"
           );
@@ -363,7 +363,7 @@ class Root extends React.Component {
           console.log("Mail do admina!");
           utils.sendMail(
             e,
-            "admin@roxart.pl",
+            "wyceny@roxart.pl",
             "Animator dodał nową wycenę: " + title,
             "Zaloguj się do aplikacji i przygotuj ofertę."
           );
@@ -393,7 +393,7 @@ class Root extends React.Component {
           console.log("Mail do handlowca!");
           utils.sendMail(
             e,
-            "handlowiec@roxart.pl",
+            user.email,
             "Animator zwrócił briefa: " + title,
             "Zaloguj się do aplikacji i popraw go!"
           );
@@ -469,7 +469,7 @@ class Root extends React.Component {
           console.log("Mail do operatora!");
           utils.sendMail(
             e,
-            "operator@roxart.pl",
+            "maciej.o@roxart.pl",
             "Handlowiec przekazał briefa do wyceny: " + title,
             "Zaloguj się do aplikacji i wyceń!"
           );
@@ -477,7 +477,7 @@ class Root extends React.Component {
           console.log("Mail do animatora!");
           utils.sendMail(
             e,
-            "animator@roxart.pl",
+            "szymon.a@roxart.pl",
             "Handlowiec przekazał briefa do wyceny: " + title,
             "Zaloguj się do aplikacji i wyceń!"
           );
@@ -485,7 +485,7 @@ class Root extends React.Component {
           console.log("Mail do grafika!");
           utils.sendMail(
             e,
-            "grafik@roxart.pl",
+            "bartek.w@roxart.pl",
             "Handlowiec przekazał briefa do wyceny: " + title,
             "Zaloguj się do aplikacji i wyceń!"
           );
@@ -544,11 +544,14 @@ class Root extends React.Component {
 
     setTimeout(() => {
       axios
-        .get(`${API_URL}/briefs?_sort=wsp_pilne:DESC,wsp_przekazane_do_wyceny:ASC`, {
-          headers: {
-            Authorization: `Bearer ${this.state.userToken}`
+        .get(
+          `${API_URL}/briefs?_sort=wsp_pilne:DESC,wsp_przekazane_do_wyceny:ASC`,
+          {
+            headers: {
+              Authorization: `Bearer ${this.state.userToken}`
+            }
           }
-        })
+        )
         .then(response => {
           const brief = response.data;
           this.setState({ brief });

@@ -50,7 +50,7 @@ const HeaderNavigation = () => (
           {context.user.username ? (
             <>
               <NavItem>
-                <StyledLink to="/briefs/archive">archiwum</StyledLink>
+                <StyledLink to="/briefs/archive">wycenione</StyledLink>
               </NavItem>
               <NavItem>
                 <StyledLink to="/briefs/files">pliki</StyledLink>
