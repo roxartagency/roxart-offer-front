@@ -29,7 +29,7 @@ const StyledListItem = styled.li`
   align-items: center;
   border-bottom: 1px solid gray;
   background-color: ${props =>
-    props.wsp_pilne ? "rgba(255, 0, 0, 0.13) !important" : "#fff"};
+    props.wsp_pilne === true ? "rgba(255, 0, 0, 0.13) !important" : "#fff"};
   &:nth-of-type(odd) {
     background-color: rgba(0, 0, 0, 0.05);
   }

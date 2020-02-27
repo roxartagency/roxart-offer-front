@@ -28,13 +28,14 @@ class Form extends React.Component {
 
   state = {
     kategoria: `1`,
-    czy_pilne: 0
+    czy_pilne: `0`
   };
 
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(this.state);
   };
 
   onFileChange = e => {
