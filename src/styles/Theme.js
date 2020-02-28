@@ -4,11 +4,16 @@ import { ThemeProvider } from "styled-components";
 const theme = {
   colors: {
     mainBlue: "#1e58ff",
-    orange: "#ff8200",
+    orange: "#FF5C01",
     onyx: "#36313D",
     red: "#d62d20",
     green: "#008744",
-    yellow: "#ffa700"
+    yellow: "#ffa700",
+    white: "#fff",
+    black: "#000",
+    grey: "#e5e5e5",
+    lightGrey: "#F5F5F5",
+    darkGrey: "#7A7A7A"
   },
   boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.3)",
   fonts: ["sans-serif", "Montserrat"],

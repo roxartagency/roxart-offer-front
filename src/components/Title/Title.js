@@ -3,15 +3,16 @@ import styled from "styled-components";
 
 const StyledTitle = styled.h2`
   margin: 0;
-  color: ${props => `${props.theme.colors.mainBlue}`};
+  color: ${props => `${props.theme.colors.black}`};
   font-weight: 700;
-  font-size: 18px;
+  font-size: 1em;
+  letter-spacing: -0.32px;
   svg {
     margin-right: 7px;
   }
 `;
 
-const Title = ({children}) => {
+const Title = ({ children }) => {
   return <StyledTitle>{children}</StyledTitle>;
 };
 

@@ -2,6 +2,7 @@ import React from "react";
 import AppContext from "../../context";
 import styled from "styled-components";
 import Button from "../../components/Button/Button";
+import { Link } from "react-router-dom";
 import Input from "../../components/Input/Input";
 import logoImage from "../../assets/images/roxart_agency.svg";
 import { withRouter } from "react-router-dom";
@@ -41,6 +42,7 @@ const Right = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: #fff;
 `;
 
 const LoginText = styled.p`
@@ -96,7 +98,7 @@ const PwaButton = styled(Button)`
   padding-top: 0;
 `;
 
-class Login extends React.Component {
+class LoginView extends React.Component {
   state = {
     login: "",
     password: ""
@@ -106,6 +108,7 @@ class Login extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(this.state);
   };
 
   redirectBriefs = e => {
@@ -126,7 +129,8 @@ class Login extends React.Component {
               </LoginText>
               <Form
                 autoComplete="off"
-                onSubmit={e => context.login(e, this.state)}>
+                // onSubmit={e => context.login(e, this.state)}
+              >
                 <Input
                   onChange={this.handleInputChange}
                   name="login"
@@ -142,8 +146,9 @@ class Login extends React.Component {
                   type="password"
                   marginBottom="24px"
                 />
-                <LoginButton marginBottom="5px">Zaloguj się</LoginButton>
-
+                <Link onClick={e => context.login(e, this.state)} to="/briefs">
+                  <LoginButton marginBottom="5px">Zaloguj się</LoginButton>
+                </Link>
                 {context.installButton === true ? (
                   <>
                     <Else>lub</Else>
@@ -161,4 +166,4 @@ class Login extends React.Component {
   }
 }
 
-export default withRouter(Login);
+export default withRouter(LoginView);

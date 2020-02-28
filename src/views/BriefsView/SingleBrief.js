@@ -3011,7 +3011,8 @@ class SingleBriefView extends React.Component {
                         <Row>
                           <Label>Czy pilne:</Label>
                           <Content>
-                            {item.wsp_pilne === true ? "TAK" : "NIE"}
+                            {item.wsp_pilne === 1 ? "TAK" : "NIE"}
+                            {item.wsp_pilne}
                           </Content>
                         </Row>
 
@@ -3043,7 +3044,6 @@ class SingleBriefView extends React.Component {
                                     </option>
                                     <option value="do_wyceny">Do wyceny</option>
                                     <option value="wycenione">Wycenione</option>
-                                    
                                   </Select>
                                   <Button type="submit" form="changeStatus">
                                     <FontAwesomeIcon icon={faSave} size="1x" />

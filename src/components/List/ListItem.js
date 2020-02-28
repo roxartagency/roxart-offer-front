@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Title from "../../components/Title/Title";
 import Status from "../../components/Status/Status";
-import Button from "../../components/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -13,6 +12,7 @@ import {
   checkStatus,
   checkValidDate
 } from "../../utils/Utils";
+import importantIcon from "../../assets/images/important.svg";
 
 const ListItemCol = styled.div`
   padding: 0 10px;
@@ -20,25 +20,33 @@ const ListItemCol = styled.div`
   font-size: 14px;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${props => `${props.theme.colors.black}`};
+`;
+
 const StyledListItem = styled.li`
   list-style: none;
   display: grid;
-  grid-template-columns: 5% 14% 12% 9% 10% 8% 8% 8% 8% 8% auto;
+  grid-template-columns: 5% 27% 12% 9% 9% 9% 9% 9% 9%;
   grid-auto-flow: row;
   width: 100%;
   align-items: center;
-  border-bottom: 1px solid gray;
-  background-color: ${props =>
-    props.wsp_pilne === true ? "rgba(255, 0, 0, 0.13) !important" : "#fff"};
-  &:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
+  border-top: 1px solid ${props => `${props.theme.colors.grey}`};
+  background-color: ${props => `${props.theme.colors.white}`};
   > ${ListItemCol} {
     padding: 0 10px;
   }
   svg {
     margin-right: 5px;
   }
+`;
+
+const StyledDate = styled.p`
+  color: ${props => `${props.theme.colors.darkGrey}`};
+  font-size: 0.8em;
+  line-height: 1;
+  margin: 3px 0 0 0;
 `;
 
 class ListItem extends React.Component {
@@ -52,70 +60,68 @@ class ListItem extends React.Component {
       2 * 24 * 60 * 60 * 1000;
 
     return checkStatus(props.wsp_statuss) === true ? null : (
-      <StyledListItem {...props}>
-        <ListItemCol>{props.id}</ListItemCol>
-        <ListItemCol>
-          <Title>{props.wsp_nazwa}</Title>
-        </ListItemCol>
-        <ListItemCol>{props.kategoria.name}</ListItemCol>
-        <ListItemCol>{props.user ? props.user.username : null}</ListItemCol>
-        <ListItemCol>
-          {checkValidDate(
-            twoDays,
-            props.kategoria.name,
-            props.wsp_status_grafika,
-            props.wsp_status_kodera,
-            props.wsp_status_operatora,
-            props.wsp_status_animatora
-          ) === true ? (
-            <Status color="red">
-              <FontAwesomeIcon icon={faExclamationCircle} size="1x" />
-              {date.toLocaleString()}
-            </Status>
-          ) : (
-            <Status>{date.toLocaleString()}</Status>
-          )}
-        </ListItemCol>
-        <ListItemCol>{handleMainStatus(props.wsp_statuss)}</ListItemCol>
-        <ListItemCol>
-          {props.kategoria.name === "Wideo" ||
-          props.kategoria.name === "Animacja" ? (
-            <Status color="green">---</Status>
-          ) : (
-            handleStatus(props.wsp_status_grafika)
-          )}
-        </ListItemCol>
-        <ListItemCol>
-          {props.kategoria.name === "Strona internetowa" ||
-          props.kategoria.name === "Sklep" ? (
-            handleStatus(props.wsp_status_kodera)
-          ) : (
-            <Status color="green">---</Status>
-          )}
-        </ListItemCol>
-        <ListItemCol>
-          {props.kategoria.name === "Wideo" ? (
-            handleStatus(props.wsp_status_operatora)
-          ) : (
-            <Status color="green">---</Status>
-          )}
-        </ListItemCol>
-        <ListItemCol>
-          {props.kategoria.name === "Animacja" ? (
-            handleStatus(props.wsp_status_animatora)
-          ) : (
-            <Status color="green">---</Status>
-          )}
-        </ListItemCol>
-        <ListItemCol>
-          <Link to={`/briefs/brief/${props.id}`}>
-            <Button>
-              <FontAwesomeIcon icon={faEye} size="1x" />
-              Zobacz
-            </Button>
-          </Link>
-        </ListItemCol>
-      </StyledListItem>
+      <StyledLink to={`/briefs/brief/${props.id}`}>
+        <StyledListItem {...props}>
+          <ListItemCol>
+            {props.id}
+
+            {props.wsp_pilne ? <img src={importantIcon} alt="" /> : null}
+          </ListItemCol>
+          <ListItemCol>
+            <Title>{props.wsp_nazwa}</Title>
+            <StyledDate>
+              {checkValidDate(
+                twoDays,
+                props.kategoria.name,
+                props.wsp_status_grafika,
+                props.wsp_status_kodera,
+                props.wsp_status_operatora,
+                props.wsp_status_animatora
+              ) === true ? (
+                <Status color="red">
+                  <FontAwesomeIcon icon={faExclamationCircle} size="1x" />
+                  {date.toLocaleString()}
+                </Status>
+              ) : (
+                <Status>{date.toLocaleString()}</Status>
+              )}
+            </StyledDate>
+          </ListItemCol>
+          <ListItemCol>{props.kategoria.name}</ListItemCol>
+          <ListItemCol>{props.user ? props.user.username : null}</ListItemCol>
+          <ListItemCol>{handleMainStatus(props.wsp_statuss)}</ListItemCol>
+          <ListItemCol>
+            {props.kategoria.name === "Wideo" ||
+            props.kategoria.name === "Animacja" ? (
+              <Status color="green">---</Status>
+            ) : (
+              handleStatus(props.wsp_status_grafika)
+            )}
+          </ListItemCol>
+          <ListItemCol>
+            {props.kategoria.name === "Strona internetowa" ||
+            props.kategoria.name === "Sklep" ? (
+              handleStatus(props.wsp_status_kodera)
+            ) : (
+              <Status color="green">---</Status>
+            )}
+          </ListItemCol>
+          <ListItemCol>
+            {props.kategoria.name === "Wideo" ? (
+              handleStatus(props.wsp_status_operatora)
+            ) : (
+              <Status color="green">---</Status>
+            )}
+          </ListItemCol>
+          <ListItemCol>
+            {props.kategoria.name === "Animacja" ? (
+              handleStatus(props.wsp_status_animatora)
+            ) : (
+              <Status color="green">---</Status>
+            )}
+          </ListItemCol>
+        </StyledListItem>
+      </StyledLink>
     );
   }
 }

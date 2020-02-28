@@ -1,10 +1,10 @@
 import React from "react";
 import AppContext from "../../context";
-import Login from "../../components/Login/Login";
 import styled from "styled-components";
 import Title from "../../components/Title/Title";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faDownload} from "@fortawesome/free-solid-svg-icons";
+import PageTitle from "../../components/PageTitle/PageTitle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
 const NoItems = styled.h2`
   font-size: 1.2em;
@@ -26,6 +26,7 @@ class FilesView extends React.Component {
           <>
             {context.user.username ? (
               <>
+                <PageTitle>Pliki</PageTitle>
                 <a
                   href="https://roxart-offer.roxapps.usermd.net/uploads/ddc69d2ebc304d14b190c35d427e6f2d.odt"
                   target="_blank"
@@ -48,7 +49,6 @@ class FilesView extends React.Component {
             ) : (
               <>
                 <NoItems>Zaloguj się aby uzyskać dostęp do plików.</NoItems>
-                <Login />
               </>
             )}
           </>

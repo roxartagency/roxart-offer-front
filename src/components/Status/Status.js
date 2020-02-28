@@ -10,7 +10,7 @@ const handleColorType = color => {
     case "yellow":
       return "color: #ffa700;";
     default:
-      return "color: #000;";
+      return "color: initia;";
   }
 };
 

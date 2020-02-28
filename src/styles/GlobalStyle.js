@@ -19,13 +19,13 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Spartan", sans-serif !important;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Spartan", sans-serif !important;
 }
 `;
 

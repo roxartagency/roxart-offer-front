@@ -13,7 +13,7 @@ const ListHead = styled.li`
   color: #fff;
   list-style: none;
   display: grid;
-  grid-template-columns: 5% 14% 12% 9% 10% 8% 8% 8% 8% 8% auto;
+  grid-template-columns: 5% 27% 12% 9% 9% 9% 9% 9% 9%;
   grid-auto-flow: row;
   grid-template-rows: 60px;
   font-size: 14px;
@@ -48,14 +48,12 @@ class List extends React.Component {
               <ListHeadCol>ID</ListHeadCol>
               <ListHeadCol>Klient</ListHeadCol>
               <ListHeadCol>Kategoria</ListHeadCol>
-              <ListHeadCol>Dodane przez</ListHeadCol>
-              <ListHeadCol>Przekazano do wyceny</ListHeadCol>
+              <ListHeadCol>Dodał</ListHeadCol>
               <ListHeadCol>Status</ListHeadCol>
               <ListHeadCol>Grafik</ListHeadCol>
               <ListHeadCol>Koder</ListHeadCol>
               <ListHeadCol>Operator</ListHeadCol>
               <ListHeadCol>Animator</ListHeadCol>
-              <ListHeadCol>Działania</ListHeadCol>
             </ListHead>
             {priced
               ? items.map(item => (

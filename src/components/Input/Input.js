@@ -16,46 +16,54 @@ const Label = styled.label`
   padding: 0 15px 5px 15px;
 `;
 
-const inputStyles = `
+const StyledInput = styled.input`
   color: #000;
-  font-size: 15px;
-  padding: 5px 15px;
-  border: 1px solid #7d7d7d;
-  border-radius: 5px;
-  line-height: 22px;
+  font-size: 1em;
+  padding: 24px 32px;
+  border: 1px solid ${props => `${props.theme.colors.lightGrey}`};
+  border-radius: 15px;
+  line-height: 1;
   width: 100%;
   background: #fff;
   transition: 0.2s ease-out all;
-
-`;
-
-const StyledInput = styled.input`
-  ${inputStyles}
   margin-bottom: ${props => props.marginBottom || "unset"};
   width: ${props => props.width || "100%"};
+  &::-webkit-input-placeholder {
+    color: ${props => `${props.theme.colors.grey}`};
+  }
   &:focus {
     outline: none;
-    border-color: ${props => `${props.theme.colors.mainBlue}`};
+    border-color: ${props => `${props.theme.colors.orange}`};
   }
 `;
 
 const StyledTextarea = styled.textarea`
-  ${inputStyles}
-  resize: none;
-  min-height: 100px;
+  color: #000;
+  font-size: 1em;
+  padding: 24px 32px;
+  border: 1px solid ${props => `${props.theme.colors.lightGrey}`};
+  border-radius: 15px;
+  line-height: 1;
+  width: 100%;
+  background: #fff;
+  transition: 0.2s ease-out all;
   margin-bottom: ${props => props.marginBottom || "unset"};
+  width: ${props => props.width || "100%"};
+  &::-webkit-input-placeholder {
+    color: ${props => `${props.theme.colors.grey}`};
+  }
   &:focus {
     outline: none;
-    border-color: ${props => `${props.theme.colors.mainBlue}`};
+    border-color: ${props => `${props.theme.colors.orange}`};
   }
 `;
 
-const Input = ({tag: Tag, name, label, ...props}) => (
+const Input = ({ tag: Tag, name, label, ...props }) => (
   <FormItem>
     <Label htmlFor={name}>{label}</Label>
 
     {Tag === "textarea" ? (
-      <StyledTextarea name={name} id={name} placeholder=" " {...props} />
+      <StyledTextarea name={name} id={name} placeholder="" {...props} />
     ) : (
       <StyledInput
         type="text"
