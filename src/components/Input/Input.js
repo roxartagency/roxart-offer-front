@@ -23,7 +23,6 @@ const StyledInput = styled.input`
   border: 1px solid ${props => `${props.theme.colors.lightGrey}`};
   border-radius: 15px;
   line-height: 1;
-  width: 100%;
   background: #fff;
   transition: 0.2s ease-out all;
   margin-bottom: ${props => props.marginBottom || "unset"};
@@ -60,7 +59,7 @@ const StyledTextarea = styled.textarea`
 
 const Input = ({ tag: Tag, name, label, ...props }) => (
   <FormItem>
-    <Label htmlFor={name}>{label}</Label>
+    {label ? <Label htmlFor={name}>{label}</Label> : null}
 
     {Tag === "textarea" ? (
       <StyledTextarea name={name} id={name} placeholder="" {...props} />

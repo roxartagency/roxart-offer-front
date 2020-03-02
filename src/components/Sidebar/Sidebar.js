@@ -49,13 +49,6 @@ const Logo = styled.img`
   width: 170px;
 `;
 
-const Buttons = styled.div`
-  margin-left: auto;
-  @media (max-width: 767px) {
-    margin-left: unset;
-  }
-`;
-
 const Sidebar = () => (
   <AppContext.Consumer>
     {context => (

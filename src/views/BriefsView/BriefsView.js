@@ -28,7 +28,6 @@ class BriefsView extends React.Component {
             {context.user.username ? (
               <>
                 <Filter />
-
                 <PageTitle>Briefy</PageTitle>
                 <List
                   items={

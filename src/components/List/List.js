@@ -9,22 +9,25 @@ const StyledList = styled.ul`
 `;
 
 const ListHead = styled.li`
-  background: ${props => `${props.theme.colors.orange}`};
-  color: #fff;
+  background: ${props => `${props.theme.colors.white}`};
+  color: ${props => `${props.theme.colors.darkGrey}`};
   list-style: none;
   display: grid;
-  grid-template-columns: 5% 27% 12% 9% 9% 9% 9% 9% 9%;
+  grid-template-columns: 5% 24% 10% 11% 10% 10% 10% 10% 10%;
   grid-auto-flow: row;
-  grid-template-rows: 60px;
-  font-size: 14px;
+  grid-template-rows: 40px;
+  border-bottom: 1px solid ${props => `${props.theme.colors.grey}`};
   width: 100%;
   align-items: center;
 `;
 
 const ListHeadCol = styled.div`
   margin: 0;
-  padding: 10px;
-  font-weight: 700;
+  padding: 15px 15px 12px 15px;
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1.1;
+  letter-spacing: -0.12px;
 `;
 
 const NoItems = styled.h1`

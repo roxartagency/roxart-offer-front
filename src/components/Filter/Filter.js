@@ -17,10 +17,6 @@ const FilterInput = styled(Input)`
 `;
 
 class Filter extends React.Component {
-  static contextType = AppContext;
-
-  state = {};
-
   render() {
     return (
       <AppContext.Consumer>
@@ -39,7 +35,5 @@ class Filter extends React.Component {
     );
   }
 }
-
-Filter.contextType = AppContext;
 
 export default Filter;

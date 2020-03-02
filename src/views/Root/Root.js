@@ -105,6 +105,8 @@ class Root extends React.Component {
   filterList = e => {
     var updatedList = this.state.brief;
     updatedList = updatedList.filter(function(item) {
+      console.log(item);
+      
       return (
         item.wsp_nazwa.toLowerCase().search(e.target.value.toLowerCase()) !== -1
       );
@@ -462,31 +464,31 @@ class Root extends React.Component {
         this.fetchBriefs();
         console.log(przekazane);
         this.showNotification("Przekazano do wyceny: " + res.data.wsp_nazwa);
-        if (kategoria === "Wideo") {
-          console.log("Mail do operatora!");
-          utils.sendMail(
-            e,
-            "maciej.o@roxart.pl",
-            "Handlowiec przekazał briefa do wyceny: " + title,
-            "Zaloguj się do aplikacji i wyceń!"
-          );
-        } else if (kategoria === "Animacja") {
-          console.log("Mail do animatora!");
-          utils.sendMail(
-            e,
-            "szymon.a@roxart.pl",
-            "Handlowiec przekazał briefa do wyceny: " + title,
-            "Zaloguj się do aplikacji i wyceń!"
-          );
-        } else {
-          console.log("Mail do grafika!");
-          utils.sendMail(
-            e,
-            "bartek.w@roxart.pl",
-            "Handlowiec przekazał briefa do wyceny: " + title,
-            "Zaloguj się do aplikacji i wyceń!"
-          );
-        }
+        // if (kategoria === "Wideo") {
+        //   console.log("Mail do operatora!");
+        //   utils.sendMail(
+        //     e,
+        //     "maciej.o@roxart.pl",
+        //     "Handlowiec przekazał briefa do wyceny: " + title,
+        //     "Zaloguj się do aplikacji i wyceń!"
+        //   );
+        // } else if (kategoria === "Animacja") {
+        //   console.log("Mail do animatora!");
+        //   utils.sendMail(
+        //     e,
+        //     "szymon.a@roxart.pl",
+        //     "Handlowiec przekazał briefa do wyceny: " + title,
+        //     "Zaloguj się do aplikacji i wyceń!"
+        //   );
+        // } else {
+        //   console.log("Mail do grafika!");
+        //   utils.sendMail(
+        //     e,
+        //     "bartek.w@roxart.pl",
+        //     "Handlowiec przekazał briefa do wyceny: " + title,
+        //     "Zaloguj się do aplikacji i wyceń!"
+        //   );
+        // }
       })
       .catch(error => {
         this.showNotification("Błąd w zapisywaniu: " + error);

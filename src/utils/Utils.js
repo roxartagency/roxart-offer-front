@@ -6,11 +6,11 @@ import { API_URL } from "../api";
 export const handleStatus = status => {
   switch (status) {
     case "nie_wycenione":
-      return <Status color="red">Nie wycenione</Status>;
+      return <Status color="red">do wyceny</Status>;
     case "zwrot_do_handlowca":
-      return <Status color="yellow">Zwrot</Status>;
+      return <Status color="blue">zwrot</Status>;
     case "wycenione":
-      return <Status color="green">Wycenione</Status>;
+      return <Status color="green">wycenione</Status>;
     default:
       return <Status>{status}</Status>;
   }
@@ -19,11 +19,11 @@ export const handleStatus = status => {
 export const handleMainStatus = status => {
   switch (status) {
     case "wersja_robocza":
-      return <Status>Wersja robocza</Status>;
+      return <Status color="grey">robocza</Status>;
     case "do_wyceny":
-      return <Status color="red">Do wyceny</Status>;
+      return <Status color="red">do wyceny</Status>;
     case "wycenione":
-      return <Status color="green">Wycenione</Status>;
+      return <Status color="green">wycenione</Status>;
     default:
       return <Status>{status}</Status>;
   }
