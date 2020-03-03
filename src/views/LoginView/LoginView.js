@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 import Input from "../../components/atoms/Input/Input";
 import logoImage from "../../assets/images/roxart_agency.svg";
 import { withRouter } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignInAlt, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 const Form = styled.form`
   max-width: 530px;

@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import AppContext from "../../context";
 import axios from "axios";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
@@ -80,6 +79,8 @@ class Root extends React.Component {
       });
       this.fetchBriefs();
     }
+
+    this.fetchFiles();
 
     utils.check();
     utils.requestNotificationPermission();

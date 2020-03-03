@@ -9,10 +9,10 @@ import { Link } from "react-router-dom";
 
 const StyledTopBar = styled.div`
   position: absolute;
-  width: calc(100% - 15vw);
-  padding: 64px 64px 0 64px;
-  top: 0;
-  right: 0;
+  width: auto;
+  padding: 0;
+  top: 64px;
+  right: 64px;
   display: flex;
   align-items: center;
   justify-content: flex-end;

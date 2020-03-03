@@ -52,22 +52,19 @@ const StyledButton = styled.button`
         border-color: ${props => `${props.theme.colors.orange}`};
       }
     `}
+
+    ${({ small }) =>
+      small &&
+      css`
+        min-width: 100px;
+        border-radius: 6px;
+        font-size: 12px;
+        padding: 6px 14px 4px 14px;
+      `}
 `;
 
 const StyledAnchor = styled(StyledButton)``;
 
-// const SecondaryButton = styled(StyledButton)`
-//   width: auto;
-//   background-color: ${props => `${props.theme.colors.mainBlue}`};
-//   color: white;
-//   font-weight: 400;
-//   font-size: 0.8em;
-//   box-shadow: ${props => `${props.theme.boxShadow}`};
-//   &:hover {
-//     background-color: #fff;
-//     color: ${props => `${props.theme.colors.mainBlue}`};
-//   }
-// `;
 const Button = ({ children, href, secondary, ...props }) => {
   return (
     <>

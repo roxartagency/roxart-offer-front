@@ -6,11 +6,6 @@ import Select from "../../components/atoms/Select/Select";
 import Input from "../../components/atoms/Input/Input";
 import { handleMainStatus, handleStatus, showDate } from "../../utils/Utils";
 import styled, { css } from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowAltCircleLeft,
-  faSave
-} from "@fortawesome/free-solid-svg-icons";
 
 const BriefWrapper = styled.div``;
 
