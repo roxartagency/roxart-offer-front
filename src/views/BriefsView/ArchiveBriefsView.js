@@ -1,8 +1,8 @@
 import React from "react";
 import AppContext from "../../context";
-import List from "../../components/List/List";
-import Filter from "../../components/Filter/Filter";
-import PageTitle from "../../components/PageTitle/PageTitle";
+import List from "../../components/organisms/List/List";
+import Filter from "../../components/organisms/Filter/Filter";
+import PageTitle from "../../components/atoms/PageTitle/PageTitle";
 import styled from "styled-components";
 
 const NoItems = styled.h2`

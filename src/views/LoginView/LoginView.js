@@ -1,9 +1,9 @@
 import React from "react";
 import AppContext from "../../context";
 import styled from "styled-components";
-import Button from "../../components/Button/Button";
+import Button from "../../components/atoms/Button/Button";
 import { Link } from "react-router-dom";
-import Input from "../../components/Input/Input";
+import Input from "../../components/atoms/Input/Input";
 import logoImage from "../../assets/images/roxart_agency.svg";
 import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

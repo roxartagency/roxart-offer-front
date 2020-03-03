@@ -1,10 +1,10 @@
 import React from "react";
-import SidebarNavigation from "../../components/Sidebar/SidebarNavigation";
-import StyledLink from "../../components/Sidebar/StyledLink";
-import AppContext from "../../context";
+import SidebarNavigation from "../../molecules/SidebarNavigation/SidebarNavigation";
+import StyledLink from "../../atoms/StyledLink/StyledLink";
+import AppContext from "../../../context";
 import styled from "styled-components";
 
-import logoImage from "../../assets/images/roxart_agency.svg";
+import logoImage from "../../../assets/images/roxart_agency.svg";
 
 const StyledSidebar = styled.div`
   display: flex;

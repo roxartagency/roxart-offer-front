@@ -1,8 +1,8 @@
 import React from "react";
-import AppContext from "../../context";
-import Input from "../../components/Input/Input";
-import Select from "../../components/Select/Select";
-import Button from "../../components/Button/Button";
+import AppContext from "../../../context";
+import Input from "../../atoms/Input/Input";
+import Select from "../../atoms/Select/Select";
+import Button from "../../atoms/Button/Button";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";

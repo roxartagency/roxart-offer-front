@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import Title from "../../components/Title/Title";
-import Status from "../../components/Status/Status";
+import Title from "../../atoms/Title/Title";
+import Status from "../../atoms/Status/Status";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -11,8 +11,8 @@ import {
   handleStatus,
   checkStatus,
   checkValidDate
-} from "../../utils/Utils";
-import importantIcon from "../../assets/images/important.svg";
+} from "../../../utils/Utils";
+import importantIcon from "../../../assets/images/important.svg";
 
 const ListItemCol = styled.div`
   padding: 13px 15px 9px 15px;

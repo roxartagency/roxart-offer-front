@@ -1,7 +1,7 @@
 import React from "react";
-import AppContext from "../../context";
+import AppContext from "../../../context";
 import styled from "styled-components";
-import Input from "../../components/Input/Input";
+import Input from "../../atoms/Input/Input";
 
 const Filters = styled.div`
   display: block;

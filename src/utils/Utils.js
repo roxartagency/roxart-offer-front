@@ -1,5 +1,5 @@
 import React from "react";
-import Status from "../components/Status/Status";
+import Status from "../components/atoms/Status/Status";
 import axios from "axios";
 import { API_URL } from "../api";
 

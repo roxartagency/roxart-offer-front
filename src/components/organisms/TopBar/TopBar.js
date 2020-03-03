@@ -1,8 +1,8 @@
 import React from "react";
-import AppContext from "../../context";
-import Button from "../Button/Button";
+import AppContext from "../../../context";
+import Button from "../../atoms/Button/Button";
 import styled from "styled-components";
-import refresh from "../../assets/images/refresh.svg";
+import refresh from "../../../assets/images/refresh.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";

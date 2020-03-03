@@ -9,10 +9,10 @@ import SingleBriefView from "../../views/BriefsView/SingleBrief";
 import FilesView from "../../views/FilesView/FilesView";
 import FormView from "../../views/FormView/FormView";
 import LoginView from "../../views/LoginView/LoginView";
-import Sidebar from "../../components/Sidebar/Sidebar";
-import TopBar from "../../components/TopBar/TopBar";
-import PageWrapper from "../../components/PageWrapper/PageWrapper";
-import Notification from "../../components/Notification/Notification";
+import Sidebar from "../../components/organisms/Sidebar/Sidebar";
+import TopBar from "../../components/organisms/TopBar/TopBar";
+import PageWrapper from "../../templates/PageWrapper/PageWrapper";
+import Notification from "../../components/atoms/Notification/Notification";
 import PWAPrompt from "react-ios-pwa-prompt";
 import Cookies from "js-cookie";
 import { API_URL } from "../../api";
@@ -24,6 +24,7 @@ import utils from "../../utils/Utils";
 class Root extends React.Component {
   state = {
     brief: [],
+    plik: [],
     filteredBrief: [],
     user: [],
     userToken: "",
@@ -106,7 +107,7 @@ class Root extends React.Component {
     var updatedList = this.state.brief;
     updatedList = updatedList.filter(function(item) {
       console.log(item);
-      
+
       return (
         item.wsp_nazwa.toLowerCase().search(e.target.value.toLowerCase()) !== -1
       );
@@ -554,6 +555,31 @@ class Root extends React.Component {
     // });
   };
 
+  fetchFiles = () => {
+    console.log("Fetch files");
+
+    setTimeout(() => {
+      axios
+        .get(`${API_URL}/pliks`, {
+          headers: {
+            Authorization: `Bearer ${this.state.userToken}`
+          }
+        })
+        .then(response => {
+          const plik = response.data;
+          this.setState({ plik });
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log("An error occurred:", error);
+        });
+    }, 300);
+
+    // utils.displayNotification("Odświeżono briefy", {
+    //   icon: "/roxart192.png"
+    // });
+  };
+
   login = (e, userData) => {
     axios
       .post(`${API_URL}/auth/local`, {
@@ -624,6 +650,7 @@ class Root extends React.Component {
       showNotification: this.showNotification,
       filterList: this.filterList,
       fetchBriefs: this.fetchBriefs,
+      fetchFiles: this.fetchFiles,
       installApp: this.installApp,
       addItem: this.addItem,
       removeItem: this.removeItem,

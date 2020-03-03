@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import ListItem from "../../components/List/ListItem";
-import PricedListItem from "../../components/List/PricedListItem";
+import ListItem from "../../molecules/ListItem/ListItem";
+import PricedListItem from "../../molecules/PricedListItem/PricedListItem";
 
 const StyledList = styled.ul`
   padding: 0;

@@ -1,6 +1,6 @@
 import React from "react";
-import AppContext from "../../context";
-import StyledLink from "../../components/Sidebar/StyledLink";
+import AppContext from "../../../context";
+import StyledLink from "../../atoms/StyledLink/StyledLink";
 import styled from "styled-components";
 
 const MenuWrapper = styled.ul`

@@ -1,9 +1,9 @@
 import React from "react";
 import AppContext from "../../context";
 import { Link } from "react-router-dom";
-import Button from "../../components/Button/Button";
-import Select from "../../components/Select/Select";
-import Input from "../../components/Input/Input";
+import Button from "../../components/atoms/Button/Button";
+import Select from "../../components/atoms/Select/Select";
+import Input from "../../components/atoms/Input/Input";
 import { handleMainStatus, handleStatus, showDate } from "../../utils/Utils";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -97,7 +97,7 @@ const MainWrapper = styled.div`
 
 const LeftWrapper = styled.div`
   width: 50%;
-  padding-right: 32px;
+  padding-right: 64px;
 `;
 
 const Row = styled.div`
@@ -146,7 +146,7 @@ const RightWrapper = styled.div`
   position: sticky;
   top: 64px;
   overflow: auto;
-  padding-right: 32px;
+  padding-right: 0;
 `;
 
 class SingleBriefView extends React.Component {

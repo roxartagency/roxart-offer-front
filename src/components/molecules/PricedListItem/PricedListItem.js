@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Title from "../../components/Title/Title";
-import Status from "../../components/Status/Status";
-import Button from "../../components/Button/Button";
+import Title from "../../atoms/Title/Title";
+import Status from "../../atoms/Status/Status";
+import Button from "../../atoms/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -12,7 +12,7 @@ import {
   handleStatus,
   checkStatus,
   checkValidDate
-} from "../../utils/Utils";
+} from "../../../utils/Utils";
 
 const ListItemCol = styled.div`
   padding: 0 10px;
