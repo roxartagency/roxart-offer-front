@@ -13,7 +13,8 @@ const theme = {
     black: "#000",
     grey: "#e5e5e5",
     lightGrey: "#F5F5F5",
-    darkGrey: "#7A7A7A"
+    darkGrey: "#7A7A7A",
+    greyBg: "#4B4B4B"
   },
   boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.3)",
   fonts: ["sans-serif", "Montserrat"],

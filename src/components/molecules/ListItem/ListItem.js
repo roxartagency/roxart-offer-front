@@ -8,7 +8,8 @@ import {
   handleMainStatus,
   handleStatus,
   checkStatus,
-  checkValidDate
+  checkValidDate,
+  showDate
 } from "../../../utils/Utils";
 import importantIcon from "../../../assets/images/important.gif";
 
@@ -18,6 +19,10 @@ const ListItemCol = styled.div`
   font-size: 0.8em;
   letter-spacing: -0.28px;
   color: ${props => `${props.theme.colors.darkGrey}`};
+  position: relative;
+  &:hover p {
+    opacity: 1;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -97,11 +102,25 @@ const BlackText = styled.span`
   font-weight: 500;
 `;
 
+const DateTooltip = styled.p`
+  position: absolute;
+  opacity: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: ${props => `${props.theme.colors.black}`};
+  padding: 5px 5px 2px 5px;
+  background: ${props => `${props.theme.colors.lightGrey}`};
+  font-size: 10px;
+  border-radius: 5px;
+  z-index: 1;
+`;
+
 class ListItem extends React.Component {
   render() {
     const { ...props } = this.props;
-
-    const date = new Date(props.wsp_przekazane_do_wyceny);
 
     const twoDays =
       new Date(props.wsp_przekazane_do_wyceny).getTime() +
@@ -129,9 +148,15 @@ class ListItem extends React.Component {
                 props.wsp_status_operatora,
                 props.wsp_status_animatora
               ) === true ? (
-                <Status color="red">Dodano: {date.toLocaleString()}</Status>
+                <Status color="red">
+                  Dodano: {showDate(props.wsp_przekazane_do_wyceny)}
+                </Status>
               ) : (
-                <Status>Dodano: {date.toLocaleString()}</Status>
+                <>
+                  <Status>
+                    Dodano: {showDate(props.wsp_przekazane_do_wyceny)}
+                  </Status>
+                </>
               )}
             </StyledDate>
           </ListItemCol>
@@ -145,7 +170,12 @@ class ListItem extends React.Component {
             props.kategoria.name === "Animacja" ? (
               <Status>nie dotyczy</Status>
             ) : (
-              handleStatus(props.wsp_status_grafika)
+              <>
+                {handleStatus(props.wsp_status_grafika)}
+                {/* <DateTooltip>
+                  {showDate(props.wsp_status_grafika_date)}
+                </DateTooltip> */}
+              </>
             )}
           </ListItemCol>
           <ListItemCol>

@@ -5,10 +5,12 @@ import {faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
 
 const StyledNotification = styled.div`
   position: fixed;
-  top: 90px;
-  right: 20px;
+  bottom: 64px;
+  right: 64px;
   max-width: 300px;
-  background: #fff;
+  border-radius: 15px;
+  background: ${props => `${props.theme.colors.greyBg}`};
+  color: ${props => `${props.theme.colors.white}`};
   padding: 25px 50px;
   text-align: center;
   box-shadow: ${props => `${props.theme.boxShadow}`};
@@ -23,7 +25,6 @@ const StyledNotification = styled.div`
 const P = styled.p`
   font-size: 13px;
   margin: 0;
-  text-transform: uppercase;
   svg {
     margin-right: 5px;
   }
@@ -32,7 +33,6 @@ const P = styled.p`
 const Notification = ({isActive, children}) => (
   <StyledNotification active={isActive === true ? true : false}>
     <P>
-      <FontAwesomeIcon icon={faExclamationCircle} size="1x" />
       {children}
     </P>
   </StyledNotification>

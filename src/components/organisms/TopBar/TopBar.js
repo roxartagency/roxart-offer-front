@@ -32,7 +32,8 @@ const TopBar = () => (
                 context.fetchBriefs(e);
                 context.showNotification("Odświeżono briefy");
               }}
-              refresh>
+              refresh
+              loading={context.isFetching}>
               <img src={refresh} alt="Refresh" />
             </Button>
             {context.user.role.name === "Administrator" ||

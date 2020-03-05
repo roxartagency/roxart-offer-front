@@ -1,31 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Label from "../Label/Label";
+import TextareaAutosize from 'react-textarea-autosize';
 
 const FormItem = styled.div`
   width: 100%;
   position: relative;
   flex-shrink: 0;
 `;
-
-const Label = styled.label`
-  color: #7d7d7d;
-  transition: 0.2s ease-out all;
-  font-size: 13px;
-  display: block;
-  padding: 0 15px 5px 15px;
-`;
-
 const StyledInput = styled.input`
-  color: #000;
+  color: ${props => `${props.theme.colors.black}`};
   font-size: 1em;
-  padding: 24px 32px;
+  padding: 22px 32px 19px 32px;
   border: 1px solid ${props => `${props.theme.colors.lightGrey}`};
   border-radius: 15px;
-  line-height: 1;
-  background: #fff;
+  line-height: 1.2;
+  background: ${props => `${props.theme.colors.white}`};
   transition: 0.2s ease-out all;
-  margin-bottom: ${props => props.marginBottom || "unset"};
+  margin-bottom: ${props => props.marginbottom || "unset"};
   width: ${props => props.width || "100%"};
   &::-webkit-input-placeholder {
     color: ${props => `${props.theme.colors.grey}`};
@@ -36,18 +29,19 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledTextarea = styled.textarea`
-  color: #000;
+const StyledTextarea = styled(TextareaAutosize)`
+  color: ${props => `${props.theme.colors.black}`};
   font-size: 1em;
-  padding: 24px 32px;
+  padding: 22px 32px 19px 32px;
   border: 1px solid ${props => `${props.theme.colors.lightGrey}`};
   border-radius: 15px;
-  line-height: 1;
-  width: 100%;
-  background: #fff;
+  line-height: 24px;
+  background: ${props => `${props.theme.colors.white}`};
   transition: 0.2s ease-out all;
-  margin-bottom: ${props => props.marginBottom || "unset"};
+  margin-bottom: ${props => props.marginbottom || "unset"};
   width: ${props => props.width || "100%"};
+  resize: none;
+  overflow: none;
   &::-webkit-input-placeholder {
     color: ${props => `${props.theme.colors.grey}`};
   }

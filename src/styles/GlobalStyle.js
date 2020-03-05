@@ -22,6 +22,11 @@ const GlobalStyle = createGlobalStyle`
   font-family: "Spartan", sans-serif !important;
 }
 
+button {
+  outline: none;
+  box-shadow: none;
+}
+
 body {
   margin: 0;
   padding: 0;

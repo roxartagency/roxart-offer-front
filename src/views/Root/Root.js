@@ -31,7 +31,8 @@ class Root extends React.Component {
     installButton: false,
     filterActive: false,
     notificationActive: false,
-    notificationContent: "testowy tekst"
+    notificationContent: "testowy tekst",
+    isFetching: false
   };
 
   installPrompt = null;
@@ -180,14 +181,18 @@ class Root extends React.Component {
 
   wycen = (e, id, title, kategoria, user, wycena) => {
     e.preventDefault();
-
+    const currentDate = new Date();
     if (wycena.wsp_status_grafika === "wycenione") {
       axios
-        .put(`${API_URL}/briefs/${id}`, wycena, {
-          headers: {
-            Authorization: `Bearer ${this.state.userToken}`
+        .put(
+          `${API_URL}/briefs/${id}`,
+          { wsp_status_grafika_date: currentDate, ...wycena },
+          {
+            headers: {
+              Authorization: `Bearer ${this.state.userToken}`
+            }
           }
-        })
+        )
         .then(res => {
           this.showNotification("Wycena zapisana");
           this.fetchBriefs();
@@ -443,7 +448,7 @@ class Root extends React.Component {
   przekazDoWyceny = (e, id, title, kategoria) => {
     e.preventDefault();
 
-    const przekazane = new Date();
+    const currentDate = new Date();
 
     axios
       .put(
@@ -454,7 +459,11 @@ class Root extends React.Component {
           wsp_status_kodera: "nie_wycenione",
           wsp_status_operatora: "nie_wycenione",
           wsp_status_animatora: "nie_wycenione",
-          wsp_przekazane_do_wyceny: przekazane
+          wsp_status_grafika_date: currentDate,
+          wsp_status_kodera_date: currentDate,
+          wsp_status_operatora_date: currentDate,
+          wsp_status_animatora_date: currentDate,
+          wsp_przekazane_do_wyceny: currentDate
         },
         {
           headers: {
@@ -464,7 +473,7 @@ class Root extends React.Component {
       )
       .then(res => {
         this.fetchBriefs();
-        console.log(przekazane);
+        console.log(currentDate);
         this.showNotification("Przekazano do wyceny: " + res.data.wsp_nazwa);
         // if (kategoria === "Wideo") {
         //   console.log("Mail do operatora!");
@@ -531,6 +540,8 @@ class Root extends React.Component {
   fetchBriefs = () => {
     console.log("Fetch briefs");
 
+    this.setState({ isFetching: true });
+
     setTimeout(() => {
       axios
         .get(
@@ -543,11 +554,12 @@ class Root extends React.Component {
         )
         .then(response => {
           const brief = response.data;
-          this.setState({ brief });
+          this.setState({ brief, isFetching: false });
           console.log(response.data);
         })
         .catch(error => {
           console.log("An error occurred:", error);
+          this.setState({ isFetching: false });
         });
     }, 300);
 
@@ -582,6 +594,8 @@ class Root extends React.Component {
   };
 
   login = (e, userData) => {
+    e.preventDefault();
+
     axios
       .post(`${API_URL}/auth/local`, {
         identifier: userData.login,

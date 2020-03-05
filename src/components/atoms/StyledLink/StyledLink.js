@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const activeClassName = "nav-item-active";
@@ -6,7 +6,8 @@ const activeClassName = "nav-item-active";
 const StyledLink = styled(NavLink).attrs({ activeClassName })`
   text-decoration: none;
   color: ${props => `${props.theme.colors.darkGrey}`};
-  display: block;
+  display: flex;
+  align-items: center;
   font-size: 1em;
   padding: 16px 32px;
   margin-top: 0;
@@ -14,6 +15,9 @@ const StyledLink = styled(NavLink).attrs({ activeClassName })`
   cursor: pointer;
   position: relative;
   transition: 0.2s ease-out all;
+  img {
+    margin-right: 12px;
+  }
   &.${activeClassName} {
     font-weight: 700;
     color: ${props => `${props.theme.colors.black}`};
@@ -31,6 +35,18 @@ const StyledLink = styled(NavLink).attrs({ activeClassName })`
   &:hover {
     color: ${props => `${props.theme.colors.orange}`};
   }
+
+  ${({ logout }) =>
+    logout &&
+    css`
+      font-weight: 400 !important;
+      color: ${props => `${props.theme.colors.darkGrey}`} !important;
+      &.${activeClassName} {
+        &::before {
+          display: none;
+        }
+      }
+    `}
 `;
 
 export default StyledLink;

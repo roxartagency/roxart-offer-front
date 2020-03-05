@@ -116,8 +116,12 @@ export const checkValidDate = (
 };
 
 export const showDate = data => {
-  const date = new Date(data).toLocaleString();
-  return date;
+  const date = new Date(data);
+  function minutes_with_leading_zeros(date) {
+    return (date.getMinutes() < 10 ? "0" : "") + date.getMinutes();
+  }
+  const displayDate = date.toLocaleDateString() + ', ' + date.getHours() + ':' + minutes_with_leading_zeros(date);
+  return displayDate;
 };
 
 const utils = {

@@ -5,6 +5,7 @@ import AppContext from "../../../context";
 import styled from "styled-components";
 
 import logoImage from "../../../assets/images/roxart_agency.svg";
+import logoutImage from "../../../assets/images/logout.svg";
 
 const StyledSidebar = styled.div`
   display: flex;
@@ -59,8 +60,9 @@ const Sidebar = () => (
         <SidebarNavigation />
         {context.user.username ? (
           <LogoutWrapper>
-            <StyledLink onClick={e => context.logout(e)} to="/">
-              Wyloguj: {context.user.username}
+            <StyledLink onClick={e => context.logout(e)} to="/" logout>
+              <img src={logoutImage} alt="" />
+              Wyloguj
             </StyledLink>
           </LogoutWrapper>
         ) : null}

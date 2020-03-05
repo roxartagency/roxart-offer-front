@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 const FormWrapper = styled.div`
-  width: 100%;
+  max-width: 50vw;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -32,10 +32,11 @@ class Form extends React.Component {
   };
 
   handleInputChange = e => {
+    console.log(this.state);
+
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state);
   };
 
   onFileChange = e => {
@@ -57,7 +58,7 @@ class Form extends React.Component {
                 value={this.state.kategoria}
                 onChange={this.handleInputChange}
                 label="Kategoria briefa"
-                marginBottom="30px">
+                marginbottom="30px">
                 <option value="1">Strona internetowa</option>
                 <option value="2">Katalog</option>
                 <option value="3">Logo</option>
@@ -65,56 +66,49 @@ class Form extends React.Component {
                 <option value="5">Wideo</option>
                 <option value="6">Animacja</option>
               </Select>
-              <Select
-                name="czy_pilne"
-                value={this.state.czy_pilne}
-                onChange={this.handleInputChange}
-                label="Czy wycena jest pilna?"
-                marginBottom="30px">
-                <option value="0">Nie</option>
-                <option value="1">Tak</option>
-              </Select>
+
               <Input
                 onChange={this.handleInputChange}
                 name="wsp_nazwa"
                 value={this.state.wsp_nazwa}
                 label="Nazwa firmy"
-                marginBottom="30px"
+                marginbottom="30px"
+                required
               />
               <Input
                 onChange={this.handleInputChange}
                 name="wsp_adres"
                 value={this.state.wsp_adres}
                 label="Adres firmy"
-                marginBottom="30px"
+                marginbottom="30px"
               />
               <Input
                 onChange={this.handleInputChange}
                 name="wsp_nip"
                 value={this.state.wsp_nip}
                 label="NIP firmy"
-                marginBottom="30px"
+                marginbottom="30px"
               />
               <Input
                 onChange={this.handleInputChange}
                 name="wsp_osoba"
                 value={this.state.wsp_osoba}
                 label="Imię i nazwisko osoby kontaktowej"
-                marginBottom="30px"
+                marginbottom="30px"
               />
               <Input
                 onChange={this.handleInputChange}
                 name="wsp_telefon"
                 value={this.state.wsp_telefon}
                 label="Numer telefonu osoby kontaktowej"
-                marginBottom="30px"
+                marginbottom="30px"
               />
               <Input
                 onChange={this.handleInputChange}
                 name="wsp_email"
                 value={this.state.wsp_email}
                 label="E-mail osoby kontaktowej"
-                marginBottom="30px"
+                marginbottom="30px"
               />
               <Input
                 onChange={this.handleInputChange}
@@ -122,7 +116,7 @@ class Form extends React.Component {
                 name="wsp_adres_url"
                 value={this.state.wsp_adres_url}
                 label="Jaki jest adres (URL) Twojej strony internetowej? (obecny lub planowany)"
-                marginBottom="30px"
+                marginbottom="30px"
               />
               <Input
                 onChange={this.handleInputChange}
@@ -130,7 +124,7 @@ class Form extends React.Component {
                 name="wsp_czym_zajmuje"
                 value={this.state.wsp_czym_zajmuje}
                 label="Czym zajmuje się Twoja firma?"
-                marginBottom="30px"
+                marginbottom="30px"
               />
               <Input
                 onChange={this.handleInputChange}
@@ -138,7 +132,7 @@ class Form extends React.Component {
                 name="wsp_branza"
                 value={this.state.wsp_branza}
                 label="W jakiej branży działa Twoja firma?"
-                marginBottom="30px"
+                marginbottom="30px"
               />
               <Input
                 onChange={this.handleInputChange}
@@ -146,14 +140,14 @@ class Form extends React.Component {
                 name="wsp_ile_lat"
                 value={this.state.wsp_ile_lat}
                 label="Ile lat Państwa firma jest na rynku i ilu zatrudnia pracowników?"
-                marginBottom="30px"
+                marginbottom="30px"
               />
               <Input
                 onChange={this.handleInputChange}
                 tag="textarea"
                 name="wsp_jakie_produkty"
                 value={this.state.wsp_jakie_produkty}
-                marginBottom="30px"
+                marginbottom="30px"
                 label="Jakie produkty/usługi oferuje Twoja firma swoim klientom?"
               />
               <Input
@@ -162,7 +156,7 @@ class Form extends React.Component {
                 name="wsp_kim_sa_klienci"
                 value={this.state.wsp_kim_sa_klienci}
                 label="Kim są Twoi klienci (dotychczasowi lub potencjalni) oraz jaka jest grupa docelowa?"
-                marginBottom="30px"
+                marginbottom="30px"
               />
               <Input
                 onChange={this.handleInputChange}
@@ -170,7 +164,7 @@ class Form extends React.Component {
                 name="wsp_konkurenci"
                 value={this.state.wsp_konkurenci}
                 label="Kim są główni konkurenci (lokalnie i globalnie)? (można podać adresy internetowe)"
-                marginBottom="30px"
+                marginbottom="30px"
               />
               <Input
                 onChange={this.handleInputChange}
@@ -178,7 +172,7 @@ class Form extends React.Component {
                 name="wsp_budzet"
                 value={this.state.wsp_budzet}
                 label="Jaki jest określony budżet na realizację projektu netto?"
-                marginBottom="30px"
+                marginbottom="30px"
               />
               <Input
                 onChange={this.handleInputChange}
@@ -186,7 +180,7 @@ class Form extends React.Component {
                 name="wsp_czas_realizacji"
                 value={this.state.wsp_czas_realizacji}
                 label="Jaki jest określony czas zakończenia realizacji projektu?"
-                marginBottom="30px"
+                marginbottom="30px"
               />
 
               {this.state.kategoria === "1" ? (
@@ -197,7 +191,7 @@ class Form extends React.Component {
                     name="str_logo"
                     value={this.state.str_logo}
                     label="Czy firma posiada logo? Jeśli tak, czy firma posiada logo w formie pliku wektorowego oraz księgę znaku?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -205,7 +199,7 @@ class Form extends React.Component {
                     name="str_zalozenia"
                     value={this.state.str_zalozenia}
                     label="Jakie są założenia i podstawowy cel nowej strony internetowej?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -213,7 +207,7 @@ class Form extends React.Component {
                     name="str_charakter"
                     value={this.state.str_charakter}
                     label="Jaki ma być charakter strony internetowej (sprzedażowa, wizerunkowa, informacyjna itp.)?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -221,7 +215,7 @@ class Form extends React.Component {
                     name="str_czy_cms"
                     value={this.state.str_czy_cms}
                     label="Czy strona ma mieć możliwość samodzielnej edycji treści strony lub jej elementów (system CMS)?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -229,7 +223,7 @@ class Form extends React.Component {
                     name="str_jezyk_podstawowy"
                     value={this.state.str_jezyk_podstawowy}
                     label="Jaki ma być podstawowy język strony?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -237,7 +231,7 @@ class Form extends React.Component {
                     name="str_jezyki_dodatkowe"
                     value={this.state.str_jezyki_dodatkowe}
                     label="Czy strona posiadać dodatkowe języki? Jeśli tak, to jakie?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -245,7 +239,7 @@ class Form extends React.Component {
                     name="str_podstrony_menu"
                     value={this.state.str_podstrony_menu}
                     label="Jakie mają być główne podstrony menu/zakładki w nawigacji górnej?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -253,7 +247,7 @@ class Form extends React.Component {
                     name="str_liczba_podstron"
                     value={this.state.str_liczba_podstron}
                     label="Jaka jest orientacyjna liczba wszystkich podstron (mapa strony)?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -261,7 +255,7 @@ class Form extends React.Component {
                     name="str_kolorystyka"
                     value={this.state.str_kolorystyka}
                     label="Jakie są Twoje oczekiwania co do kolorystyki strony?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -269,7 +263,7 @@ class Form extends React.Component {
                     name="str_przyklady_stron"
                     value={this.state.str_przyklady_stron}
                     label="Przykłady istniejących stron internetowych, które podobają się Tobie. Podaj minimum trzy przykłady. (nie muszą być związane z branżą)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -277,7 +271,7 @@ class Form extends React.Component {
                     name="str_elementy"
                     value={this.state.str_elementy}
                     label="Elementy na istniejących stronach internetowych, które podobają się Tobie."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -285,7 +279,7 @@ class Form extends React.Component {
                     name="str_zdjecia"
                     value={this.state.str_zdjecia}
                     label="Czy otrzymamy zdjęcia do strony?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -293,7 +287,7 @@ class Form extends React.Component {
                     name="str_teksty"
                     value={this.state.str_teksty}
                     label="Czy otrzymamy teksty do strony?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -301,7 +295,7 @@ class Form extends React.Component {
                     name="str_elementy_zewnetrzne"
                     value={this.state.str_elementy_zewnetrzne}
                     label="Elementy zewnętrzne do umieszczenia na stronie? (np. link do fanpage Facebook'a, link Youtube, itp.)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -309,7 +303,7 @@ class Form extends React.Component {
                     name="str_zaawansowana_funkcjonalnosc"
                     value={this.state.str_zaawansowana_funkcjonalnosc}
                     label="Czy strona ma mieć dodatkową zaawansowaną funkcjonalność? Jeśli tak to jaką?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -317,7 +311,7 @@ class Form extends React.Component {
                     name="str_czy_domena"
                     value={this.state.str_czy_domena}
                     label="Czy firma posiada wykupioną domenę (adres internetowy URL)?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -325,7 +319,7 @@ class Form extends React.Component {
                     name="str_czy_hosting"
                     value={this.state.str_czy_hosting}
                     label="Czy firma posiada wykupiony hosting/serwer (miejsce w którym znajdują się pliki strony)?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                 </>
               ) : null}
@@ -338,7 +332,7 @@ class Form extends React.Component {
                     name="kat_czy_logo"
                     value={this.state.kat_czy_logo}
                     label="Czy firma posiada logo? (Jeśli tak, czy firma posiada logo w formie pliku wektorowego oraz czy macie do logo wykonaną księgę znaku?)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -347,7 +341,7 @@ class Form extends React.Component {
                     value={this.state.kat_czy_katalog}
                     label="Czy firma obecnie posiada katalog?
                   Jeśli tak, prosimy o link do wersji online lub o przesłanie pliku w załączniku."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -357,7 +351,7 @@ class Form extends React.Component {
                     label="Czy katalog ma być przygotowany do druku? lub
                     Czy katalog ma być przygotowany  tylko na potrzeby internetu? 
                     Posiadamy w standardzie przygotowanie wersji do druku oraz internetu, gdy podstawowe przygotowanie jest do druku."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -368,7 +362,7 @@ class Form extends React.Component {
                     Jaki nakład katalogów jest przewidywany? 
                     Prosimy o podanie ilość sztuk. 
                     Jeśli będzie to np. tylko 10 sztuk to katalog może być inaczej przygotowany do druku. Jeśli wydruk ma być niestandardowy, będziemy potrzebować wytycznych od drukarni tuż przed rozpoczęciem projektowania."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -379,7 +373,7 @@ class Form extends React.Component {
                     Standardowe formaty: A4, A5, A6, kwadrat.
                     Jeśli inny, prosimy podać dokładne wymiary.
                     (Miej na uwadze: Jeśli format będzie inny niż standardowy to koszy wydruku mogą wzrosnąć nawet 100%)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -388,7 +382,7 @@ class Form extends React.Component {
                     value={this.state.kat_orientacja}
                     label="Jaka będzie orientacja katalogu?
                     (pionowa, pozioma, kwadrat, inna?)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -397,7 +391,7 @@ class Form extends React.Component {
                     value={this.state.kat_uszlachetnienie}
                     label="*Czy przewidują Państwo  uszlachetnienie lakierem wybiórczym np. na okładce lub  innych stronach?
                     (Jeśli tak, opracujemy dla drukarni makietę z wybranymi elementami, które mają być lakierowane)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -407,7 +401,7 @@ class Form extends React.Component {
                     label="*Ile stron powinien zawierać katalog? 
                     Aby katalog został wydrukowany i złożony, ilość stron musi być podzielna przez 4. Przykład: 8 stron czyli 4 strony okładki + 4 strony środka. 
                     (Przykłady standardowych rozmiarów stron: 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52 … 88, 92,96, 100)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -416,7 +410,7 @@ class Form extends React.Component {
                     value={this.state.kat_cel}
                     label="*Jaki jest cel nowego katalogu? 
                     Prosimy opisać jakie mają Państwo oczekiwania co do katalogu, co będzie zawierał, jakie ma spełnić zadania i do czego będzie służył. ( Przykład: katalog będzie służ przedstawicielom na spotkaniach z klientem oraz na targach. będzie zawierał informacje o firmie jej historia i strukturę. Przedstawimy koło 20 najlepszych produktów z dokładnym podziałem na 3 kategorie. Każdy produkt będzie zawierał dokładny opis zdjęcie warianty i cennik. Chcemy zamieścić referencje i loga partnerów, mapkę dojazdu galerię zdjęć.)."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -425,7 +419,7 @@ class Form extends React.Component {
                     value={this.state.kat_nawiazanie}
                     label="Czy katalog ma nawiązywać do strony internetowej lub sklepu internetowego? 
                     Jeśli tak, prosimy opisać pod jakim względem."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -435,7 +429,7 @@ class Form extends React.Component {
                     label="*W jakim języku będą treści do katalogu?
                     Lub 
                     Czy katalog będzie zawierał kilka języków w jednym katalogu?Jeśli tak prosimy podać w jakich."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -444,7 +438,7 @@ class Form extends React.Component {
                     value={this.state.kat_jezyki_obce}
                     label="*Czy katalog również ma być projektowany w innych językach niż standardowy? 
                     Jeśli tak to w jakim jeszcze."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
 
                   <Input
@@ -454,7 +448,7 @@ class Form extends React.Component {
                     value={this.state.kat_czy_tabele}
                     label="*Czy katalog będzie zawierał tabele/cenniki/itp.? 
                     (Jeśli tak prosimy opisać i podać orientacyjną ilość tabel, orientacyjną ilość wierszy i kolumn w każdej z nich)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -463,7 +457,7 @@ class Form extends React.Component {
                     value={this.state.kat_przyklady}
                     label="*Przykłady istniejących katalogów, które się Państwu podobają. Podaj minimum trzy przykłady. (Nie muszą być związane z branżą. Prosimy podać adres url lub nazwę katalogu oraz wysłać go do nas mailem)
                     Chcemy poznać Państwa gust."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -472,7 +466,7 @@ class Form extends React.Component {
                     value={this.state.kat_elementy}
                     label="Elementy na istniejących katalogach, które się Państwu podobają.
                     Prosimy o wskazanie co się Państwu w nich podoba."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -481,7 +475,7 @@ class Form extends React.Component {
                     value={this.state.kat_etap}
                     label="Na jakim etapie gromadzenia materiałów do katalogu są Państwo?
                     (Przykład: jesteśmy w połowie pisania treści resztę mamy przygotowane / wszystko mamy gotowe, tylko projektować)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -490,7 +484,7 @@ class Form extends React.Component {
                     value={this.state.kat_zdjecia}
                     label="*Czy otrzymamy zdjęcia do katalogu przed realizacją? 
                     Koniecznie w dobrej jakości, nadającej się pod wydruk."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -501,7 +495,7 @@ class Form extends React.Component {
                     (Jeśli nie to w jakiej jakości i proszę opisać)
                     Jeśli treści będą dostarczone później, proces projektowania może się wydłużyć dwukrotnie. 
                     * Po otrzymaniu docelowych treści nie ma możliwości całkowitej zmiany tekstu na etapie projektowania. Istnieje możliwość korekty przesłanych treści (literówki, przecinki, stylistyka)."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -510,7 +504,7 @@ class Form extends React.Component {
                     value={this.state.kat_materialy}
                     label="*Jakie dodatkowe materiały do projektowania dostaniemy? 
                     Np. loga firm, hasła reklamowe, itp. które są niezbędne do zrealizowania projektu."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -520,7 +514,7 @@ class Form extends React.Component {
                     label="Czy potrzebują Państwo pliki edytowalne (źródłowe)?
                     (Jeśli tak, prosimy określić w jakim programie mamy przygotować katalog: InDesign, CorelDraw, Illustrator. Jeśli katalog będzie miał powyżej 20 stron: InDesign, CorelDraw. Jeśli zależy Państwu na programie CorelDraw, prosimy określić wersję (np. wersja 15, 16, 17).)
                     W standardzie przygotowujemy projekty wyłącznie do druku i internetu."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -529,7 +523,7 @@ class Form extends React.Component {
                     value={this.state.kat_dodatkowe}
                     label="Prosimy podać inne dodatkowe informacje, które mogą okazać się przydatne na etapie wyceny
                     (Czy mamy wykonać rysunki konturowe zamiast zdjęć? Rysunki techniczne, obrys produktu, itp.)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                 </>
               ) : null}
@@ -542,7 +536,7 @@ class Form extends React.Component {
                     name="logo_projekt"
                     value={this.state.logo_projekt}
                     label="Czego ma dotyczyć projekt: Zaprojektowanie nowego logo / Delikatne odświeżenie znaku / Zupełne przeprojektowanie logo"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -551,7 +545,7 @@ class Form extends React.Component {
                     value={this.state.logo_nazwa}
                     label="Jaka dokładna nazwa ma się znajdować w logo?
                     np. ROXART"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -560,7 +554,7 @@ class Form extends React.Component {
                     value={this.state.logo_podpis}
                     label="Czy ma być dodatkowy podpis do głównej nazwy?
                     np. Agencja Reklamowa"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -569,7 +563,7 @@ class Form extends React.Component {
                     value={this.state.logo_propozycje}
                     label="Ile propozycji logotypów mamy przygotować?
                     1, 3, 6, więcej?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -577,7 +571,7 @@ class Form extends React.Component {
                     name="logo_ksiega"
                     value={this.state.logo_ksiega}
                     label="Czy mamy przygotować księgę znaku? opis budowy logo i przykłady jak należy stosować znak dla prawidłowego używania"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -591,7 +585,7 @@ class Form extends React.Component {
                     5. Emblemat
                     6. Inne. Podaj przykład innego.
                     Wybieram typ logo numer:"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -599,7 +593,7 @@ class Form extends React.Component {
                     name="logo_preferencje"
                     value={this.state.logo_preferencje}
                     label="Jakie są Państwa preferencje kolorystyczne, które chcielibyście użyć w logo?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -607,7 +601,7 @@ class Form extends React.Component {
                     name="logo_gdzie"
                     value={this.state.logo_gdzie}
                     label="Gdzie Państwa logo będzie używane? (druk, serwis www, inne)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -615,7 +609,7 @@ class Form extends React.Component {
                     name="logo_nosnik"
                     value={this.state.logo_nosnik}
                     label="Jaki jest najważniejszy nośnik, na którym Państwa logo będzie prezentowane?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -623,7 +617,7 @@ class Form extends React.Component {
                     name="logo_przyklady"
                     value={this.state.logo_przyklady}
                     label="Przykłady istniejących logo, które podobają się Tobie. Podaj minimum trzy przykłady. (nie muszą być związane z branżą)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -631,7 +625,7 @@ class Form extends React.Component {
                     name="logo_dodatkowe"
                     value={this.state.logo_dodatkowe}
                     label="Proszę podać inne dodatkowe informacje, które mogą okazać się przydatne w projektowaniu"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                 </>
               ) : null}
@@ -644,7 +638,7 @@ class Form extends React.Component {
                     name="skl_logo"
                     value={this.state.skl_logo}
                     label="Czy firma posiada logo? Jeśli tak, czy firma posiada logo w formie pliku wektorowego oraz księgę znaku?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -652,7 +646,7 @@ class Form extends React.Component {
                     name="skl_zalozenia"
                     value={this.state.skl_zalozenia}
                     label="Jakie są założenia i podstawowy cel sklepu internetowego?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -660,7 +654,7 @@ class Form extends React.Component {
                     name="skl_jezyk_podstawowy"
                     value={this.state.skl_jezyk_podstawowy}
                     label="Jaki ma być podstawowy język sklepu?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -668,7 +662,7 @@ class Form extends React.Component {
                     name="skl_jezyki_dodatkowe"
                     value={this.state.skl_jezyki_dodatkowe}
                     label="Czy sklep ma posiadać dodatkowe języki? Jeśli tak, to jakie?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -677,7 +671,7 @@ class Form extends React.Component {
                     value={this.state.skl_strona_glowna}
                     label="Jakie elementy, funkcjonalności 
                     powinny pojawić się na stronie głównej sklepu?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -685,7 +679,7 @@ class Form extends React.Component {
                     name="skl_podstrony_menu"
                     value={this.state.skl_podstrony_menu}
                     label="Jakie mają być główne podstrony menu/zakładki w nawigacji górnej?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -693,7 +687,7 @@ class Form extends React.Component {
                     name="skl_liczba_kategorii"
                     value={this.state.skl_liczba_kategorii}
                     label="Jaka jest orientacyjna liczba wszystkich kategorii oraz podkategorii? (mapa sklepu)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -701,7 +695,7 @@ class Form extends React.Component {
                     name="skl_liczba_produktow"
                     value={this.state.skl_liczba_produktow}
                     label="Jaka jest orientacyjna liczba wszystkich produktów w sklepie podczas jego funkcjonowania?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -709,7 +703,7 @@ class Form extends React.Component {
                     name="skl_produkty_do_dodania"
                     value={this.state.skl_produkty_do_dodania}
                     label="Jaka jest liczba produktów, które my mamy dodać? (w cenie możemy dodać kilka/kilkanaście)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -723,7 +717,7 @@ class Form extends React.Component {
                     - cena,
                     - wybór ilości,
                     - przycisk dodaj do koszyka?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -731,7 +725,7 @@ class Form extends React.Component {
                     name="skl_kolorystyka"
                     value={this.state.skl_kolorystyka}
                     label="Jakie są Twoje oczekiwania co do kolorystyki sklepu?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -739,7 +733,7 @@ class Form extends React.Component {
                     name="skl_przyklady_sklepow"
                     value={this.state.skl_przyklady_sklepow}
                     label="Przykłady istniejących sklepów internetowych, które podobają się Tobie. Podaj minimum trzy przykłady. (nie muszą być związane z branżą)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -747,7 +741,7 @@ class Form extends React.Component {
                     name="skl_elementy"
                     value={this.state.skl_elementy}
                     label="Elementy w istniejących sklepach internetowych, które podobają się Tobie."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -755,7 +749,7 @@ class Form extends React.Component {
                     name="skl_zdjecia"
                     value={this.state.skl_zdjecia}
                     label="Czy otrzymamy zdjęcia do wykorzystania w sklepie internetowym? (np. zdjęcia do baneru promującego sklep, do boksów reklamowych, itp.)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -763,7 +757,7 @@ class Form extends React.Component {
                     name="skl_teksty"
                     value={this.state.skl_teksty}
                     label="Czy otrzymamy teksty / hasła reklamowe do sklepu internetowego?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -771,7 +765,7 @@ class Form extends React.Component {
                     name="skl_elementy_zewnetrzne"
                     value={this.state.skl_elementy_zewnetrzne}
                     label="Elementy zewnętrzne do umieszczenia w sklepie? (np. link do fanpage Facebook'a, link Youtube, itp.)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -779,7 +773,7 @@ class Form extends React.Component {
                     name="skl_platnosci"
                     value={this.state.skl_platnosci}
                     label="Czy jest już ustalony system płatności? (np. DotPay, PayU, Przelew standardowy, itp.)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -787,7 +781,7 @@ class Form extends React.Component {
                     name="skl_zaawansowana_funkcjonalnosc"
                     value={this.state.skl_zaawansowana_funkcjonalnosc}
                     label="Czy sklep ma mieć dodatkową zaawansowaną funkcjonalność? (Jeśli tak to jaką?)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -795,7 +789,7 @@ class Form extends React.Component {
                     name="skl_czy_domena"
                     value={this.state.skl_czy_domena}
                     label="Czy firma posiada wykupioną domenę (adres internetowy URL)?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -803,7 +797,7 @@ class Form extends React.Component {
                     name="skl_czy_hosting"
                     value={this.state.skl_czy_hosting}
                     label="Czy firma posiada wykupiony hosting/serwer (miejsce w którym znajdują się pliki sklepu)?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                 </>
               ) : null}
@@ -817,7 +811,7 @@ class Form extends React.Component {
                     value={this.state.vid_logo}
                     label="Czy firma posiada logo? 
                     (Jeśli tak, czy firma posiada logo w formie pliku wektorowego oraz księgę znaku?)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -825,7 +819,7 @@ class Form extends React.Component {
                     name="vid_intro"
                     value={this.state.vid_intro}
                     label="Czy firma posiada już intro? (animowana prezentacja logo dodawana zazwyczaj na początku filmów)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -834,7 +828,7 @@ class Form extends React.Component {
                     value={this.state.vid_czy_filmy}
                     label="Czy firma posiada już jakieś filmy promocyjne? 
                     (Jeśli tak, to prosimy o podanie linku do filmu i odpowiedź czy mamy utrzymywać ten sam styl)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -844,7 +838,7 @@ class Form extends React.Component {
                     label="Jakie są założenia i podstawowy cel filmu? 
                     (sprzedażowa – jaki produkt będzie sprzedawany, wizerunkowa – jaki efekt ma być uzyskany, (solidna, luksusowa)
                     informacyjna – jakie informacje ma zawierać / pokazać cechy, funkcjonalność produktu)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -854,7 +848,7 @@ class Form extends React.Component {
                     label="Czy mają Państwo ogólną
                     wizje/ szkielet filmu? 
                     (Jakie ujęcia, kolejność itd.)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -862,7 +856,7 @@ class Form extends React.Component {
                     name="vid_charakter"
                     value={this.state.vid_charakter}
                     label="Jaki ma być charakter filmu (wesoły, humorystyczny, poważny itp.)?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -870,7 +864,7 @@ class Form extends React.Component {
                     name="vid_dlugosc"
                     value={this.state.vid_dlugosc}
                     label="Jaka ma być przybliżona długość filmu?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -878,7 +872,7 @@ class Form extends React.Component {
                     name="vid_konkurencja"
                     value={this.state.vid_konkurencja}
                     label="Kim jest główna konkurencja i czy posiadają takie filmy?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -886,7 +880,7 @@ class Form extends React.Component {
                     name="vid_materialy"
                     value={this.state.vid_materialy}
                     label="Czy posiadają Państwo materiały z których mamy korzystać czy my mamy nagrywać?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -894,7 +888,7 @@ class Form extends React.Component {
                     name="vid_my_nagrywamy"
                     value={this.state.vid_my_nagrywamy}
                     label="Jeżeli to my mamy nagrywać to jaka jest lokalizacja i kiedy możemy to zrealizować?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -902,7 +896,7 @@ class Form extends React.Component {
                     name="vid_przyklady"
                     value={this.state.vid_przyklady}
                     label="Przykłady istniejących filmów, które mogą posłużyć za wzór. (nie muszą być związane z branżą)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -910,7 +904,7 @@ class Form extends React.Component {
                     name="vid_elementy"
                     value={this.state.vid_elementy}
                     label="Elementy na istniejących filmach, które podobają się Państwu."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -918,7 +912,7 @@ class Form extends React.Component {
                     name="vid_napisy"
                     value={this.state.vid_napisy}
                     label="Czy film ma zawierać napisy?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -926,7 +920,7 @@ class Form extends React.Component {
                     name="vid_scenariusz"
                     value={this.state.vid_scenariusz}
                     label="Jeżeli ma zawierać napisy to czy otrzymamy teksty do filmu, czy my mamy wymyślić scenariusz?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -934,7 +928,7 @@ class Form extends React.Component {
                     name="vid_aktor"
                     value={this.state.vid_aktor}
                     label="Czy do kwestii mówionych firma zapewnia aktora (kogoś kto będzie mówił do kamery)?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -942,7 +936,7 @@ class Form extends React.Component {
                     name="vid_dron"
                     value={this.state.vid_dron}
                     label="Czy firma chce ujęć z drona?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -950,7 +944,7 @@ class Form extends React.Component {
                     name="vid_jezyk_napisow"
                     value={this.state.vid_jezyk_napisow}
                     label="Jeżeli film ma zawierać napisy to w jakim mają być języku?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -958,7 +952,7 @@ class Form extends React.Component {
                     name="vid_elementy_dodatkowe"
                     value={this.state.vid_elementy_dodatkowe}
                     label="Elementy dodatkowe do umieszczenia na filmie (zdjęcia, loga sponsorów, elementy graficzne itd.)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -966,7 +960,7 @@ class Form extends React.Component {
                     name="vid_gdzie"
                     value={this.state.vid_gdzie}
                     label="Gdzie będzie wyświetlany film? (social media, urządzenia mobilne, bannery itd.)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -975,7 +969,7 @@ class Form extends React.Component {
                     value={this.state.vid_rozdzielczosc}
                     label="W jakiej rozdzielczości mamy wykonać film?
                     (HD, full HD, 4K)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                 </>
               ) : null}
@@ -988,7 +982,7 @@ class Form extends React.Component {
                     name="anim_logo"
                     value={this.state.anim_logo}
                     label="Czy firma posiada logo? Jeśli tak, czy firma posiada logo w formie pliku wektorowego oraz księgę znaku?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -996,7 +990,7 @@ class Form extends React.Component {
                     name="anim_zalozenia"
                     value={this.state.anim_zalozenia}
                     label="Jakie są założenia i podstawowy cel animacji?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -1004,7 +998,7 @@ class Form extends React.Component {
                     name="anim_gdzie"
                     value={this.state.anim_gdzie}
                     label="Gdzie będzie publikowana animacja? (YouTube, Facebook, Instagram, TV itp.)?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -1012,7 +1006,7 @@ class Form extends React.Component {
                     name="anim_lektor"
                     value={this.state.anim_lektor}
                     label="Czy animacja wymaga lektora? Jeśli tak, czy zapewnią Państwo lektora?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -1020,7 +1014,7 @@ class Form extends React.Component {
                     name="anim_muzyka"
                     value={this.state.anim_muzyka}
                     label="Czy animacja ma posiadać muzykę w tle?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -1028,7 +1022,7 @@ class Form extends React.Component {
                     name="anim_dlugosc"
                     value={this.state.anim_dlugosc}
                     label="Jaki ma być czas trwania i ilość animacji?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -1036,7 +1030,7 @@ class Form extends React.Component {
                     name="anim_format"
                     value={this.state.anim_format}
                     label="Jaki ma być format animacji? (mp4, avi, gif?)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -1044,7 +1038,7 @@ class Form extends React.Component {
                     name="anim_styl"
                     value={this.state.anim_styl}
                     label="Jakie są Twoje oczekiwania co do tonu i stylu animacji? (nowoczesna, rysunkowa, poważna itd.)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -1052,7 +1046,7 @@ class Form extends React.Component {
                     name="anim_przyklady"
                     value={this.state.anim_przyklady}
                     label="Przykłady istniejących animacji, które podobają się Tobie. Podaj minimum trzy przykłady. (nie muszą być związane z branżą)"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -1060,7 +1054,7 @@ class Form extends React.Component {
                     name="anim_elementy"
                     value={this.state.anim_elementy}
                     label="Elementy na istniejących animacjach, które podobają się Tobie."
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -1068,7 +1062,7 @@ class Form extends React.Component {
                     name="anim_materialy"
                     value={this.state.anim_materialy}
                     label="Jakie materiały zostaną nam przekazane?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                   <Input
                     onChange={this.handleInputChange}
@@ -1076,7 +1070,7 @@ class Form extends React.Component {
                     name="anim_scenariusz"
                     value={this.state.anim_scenariusz}
                     label="Czy otrzymamy scenariusz / tekst dla lektora (jeżeli wymagane)?"
-                    marginBottom="30px"
+                    marginbottom="30px"
                   />
                 </>
               ) : null}
@@ -1087,8 +1081,28 @@ class Form extends React.Component {
                 name="wsp_uwagi"
                 value={this.state.wsp_uwagi}
                 label="Inne ważne uwagi:"
-                marginBottom="30px"
+                marginbottom="30px"
               />
+              <Select
+                name="czy_pilne"
+                value={this.state.czy_pilne}
+                onChange={this.handleInputChange}
+                label="Czy wycena jest pilna?"
+                marginbottom="30px">
+                <option value="0">Nie</option>
+                <option value="1">Tak</option>
+              </Select>
+              {this.state.czy_pilne === `1` ? (
+                <Input
+                  onChange={this.handleInputChange}
+                  name="wsp_pilne_opis"
+                  tag="textarea"
+                  value={this.state.wsp_pilne_opis}
+                  label="Dlaczego wycena jest pilna?"
+                  marginbottom="30px"
+                  required
+                />
+              ) : null}
               <Button>
                 <FontAwesomeIcon icon={faPlusCircle} size="1x" />
                 Dodaj brief

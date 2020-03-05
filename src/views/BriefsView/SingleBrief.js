@@ -142,6 +142,11 @@ const RightWrapper = styled.div`
   top: 64px;
   overflow: auto;
   padding-right: 0;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
 `;
 
 class SingleBriefView extends React.Component {
@@ -328,7 +333,7 @@ class SingleBriefView extends React.Component {
                             <>
                               <Row>
                                 <Label>
-                                  Jaki jest adres (URL) Twojej strony
+                                  1. Jaki jest adres (URL) Twojej strony
                                   internetowej? (obecny lub planowany):
                                 </Label>
                                 <Content>
@@ -352,7 +357,7 @@ class SingleBriefView extends React.Component {
                               </Row>
 
                               <Row>
-                                <Label>Czym zajmuje się Twoja firma?</Label>
+                                <Label>2. Czym zajmuje się Twoja firma?</Label>
                                 <Content>
                                   {context.allowEdit(
                                     item.wsp_statuss,
@@ -375,7 +380,7 @@ class SingleBriefView extends React.Component {
 
                               <Row>
                                 <Label>
-                                  W jakiej branży działa Twoja firma?
+                                  3. W jakiej branży działa Twoja firma?
                                 </Label>
                                 <Content>
                                   {context.allowEdit(
@@ -397,7 +402,7 @@ class SingleBriefView extends React.Component {
 
                               <Row>
                                 <Label>
-                                  Ile lat Państwa firma jest na rynku i ilu
+                                  4. Ile lat Państwa firma jest na rynku i ilu
                                   zatrudnia pracowników?
                                 </Label>
                                 <Content>
@@ -420,7 +425,7 @@ class SingleBriefView extends React.Component {
 
                               <Row>
                                 <Label>
-                                  Jakie produkty/usługi oferuje Twoja firma
+                                  5. Jakie produkty/usługi oferuje Twoja firma
                                   swoim klientom?
                                 </Label>
                                 <Content>
@@ -445,7 +450,7 @@ class SingleBriefView extends React.Component {
 
                               <Row>
                                 <Label>
-                                  Kim są Twoi klienci (dotychczasowi lub
+                                  6. Kim są Twoi klienci (dotychczasowi lub
                                   potencjalni) oraz jaka jest grupa docelowa?
                                 </Label>
                                 <Content>
@@ -470,7 +475,7 @@ class SingleBriefView extends React.Component {
 
                               <Row>
                                 <Label>
-                                  Kim są główni konkurenci (lokalnie i
+                                  7. Kim są główni konkurenci (lokalnie i
                                   globalnie)? (można podać adresy internetowe)
                                 </Label>
                                 <Content>
@@ -495,7 +500,7 @@ class SingleBriefView extends React.Component {
 
                               <Row>
                                 <Label>
-                                  Jaki jest określony budżet na realizację
+                                  8. Jaki jest określony budżet na realizację
                                   projektu netto?
                                 </Label>
                                 <Content>
@@ -518,7 +523,7 @@ class SingleBriefView extends React.Component {
 
                               <Row>
                                 <Label>
-                                  Jaki jest określony czas zakończenia
+                                  9. Jaki jest określony czas zakończenia
                                   realizacji projektu?
                                 </Label>
                                 <Content>
@@ -545,7 +550,7 @@ class SingleBriefView extends React.Component {
                                 <>
                                   <Row>
                                     <Label>
-                                      Czy firma posiada logo? Jeśli tak, czy
+                                      10. Czy firma posiada logo? Jeśli tak, czy
                                       firma posiada logo w formie pliku
                                       wektorowego oraz księgę znaku?
                                     </Label>
@@ -568,8 +573,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jakie są założenia i podstawowy cel nowej
-                                      strony internetowej?
+                                      11. Jakie są założenia i podstawowy cel
+                                      nowej strony internetowej?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -592,9 +597,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaki ma być charakter strony internetowej
-                                      (sprzedażowa, wizerunkowa, informacyjna
-                                      itp.)?
+                                      12. Jaki ma być charakter strony
+                                      internetowej (sprzedażowa, wizerunkowa,
+                                      informacyjna itp.)?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -617,9 +622,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy strona ma mieć możliwość samodzielnej
-                                      edycji treści strony lub jej elementów
-                                      (system CMS)?
+                                      13. Czy strona ma mieć możliwość
+                                      samodzielnej edycji treści strony lub jej
+                                      elementów (system CMS)?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -642,7 +647,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaki ma być podstawowy język strony?
+                                      14. Jaki ma być podstawowy język strony?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -667,7 +672,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy strona posiadać dodatkowe języki?
+                                      15. Czy strona posiadać dodatkowe języki?
                                       Jeśli tak, to jakie?
                                     </Label>
                                     <Content>
@@ -693,7 +698,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jakie mają być główne podstrony
+                                      16. Jakie mają być główne podstrony
                                       menu/zakładki w nawigacji górnej?
                                     </Label>
                                     <Content>
@@ -717,8 +722,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaka jest orientacyjna liczba wszystkich
-                                      podstron (mapa strony)?
+                                      17. Jaka jest orientacyjna liczba
+                                      wszystkich podstron (mapa strony)?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -743,7 +748,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jakie są Twoje oczekiwania co do
+                                      18. Jakie są Twoje oczekiwania co do
                                       kolorystyki strony?
                                     </Label>
                                     <Content>
@@ -767,7 +772,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Przykłady istniejących stron
+                                      19. Przykłady istniejących stron
                                       internetowych, które podobają się Tobie.
                                       Podaj minimum trzy przykłady. (nie muszą
                                       być związane z branżą)
@@ -795,7 +800,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Elementy na istniejących stronach
+                                      20. Elementy na istniejących stronach
                                       internetowych, które podobają się Tobie.
                                     </Label>
                                     <Content>
@@ -819,7 +824,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy otrzymamy zdjęcia do strony?
+                                      21. Czy otrzymamy zdjęcia do strony?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -842,7 +847,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy otrzymamy teksty do strony?
+                                      22. Czy otrzymamy teksty do strony?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -865,7 +870,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Elementy zewnętrzne do umieszczenia na
+                                      23. Elementy zewnętrzne do umieszczenia na
                                       stronie? (np. link do fanpage Facebook'a,
                                       link Youtube, itp.)
                                     </Label>
@@ -892,8 +897,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy strona ma mieć dodatkową zaawansowaną
-                                      funkcjonalność? Jeśli tak to jaką?
+                                      24. Czy strona ma mieć dodatkową
+                                      zaawansowaną funkcjonalność? Jeśli tak to
+                                      jaką?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -918,8 +924,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy firma posiada wykupioną domenę (adres
-                                      internetowy URL)?
+                                      25. Czy firma posiada wykupioną domenę
+                                      (adres internetowy URL)?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -942,9 +948,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy firma posiada wykupiony hosting/serwer
-                                      (miejsce w którym znajdują się pliki
-                                      strony)?
+                                      26. Czy firma posiada wykupiony
+                                      hosting/serwer (miejsce w którym znajdują
+                                      się pliki strony)?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -972,8 +978,8 @@ class SingleBriefView extends React.Component {
                                 <>
                                   <Row>
                                     <Label>
-                                      Czy firma posiada logo? (Jeśli tak, czy
-                                      firma posiada logo w formie pliku
+                                      10. Czy firma posiada logo? (Jeśli tak,
+                                      czy firma posiada logo w formie pliku
                                       wektorowego oraz czy macie do logo
                                       wykonaną księgę znaku?)
                                     </Label>
@@ -998,9 +1004,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy firma obecnie posiada katalog? Jeśli
-                                      tak, prosimy o link do wersji online lub o
-                                      przesłanie pliku w załączniku.
+                                      11. Czy firma obecnie posiada katalog?
+                                      Jeśli tak, prosimy o link do wersji online
+                                      lub o przesłanie pliku w załączniku.
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1023,9 +1029,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy katalog ma być przygotowany do druku?
-                                      lub Czy katalog ma być przygotowany tylko
-                                      na potrzeby internetu? Posiadamy w
+                                      12. Czy katalog ma być przygotowany do
+                                      druku? lub Czy katalog ma być przygotowany
+                                      tylko na potrzeby internetu? Posiadamy w
                                       standardzie przygotowanie wersji do druku
                                       oraz internetu, gdy podstawowe
                                       przygotowanie jest do druku.
@@ -1051,7 +1057,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy wybrali już Państwo drukarnię do
+                                      13. Czy wybrali już Państwo drukarnię do
                                       wydruku katalogów? Jaki nakład katalogów
                                       jest przewidywany? Prosimy o podanie ilość
                                       sztuk. Jeśli będzie to np. tylko 10 sztuk
@@ -1084,7 +1090,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      *Jaki format powinien mieć katalog?
+                                      14. *Jaki format powinien mieć katalog?
                                       Standardowe formaty: A4, A5, A6, kwadrat.
                                       Jeśli inny, prosimy podać dokładne
                                       wymiary. (Miej na uwadze: Jeśli format
@@ -1112,8 +1118,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaka będzie orientacja katalogu? (pionowa,
-                                      pozioma, kwadrat, inna?)
+                                      15. Jaka będzie orientacja katalogu?
+                                      (pionowa, pozioma, kwadrat, inna?)
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1136,11 +1142,12 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      *Czy przewidują Państwo uszlachetnienie
-                                      lakierem wybiórczym np. na okładce lub
-                                      innych stronach? (Jeśli tak, opracujemy
-                                      dla drukarni makietę z wybranymi
-                                      elementami, które mają być lakierowane)
+                                      16. *Czy przewidują Państwo
+                                      uszlachetnienie lakierem wybiórczym np. na
+                                      okładce lub innych stronach? (Jeśli tak,
+                                      opracujemy dla drukarni makietę z
+                                      wybranymi elementami, które mają być
+                                      lakierowane)
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1165,8 +1172,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      *Ile stron powinien zawierać katalog? Aby
-                                      katalog został wydrukowany i złożony,
+                                      17. *Ile stron powinien zawierać katalog?
+                                      Aby katalog został wydrukowany i złożony,
                                       ilość stron musi być podzielna przez 4.
                                       Przykład: 8 stron czyli 4 strony okładki +
                                       4 strony środka. (Przykłady standardowych
@@ -1194,15 +1201,15 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      *Jaki jest cel nowego katalogu? Prosimy
-                                      opisać jakie mają Państwo oczekiwania co
-                                      do katalogu, co będzie zawierał, jakie ma
-                                      spełnić zadania i do czego będzie służył.
-                                      ( Przykład: katalog będzie służ
-                                      przedstawicielom na spotkaniach z klientem
-                                      oraz na targach. będzie zawierał
-                                      informacje o firmie jej historia i
-                                      strukturę. Przedstawimy koło 20
+                                      18. *Jaki jest cel nowego katalogu?
+                                      Prosimy opisać jakie mają Państwo
+                                      oczekiwania co do katalogu, co będzie
+                                      zawierał, jakie ma spełnić zadania i do
+                                      czego będzie służył. ( Przykład: katalog
+                                      będzie służ przedstawicielom na
+                                      spotkaniach z klientem oraz na targach.
+                                      będzie zawierał informacje o firmie jej
+                                      historia i strukturę. Przedstawimy koło 20
                                       najlepszych produktów z dokładnym
                                       podziałem na 3 kategorie. Każdy produkt
                                       będzie zawierał dokładny opis zdjęcie
@@ -1229,7 +1236,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy katalog ma nawiązywać do strony
+                                      19. Czy katalog ma nawiązywać do strony
                                       internetowej lub sklepu internetowego?
                                       Jeśli tak, prosimy opisać pod jakim
                                       względem.
@@ -1255,9 +1262,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      *W jakim języku będą treści do katalogu?
-                                      Lub Czy katalog będzie zawierał kilka
-                                      języków w jednym katalogu?Jeśli tak
+                                      20. *W jakim języku będą treści do
+                                      katalogu? Lub Czy katalog będzie zawierał
+                                      kilka języków w jednym katalogu?Jeśli tak
                                       prosimy podać w jakich.
                                     </Label>
                                     <Content>
@@ -1283,9 +1290,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      *Czy katalog również ma być projektowany w
-                                      innych językach niż standardowy? Jeśli tak
-                                      to w jakim jeszcze.
+                                      21. *Czy katalog również ma być
+                                      projektowany w innych językach niż
+                                      standardowy? Jeśli tak to w jakim jeszcze.
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1308,7 +1315,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      *Czy katalog będzie zawierał
+                                      22. *Czy katalog będzie zawierał
                                       tabele/cenniki/itp.? (Jeśli tak prosimy
                                       opisać i podać orientacyjną ilość tabel,
                                       orientacyjną ilość wierszy i kolumn w
@@ -1335,9 +1342,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      *Przykłady istniejących katalogów, które
-                                      się Państwu podobają. Podaj minimum trzy
-                                      przykłady. (Nie muszą być związane z
+                                      23. *Przykłady istniejących katalogów,
+                                      które się Państwu podobają. Podaj minimum
+                                      trzy przykłady. (Nie muszą być związane z
                                       branżą. Prosimy podać adres url lub nazwę
                                       katalogu oraz wysłać go do nas mailem)
                                       Chcemy poznać Państwa gust.
@@ -1363,9 +1370,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Elementy na istniejących katalogach, które
-                                      się Państwu podobają. Prosimy o wskazanie
-                                      co się Państwu w nich podoba.
+                                      24. Elementy na istniejących katalogach,
+                                      które się Państwu podobają. Prosimy o
+                                      wskazanie co się Państwu w nich podoba.
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1388,11 +1395,11 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Na jakim etapie gromadzenia materiałów do
-                                      katalogu są Państwo? (Przykład: jesteśmy w
-                                      połowie pisania treści resztę mamy
-                                      przygotowane / wszystko mamy gotowe, tylko
-                                      projektować)
+                                      25. Na jakim etapie gromadzenia materiałów
+                                      do katalogu są Państwo? (Przykład:
+                                      jesteśmy w połowie pisania treści resztę
+                                      mamy przygotowane / wszystko mamy gotowe,
+                                      tylko projektować)
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1413,9 +1420,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      *Czy otrzymamy zdjęcia do katalogu przed
-                                      realizacją? Koniecznie w dobrej jakości,
-                                      nadającej się pod wydruk.
+                                      26. *Czy otrzymamy zdjęcia do katalogu
+                                      przed realizacją? Koniecznie w dobrej
+                                      jakości, nadającej się pod wydruk.
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1438,16 +1445,17 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      *Czy otrzymamy teksty do katalogu przed
-                                      projektowaniem w docelowej wersji? (Jeśli
-                                      nie to w jakiej jakości i proszę opisać)
-                                      Jeśli treści będą dostarczone później,
-                                      proces projektowania może się wydłużyć
-                                      dwukrotnie. * Po otrzymaniu docelowych
-                                      treści nie ma możliwości całkowitej zmiany
-                                      tekstu na etapie projektowania. Istnieje
-                                      możliwość korekty przesłanych treści
-                                      (literówki, przecinki, stylistyka).
+                                      27. *Czy otrzymamy teksty do katalogu
+                                      przed projektowaniem w docelowej wersji?
+                                      (Jeśli nie to w jakiej jakości i proszę
+                                      opisać) Jeśli treści będą dostarczone
+                                      później, proces projektowania może się
+                                      wydłużyć dwukrotnie. * Po otrzymaniu
+                                      docelowych treści nie ma możliwości
+                                      całkowitej zmiany tekstu na etapie
+                                      projektowania. Istnieje możliwość korekty
+                                      przesłanych treści (literówki, przecinki,
+                                      stylistyka).
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1470,7 +1478,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      *Jakie dodatkowe materiały do
+                                      28. *Jakie dodatkowe materiały do
                                       projektowania dostaniemy? Np. loga firm,
                                       hasła reklamowe, itp. które są niezbędne
                                       do zrealizowania projektu.
@@ -1496,16 +1504,17 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy potrzebują Państwo pliki edytowalne
-                                      (źródłowe)? (Jeśli tak, prosimy określić w
-                                      jakim programie mamy przygotować katalog:
-                                      InDesign, CorelDraw, Illustrator. Jeśli
-                                      katalog będzie miał powyżej 20 stron:
-                                      InDesign, CorelDraw. Jeśli zależy Państwu
-                                      na programie CorelDraw, prosimy określić
-                                      wersję (np. wersja 15, 16, 17).) W
-                                      standardzie przygotowujemy projekty
-                                      wyłącznie do druku i internetu.
+                                      29. Czy potrzebują Państwo pliki
+                                      edytowalne (źródłowe)? (Jeśli tak, prosimy
+                                      określić w jakim programie mamy
+                                      przygotować katalog: InDesign, CorelDraw,
+                                      Illustrator. Jeśli katalog będzie miał
+                                      powyżej 20 stron: InDesign, CorelDraw.
+                                      Jeśli zależy Państwu na programie
+                                      CorelDraw, prosimy określić wersję (np.
+                                      wersja 15, 16, 17).) W standardzie
+                                      przygotowujemy projekty wyłącznie do druku
+                                      i internetu.
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1528,11 +1537,11 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Prosimy podać inne dodatkowe informacje,
-                                      które mogą okazać się przydatne na etapie
-                                      wyceny (Czy mamy wykonać rysunki konturowe
-                                      zamiast zdjęć? Rysunki techniczne, obrys
-                                      produktu, itp.)
+                                      30. Prosimy podać inne dodatkowe
+                                      informacje, które mogą okazać się
+                                      przydatne na etapie wyceny (Czy mamy
+                                      wykonać rysunki konturowe zamiast zdjęć?
+                                      Rysunki techniczne, obrys produktu, itp.)
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1560,9 +1569,10 @@ class SingleBriefView extends React.Component {
                                 <>
                                   <Row>
                                     <Label>
-                                      Czego ma dotyczyć projekt: Zaprojektowanie
-                                      nowego logo / Delikatne odświeżenie znaku
-                                      / Zupełne przeprojektowanie logo
+                                      10. Czego ma dotyczyć projekt:
+                                      Zaprojektowanie nowego logo / Delikatne
+                                      odświeżenie znaku / Zupełne
+                                      przeprojektowanie logo
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1585,7 +1595,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaka dokładna nazwa ma się znajdować w
+                                      11. Jaka dokładna nazwa ma się znajdować w
                                       logo? np. ROXART
                                     </Label>
                                     <Content>
@@ -1609,7 +1619,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy ma być dodatkowy podpis do głównej
+                                      12. Czy ma być dodatkowy podpis do głównej
                                       nazwy? np. Agencja Reklamowa
                                     </Label>
                                     <Content>
@@ -1633,8 +1643,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Ile propozycji logotypów mamy przygotować?
-                                      1, 3, 6, więcej?
+                                      13. Ile propozycji logotypów mamy
+                                      przygotować? 1, 3, 6, więcej?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1657,8 +1667,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy mamy przygotować księgę znaku? opis
-                                      budowy logo i przykłady jak należy
+                                      14. Czy mamy przygotować księgę znaku?
+                                      opis budowy logo i przykłady jak należy
                                       stosować znak dla prawidłowego używania
                                     </Label>
                                     <Content>
@@ -1684,7 +1694,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      1. Typografia 2. Inicjały 3. Symbol lub
+                                      15. Typografia 2. Inicjały 3. Symbol lub
                                       Ikona 4. Kombinacja znak + ikona 5.
                                       Emblemat 6. Inne. Podaj przykład innego.
                                       Wybieram typ logo numer:
@@ -1710,7 +1720,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jakie są Państwa preferencje
+                                      16. Jakie są Państwa preferencje
                                       kolorystyczne, które chcielibyście użyć w
                                       logo?
                                     </Label>
@@ -1735,8 +1745,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Gdzie Państwa logo będzie używane? (druk,
-                                      serwis www, inne)
+                                      17. Gdzie Państwa logo będzie używane?
+                                      (druk, serwis www, inne)
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1759,8 +1769,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaki jest najważniejszy nośnik, na którym
-                                      Państwa logo będzie prezentowane?
+                                      18. Jaki jest najważniejszy nośnik, na
+                                      którym Państwa logo będzie prezentowane?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1783,7 +1793,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Przykłady istniejących logo, które
+                                      19. Przykłady istniejących logo, które
                                       podobają się Tobie. Podaj minimum trzy
                                       przykłady. (nie muszą być związane z
                                       branżą)
@@ -1809,9 +1819,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Proszę podać inne dodatkowe informacje,
-                                      które mogą okazać się przydatne w
-                                      projektowaniu
+                                      20. Proszę podać inne dodatkowe
+                                      informacje, które mogą okazać się
+                                      przydatne w projektowaniu
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1839,7 +1849,7 @@ class SingleBriefView extends React.Component {
                                 <>
                                   <Row>
                                     <Label>
-                                      Czy firma posiada logo? Jeśli tak, czy
+                                      10. Czy firma posiada logo? Jeśli tak, czy
                                       firma posiada logo w formie pliku
                                       wektorowego oraz księgę znaku?
                                     </Label>
@@ -1862,8 +1872,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jakie są założenia i podstawowy cel sklepu
-                                      internetowego?
+                                      11. Jakie są założenia i podstawowy cel
+                                      sklepu internetowego?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1886,7 +1896,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaki ma być podstawowy język sklepu?
+                                      12. Jaki ma być podstawowy język sklepu?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1911,8 +1921,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy sklep ma posiadać dodatkowe języki?
-                                      Jeśli tak, to jakie?
+                                      13. Czy sklep ma posiadać dodatkowe
+                                      języki? Jeśli tak, to jakie?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1937,8 +1947,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jakie elementy, funkcjonalności powinny
-                                      pojawić się na stronie głównej sklepu?
+                                      14. Jakie elementy, funkcjonalności
+                                      powinny pojawić się na stronie głównej
+                                      sklepu?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -1961,7 +1972,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jakie mają być główne podstrony
+                                      15. Jakie mają być główne podstrony
                                       menu/zakładki w nawigacji górnej?
                                     </Label>
                                     <Content>
@@ -1985,8 +1996,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaka jest orientacyjna liczba wszystkich
-                                      kategorii oraz podkategorii? (mapa sklepu)
+                                      16. Jaka jest orientacyjna liczba
+                                      wszystkich kategorii oraz podkategorii?
+                                      (mapa sklepu)
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2011,9 +2023,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaka jest orientacyjna liczba wszystkich
-                                      produktów w sklepie podczas jego
-                                      funkcjonowania?
+                                      17. Jaka jest orientacyjna liczba
+                                      wszystkich produktów w sklepie podczas
+                                      jego funkcjonowania?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2038,8 +2050,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaka jest liczba produktów, które my mamy
-                                      dodać? (w cenie możemy dodać
+                                      18. Jaka jest liczba produktów, które my
+                                      mamy dodać? (w cenie możemy dodać
                                       kilka/kilkanaście)
                                     </Label>
                                     <Content>
@@ -2065,7 +2077,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy w podstronie produktu ma być coś
+                                      19. Czy w podstronie produktu ma być coś
                                       więcej niż: - nazwa produktu, - opis
                                       produktu, - zdjęcie główne i dodatkowe, -
                                       cena, - wybór ilości, - przycisk dodaj do
@@ -2092,7 +2104,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jakie są Twoje oczekiwania co do
+                                      20. Jakie są Twoje oczekiwania co do
                                       kolorystyki sklepu?
                                     </Label>
                                     <Content>
@@ -2116,7 +2128,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Przykłady istniejących sklepów
+                                      21. Przykłady istniejących sklepów
                                       internetowych, które podobają się Tobie.
                                       Podaj minimum trzy przykłady. (nie muszą
                                       być związane z branżą)
@@ -2144,7 +2156,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Elementy w istniejących sklepach
+                                      22. Elementy w istniejących sklepach
                                       internetowych, które podobają się Tobie.
                                     </Label>
                                     <Content>
@@ -2168,8 +2180,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy otrzymamy zdjęcia do wykorzystania w
-                                      sklepie internetowym? (np. zdjęcia do
+                                      23. Czy otrzymamy zdjęcia do wykorzystania
+                                      w sklepie internetowym? (np. zdjęcia do
                                       baneru promującego sklep, do boksów
                                       reklamowych, itp.)
                                     </Label>
@@ -2194,8 +2206,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy otrzymamy teksty / hasła reklamowe do
-                                      sklepu internetowego?
+                                      24. Czy otrzymamy teksty / hasła reklamowe
+                                      do sklepu internetowego?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2218,7 +2230,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Elementy zewnętrzne do umieszczenia w
+                                      25. Elementy zewnętrzne do umieszczenia w
                                       sklepie? (np. link do fanpage Facebook'a,
                                       link Youtube, itp.)
                                     </Label>
@@ -2245,9 +2257,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy jest już ustalony system płatności?
-                                      (np. DotPay, PayU, Przelew standardowy,
-                                      itp.)
+                                      26. Czy jest już ustalony system
+                                      płatności? (np. DotPay, PayU, Przelew
+                                      standardowy, itp.)
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2270,8 +2282,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy sklep ma mieć dodatkową zaawansowaną
-                                      funkcjonalność? (Jeśli tak to jaką?)
+                                      27. Czy sklep ma mieć dodatkową
+                                      zaawansowaną funkcjonalność? (Jeśli tak to
+                                      jaką?)
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2296,8 +2309,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy firma posiada wykupioną domenę (adres
-                                      internetowy URL)?
+                                      28. Czy firma posiada wykupioną domenę
+                                      (adres internetowy URL)?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2320,9 +2333,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy firma posiada wykupiony hosting/serwer
-                                      (miejsce w którym znajdują się pliki
-                                      sklepu)?
+                                      29. Czy firma posiada wykupiony
+                                      hosting/serwer (miejsce w którym znajdują
+                                      się pliki sklepu)?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2350,8 +2363,8 @@ class SingleBriefView extends React.Component {
                                 <>
                                   <Row>
                                     <Label>
-                                      Czy firma posiada logo? (Jeśli tak, czy
-                                      firma posiada logo w formie pliku
+                                      10. Czy firma posiada logo? (Jeśli tak,
+                                      czy firma posiada logo w formie pliku
                                       wektorowego oraz księgę znaku?)
                                     </Label>
                                     <Content>
@@ -2373,9 +2386,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy firma posiada już intro? (animowana
-                                      prezentacja logo dodawana zazwyczaj na
-                                      początku filmów)
+                                      11. Czy firma posiada już intro?
+                                      (animowana prezentacja logo dodawana
+                                      zazwyczaj na początku filmów)
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2398,7 +2411,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy firma posiada już jakieś filmy
+                                      12. Czy firma posiada już jakieś filmy
                                       promocyjne? (Jeśli tak, to prosimy o
                                       podanie linku do filmu i odpowiedź czy
                                       mamy utrzymywać ten sam styl)
@@ -2424,8 +2437,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jakie są założenia i podstawowy cel filmu?
-                                      (sprzedażowa – jaki produkt będzie
+                                      13. Jakie są założenia i podstawowy cel
+                                      filmu? (sprzedażowa – jaki produkt będzie
                                       sprzedawany, wizerunkowa – jaki efekt ma
                                       być uzyskany, (solidna, luksusowa)
                                       informacyjna – jakie informacje ma
@@ -2453,8 +2466,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy mają Państwo ogólną wizje/ szkielet
-                                      filmu? (Jakie ujęcia, kolejność itd.)
+                                      14. Czy mają Państwo ogólną wizje/
+                                      szkielet filmu? (Jakie ujęcia, kolejność
+                                      itd.)
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2477,7 +2491,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaki ma być charakter filmu (wesoły,
+                                      15. Jaki ma być charakter filmu (wesoły,
                                       humorystyczny, poważny itp.)?
                                     </Label>
                                     <Content>
@@ -2501,7 +2515,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaka ma być przybliżona długość filmu?
+                                      16. Jaka ma być przybliżona długość filmu?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2524,7 +2538,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Kim jest główna konkurencja i czy
+                                      17. Kim jest główna konkurencja i czy
                                       posiadają takie filmy?
                                     </Label>
                                     <Content>
@@ -2548,8 +2562,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy posiadają Państwo materiały z których
-                                      mamy korzystać czy my mamy nagrywać?
+                                      18. Czy posiadają Państwo materiały z
+                                      których mamy korzystać czy my mamy
+                                      nagrywać?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2572,8 +2587,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jeżeli to my mamy nagrywać to jaka jest
-                                      lokalizacja i kiedy możemy to zrealizować?
+                                      19. Jeżeli to my mamy nagrywać to jaka
+                                      jest lokalizacja i kiedy możemy to
+                                      zrealizować?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2596,9 +2612,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Przykłady istniejących filmów, które mogą
-                                      posłużyć za wzór. (nie muszą być związane
-                                      z branżą)
+                                      20. Przykłady istniejących filmów, które
+                                      mogą posłużyć za wzór. (nie muszą być
+                                      związane z branżą)
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2621,8 +2637,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Elementy na istniejących filmach, które
-                                      podobają się Państwu.
+                                      21. Elementy na istniejących filmach,
+                                      które podobają się Państwu.
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2644,7 +2660,9 @@ class SingleBriefView extends React.Component {
                                     </Content>
                                   </Row>
                                   <Row>
-                                    <Label>Czy film ma zawierać napisy?</Label>
+                                    <Label>
+                                      22. Czy film ma zawierać napisy?
+                                    </Label>
                                     <Content>
                                       {context.allowEdit(
                                         item.wsp_statuss,
@@ -2666,9 +2684,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jeżeli ma zawierać napisy to czy otrzymamy
-                                      teksty do filmu, czy my mamy wymyślić
-                                      scenariusz?
+                                      23. Jeżeli ma zawierać napisy to czy
+                                      otrzymamy teksty do filmu, czy my mamy
+                                      wymyślić scenariusz?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2691,8 +2709,9 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy do kwestii mówionych firma zapewnia
-                                      aktora (kogoś kto będzie mówił do kamery)?
+                                      24. Czy do kwestii mówionych firma
+                                      zapewnia aktora (kogoś kto będzie mówił do
+                                      kamery)?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2714,7 +2733,9 @@ class SingleBriefView extends React.Component {
                                     </Content>
                                   </Row>
                                   <Row>
-                                    <Label>Czy firma chce ujęć z drona?</Label>
+                                    <Label>
+                                      25. Czy firma chce ujęć z drona?
+                                    </Label>
                                     <Content>
                                       {context.allowEdit(
                                         item.wsp_statuss,
@@ -2734,8 +2755,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jeżeli film ma zawierać napisy to w jakim
-                                      mają być języku?
+                                      26. Jeżeli film ma zawierać napisy to w
+                                      jakim mają być języku?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2758,7 +2779,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Elementy dodatkowe do umieszczenia na
+                                      27. Elementy dodatkowe do umieszczenia na
                                       filmie (zdjęcia, loga sponsorów, elementy
                                       graficzne itd.)
                                     </Label>
@@ -2785,7 +2806,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Gdzie będzie wyświetlany film? (social
+                                      28. Gdzie będzie wyświetlany film? (social
                                       media, urządzenia mobilne, bannery itd.)
                                     </Label>
                                     <Content>
@@ -2809,8 +2830,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      W jakiej rozdzielczości mamy wykonać film?
-                                      (HD, full HD, 4K)
+                                      29. W jakiej rozdzielczości mamy wykonać
+                                      film? (HD, full HD, 4K)
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2838,7 +2859,7 @@ class SingleBriefView extends React.Component {
                                 <>
                                   <Row>
                                     <Label>
-                                      Czy firma posiada logo? Jeśli tak, czy
+                                      10. Czy firma posiada logo? Jeśli tak, czy
                                       firma posiada logo w formie pliku
                                       wektorowego oraz księgę znaku?
                                     </Label>
@@ -2863,7 +2884,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jakie są założenia i podstawowy cel
+                                      11. Jakie są założenia i podstawowy cel
                                       animacji?
                                     </Label>
                                     <Content>
@@ -2887,7 +2908,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Gdzie będzie publikowana animacja?
+                                      12. Gdzie będzie publikowana animacja?
                                       (YouTube, Facebook, Instagram, TV itp.)?
                                     </Label>
                                     <Content>
@@ -2911,8 +2932,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy animacja wymaga lektora? Jeśli tak,
-                                      czy zapewnią Państwo lektora?
+                                      13. Czy animacja wymaga lektora? Jeśli
+                                      tak, czy zapewnią Państwo lektora?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2935,7 +2956,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy animacja ma posiadać muzykę w tle?
+                                      14. Czy animacja ma posiadać muzykę w tle?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2958,7 +2979,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaki ma być czas trwania i ilość animacji?
+                                      15. Jaki ma być czas trwania i ilość
+                                      animacji?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -2981,8 +3003,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jaki ma być format animacji? (mp4, avi,
-                                      gif?)
+                                      16. Jaki ma być format animacji? (mp4,
+                                      avi, gif?)
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -3005,8 +3027,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jakie są Twoje oczekiwania co do tonu i
-                                      stylu animacji? (nowoczesna, rysunkowa,
+                                      17. Jakie są Twoje oczekiwania co do tonu
+                                      i stylu animacji? (nowoczesna, rysunkowa,
                                       poważna itd.)
                                     </Label>
                                     <Content>
@@ -3030,7 +3052,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Przykłady istniejących animacji, które
+                                      18. Przykłady istniejących animacji, które
                                       podobają się Tobie. Podaj minimum trzy
                                       przykłady. (nie muszą być związane z
                                       branżą)
@@ -3056,8 +3078,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Elementy na istniejących animacjach, które
-                                      podobają się Tobie.
+                                      19. Elementy na istniejących animacjach,
+                                      które podobają się Tobie.
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -3080,7 +3102,8 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Jakie materiały zostaną nam przekazane?
+                                      20. Jakie materiały zostaną nam
+                                      przekazane?
                                     </Label>
                                     <Content>
                                       {context.allowEdit(
@@ -3103,7 +3126,7 @@ class SingleBriefView extends React.Component {
                                   </Row>
                                   <Row>
                                     <Label>
-                                      Czy otrzymamy scenariusz / tekst dla
+                                      21. Czy otrzymamy scenariusz / tekst dla
                                       lektora (jeżeli wymagane)?
                                     </Label>
                                     <Content>
@@ -3214,6 +3237,9 @@ class SingleBriefView extends React.Component {
                                         defaultValue={item.wsp_status_operatora}
                                         form="wycenOperator"
                                         onChange={this.handleInputChange}>
+                                        <option value="nie_wycenione">
+                                          Nie wycenione
+                                        </option>
                                         <option value="wycenione">
                                           Wycenione
                                         </option>
@@ -3224,6 +3250,13 @@ class SingleBriefView extends React.Component {
                                     ) : (
                                       handleStatus(item.wsp_status_operatora)
                                     )}
+                                  </Content>
+                                </Row>
+
+                                <Row status>
+                                  <Label>Data zmiany statusu:</Label>
+                                  <Content>
+                                    {showDate(item.wsp_status_operatora_date)}
                                   </Content>
                                 </Row>
 
@@ -3244,7 +3277,7 @@ class SingleBriefView extends React.Component {
                                           defaultValue={
                                             item.wsp_wycena_operatora
                                           }
-                                          marginBottom="10px"
+                                          marginbottom="10px"
                                         />
                                         <Button
                                           type="submit"
@@ -3291,6 +3324,9 @@ class SingleBriefView extends React.Component {
                                         defaultValue={item.wsp_status_animatora}
                                         form="wycenAnimator"
                                         onChange={this.handleInputChange}>
+                                        <option value="nie_wycenione">
+                                          Nie wycenione
+                                        </option>
                                         <option value="wycenione">
                                           Wycenione
                                         </option>
@@ -3301,6 +3337,13 @@ class SingleBriefView extends React.Component {
                                     ) : (
                                       handleStatus(item.wsp_status_animatora)
                                     )}
+                                  </Content>
+                                </Row>
+
+                                <Row status>
+                                  <Label>Data zmiany statusu:</Label>
+                                  <Content>
+                                    {showDate(item.wsp_status_animatora_date)}
                                   </Content>
                                 </Row>
 
@@ -3321,7 +3364,7 @@ class SingleBriefView extends React.Component {
                                           defaultValue={
                                             item.wsp_wycena_animatora
                                           }
-                                          marginBottom="10px"
+                                          marginbottom="10px"
                                         />
                                         <Button
                                           type="submit"
@@ -3373,6 +3416,9 @@ class SingleBriefView extends React.Component {
                                         form="wycenGrafik"
                                         defaultValue={item.wsp_status_grafika}
                                         onChange={this.handleInputChange}>
+                                        <option value="nie_wycenione">
+                                          Nie wycenione
+                                        </option>
                                         <option value="wycenione">
                                           Wycenione
                                         </option>
@@ -3383,6 +3429,13 @@ class SingleBriefView extends React.Component {
                                     ) : (
                                       handleStatus(item.wsp_status_grafika)
                                     )}
+                                  </Content>
+                                </Row>
+
+                                <Row status>
+                                  <Label>Data zmiany statusu:</Label>
+                                  <Content>
+                                    {showDate(item.wsp_status_grafika_date)}
                                   </Content>
                                 </Row>
 
@@ -3405,7 +3458,7 @@ class SingleBriefView extends React.Component {
                                           tag="textarea"
                                           form="wycenGrafik"
                                           defaultValue={item.wsp_wycena_grafika}
-                                          marginBottom="10px"
+                                          marginbottom="10px"
                                         />
                                         <Button
                                           type="submit"
@@ -3455,6 +3508,9 @@ class SingleBriefView extends React.Component {
                                         onChange={this.handleInputChange}
                                         form="wycenKoder"
                                         required>
+                                        <option value="nie_wycenione">
+                                          Nie wycenione
+                                        </option>
                                         <option value="wycenione">
                                           Wycenione
                                         </option>
@@ -3465,6 +3521,13 @@ class SingleBriefView extends React.Component {
                                     ) : (
                                       handleStatus(item.wsp_status_kodera)
                                     )}
+                                  </Content>
+                                </Row>
+
+                                <Row status>
+                                  <Label>Data zmiany statusu:</Label>
+                                  <Content>
+                                    {showDate(item.wsp_status_kodera_date)}
                                   </Content>
                                 </Row>
 
@@ -3485,7 +3548,7 @@ class SingleBriefView extends React.Component {
                                           tag="textarea"
                                           form="wycenKoder"
                                           defaultValue={item.wsp_wycena_kodera}
-                                          marginBottom="10px"
+                                          marginbottom="10px"
                                         />
                                         <Button type="submit" form="wycenKoder">
                                           Zapisz zmiany

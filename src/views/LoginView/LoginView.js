@@ -2,7 +2,7 @@ import React from "react";
 import AppContext from "../../context";
 import styled from "styled-components";
 import Button from "../../components/atoms/Button/Button";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Input from "../../components/atoms/Input/Input";
 import logoImage from "../../assets/images/roxart_agency.svg";
 import { withRouter } from "react-router-dom";
@@ -127,14 +127,13 @@ class LoginView extends React.Component {
               </LoginText>
               <Form
                 autoComplete="off"
-                // onSubmit={e => context.login(e, this.state)}
-              >
+                onSubmit={e => context.login(e, this.state)}>
                 <Input
                   onChange={this.handleInputChange}
                   name="login"
                   placeholder="login/e-mail"
                   value={this.state.login}
-                  marginBottom="12px"
+                  marginbottom="12px"
                 />
                 <Input
                   onChange={this.handleInputChange}
@@ -142,11 +141,16 @@ class LoginView extends React.Component {
                   placeholder="hasło"
                   value={this.state.password}
                   type="password"
-                  marginBottom="24px"
+                  marginbottom="24px"
                 />
-                <Link onClick={e => context.login(e, this.state)} to="/briefs">
-                  <LoginButton marginBottom="5px">Zaloguj się</LoginButton>
-                </Link>
+                <LoginButton marginbottom="5px">Zaloguj się</LoginButton>
+
+                {context.user.username ? (
+                  <>
+                    <Redirect to="/briefs" />
+                  </>
+                ) : null}
+
                 {context.installButton === true ? (
                   <>
                     <Else>lub</Else>
