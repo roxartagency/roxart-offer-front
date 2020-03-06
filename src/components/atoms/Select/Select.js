@@ -7,7 +7,7 @@ const StyledSelect = styled.select`
   position: relative;
   font-size: 1em;
   padding: 22px 72px 19px 32px;
-  border: 1px solid ${props => `${props.theme.colors.lightGrey}`};
+  border: 1px solid ${props => `${props.theme.colors.grey}`};
   border-radius: 15px;
   line-height: 1.2;
   width: 100%;

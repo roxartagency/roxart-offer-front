@@ -2,18 +2,27 @@ import React from "react";
 import AppContext from "../../../context";
 import styled from "styled-components";
 import Input from "../../atoms/Input/Input";
+import searchIcon from "../../../assets/images/search.svg";
 
 const Filters = styled.div`
   display: block;
   max-width: 50vw;
   margin-bottom: 40px;
+  position: relative;
   label {
     display: none;
+  }
+  img {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
   }
 `;
 
 const FilterInput = styled(Input)`
-  padding: 15px 46px;
+padding: 13px 46px 12px 46px;
 `;
 
 class Filter extends React.Component {
@@ -22,6 +31,7 @@ class Filter extends React.Component {
       <AppContext.Consumer>
         {context => (
           <Filters>
+            <img src={searchIcon} />
             <FilterInput
               type="text"
               id=""

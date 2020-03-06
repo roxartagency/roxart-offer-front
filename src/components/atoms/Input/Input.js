@@ -13,7 +13,7 @@ const StyledInput = styled.input`
   color: ${props => `${props.theme.colors.black}`};
   font-size: 1em;
   padding: 22px 32px 19px 32px;
-  border: 1px solid ${props => `${props.theme.colors.lightGrey}`};
+  border: 1px solid ${props => `${props.theme.colors.grey}`};
   border-radius: 15px;
   line-height: 1.2;
   background: ${props => `${props.theme.colors.white}`};
@@ -33,7 +33,7 @@ const StyledTextarea = styled(TextareaAutosize)`
   color: ${props => `${props.theme.colors.black}`};
   font-size: 1em;
   padding: 22px 32px 19px 32px;
-  border: 1px solid ${props => `${props.theme.colors.lightGrey}`};
+  border: 1px solid ${props => `${props.theme.colors.grey}`};
   border-radius: 15px;
   line-height: 24px;
   background: ${props => `${props.theme.colors.white}`};
