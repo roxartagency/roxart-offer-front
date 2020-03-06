@@ -60,7 +60,7 @@ const Sidebar = () => (
         <SidebarNavigation />
         {context.user.username ? (
           <LogoutWrapper>
-            <StyledLink onClick={e => context.logout(e)} to="/" logout>
+            <StyledLink onClick={e => context.logout(e)} to="/briefs/" logout>
               <img src={logoutImage} alt="" />
               Wyloguj
             </StyledLink>

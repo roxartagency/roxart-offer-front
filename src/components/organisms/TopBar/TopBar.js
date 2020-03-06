@@ -30,6 +30,7 @@ const TopBar = () => (
             <Button
               onClick={e => {
                 context.fetchBriefs(e);
+                context.fetchFiles(e);
                 context.showNotification("Odświeżono briefy");
               }}
               refresh
@@ -39,7 +40,7 @@ const TopBar = () => (
             {context.user.role.name === "Administrator" ||
             context.user.role.name === "Handlowiec" ? (
               <>
-                <Link to="/form">
+                <Link to="/briefs/form">
                   <Button>
                     <FontAwesomeIcon icon={faPlusCircle} size="sm" />
                     Dodaj nowy brief

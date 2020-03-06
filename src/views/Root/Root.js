@@ -225,6 +225,7 @@ class Root extends React.Component {
           `${API_URL}/briefs/${id}`,
           {
             wsp_statuss: "wersja_robocza",
+            wsp_status_grafika_date: currentDate,
             ...wycena
           },
           {
@@ -251,11 +252,15 @@ class Root extends React.Component {
         });
     } else if (wycena.wsp_status_kodera === "wycenione") {
       axios
-        .put(`${API_URL}/briefs/${id}`, wycena, {
-          headers: {
-            Authorization: `Bearer ${this.state.userToken}`
+        .put(
+          `${API_URL}/briefs/${id}`,
+          { wsp_status_kodera_date: currentDate, ...wycena },
+          {
+            headers: {
+              Authorization: `Bearer ${this.state.userToken}`
+            }
           }
-        })
+        )
         .then(res => {
           this.showNotification("Wycena zapisana");
           this.fetchBriefs();
@@ -278,6 +283,7 @@ class Root extends React.Component {
           `${API_URL}/briefs/${id}`,
           {
             wsp_statuss: "wersja_robocza",
+            wsp_status_kodera_date: currentDate,
             ...wycena
           },
           {
@@ -304,11 +310,15 @@ class Root extends React.Component {
         });
     } else if (wycena.wsp_status_operatora === "wycenione") {
       axios
-        .put(`${API_URL}/briefs/${id}`, wycena, {
-          headers: {
-            Authorization: `Bearer ${this.state.userToken}`
+        .put(
+          `${API_URL}/briefs/${id}`,
+          { wsp_status_operatora_date: currentDate, ...wycena },
+          {
+            headers: {
+              Authorization: `Bearer ${this.state.userToken}`
+            }
           }
-        })
+        )
         .then(res => {
           this.showNotification("Wycena zapisana");
           this.fetchBriefs();
@@ -331,6 +341,7 @@ class Root extends React.Component {
           `${API_URL}/briefs/${id}`,
           {
             wsp_statuss: "wersja_robocza",
+            wsp_status_operatora_date: currentDate,
             ...wycena
           },
           {
@@ -357,11 +368,15 @@ class Root extends React.Component {
         });
     } else if (wycena.wsp_status_animatora === "wycenione") {
       axios
-        .put(`${API_URL}/briefs/${id}`, wycena, {
-          headers: {
-            Authorization: `Bearer ${this.state.userToken}`
+        .put(
+          `${API_URL}/briefs/${id}`,
+          { wsp_status_animatora_date: currentDate, ...wycena },
+          {
+            headers: {
+              Authorization: `Bearer ${this.state.userToken}`
+            }
           }
-        })
+        )
         .then(res => {
           this.showNotification("Wycena zapisana");
           this.fetchBriefs();
@@ -384,6 +399,7 @@ class Root extends React.Component {
           `${API_URL}/briefs/${id}`,
           {
             wsp_statuss: "wersja_robocza",
+            wsp_status_animatora_date: currentDate,
             ...wycena
           },
           {
@@ -475,31 +491,31 @@ class Root extends React.Component {
         this.fetchBriefs();
         console.log(currentDate);
         this.showNotification("Przekazano do wyceny: " + res.data.wsp_nazwa);
-        // if (kategoria === "Wideo") {
-        //   console.log("Mail do operatora!");
-        //   utils.sendMail(
-        //     e,
-        //     "maciej.o@roxart.pl",
-        //     "Handlowiec przekazał briefa do wyceny: " + title,
-        //     "Zaloguj się do aplikacji i wyceń!"
-        //   );
-        // } else if (kategoria === "Animacja") {
-        //   console.log("Mail do animatora!");
-        //   utils.sendMail(
-        //     e,
-        //     "szymon.a@roxart.pl",
-        //     "Handlowiec przekazał briefa do wyceny: " + title,
-        //     "Zaloguj się do aplikacji i wyceń!"
-        //   );
-        // } else {
-        //   console.log("Mail do grafika!");
-        //   utils.sendMail(
-        //     e,
-        //     "bartek.w@roxart.pl",
-        //     "Handlowiec przekazał briefa do wyceny: " + title,
-        //     "Zaloguj się do aplikacji i wyceń!"
-        //   );
-        // }
+        if (kategoria === "Wideo") {
+          console.log("Mail do operatora!");
+          utils.sendMail(
+            e,
+            "maciej.o@roxart.pl",
+            "Handlowiec przekazał briefa do wyceny: " + title,
+            "Zaloguj się do aplikacji i wyceń!"
+          );
+        } else if (kategoria === "Animacja") {
+          console.log("Mail do animatora!");
+          utils.sendMail(
+            e,
+            "szymon.a@roxart.pl",
+            "Handlowiec przekazał briefa do wyceny: " + title,
+            "Zaloguj się do aplikacji i wyceń!"
+          );
+        } else {
+          console.log("Mail do grafika!");
+          utils.sendMail(
+            e,
+            "bartek.w@roxart.pl",
+            "Handlowiec przekazał briefa do wyceny: " + title,
+            "Zaloguj się do aplikacji i wyceń!"
+          );
+        }
       })
       .catch(error => {
         this.showNotification("Błąd w zapisywaniu: " + error);

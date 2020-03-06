@@ -127,7 +127,7 @@ class ListItem extends React.Component {
       2 * 24 * 60 * 60 * 1000;
 
     return checkStatus(props.wsp_statuss) === true ? null : (
-      <StyledLink to={`/briefs/brief/${props.id}`}>
+      <StyledLink to={`/briefs/briefs/brief/${props.id}`}>
         <StyledListItem {...props}>
           {props.wsp_pilne ? (
             <ImportantIcon>

@@ -1083,6 +1083,14 @@ class Form extends React.Component {
                 label="Inne ważne uwagi:"
                 marginbottom="30px"
               />
+              <Input
+                onChange={this.handleInputChange}
+                tag="textarea"
+                name="wsp_zalacznik"
+                value={this.state.wsp_zalacznik}
+                label="Link do załączników w sieci / na dysku"
+                marginbottom="30px"
+              />
               <Select
                 name="czy_pilne"
                 value={this.state.czy_pilne}

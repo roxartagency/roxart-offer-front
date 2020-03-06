@@ -147,7 +147,7 @@ class LoginView extends React.Component {
 
                 {context.user.username ? (
                   <>
-                    <Redirect to="/briefs" />
+                    <Redirect to="/briefs/briefs" />
                   </>
                 ) : null}
 

@@ -146,7 +146,6 @@ const RightWrapper = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-
 `;
 
 class SingleBriefView extends React.Component {
@@ -323,7 +322,7 @@ class SingleBriefView extends React.Component {
                           <InfoContent>
                             <InfoContentLabel>Czy pilne:</InfoContentLabel>
                             <InfoContentContent>
-                              {item.wsp_pilne === true ? "TAK" : "NIE"}
+                              {item.wsp_pilne ? "TAK" : "NIE"}
                             </InfoContentContent>
                           </InfoContent>
                         </InfoWrapper>
@@ -331,6 +330,30 @@ class SingleBriefView extends React.Component {
                         <MainWrapper>
                           <LeftWrapper>
                             <>
+                              {item.wsp_pilne ? (
+                                <Row>
+                                  <Label>Dlaczego wycena jest pilna?</Label>
+                                  <Content>
+                                    {context.allowEdit(
+                                      item.wsp_statuss,
+                                      item.user.email
+                                    ) === true ? (
+                                      <Input
+                                        onChange={this.handleInputChange}
+                                        name="wsp_pilne_opis"
+                                        tag="textarea"
+                                        form="editBrief"
+                                        defaultValue={item.wsp_pilne_opis}
+                                      />
+                                    ) : (
+                                      <StaticInfo>
+                                        {item.wsp_pilne_opis}
+                                      </StaticInfo>
+                                    )}
+                                  </Content>
+                                </Row>
+                              ) : null}
+
                               <Row>
                                 <Label>
                                   1. Jaki jest adres (URL) Twojej strony
@@ -3167,6 +3190,30 @@ class SingleBriefView extends React.Component {
                                     />
                                   ) : (
                                     <StaticInfo>{item.wsp_uwagi}</StaticInfo>
+                                  )}
+                                </Content>
+                              </Row>
+
+                              <Row>
+                                <Label>
+                                  Link do załączników w sieci / na dysku:
+                                </Label>
+                                <Content>
+                                  {context.allowEdit(
+                                    item.wsp_statuss,
+                                    item.user.email
+                                  ) === true ? (
+                                    <Input
+                                      onChange={this.handleInputChange}
+                                      name="wsp_zalacznik"
+                                      tag="textarea"
+                                      form="editBrief"
+                                      defaultValue={item.wsp_zalacznik}
+                                    />
+                                  ) : (
+                                    <StaticInfo>
+                                      {item.wsp_zalacznik}
+                                    </StaticInfo>
                                   )}
                                 </Content>
                               </Row>

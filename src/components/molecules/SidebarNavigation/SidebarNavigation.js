@@ -23,13 +23,13 @@ const HeaderNavigation = () => (
     {context => (
       <MenuWrapper>
         <NavItem>
-          <StyledLink to="/briefs">Briefy</StyledLink>
+          <StyledLink to="/briefs/briefs">Briefy</StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/archive">Wycenione</StyledLink>
+          <StyledLink to="/briefs/archive">Wycenione</StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/files">Pliki</StyledLink>
+          <StyledLink to="/briefs/files">Pliki</StyledLink>
         </NavItem>
       </MenuWrapper>
     )}
