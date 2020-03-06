@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Title from "../../atoms/Title/Title";
 import Status from "../../atoms/Status/Status";
 import {
+  appLink,
   handleMainStatus,
   handleStatus,
   checkStatus,
@@ -69,7 +70,7 @@ class PricedListItem extends React.Component {
       2 * 24 * 60 * 60 * 1000;
 
     return checkStatus(props.wsp_statuss) === true ? (
-      <StyledLink to={`/briefs/briefs/brief/${props.id}`}>
+      <StyledLink to={appLink + `/briefs/${props.id}`}>
         <StyledListItem {...props}>
           <ListItemCol>
             <BlackText>{props.id}</BlackText>

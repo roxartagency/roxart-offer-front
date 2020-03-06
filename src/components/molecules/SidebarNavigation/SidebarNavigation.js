@@ -2,6 +2,7 @@ import React from "react";
 import AppContext from "../../../context";
 import StyledLink from "../../atoms/StyledLink/StyledLink";
 import styled from "styled-components";
+import { appLink } from "../../../utils/Utils";
 
 const MenuWrapper = styled.ul`
   padding: 0;
@@ -23,13 +24,14 @@ const HeaderNavigation = () => (
     {context => (
       <MenuWrapper>
         <NavItem>
-          <StyledLink to="/briefs/briefs">Briefy</StyledLink>
+          {/* <StyledLink to="${API_URL}/briefs">Briefy</StyledLink> */}
+          <StyledLink to={appLink + `/briefs`}>Briefy</StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/briefs/archive">Wycenione</StyledLink>
+          <StyledLink to={appLink + `/archive`}>Wycenione</StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/briefs/files">Pliki</StyledLink>
+          <StyledLink to={appLink + `/files`}>Pliki</StyledLink>
         </NavItem>
       </MenuWrapper>
     )}

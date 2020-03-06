@@ -1,10 +1,12 @@
+import { appLink } from "../utils/Utils";
+
 const routes = {
-  briefs: "/briefs/briefs",
-  archive: "/briefs/archive",
-  files: "/briefs/files",
-  login: "/briefs/",
-  form: "/briefs/form",
-  brief: "/briefs/briefs/brief/:id"
+  briefs: appLink + "/briefs",
+  archive: appLink + "/archive",
+  files: appLink + "/files",
+  login: appLink + "/",
+  form: appLink + "/form",
+  brief: appLink + "/briefs/:id"
 };
 
 export default routes;

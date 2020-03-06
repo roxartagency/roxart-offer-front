@@ -6,6 +6,7 @@ import refresh from "../../../assets/images/refresh.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { appLink } from "../../../utils/Utils";
 
 const StyledTopBar = styled.div`
   position: absolute;
@@ -40,7 +41,7 @@ const TopBar = () => (
             {context.user.role.name === "Administrator" ||
             context.user.role.name === "Handlowiec" ? (
               <>
-                <Link to="/briefs/form">
+                <Link to={appLink + `/form`}>
                   <Button>
                     <FontAwesomeIcon icon={faPlusCircle} size="sm" />
                     Dodaj nowy brief

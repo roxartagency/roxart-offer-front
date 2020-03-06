@@ -3,6 +3,8 @@ import Status from "../components/atoms/Status/Status";
 import axios from "axios";
 import { API_URL } from "../api";
 
+export const appLink = `/briefs`;
+
 export const handleStatus = status => {
   switch (status) {
     case "nie_wycenione":
@@ -120,7 +122,12 @@ export const showDate = data => {
   function minutes_with_leading_zeros(date) {
     return (date.getMinutes() < 10 ? "0" : "") + date.getMinutes();
   }
-  const displayDate = date.toLocaleDateString() + ', ' + date.getHours() + ':' + minutes_with_leading_zeros(date);
+  const displayDate =
+    date.toLocaleDateString() +
+    ", " +
+    date.getHours() +
+    ":" +
+    minutes_with_leading_zeros(date);
   return displayDate;
 };
 
@@ -133,7 +140,8 @@ const utils = {
   sendMail: sendMail,
   checkStatus: checkStatus,
   checkValidDate: checkValidDate,
-  showDate: showDate
+  showDate: showDate,
+  appLink
 };
 
 export default utils;

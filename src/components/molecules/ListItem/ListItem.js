@@ -5,6 +5,7 @@ import styled, { css } from "styled-components";
 import Title from "../../atoms/Title/Title";
 import Status from "../../atoms/Status/Status";
 import {
+  appLink,
   handleMainStatus,
   handleStatus,
   checkStatus,
@@ -127,7 +128,7 @@ class ListItem extends React.Component {
       2 * 24 * 60 * 60 * 1000;
 
     return checkStatus(props.wsp_statuss) === true ? null : (
-      <StyledLink to={`/briefs/briefs/brief/${props.id}`}>
+      <StyledLink to={appLink + `/briefs/${props.id}`}>
         <StyledListItem {...props}>
           {props.wsp_pilne ? (
             <ImportantIcon>

@@ -3,7 +3,7 @@ import SidebarNavigation from "../../molecules/SidebarNavigation/SidebarNavigati
 import StyledLink from "../../atoms/StyledLink/StyledLink";
 import AppContext from "../../../context";
 import styled from "styled-components";
-
+import { appLink } from "../../../utils/Utils";
 import logoImage from "../../../assets/images/roxart_agency.svg";
 import logoutImage from "../../../assets/images/logout.svg";
 
@@ -60,7 +60,7 @@ const Sidebar = () => (
         <SidebarNavigation />
         {context.user.username ? (
           <LogoutWrapper>
-            <StyledLink onClick={e => context.logout(e)} to="/briefs/" logout>
+            <StyledLink onClick={e => context.logout(e)} to={appLink + `/`} logout>
               <img src={logoutImage} alt="" />
               Wyloguj
             </StyledLink>

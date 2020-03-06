@@ -6,6 +6,7 @@ import { Redirect } from "react-router-dom";
 import Input from "../../components/atoms/Input/Input";
 import logoImage from "../../assets/images/roxart_agency.svg";
 import { withRouter } from "react-router-dom";
+import { appLink } from "../../utils/Utils";
 
 const Form = styled.form`
   max-width: 530px;
@@ -147,7 +148,7 @@ class LoginView extends React.Component {
 
                 {context.user.username ? (
                   <>
-                    <Redirect to="/briefs/briefs" />
+                    <Redirect to={appLink + `/briefs`} />
                   </>
                 ) : null}
 
