@@ -120,7 +120,7 @@ const Row = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
-      > span {
+      & > span {
         margin-bottom: 0;
       }
     `}

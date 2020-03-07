@@ -39,6 +39,10 @@ const LogoWrapper = styled.div`
   padding-bottom: 50px;
   margin-bottom: 40px;
   border-bottom: 1px solid ${props => `${props.theme.colors.grey}`};
+  @media (max-width: 1400px) {
+    padding-bottom: 24px;
+    margin-bottom: 15px;
+  }
 `;
 
 const LogoutWrapper = styled.div`
@@ -48,6 +52,9 @@ const LogoutWrapper = styled.div`
   padding-top: 40px;
   margin-top: auto;
   border-top: 1px solid ${props => `${props.theme.colors.grey}`};
+  @media (max-width: 1400px) {
+    padding-top: 24px;
+  }
 `;
 
 const Logo = styled.img`

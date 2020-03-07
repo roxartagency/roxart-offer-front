@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 const StyledNotification = styled.div`
   position: fixed;
@@ -20,6 +20,10 @@ const StyledNotification = styled.div`
   transition: 0.2s ease-out all;
   transform: ${props =>
     props.active ? "translateX(0px)" : "translateX(50px)"};
+  @media (max-width: 1400px) {
+    bottom: 32px;
+    right: 32px;
+  }
 `;
 
 const P = styled.p`
@@ -30,11 +34,9 @@ const P = styled.p`
   }
 `;
 
-const Notification = ({isActive, children}) => (
+const Notification = ({ isActive, children }) => (
   <StyledNotification active={isActive === true ? true : false}>
-    <P>
-      {children}
-    </P>
+    <P>{children}</P>
   </StyledNotification>
 );
 

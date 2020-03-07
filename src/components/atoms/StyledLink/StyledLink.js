@@ -18,6 +18,11 @@ const StyledLink = styled(NavLink).attrs({ activeClassName })`
   img {
     margin-right: 12px;
   }
+  @media (max-width: 1400px) {
+    font-size: 0.9em;
+    padding: 16px 24px;
+    margin-bottom: 0px;
+  }
   &.${activeClassName} {
     font-weight: 700;
     color: ${props => `${props.theme.colors.black}`};
@@ -41,6 +46,9 @@ const StyledLink = styled(NavLink).attrs({ activeClassName })`
     css`
       font-weight: 400 !important;
       color: ${props => `${props.theme.colors.darkGrey}`} !important;
+      &:hover {
+        color: ${props => `${props.theme.colors.orange}`} !important;
+      }
       &.${activeClassName} {
         &::before {
           display: none;

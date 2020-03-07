@@ -50,7 +50,7 @@ const StyledButton = styled.button`
     refresh &&
     css`
       background: transparent !important;
-      padding: 0;
+      padding: 0 !important;
       color: ${props => `${props.theme.colors.black}`};
       font-size: 20px;
       border: 0;
@@ -59,6 +59,9 @@ const StyledButton = styled.button`
       align-items: center;
       svg {
         margin-right: 0;
+      }
+      @media (max-width: 1400px) {
+        margin-right: 12px;
       }
     `}
 
