@@ -18,6 +18,10 @@ const StyledSidebar = styled.div`
   height: 100vh;
   background: ${props => `${props.theme.colors.lightGrey}`};
   z-index: 10;
+
+  @media (max-width: 1400px) {
+    padding: 32px 0px;
+  }
   @media (max-width: 767px) {
     flex-wrap: wrap;
     padding: 10px 20px;

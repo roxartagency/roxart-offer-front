@@ -22,6 +22,10 @@ const StyledSelect = styled.select`
   }
   &::before {
   }
+  @media (max-width: 1400px) {
+    font-size: 0.8em;
+    padding: 17px 32px 13px 16px;
+  }
 `;
 
 const SelectWrapper = styled.div`
@@ -42,6 +46,10 @@ const Arrow = styled.span`
 
   border-top: 6px solid ${props => `${props.theme.colors.darkGrey}`};
   z-index: -1;
+  @media (max-width: 1400px) {
+    right: 16px;
+    top: 23px;
+  }
 `;
 
 const Select = ({ children, ...props }) => (
@@ -52,7 +60,8 @@ const Select = ({ children, ...props }) => (
         name={props.name}
         value={props.value}
         onChange={props.onChange}
-        {...props}>
+        {...props}
+      >
         {children}
       </StyledSelect>
       <Arrow />

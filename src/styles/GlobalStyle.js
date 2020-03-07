@@ -32,6 +32,11 @@ body {
   padding: 0;
   font-family: "Spartan", sans-serif !important;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
 `;
 
 export default GlobalStyle;

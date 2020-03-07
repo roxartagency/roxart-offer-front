@@ -27,6 +27,11 @@ const StyledInput = styled.input`
     outline: none;
     border-color: ${props => `${props.theme.colors.orange}`};
   }
+  @media (max-width: 1400px) {
+    font-size: 0.8em;
+    line-height: 1.3;
+    padding: 17px 16px 13px 16px;
+  }
 `;
 
 const StyledTextarea = styled(TextareaAutosize)`
@@ -48,6 +53,11 @@ const StyledTextarea = styled(TextareaAutosize)`
   &:focus {
     outline: none;
     border-color: ${props => `${props.theme.colors.orange}`};
+  }
+  @media (max-width: 1400px) {
+    font-size: 0.8em;
+    line-height: 1.3;
+    padding: 17px 16px 13px 16px;
   }
 `;
 

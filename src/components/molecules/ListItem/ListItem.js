@@ -24,6 +24,10 @@ const ListItemCol = styled.div`
   &:hover p {
     opacity: 1;
   }
+  @media (max-width: 1400px) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 `;
 
 const StyledLink = styled(Link)`

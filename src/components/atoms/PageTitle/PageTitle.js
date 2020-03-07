@@ -11,6 +11,9 @@ const StyledPageTitle = styled.h2`
   svg {
     margin-right: 7px;
   }
+  @media (max-width: 1400px) {
+    font-size: 2em;
+  }
 `;
 
 const PageTitle = ({ children }) => {

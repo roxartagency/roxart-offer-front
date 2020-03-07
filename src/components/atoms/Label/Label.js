@@ -11,6 +11,9 @@ const StyledLabel = styled.label`
   display: block;
   font-weight: 700;
   padding: 0 15px;
+  @media (max-width: 1400px) {
+    font-size: 0.8em;
+  }
 `;
 
 const Label = ({ ...props }) => <StyledLabel>{props.children}</StyledLabel>;

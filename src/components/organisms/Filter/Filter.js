@@ -6,7 +6,7 @@ import searchIcon from "../../../assets/images/search.svg";
 
 const Filters = styled.div`
   display: block;
-  max-width: 50vw;
+  max-width: 50%;
   margin-bottom: 40px;
   position: relative;
   label {

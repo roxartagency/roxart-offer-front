@@ -41,6 +41,11 @@ const StyledButton = styled.button`
     margin-right: 5px;
   }
 
+  @media (max-width: 1400px) {
+    font-size: 0.9em;
+    padding: 12px 20px 9px 20px;
+  }
+
   ${({ refresh }) =>
     refresh &&
     css`

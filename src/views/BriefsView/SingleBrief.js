@@ -16,6 +16,10 @@ const Label = styled.span`
   font-weight: 700;
   font-size: 1em;
   letter-spacing: -0.32px;
+  @media (max-width: 1400px) {
+    font-size: 0.8em;
+    padding: 0 16px;
+  }
   @media (max-width: 767px) {
     margin-bottom: 10px;
   }
@@ -51,12 +55,18 @@ const InfoWrapper = styled.div`
   padding-bottom: 30px;
   border-bottom: 1px solid ${props => `${props.theme.colors.grey}`};
   margin-bottom: 30px;
+  @media (max-width: 1400px) {
+    flex-direction: column;
+  }
 `;
 
 const InfoContent = styled.div`
   width: calc(50% - 32px);
   padding-right: 32px;
   margin: 0 0 7px;
+  @media (max-width: 1400px) {
+    width: calc(100% - 32px);
+  }
 `;
 
 const InfoContentLabel = styled.span`
@@ -93,6 +103,9 @@ const MainWrapper = styled.div`
 const LeftWrapper = styled.div`
   width: 50%;
   padding-right: 64px;
+  @media (max-width: 1400px) {
+    padding-right: 32px;
+  }
 `;
 
 const Row = styled.div`
@@ -126,6 +139,9 @@ const StaticInfo = styled.p`
   border: 1px solid ${props => `${props.theme.colors.grey}`};
   border-radius: 15px;
   background-color: ${props => `${props.theme.colors.lightGrey}`};
+  @media (max-width: 1400px) {
+    font-size: 0.8em;
+  }
 `;
 
 const RightWrapper = styled.div`

@@ -23,6 +23,11 @@ const StyledStatus = styled.span`
   min-width: 100px;
   display: inline-block;
   text-align: center;
+  @media (max-width: 1400px) {
+    min-width: unset;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
   ${({ color }) => handleColorType(color)};
 `;
 

@@ -17,6 +17,10 @@ const StyledTopBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  @media (max-width: 1400px) {
+    top: 32px;
+    right: 32px;
+  }
   @media (max-width: 767px) {
     margin-left: unset;
   }

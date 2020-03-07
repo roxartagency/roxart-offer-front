@@ -28,6 +28,10 @@ const ListHeadCol = styled.div`
   font-size: 0.8rem;
   line-height: 1.1;
   letter-spacing: -0.12px;
+  @media (max-width: 1400px) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 `;
 
 const NoItems = styled.h1`
