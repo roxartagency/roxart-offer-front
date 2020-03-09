@@ -2,8 +2,8 @@ import React from "react";
 import AppContext from "../../context";
 import List from "../../components/organisms/List/List";
 import Filter from "../../components/organisms/Filter/Filter";
-import PageTitle from "../../components/atoms/PageTitle/PageTitle";
 import styled from "styled-components";
+import TabNavigation from "../../components/molecules/TabNavigation/TabNavigation";
 
 const NoItems = styled.h2`
   font-size: 1.2em;
@@ -20,6 +20,10 @@ class ArchiveBriefsView extends React.Component {
 
   state = {};
 
+  componentDidMount() {
+    this.context.fetchPricedBriefs();
+  }
+
   render() {
     return (
       <AppContext.Consumer>
@@ -28,14 +32,13 @@ class ArchiveBriefsView extends React.Component {
             {context.user.username ? (
               <>
                 <Filter />
-                <PageTitle>Wycenione</PageTitle>
+                <TabNavigation />
                 <List
                   items={
                     context.filterActive === true
                       ? context.filteredBrief
-                      : context.brief
+                      : context.pricedBrief
                   }
-                  priced="true"
                 />
               </>
             ) : (

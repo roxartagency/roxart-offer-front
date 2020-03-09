@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import ListItem from "../../molecules/ListItem/ListItem";
-import PricedListItem from "../../molecules/PricedListItem/PricedListItem";
 
 const StyledList = styled.ul`
   padding: 0;
@@ -45,7 +44,7 @@ const NoItems = styled.h1`
 
 class List extends React.Component {
   render() {
-    const { items, priced } = this.props;
+    const { items } = this.props;
 
     return (
       <>
@@ -62,13 +61,9 @@ class List extends React.Component {
               <ListHeadCol>Operator</ListHeadCol>
               <ListHeadCol>Animator</ListHeadCol>
             </ListHead>
-            {priced
-              ? items.map(item => (
-                  <PricedListItem key={item.id} priced={priced} {...item} />
-                ))
-              : items.map(item => (
-                  <ListItem key={item.id} priced={priced} {...item} />
-                ))}
+            {items.map(item => (
+              <ListItem key={item.id} {...item} />
+            ))}
           </StyledList>
         ) : (
           <NoItems>Brak wyników spełniających podane wymagania.</NoItems>

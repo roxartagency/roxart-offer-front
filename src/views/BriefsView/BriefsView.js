@@ -1,9 +1,9 @@
 import React from "react";
 import AppContext from "../../context";
 import List from "../../components/organisms/List/List";
-import PageTitle from "../../components/atoms/PageTitle/PageTitle";
 import Filter from "../../components/organisms/Filter/Filter";
 import styled from "styled-components";
+import TabNavigation from "../../components/molecules/TabNavigation/TabNavigation";
 
 const NoItems = styled.h2`
   font-size: 1.2em;
@@ -20,6 +20,10 @@ class BriefsView extends React.Component {
 
   state = {};
 
+  componentDidMount() {
+    this.context.fetchBriefs();
+  }
+
   render() {
     return (
       <AppContext.Consumer>
@@ -28,7 +32,7 @@ class BriefsView extends React.Component {
             {context.user.username ? (
               <>
                 <Filter />
-                <PageTitle>Briefy</PageTitle>
+                <TabNavigation />
                 <List
                   items={
                     context.filterActive === true

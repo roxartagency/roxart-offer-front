@@ -1,7 +1,6 @@
 import React from "react";
 import AppContext from "../../context";
 import styled from "styled-components";
-import FileList from "../../components/organisms/FileList/FileList";
 import PageTitle from "../../components/atoms/PageTitle/PageTitle";
 
 const NoItems = styled.h2`
@@ -14,7 +13,7 @@ const NoItems = styled.h2`
   text-align: center;
 `;
 
-class FilesView extends React.Component {
+class PacketsView extends React.Component {
   static contextType = AppContext;
 
   state = {};
@@ -30,13 +29,11 @@ class FilesView extends React.Component {
           <>
             {context.user.username ? (
               <>
-                <PageTitle>Pliki</PageTitle>
-
-                <FileList items={context.plik} />
+                <PageTitle>Pakiety</PageTitle>
               </>
             ) : (
               <>
-                <NoItems>Zaloguj się aby uzyskać dostęp do plików.</NoItems>
+                <NoItems>Zaloguj się aby uzyskać dostęp do pakietów.</NoItems>
               </>
             )}
           </>
@@ -46,4 +43,4 @@ class FilesView extends React.Component {
   }
 }
 
-export default FilesView;
+export default PacketsView;

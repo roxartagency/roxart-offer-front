@@ -28,7 +28,7 @@ const HeaderNavigation = () => (
           <StyledLink to={appLink + `/briefs`}>Briefy</StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to={appLink + `/archive`}>Wycenione</StyledLink>
+          <StyledLink to={appLink + `/packets`}>Pakiety</StyledLink>
         </NavItem>
         <NavItem>
           <StyledLink to={appLink + `/files`}>Pliki</StyledLink>

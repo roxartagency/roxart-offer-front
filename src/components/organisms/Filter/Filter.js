@@ -31,7 +31,7 @@ class Filter extends React.Component {
       <AppContext.Consumer>
         {context => (
           <Filters>
-            <img src={searchIcon} />
+            <img src={searchIcon} alt="Search Icon" />
             <FilterInput
               type="text"
               id=""

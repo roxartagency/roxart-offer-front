@@ -35,8 +35,8 @@ const TopBar = () => (
             <Button
               onClick={e => {
                 context.fetchBriefs(e);
+                context.fetchPricedBriefs(e);
                 context.fetchFiles(e);
-                context.showNotification("Odświeżono briefy");
               }}
               refresh
               loading={context.isFetching}>

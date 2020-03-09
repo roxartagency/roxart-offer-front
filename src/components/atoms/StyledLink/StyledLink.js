@@ -41,6 +41,29 @@ const StyledLink = styled(NavLink).attrs({ activeClassName })`
     color: ${props => `${props.theme.colors.orange}`};
   }
 
+  ${({ small }) =>
+    small &&
+    css`
+    padding: 16px 15px 16px 15px;
+    margin-bottom: 0;
+    margin-right: 20px;
+      &.${activeClassName} {
+        font-weight: 700;
+        color: ${props => `${props.theme.colors.black}`};
+        &::before {
+          position: absolute;
+          content: "";
+          width: 100%;
+          left: 0;
+          bottom: 0;
+          top: unset;
+          height: 5px;
+          border-radius: 5px 5px 0 0;
+          background: ${props => `${props.theme.colors.orange}`};
+        }
+      }
+    `}
+
   ${({ logout }) =>
     logout &&
     css`

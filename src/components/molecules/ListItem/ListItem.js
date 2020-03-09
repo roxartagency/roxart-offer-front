@@ -8,7 +8,6 @@ import {
   appLink,
   handleMainStatus,
   handleStatus,
-  checkStatus,
   checkValidDate,
   showDate
 } from "../../../utils/Utils";
@@ -107,21 +106,21 @@ const BlackText = styled.span`
   font-weight: 500;
 `;
 
-const DateTooltip = styled.p`
-  position: absolute;
-  opacity: 0;
-  margin: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  color: ${props => `${props.theme.colors.black}`};
-  padding: 5px 5px 2px 5px;
-  background: ${props => `${props.theme.colors.lightGrey}`};
-  font-size: 10px;
-  border-radius: 5px;
-  z-index: 1;
-`;
+// const DateTooltip = styled.p`
+//   position: absolute;
+//   opacity: 0;
+//   margin: 0;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   margin: auto;
+//   color: ${props => `${props.theme.colors.black}`};
+//   padding: 5px 5px 2px 5px;
+//   background: ${props => `${props.theme.colors.lightGrey}`};
+//   font-size: 10px;
+//   border-radius: 5px;
+//   z-index: 1;
+// `;
 
 class ListItem extends React.Component {
   render() {
@@ -131,10 +130,10 @@ class ListItem extends React.Component {
       new Date(props.wsp_przekazane_do_wyceny).getTime() +
       2 * 24 * 60 * 60 * 1000;
 
-    return checkStatus(props.wsp_statuss) === true ? null : (
+    return (
       <StyledLink to={appLink + `/briefs/${props.id}`}>
         <StyledListItem {...props}>
-          {props.wsp_pilne ? (
+          {props.wsp_pilne && props.wsp_statuss !== "wycenione" ? (
             <ImportantIcon>
               <img src={importantIcon} alt="" />
             </ImportantIcon>
@@ -169,7 +168,10 @@ class ListItem extends React.Component {
             <BlackText>{props.kategoria.name}</BlackText>
           </ListItemCol>
           <ListItemCol>{props.user ? props.user.username : null}</ListItemCol>
-          <ListItemCol>{handleMainStatus(props.wsp_statuss)}</ListItemCol>
+          <ListItemCol>
+            {handleMainStatus(props.wsp_statuss)}
+            {/* {showDate(props.wsp_statuss_date)} */}
+          </ListItemCol>
           <ListItemCol>
             {props.kategoria.name === "Wideo" ||
             props.kategoria.name === "Animacja" ? (

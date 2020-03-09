@@ -6,6 +6,7 @@ import BriefsView from "../../views/BriefsView/BriefsView";
 import ArchiveBriefsView from "../../views/BriefsView/ArchiveBriefsView";
 import SingleBriefView from "../../views/BriefsView/SingleBrief";
 import FilesView from "../../views/FilesView/FilesView";
+import PacketsView from "../../views/PacketsView/PacketsView";
 import FormView from "../../views/FormView/FormView";
 import LoginView from "../../views/LoginView/LoginView";
 import Sidebar from "../../components/organisms/Sidebar/Sidebar";
@@ -23,6 +24,8 @@ import utils from "../../utils/Utils";
 class Root extends React.Component {
   state = {
     brief: [],
+    pricedBrief: [],
+    currentBrief: [],
     plik: [],
     filteredBrief: [],
     user: [],
@@ -78,10 +81,7 @@ class Root extends React.Component {
       this.setState({
         userToken: userToken
       });
-      this.fetchBriefs();
     }
-
-    this.fetchFiles();
 
     utils.check();
     utils.requestNotificationPermission();
@@ -105,11 +105,9 @@ class Root extends React.Component {
     });
   };
 
-  filterList = e => {
+  filterList = (e, list) => {
     var updatedList = this.state.brief;
     updatedList = updatedList.filter(function(item) {
-      console.log(item);
-
       return (
         item.wsp_nazwa.toLowerCase().search(e.target.value.toLowerCase()) !== -1
       );
@@ -149,6 +147,8 @@ class Root extends React.Component {
   addItem = (e, newItem) => {
     e.preventDefault();
 
+    const currentDate = new Date();
+
     axios
       .post(
         `${API_URL}/briefs`,
@@ -159,6 +159,7 @@ class Root extends React.Component {
           wsp_pilne: newItem.czy_pilne,
           user: this.state.user,
           wsp_statuss: "wersja_robocza",
+          wsp_statuss_date: currentDate,
           ...newItem
         },
         {
@@ -195,24 +196,24 @@ class Root extends React.Component {
         )
         .then(res => {
           this.showNotification("Wycena zapisana");
-          this.fetchBriefs();
+          this.fetchSingleBrief(id);
           console.log(res);
           if (kategoria === "Katalog" || kategoria === "Logo") {
             console.log("Mail do admina!");
-            utils.sendMail(
-              e,
-              "wyceny@roxart.pl",
-              "Grafik dodał nową wycenę: " + title,
-              "Zaloguj się do aplikacji i przygotuj ofertę!"
-            );
+            // utils.sendMail(
+            //   e,
+            //   "wyceny@roxart.pl",
+            //   "Grafik dodał nową wycenę: " + title,
+            //   "Zaloguj się do aplikacji i przygotuj ofertę!"
+            // );
           } else {
             console.log("Mail do kodera!");
-            utils.sendMail(
-              e,
-              "lukasz.c@roxart.pl",
-              "Grafik dodał nową wycenę: " + title,
-              "Zaloguj się do aplikacji i wyceń godziny kodera!"
-            );
+            // utils.sendMail(
+            //   e,
+            //   "lukasz.c@roxart.pl",
+            //   "Grafik dodał nową wycenę: " + title,
+            //   "Zaloguj się do aplikacji i wyceń godziny kodera!"
+            // );
           }
         })
         .catch(error => {
@@ -236,15 +237,15 @@ class Root extends React.Component {
         )
         .then(res => {
           this.showNotification("Wycena zapisana");
-          this.fetchBriefs();
+          this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do handlowca!");
-          utils.sendMail(
-            e,
-            user.email,
-            "Grafik zwrócił briefa: " + title,
-            "Zaloguj się do aplikacji i popraw go!"
-          );
+          // utils.sendMail(
+          //   e,
+          //   user.email,
+          //   "Grafik zwrócił briefa: " + title,
+          //   "Zaloguj się do aplikacji i popraw go!"
+          // );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -263,15 +264,15 @@ class Root extends React.Component {
         )
         .then(res => {
           this.showNotification("Wycena zapisana");
-          this.fetchBriefs();
+          this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do admina!");
-          utils.sendMail(
-            e,
-            "wyceny@roxart.pl",
-            "Koder dodał nową wycenę: " + title,
-            "Zaloguj się do aplikacji i przygotuj ofertę."
-          );
+          // utils.sendMail(
+          //   e,
+          //   "wyceny@roxart.pl",
+          //   "Koder dodał nową wycenę: " + title,
+          //   "Zaloguj się do aplikacji i przygotuj ofertę."
+          // );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -294,15 +295,15 @@ class Root extends React.Component {
         )
         .then(res => {
           this.showNotification("Wycena zapisana");
-          this.fetchBriefs();
+          this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do handlowca!");
-          utils.sendMail(
-            e,
-            user.email,
-            "Koder zwrócił briefa: " + title,
-            "Zaloguj się do aplikacji i popraw go!"
-          );
+          // utils.sendMail(
+          //   e,
+          //   user.email,
+          //   "Koder zwrócił briefa: " + title,
+          //   "Zaloguj się do aplikacji i popraw go!"
+          // );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -321,15 +322,15 @@ class Root extends React.Component {
         )
         .then(res => {
           this.showNotification("Wycena zapisana");
-          this.fetchBriefs();
+          this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do admina!");
-          utils.sendMail(
-            e,
-            "wyceny@roxart.pl",
-            "Operator dodał nową wycenę: " + title,
-            "Zaloguj się do aplikacji i przygotuj ofertę."
-          );
+          // utils.sendMail(
+          //   e,
+          //   "wyceny@roxart.pl",
+          //   "Operator dodał nową wycenę: " + title,
+          //   "Zaloguj się do aplikacji i przygotuj ofertę."
+          // );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -352,15 +353,15 @@ class Root extends React.Component {
         )
         .then(res => {
           this.showNotification("Wycena zapisana");
-          this.fetchBriefs();
+          this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do handlowca!");
-          utils.sendMail(
-            e,
-            user.email,
-            "Operator zwrócił briefa: " + title,
-            "Zaloguj się do aplikacji i popraw go!"
-          );
+          // utils.sendMail(
+          //   e,
+          //   user.email,
+          //   "Operator zwrócił briefa: " + title,
+          //   "Zaloguj się do aplikacji i popraw go!"
+          // );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -379,15 +380,15 @@ class Root extends React.Component {
         )
         .then(res => {
           this.showNotification("Wycena zapisana");
-          this.fetchBriefs();
+          this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do admina!");
-          utils.sendMail(
-            e,
-            "wyceny@roxart.pl",
-            "Animator dodał nową wycenę: " + title,
-            "Zaloguj się do aplikacji i przygotuj ofertę."
-          );
+          // utils.sendMail(
+          //   e,
+          //   "wyceny@roxart.pl",
+          //   "Animator dodał nową wycenę: " + title,
+          //   "Zaloguj się do aplikacji i przygotuj ofertę."
+          // );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -410,15 +411,15 @@ class Root extends React.Component {
         )
         .then(res => {
           this.showNotification("Wycena zapisana");
-          this.fetchBriefs();
+          this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do handlowca!");
-          utils.sendMail(
-            e,
-            user.email,
-            "Animator zwrócił briefa: " + title,
-            "Zaloguj się do aplikacji i popraw go!"
-          );
+          // utils.sendMail(
+          //   e,
+          //   user.email,
+          //   "Animator zwrócił briefa: " + title,
+          //   "Zaloguj się do aplikacji i popraw go!"
+          // );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -438,7 +439,7 @@ class Root extends React.Component {
         }
       })
       .then(res => {
-        this.fetchBriefs();
+        this.fetchSingleBrief(id);
         this.showNotification(
           "Zapisano poprawnie zmiany w: " + res.data.wsp_nazwa
         );
@@ -475,6 +476,7 @@ class Root extends React.Component {
           wsp_status_kodera: "nie_wycenione",
           wsp_status_operatora: "nie_wycenione",
           wsp_status_animatora: "nie_wycenione",
+          wsp_statuss_date: currentDate,
           wsp_status_grafika_date: currentDate,
           wsp_status_kodera_date: currentDate,
           wsp_status_operatora_date: currentDate,
@@ -488,34 +490,34 @@ class Root extends React.Component {
         }
       )
       .then(res => {
-        this.fetchBriefs();
+        this.fetchSingleBrief(id);
         console.log(currentDate);
         this.showNotification("Przekazano do wyceny: " + res.data.wsp_nazwa);
-        if (kategoria === "Wideo") {
-          console.log("Mail do operatora!");
-          utils.sendMail(
-            e,
-            "maciej.o@roxart.pl",
-            "Handlowiec przekazał briefa do wyceny: " + title,
-            "Zaloguj się do aplikacji i wyceń!"
-          );
-        } else if (kategoria === "Animacja") {
-          console.log("Mail do animatora!");
-          utils.sendMail(
-            e,
-            "szymon.a@roxart.pl",
-            "Handlowiec przekazał briefa do wyceny: " + title,
-            "Zaloguj się do aplikacji i wyceń!"
-          );
-        } else {
-          console.log("Mail do grafika!");
-          utils.sendMail(
-            e,
-            "bartek.w@roxart.pl",
-            "Handlowiec przekazał briefa do wyceny: " + title,
-            "Zaloguj się do aplikacji i wyceń!"
-          );
-        }
+        // if (kategoria === "Wideo") {
+        //   console.log("Mail do operatora!");
+        //   utils.sendMail(
+        //     e,
+        //     "maciej.o@roxart.pl",
+        //     "Handlowiec przekazał briefa do wyceny: " + title,
+        //     "Zaloguj się do aplikacji i wyceń!"
+        //   );
+        // } else if (kategoria === "Animacja") {
+        //   console.log("Mail do animatora!");
+        //   utils.sendMail(
+        //     e,
+        //     "szymon.a@roxart.pl",
+        //     "Handlowiec przekazał briefa do wyceny: " + title,
+        //     "Zaloguj się do aplikacji i wyceń!"
+        //   );
+        // } else {
+        //   console.log("Mail do grafika!");
+        //   utils.sendMail(
+        //     e,
+        //     "bartek.w@roxart.pl",
+        //     "Handlowiec przekazał briefa do wyceny: " + title,
+        //     "Zaloguj się do aplikacji i wyceń!"
+        //   );
+        // }
       })
       .catch(error => {
         this.showNotification("Błąd w zapisywaniu: " + error);
@@ -538,14 +540,20 @@ class Root extends React.Component {
   changeStatus = (e, id, status) => {
     e.preventDefault();
 
+    const currentDate = new Date();
+
     axios
-      .put(`${API_URL}/briefs/${id}`, status, {
-        headers: {
-          Authorization: `Bearer ${this.state.userToken}`
+      .put(
+        `${API_URL}/briefs/${id}`,
+        { wsp_statuss_date: currentDate, ...status },
+        {
+          headers: {
+            Authorization: `Bearer ${this.state.userToken}`
+          }
         }
-      })
+      )
       .then(res => {
-        this.fetchBriefs();
+        this.fetchSingleBrief(id);
         this.showNotification("Status zmieniony na: " + status.wsp_statuss);
       })
       .catch(error => {
@@ -561,7 +569,7 @@ class Root extends React.Component {
     setTimeout(() => {
       axios
         .get(
-          `${API_URL}/briefs?_sort=wsp_pilne:DESC,wsp_przekazane_do_wyceny:ASC`,
+          `${API_URL}/briefs?wsp_statuss=wersja_robocza&wsp_statuss=do_wyceny&_sort=wsp_pilne:DESC,wsp_przekazane_do_wyceny:ASC`,
           {
             headers: {
               Authorization: `Bearer ${this.state.userToken}`
@@ -584,8 +592,67 @@ class Root extends React.Component {
     // });
   };
 
+  fetchPricedBriefs = () => {
+    console.log("Fetch priced briefs");
+
+    this.setState({ isFetching: true });
+
+    setTimeout(() => {
+      axios
+        .get(
+          `${API_URL}/briefs?wsp_statuss=wycenione&_sort=wsp_statuss_date:DESC`,
+          {
+            headers: {
+              Authorization: `Bearer ${this.state.userToken}`
+            }
+          }
+        )
+        .then(response => {
+          const pricedBrief = response.data;
+          this.setState({ pricedBrief, isFetching: false });
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log("An error occurred:", error);
+          this.setState({ isFetching: false });
+        });
+    }, 300);
+
+    // utils.displayNotification("Odświeżono briefy", {
+    //   icon: "/roxart192.png"
+    // });
+  };
+
+  fetchSingleBrief = id => {
+    console.log("Fetch single brief");
+
+    this.setState({ isFetching: true });
+
+    axios
+      .get(`${API_URL}/briefs?id=${id}`, {
+        headers: {
+          Authorization: `Bearer ${this.state.userToken}`
+        }
+      })
+      .then(response => {
+        const currentBrief = response.data;
+        this.setState({ currentBrief, isFetching: false });
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log("An error occurred:", error);
+        this.setState({ isFetching: false });
+      });
+
+    // utils.displayNotification("Odświeżono briefy", {
+    //   icon: "/roxart192.png"
+    // });
+  };
+
   fetchFiles = () => {
     console.log("Fetch files");
+
+    this.setState({ isFetching: true });
 
     setTimeout(() => {
       axios
@@ -596,11 +663,12 @@ class Root extends React.Component {
         })
         .then(response => {
           const plik = response.data;
-          this.setState({ plik });
+          this.setState({ plik, isFetching: false });
           console.log(response.data);
         })
         .catch(error => {
           console.log("An error occurred:", error);
+          this.setState({ isFetching: false });
         });
     }, 300);
 
@@ -632,8 +700,6 @@ class Root extends React.Component {
         // console.log("Set User:");
         // console.log(this.state.user);
         this.showNotification("Zalogowano jako: " + this.state.user.username);
-
-        this.fetchBriefs();
 
         utils.displayNotification(
           "Zalogowano jako: " + this.state.user.username,
@@ -681,6 +747,8 @@ class Root extends React.Component {
       showNotification: this.showNotification,
       filterList: this.filterList,
       fetchBriefs: this.fetchBriefs,
+      fetchPricedBriefs: this.fetchPricedBriefs,
+      fetchSingleBrief: this.fetchSingleBrief,
       fetchFiles: this.fetchFiles,
       installApp: this.installApp,
       addItem: this.addItem,
@@ -716,6 +784,7 @@ class Root extends React.Component {
                 />
                 <Route exact path={routes.brief} component={SingleBriefView} />
                 <Route exact path={routes.files} component={FilesView} />
+                <Route exact path={routes.packets} component={PacketsView} />
                 <Route exact path={routes.login} component={LoginView} />
                 <Route exact path={routes.form} component={FormView} />
                 <Redirect to={routes.login} />
