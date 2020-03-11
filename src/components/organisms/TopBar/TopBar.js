@@ -26,6 +26,10 @@ const StyledTopBar = styled.div`
   }
 `;
 
+const TopBarButton = styled(Button)`
+  margin-left: 5px;
+`;
+
 const TopBar = () => (
   <AppContext.Consumer>
     {context => (
@@ -37,6 +41,7 @@ const TopBar = () => (
                 context.fetchBriefs(e);
                 context.fetchPricedBriefs(e);
                 context.fetchFiles(e);
+                context.fetchOffers(e);
               }}
               refresh
               loading={context.isFetching}>
@@ -45,11 +50,17 @@ const TopBar = () => (
             {context.user.role.name === "Administrator" ||
             context.user.role.name === "Handlowiec" ? (
               <>
-                <Link to={appLink + `/form`}>
-                  <Button>
+                <Link to={appLink + `/new-brief`}>
+                  <TopBarButton>
                     <FontAwesomeIcon icon={faPlusCircle} size="sm" />
                     Dodaj nowy brief
-                  </Button>
+                  </TopBarButton>
+                </Link>
+                <Link to={appLink + `/new-offer`}>
+                  <TopBarButton>
+                    <FontAwesomeIcon icon={faPlusCircle} size="sm" />
+                    Dodaj nową ofertę
+                  </TopBarButton>
                 </Link>
               </>
             ) : null}

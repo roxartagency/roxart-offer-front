@@ -2,23 +2,11 @@ import React from "react";
 import AppContext from "../../context";
 import List from "../../components/organisms/List/List";
 import Filter from "../../components/organisms/Filter/Filter";
-import styled from "styled-components";
+import NoItems from "../../components/atoms/NoItems/NoItems";
 import TabNavigation from "../../components/molecules/TabNavigation/TabNavigation";
-
-const NoItems = styled.h2`
-  font-size: 1.2em;
-  color: darkgrey;
-  display: block;
-  width: 100%;
-  margin-top: 60px;
-  margin-bottom: 25px;
-  text-align: center;
-`;
 
 class BriefsView extends React.Component {
   static contextType = AppContext;
-
-  state = {};
 
   componentDidMount() {
     this.context.fetchBriefs();

@@ -8,6 +8,7 @@ import { handleMainStatus, handleStatus, showDate } from "../../utils/Utils";
 import styled, { css } from "styled-components";
 import parse from "html-react-parser";
 
+
 const BriefWrapper = styled.div``;
 
 const Label = styled.span`
@@ -15,7 +16,7 @@ const Label = styled.span`
   margin-bottom: 12px;
   padding: 0 32px;
   font-weight: 700;
-  font-size: 1em;
+  font-size: 0.9em;
   letter-spacing: -0.32px;
   @media (max-width: 1400px) {
     font-size: 0.8em;

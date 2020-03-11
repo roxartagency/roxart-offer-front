@@ -4,9 +4,10 @@ const routes = {
   briefs: appLink + "/briefs",
   archive: appLink + "/archive",
   files: appLink + "/files",
-  packets: appLink + "/packets",
+  offers: appLink + "/offers",
   login: appLink + "/",
-  form: appLink + "/form",
+  briefForm: appLink + "/new-brief",
+  offerForm: appLink + "/new-offer",
   brief: appLink + "/briefs/:id"
 };
 

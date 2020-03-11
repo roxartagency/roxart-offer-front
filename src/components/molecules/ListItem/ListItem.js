@@ -37,7 +37,7 @@ const StyledLink = styled(Link)`
 const StyledListItem = styled.li`
   list-style: none;
   display: grid;
-  grid-template-columns: 5% 24% 10% 11% 10% 10% 10% 10% 10%;
+  grid-template-columns: ${props => `${props.theme.briefListGrid}`};
   grid-auto-flow: row;
   width: 100%;
   align-items: center;

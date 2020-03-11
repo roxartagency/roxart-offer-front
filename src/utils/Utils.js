@@ -131,6 +131,16 @@ export const showDate = data => {
   return displayDate;
 };
 
+export const showAuthorOffers = (loggedUser, author) => {
+  if (loggedUser.role.name === "Administrator") {
+    return true;
+  } else if (loggedUser.username === author.username) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const utils = {
   handleStatus: handleStatus,
   handleMainStatus: handleMainStatus,
@@ -141,6 +151,7 @@ const utils = {
   checkStatus: checkStatus,
   checkValidDate: checkValidDate,
   showDate: showDate,
+  showAuthorOffers: showAuthorOffers,
   appLink
 };
 

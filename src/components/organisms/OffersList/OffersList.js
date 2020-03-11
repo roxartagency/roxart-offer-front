@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ListItem from "../../molecules/ListItem/ListItem";
+import OffersListItem from "../../molecules/OffersListItem/OffersListItem";
 
 const StyledList = styled.ul`
   padding: 0;
@@ -12,7 +12,7 @@ const ListHead = styled.li`
   color: ${props => `${props.theme.colors.darkGrey}`};
   list-style: none;
   display: grid;
-  grid-template-columns: ${props => `${props.theme.briefListGrid}`};
+  grid-template-columns: ${props => `${props.theme.offerListGrid}`};
   grid-auto-flow: row;
   grid-template-rows: 40px;
   border-bottom: 1px solid ${props => `${props.theme.colors.grey}`};
@@ -42,7 +42,7 @@ const NoItems = styled.h1`
   text-align: center;
 `;
 
-class List extends React.Component {
+class OffersList extends React.Component {
   render() {
     const { items } = this.props;
 
@@ -53,16 +53,13 @@ class List extends React.Component {
             <ListHead>
               <ListHeadCol>ID</ListHeadCol>
               <ListHeadCol>Klient</ListHeadCol>
+              <ListHeadCol>Wygenerowano</ListHeadCol>
+              <ListHeadCol>Ważna do</ListHeadCol>
               <ListHeadCol>Kategoria</ListHeadCol>
               <ListHeadCol>Dodał</ListHeadCol>
-              <ListHeadCol>Status</ListHeadCol>
-              <ListHeadCol>Grafik</ListHeadCol>
-              <ListHeadCol>Koder</ListHeadCol>
-              <ListHeadCol>Operator</ListHeadCol>
-              <ListHeadCol>Animator</ListHeadCol>
             </ListHead>
             {items.map(item => (
-              <ListItem key={item.id} {...item} />
+              <OffersListItem key={item.id} {...item} />
             ))}
           </StyledList>
         ) : (
@@ -73,4 +70,4 @@ class List extends React.Component {
   }
 }
 
-export default List;
+export default OffersList;

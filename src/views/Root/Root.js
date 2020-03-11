@@ -6,8 +6,9 @@ import BriefsView from "../../views/BriefsView/BriefsView";
 import ArchiveBriefsView from "../../views/BriefsView/ArchiveBriefsView";
 import SingleBriefView from "../../views/BriefsView/SingleBrief";
 import FilesView from "../../views/FilesView/FilesView";
-import PacketsView from "../../views/PacketsView/PacketsView";
-import FormView from "../../views/FormView/FormView";
+import OffersView from "../OffersView/OffersView";
+import BriefFormView from "../BriefFormView/BriefFormView";
+import OfferFormView from "../OfferFormView/OfferFormView";
 import LoginView from "../../views/LoginView/LoginView";
 import Sidebar from "../../components/organisms/Sidebar/Sidebar";
 import TopBar from "../../components/organisms/TopBar/TopBar";
@@ -27,6 +28,7 @@ class Root extends React.Component {
     pricedBrief: [],
     currentBrief: [],
     plik: [],
+    oferta: [],
     filteredBrief: [],
     user: [],
     userToken: "",
@@ -144,7 +146,40 @@ class Root extends React.Component {
   //   return returnValue;
   // };
 
-  addItem = (e, newItem) => {
+  addOffer = (e, newOffer) => {
+    e.preventDefault();
+
+    // const currentDate = new Date();
+
+    axios
+      .post(
+        `${API_URL}/ofertas`,
+        {
+          kategoria_ofert: {
+            id: newOffer.kategoria
+          },
+          user: this.state.user,
+          ...newOffer
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.state.userToken}`
+          }
+        }
+      )
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+        this.showNotification("Dodano nowy brief: " + newOffer.ofe_nazwa);
+        this.fetchBriefs();
+      })
+      .catch(error => {
+        this.showNotification("Wystąpił błąd zapisywania zmian w: " + error);
+        console.log(error);
+      });
+  };
+
+  addBrief = (e, newItem) => {
     e.preventDefault();
 
     const currentDate = new Date();
@@ -677,6 +712,28 @@ class Root extends React.Component {
     // });
   };
 
+  fetchOffers = () => {
+    console.log("Fetch offers");
+
+    setTimeout(() => {
+      axios
+        .get(`${API_URL}/ofertas?_sort=created_at:DESC`, {
+          headers: {
+            Authorization: `Bearer ${this.state.userToken}`
+          }
+        })
+        .then(response => {
+          const oferta = response.data;
+          this.setState({ oferta, isFetching: false });
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log("An error occurred:", error);
+          this.setState({ isFetching: false });
+        });
+    }, 300);
+  };
+
   login = (e, userData) => {
     e.preventDefault();
 
@@ -689,8 +746,10 @@ class Root extends React.Component {
         this.setState(() => ({
           userToken: response.data.jwt,
           user: response.data.user,
+
           isUserLogged: true
         }));
+        console.log(response.data);
         Cookies.set("userToken", response.data.jwt);
         Cookies.set("userName", response.data.user.username);
         Cookies.set("userEmail", response.data.user.email);
@@ -750,8 +809,9 @@ class Root extends React.Component {
       fetchPricedBriefs: this.fetchPricedBriefs,
       fetchSingleBrief: this.fetchSingleBrief,
       fetchFiles: this.fetchFiles,
+      fetchOffers: this.fetchOffers,
       installApp: this.installApp,
-      addItem: this.addItem,
+      addBrief: this.addBrief,
       removeItem: this.removeItem,
       editItem: this.editItem,
       login: this.login,
@@ -760,7 +820,8 @@ class Root extends React.Component {
       przekazDoWyceny: this.przekazDoWyceny,
       changeStatus: this.changeStatus,
       allowEdit: this.allowEdit,
-      allowEditWycena: this.allowEditWycena
+      allowEditWycena: this.allowEditWycena,
+      addOffer: this.addOffer
     };
 
     return (
@@ -784,9 +845,18 @@ class Root extends React.Component {
                 />
                 <Route exact path={routes.brief} component={SingleBriefView} />
                 <Route exact path={routes.files} component={FilesView} />
-                <Route exact path={routes.packets} component={PacketsView} />
+                <Route exact path={routes.offers} component={OffersView} />
                 <Route exact path={routes.login} component={LoginView} />
-                <Route exact path={routes.form} component={FormView} />
+                <Route
+                  exact
+                  path={routes.briefForm}
+                  component={BriefFormView}
+                />
+                <Route
+                  exact
+                  path={routes.offerForm}
+                  component={OfferFormView}
+                />
                 <Redirect to={routes.login} />
               </Switch>
             </PageWrapper>

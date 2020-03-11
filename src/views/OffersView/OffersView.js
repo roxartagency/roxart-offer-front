@@ -1,17 +1,8 @@
 import React from "react";
 import AppContext from "../../context";
-import styled from "styled-components";
 import PageTitle from "../../components/atoms/PageTitle/PageTitle";
-
-const NoItems = styled.h2`
-  font-size: 1.2em;
-  color: darkgrey;
-  display: block;
-  width: 100%;
-  margin-top: 60px;
-  margin-bottom: 25px;
-  text-align: center;
-`;
+import NoItems from "../../components/atoms/NoItems/NoItems";
+import OffersList from "../../components/organisms/OffersList/OffersList";
 
 class PacketsView extends React.Component {
   static contextType = AppContext;
@@ -19,7 +10,7 @@ class PacketsView extends React.Component {
   state = {};
 
   componentDidMount() {
-    this.context.fetchFiles();
+    this.context.fetchOffers();
   }
 
   render() {
@@ -29,7 +20,8 @@ class PacketsView extends React.Component {
           <>
             {context.user.username ? (
               <>
-                <PageTitle>Pakiety</PageTitle>
+                <PageTitle>Oferty</PageTitle>
+                <OffersList items={context.oferta} />
               </>
             ) : (
               <>

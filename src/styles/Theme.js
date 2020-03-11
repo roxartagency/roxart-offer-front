@@ -22,7 +22,9 @@ const theme = {
     small: "1em",
     medium: "2em",
     large: "3em"
-  }
+  },
+  briefListGrid: "5% 24% 10% 11% 10% 10% 10% 10% 10%",
+  offerListGrid: "5% 24% 15% 15% 10% 11% 20%",
 };
 
 const Theme = ({ children }) => (
