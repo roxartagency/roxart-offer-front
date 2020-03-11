@@ -36,7 +36,7 @@ class OfferFormView extends React.Component {
                 onChange={this.handleInputChange}
                 label="Kategoria oferty"
                 marginbottom="30px">
-                <option value="1">Social Media 1</option>
+                <option value="1">Social Media</option>
                 <option value="2">SEO</option>
               </Select>
               <Input
