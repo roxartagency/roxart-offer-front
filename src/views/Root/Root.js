@@ -235,20 +235,20 @@ class Root extends React.Component {
           console.log(res);
           if (kategoria === "Katalog" || kategoria === "Logo") {
             console.log("Mail do admina!");
-            // utils.sendMail(
-            //   e,
-            //   "wyceny@roxart.pl",
-            //   "Grafik dodał nową wycenę: " + title,
-            //   "Zaloguj się do aplikacji i przygotuj ofertę!"
-            // );
+            utils.sendMail(
+              e,
+              "wyceny@roxart.pl",
+              "Grafik dodał nową wycenę: " + title,
+              "Zaloguj się do aplikacji i przygotuj ofertę!"
+            );
           } else {
             console.log("Mail do kodera!");
-            // utils.sendMail(
-            //   e,
-            //   "lukasz.c@roxart.pl",
-            //   "Grafik dodał nową wycenę: " + title,
-            //   "Zaloguj się do aplikacji i wyceń godziny kodera!"
-            // );
+            utils.sendMail(
+              e,
+              "lukasz.c@roxart.pl",
+              "Grafik dodał nową wycenę: " + title,
+              "Zaloguj się do aplikacji i wyceń godziny kodera!"
+            );
           }
         })
         .catch(error => {
@@ -275,12 +275,12 @@ class Root extends React.Component {
           this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do handlowca!");
-          // utils.sendMail(
-          //   e,
-          //   user.email,
-          //   "Grafik zwrócił briefa: " + title,
-          //   "Zaloguj się do aplikacji i popraw go!"
-          // );
+          utils.sendMail(
+            e,
+            user.email,
+            "Grafik zwrócił briefa: " + title,
+            "Zaloguj się do aplikacji i popraw go!"
+          );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -302,12 +302,12 @@ class Root extends React.Component {
           this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do admina!");
-          // utils.sendMail(
-          //   e,
-          //   "wyceny@roxart.pl",
-          //   "Koder dodał nową wycenę: " + title,
-          //   "Zaloguj się do aplikacji i przygotuj ofertę."
-          // );
+          utils.sendMail(
+            e,
+            "wyceny@roxart.pl",
+            "Koder dodał nową wycenę: " + title,
+            "Zaloguj się do aplikacji i przygotuj ofertę."
+          );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -333,12 +333,12 @@ class Root extends React.Component {
           this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do handlowca!");
-          // utils.sendMail(
-          //   e,
-          //   user.email,
-          //   "Koder zwrócił briefa: " + title,
-          //   "Zaloguj się do aplikacji i popraw go!"
-          // );
+          utils.sendMail(
+            e,
+            user.email,
+            "Koder zwrócił briefa: " + title,
+            "Zaloguj się do aplikacji i popraw go!"
+          );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -360,12 +360,12 @@ class Root extends React.Component {
           this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do admina!");
-          // utils.sendMail(
-          //   e,
-          //   "wyceny@roxart.pl",
-          //   "Operator dodał nową wycenę: " + title,
-          //   "Zaloguj się do aplikacji i przygotuj ofertę."
-          // );
+          utils.sendMail(
+            e,
+            "wyceny@roxart.pl",
+            "Operator dodał nową wycenę: " + title,
+            "Zaloguj się do aplikacji i przygotuj ofertę."
+          );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -391,12 +391,12 @@ class Root extends React.Component {
           this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do handlowca!");
-          // utils.sendMail(
-          //   e,
-          //   user.email,
-          //   "Operator zwrócił briefa: " + title,
-          //   "Zaloguj się do aplikacji i popraw go!"
-          // );
+          utils.sendMail(
+            e,
+            user.email,
+            "Operator zwrócił briefa: " + title,
+            "Zaloguj się do aplikacji i popraw go!"
+          );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -418,12 +418,12 @@ class Root extends React.Component {
           this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do admina!");
-          // utils.sendMail(
-          //   e,
-          //   "wyceny@roxart.pl",
-          //   "Animator dodał nową wycenę: " + title,
-          //   "Zaloguj się do aplikacji i przygotuj ofertę."
-          // );
+          utils.sendMail(
+            e,
+            "wyceny@roxart.pl",
+            "Animator dodał nową wycenę: " + title,
+            "Zaloguj się do aplikacji i przygotuj ofertę."
+          );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -449,12 +449,12 @@ class Root extends React.Component {
           this.fetchSingleBrief(id);
           console.log(res);
           console.log("Mail do handlowca!");
-          // utils.sendMail(
-          //   e,
-          //   user.email,
-          //   "Animator zwrócił briefa: " + title,
-          //   "Zaloguj się do aplikacji i popraw go!"
-          // );
+          utils.sendMail(
+            e,
+            user.email,
+            "Animator zwrócił briefa: " + title,
+            "Zaloguj się do aplikacji i popraw go!"
+          );
         })
         .catch(error => {
           this.showNotification("Wystąpił błąd podczas wyceny: " + error);
@@ -528,31 +528,31 @@ class Root extends React.Component {
         this.fetchSingleBrief(id);
         console.log(currentDate);
         this.showNotification("Przekazano do wyceny: " + res.data.wsp_nazwa);
-        // if (kategoria === "Wideo") {
-        //   console.log("Mail do operatora!");
-        //   utils.sendMail(
-        //     e,
-        //     "maciej.o@roxart.pl",
-        //     "Handlowiec przekazał briefa do wyceny: " + title,
-        //     "Zaloguj się do aplikacji i wyceń!"
-        //   );
-        // } else if (kategoria === "Animacja") {
-        //   console.log("Mail do animatora!");
-        //   utils.sendMail(
-        //     e,
-        //     "szymon.a@roxart.pl",
-        //     "Handlowiec przekazał briefa do wyceny: " + title,
-        //     "Zaloguj się do aplikacji i wyceń!"
-        //   );
-        // } else {
-        //   console.log("Mail do grafika!");
-        //   utils.sendMail(
-        //     e,
-        //     "bartek.w@roxart.pl",
-        //     "Handlowiec przekazał briefa do wyceny: " + title,
-        //     "Zaloguj się do aplikacji i wyceń!"
-        //   );
-        // }
+        if (kategoria === "Wideo") {
+          console.log("Mail do operatora!");
+          utils.sendMail(
+            e,
+            "maciej.o@roxart.pl",
+            "Handlowiec przekazał briefa do wyceny: " + title,
+            "Zaloguj się do aplikacji i wyceń!"
+          );
+        } else if (kategoria === "Animacja") {
+          console.log("Mail do animatora!");
+          utils.sendMail(
+            e,
+            "szymon.a@roxart.pl",
+            "Handlowiec przekazał briefa do wyceny: " + title,
+            "Zaloguj się do aplikacji i wyceń!"
+          );
+        } else {
+          console.log("Mail do grafika!");
+          utils.sendMail(
+            e,
+            "bartek.w@roxart.pl",
+            "Handlowiec przekazał briefa do wyceny: " + title,
+            "Zaloguj się do aplikacji i wyceń!"
+          );
+        }
       })
       .catch(error => {
         this.showNotification("Błąd w zapisywaniu: " + error);
