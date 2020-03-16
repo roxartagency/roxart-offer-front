@@ -28,6 +28,7 @@ class Root extends React.Component {
     pricedBrief: [],
     currentBrief: [],
     plik: [],
+    PDFfile: [],
     oferta: [],
     filteredBrief: [],
     user: [],
@@ -712,6 +713,44 @@ class Root extends React.Component {
     // });
   };
 
+  fetchPDF = () => {
+    console.log("Fetch PDF");
+
+    fetch(
+      `${API_URL}/upload/files/41`
+    ).then(response => {
+      const resp = response.blob();
+      console.log(resp);
+    });
+
+    // this.setState({ isFetching: true });
+
+    // setTimeout(() => {
+    //   axios
+    //     .get(`${API_URL}/upload/files`, {
+    //       headers: {
+    //         Authorization: `Bearer ${this.state.userToken}`
+    //       },
+    //       responseType: "blob"
+    //     })
+    //     .then(response => {
+    //       const PDFfile = response.data;
+    //       this.setState({ PDFfile, isFetching: false });
+    //       // console.log(response.data);
+    //       // var newBlob = new Blob([response.data], { type: "application/pdf" });
+    //       console.log(response.data);
+    //     })
+    //     .catch(error => {
+    //       console.log("An error occurred:", error);
+    //       this.setState({ isFetching: false });
+    //     });
+    // }, 300);
+
+    // utils.displayNotification("Odświeżono briefy", {
+    //   icon: "/roxart192.png"
+    // });
+  };
+
   fetchOffers = () => {
     console.log("Fetch offers");
 
@@ -809,6 +848,7 @@ class Root extends React.Component {
       fetchPricedBriefs: this.fetchPricedBriefs,
       fetchSingleBrief: this.fetchSingleBrief,
       fetchFiles: this.fetchFiles,
+      fetchPDF: this.fetchPDF,
       fetchOffers: this.fetchOffers,
       installApp: this.installApp,
       addBrief: this.addBrief,

@@ -7,7 +7,7 @@ import Input from "../../components/atoms/Input/Input";
 import { handleMainStatus, handleStatus, showDate } from "../../utils/Utils";
 import styled, { css } from "styled-components";
 import parse from "html-react-parser";
-
+import { generateBriefPDF } from "../../components/organisms/PDF/PDF";
 
 const BriefWrapper = styled.div``;
 
@@ -3179,8 +3179,9 @@ class SingleBriefView extends React.Component {
                             <Row>
                               <Content buttons>
                                 <Link to={"/briefs/"}>
-                                  <Button>Wróć do wszystkich briefów</Button>
+                                  <Button>Powrót</Button>
                                 </Link>
+
                                 {context.allowEdit(
                                   item.wsp_statuss,
                                   item.user.email
@@ -3215,6 +3216,23 @@ class SingleBriefView extends React.Component {
                                     </Button>
                                   </>
                                 ) : null}
+                              </Content>
+                            </Row>
+
+                            <Row>
+                              <Content buttons>
+                                <Button
+                                  onClick={() =>
+                                    generateBriefPDF(item, "klient")
+                                  }>
+                                  Pobierz brief dla klienta
+                                </Button>
+                                <Button
+                                  onClick={() =>
+                                    generateBriefPDF(item, "wewnetrzny")
+                                  }>
+                                  Pobierz brief wewnętrzny
+                                </Button>
                               </Content>
                             </Row>
                           </>

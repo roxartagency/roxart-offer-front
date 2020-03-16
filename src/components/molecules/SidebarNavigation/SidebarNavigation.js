@@ -24,12 +24,11 @@ const HeaderNavigation = () => (
     {context => (
       <MenuWrapper>
         <NavItem>
-          {/* <StyledLink to="${API_URL}/briefs">Briefy</StyledLink> */}
           <StyledLink to={appLink + `/briefs`}>Briefy</StyledLink>
         </NavItem>
-        <NavItem>
+        {/* <NavItem>
           <StyledLink to={appLink + `/offers`}>Oferty</StyledLink>
-        </NavItem>
+        </NavItem> */}
         <NavItem>
           <StyledLink to={appLink + `/files`}>Pliki</StyledLink>
         </NavItem>

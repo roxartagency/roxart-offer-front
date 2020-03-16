@@ -1,11 +1,10 @@
 import React from "react";
 import AppContext from "../../../context";
-// import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Title from "../../atoms/Title/Title";
 import Button from "../../atoms/Button/Button";
 import { showAuthorOffers, showDate } from "../../../utils/Utils";
-import { generatePDF } from "../../organisms/PDF/PDF";
+import { generateOfferPDF } from "../../organisms/PDF/PDF";
 
 const ListItemCol = styled.div`
   padding: 13px 15px 9px 15px;
@@ -53,6 +52,13 @@ const BlackText = styled.span`
 `;
 
 class OffersListItem extends React.Component {
+  showFile(blob) {
+    var newBlob = new Blob([blob], { type: "application/pdf" });
+    console.log(blob);
+
+    console.log(newBlob);
+  }
+
   render() {
     const { ...props } = this.props;
 
@@ -82,7 +88,9 @@ class OffersListItem extends React.Component {
                   {props.user ? props.user.username : null}
                 </ListItemCol>
                 <ListItemCol>
-                  <Button onClick={() => generatePDF(props)} small>Pobierz</Button>
+                  <Button onClick={() => generateOfferPDF(props)} small>
+                    Pobierz
+                  </Button>
                 </ListItemCol>
               </StyledListItem>
             ) : null}

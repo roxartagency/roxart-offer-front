@@ -38,6 +38,8 @@ class OfferFormView extends React.Component {
                 marginbottom="30px">
                 <option value="1">Social Media</option>
                 <option value="2">SEO</option>
+                <option value="3">Katalogi</option>
+                <option value="4">Beauty</option>
               </Select>
               <Input
                 onChange={this.handleInputChange}

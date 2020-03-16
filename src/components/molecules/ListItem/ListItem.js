@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import Title from "../../atoms/Title/Title";
 import Status from "../../atoms/Status/Status";
+// import Button from "../../atoms/Button/Button";
 import {
   appLink,
   handleMainStatus,
@@ -12,6 +13,7 @@ import {
   showDate
 } from "../../../utils/Utils";
 import importantIcon from "../../../assets/images/important.gif";
+// import { generateBriefPDF } from "../../organisms/PDF/PDF";
 
 const ListItemCol = styled.div`
   padding: 13px 15px 9px 15px;
@@ -131,84 +133,89 @@ class ListItem extends React.Component {
       2 * 24 * 60 * 60 * 1000;
 
     return (
-      <StyledLink to={appLink + `/briefs/${props.id}`}>
-        <StyledListItem {...props}>
-          {props.wsp_pilne && props.wsp_statuss !== "wycenione" ? (
-            <ImportantIcon>
-              <img src={importantIcon} alt="" />
-            </ImportantIcon>
-          ) : null}
-          <ListItemCol>
-            <BlackText>{props.id}</BlackText>
-          </ListItemCol>
-          <ListItemCol>
-            <Title>{props.wsp_nazwa}</Title>
-            <StyledDate>
-              {checkValidDate(
-                twoDays,
-                props.kategoria.name,
-                props.wsp_status_grafika,
-                props.wsp_status_kodera,
-                props.wsp_status_operatora,
-                props.wsp_status_animatora
-              ) === true ? (
-                <Status color="red">
-                  Dodano: {showDate(props.wsp_przekazane_do_wyceny)}
-                </Status>
-              ) : (
-                <>
-                  <Status>
+      <>
+        <StyledLink to={appLink + `/briefs/${props.id}`}>
+          <StyledListItem {...props}>
+            {props.wsp_pilne && props.wsp_statuss !== "wycenione" ? (
+              <ImportantIcon>
+                <img src={importantIcon} alt="" />
+              </ImportantIcon>
+            ) : null}
+            <ListItemCol>
+              <BlackText>{props.id}</BlackText>
+            </ListItemCol>
+            <ListItemCol>
+              <Title>{props.wsp_nazwa}</Title>
+              <StyledDate>
+                {checkValidDate(
+                  twoDays,
+                  props.kategoria.name,
+                  props.wsp_status_grafika,
+                  props.wsp_status_kodera,
+                  props.wsp_status_operatora,
+                  props.wsp_status_animatora
+                ) === true ? (
+                  <Status color="red">
                     Dodano: {showDate(props.wsp_przekazane_do_wyceny)}
                   </Status>
-                </>
-              )}
-            </StyledDate>
-          </ListItemCol>
-          <ListItemCol>
-            <BlackText>{props.kategoria.name}</BlackText>
-          </ListItemCol>
-          <ListItemCol>{props.user ? props.user.username : null}</ListItemCol>
-          <ListItemCol>
-            {handleMainStatus(props.wsp_statuss)}
-            {/* {showDate(props.wsp_statuss_date)} */}
-          </ListItemCol>
-          <ListItemCol>
-            {props.kategoria.name === "Wideo" ||
-            props.kategoria.name === "Animacja" ? (
-              <Status>nie dotyczy</Status>
-            ) : (
-              <>
-                {handleStatus(props.wsp_status_grafika)}
-                {/* <DateTooltip>
+                ) : (
+                  <>
+                    <Status>
+                      Dodano: {showDate(props.wsp_przekazane_do_wyceny)}
+                    </Status>
+                  </>
+                )}
+              </StyledDate>
+            </ListItemCol>
+            <ListItemCol>
+              <BlackText>{props.kategoria.name}</BlackText>
+            </ListItemCol>
+            <ListItemCol>{props.user ? props.user.username : null}</ListItemCol>
+            <ListItemCol>
+              {handleMainStatus(props.wsp_statuss)}
+              {/* {showDate(props.wsp_statuss_date)} */}
+            </ListItemCol>
+            <ListItemCol>
+              {props.kategoria.name === "Wideo" ||
+              props.kategoria.name === "Animacja" ? (
+                <Status>nie dotyczy</Status>
+              ) : (
+                <>
+                  {handleStatus(props.wsp_status_grafika)}
+                  {/* <DateTooltip>
                   {showDate(props.wsp_status_grafika_date)}
                 </DateTooltip> */}
-              </>
-            )}
-          </ListItemCol>
-          <ListItemCol>
-            {props.kategoria.name === "Strona internetowa" ||
-            props.kategoria.name === "Sklep" ? (
-              handleStatus(props.wsp_status_kodera)
-            ) : (
-              <Status>nie dotyczy</Status>
-            )}
-          </ListItemCol>
-          <ListItemCol>
-            {props.kategoria.name === "Wideo" ? (
-              handleStatus(props.wsp_status_operatora)
-            ) : (
-              <Status>nie dotyczy</Status>
-            )}
-          </ListItemCol>
-          <ListItemCol>
-            {props.kategoria.name === "Animacja" ? (
-              handleStatus(props.wsp_status_animatora)
-            ) : (
-              <Status>nie dotyczy</Status>
-            )}
-          </ListItemCol>
-        </StyledListItem>
-      </StyledLink>
+                </>
+              )}
+            </ListItemCol>
+            <ListItemCol>
+              {props.kategoria.name === "Strona internetowa" ||
+              props.kategoria.name === "Sklep" ? (
+                handleStatus(props.wsp_status_kodera)
+              ) : (
+                <Status>nie dotyczy</Status>
+              )}
+            </ListItemCol>
+            <ListItemCol>
+              {props.kategoria.name === "Wideo" ? (
+                handleStatus(props.wsp_status_operatora)
+              ) : (
+                <Status>nie dotyczy</Status>
+              )}
+            </ListItemCol>
+            <ListItemCol>
+              {props.kategoria.name === "Animacja" ? (
+                handleStatus(props.wsp_status_animatora)
+              ) : (
+                <Status>nie dotyczy</Status>
+              )}
+            </ListItemCol>
+          </StyledListItem>
+        </StyledLink>
+        {/* <Button onClick={() => generateBriefPDF(props)} small>
+          Pobierz brief
+        </Button> */}
+      </>
     );
   }
 }
