@@ -1,5 +1,7 @@
 <p style="text-align: center;"><img src="https://roxart.agency/briefs/static/media/roxart_agency.f1a67396.svg"/></p>
 
+<b>Frontend aplikacji wewnętrznej Roxart Agency do ofertowania.</b>
+
 <b>Zmienne, które powinny być edytowalne przy deploymencie:</b>
 
 - package.json - "homepage"
