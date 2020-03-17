@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { appLink } from "../../../utils/Utils";
 import logoImage from "../../../assets/images/roxart_agency.svg";
 import logoutImage from "../../../assets/images/logout.svg";
+import Version from "../../atoms/Version/Version";
 
 const StyledSidebar = styled.div`
   display: flex;
@@ -49,6 +50,7 @@ const LogoutWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  flex-direction: column;
   padding-top: 40px;
   margin-top: auto;
   border-top: 1px solid ${props => `${props.theme.colors.grey}`};
@@ -75,6 +77,7 @@ const Sidebar = () => (
               <img src={logoutImage} alt="" />
               Wyloguj
             </StyledLink>
+            <Version>v. 1.0.2</Version>
           </LogoutWrapper>
         ) : null}
       </StyledSidebar>

@@ -56,12 +56,12 @@ const TopBar = () => (
                     Dodaj nowy brief
                   </TopBarButton>
                 </Link>
-                {/* <Link to={appLink + `/new-offer`}>
+                <Link to={appLink + `/new-offer`}>
                   <TopBarButton>
                     <FontAwesomeIcon icon={faPlusCircle} size="sm" />
                     Dodaj nową ofertę
                   </TopBarButton>
-                </Link> */}
+                </Link>
               </>
             ) : null}
           </>
