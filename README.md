@@ -1,11 +1,11 @@
-Places where you need to change app URL:
+<b>Zmienne, które powinny być edytowalne przy deploymencie:</b>
 
-package.json - "homepage"
-public/manifest.json - "start_url"
-src/utils/Utils - "appLink"
-src/api.js - "API_URL"
+- package.json - "homepage"
+- public/manifest.json - "start_url"
+- src/utils/Utils - "appLink"
+- src/api.js - "API_URL"
 
-CHANGELOG:
+<b>CHANGELOG:</b>
 
 1.0.2 - 17.03.2020 r.
 - dodano możliwość generowania PDF z briefów w dowolnym momencie, służą do tego przyciski "Pobierz brief dla klienta" oraz "Pobierz brief wewnętrzny" - różnią się ilością informacji
