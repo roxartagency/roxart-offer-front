@@ -7,6 +7,7 @@ import { appLink } from "../../../utils/Utils";
 import logoImage from "../../../assets/images/roxart_agency.svg";
 import logoutImage from "../../../assets/images/logout.svg";
 import Version from "../../atoms/Version/Version";
+import { Link } from "react-router-dom";
 
 const StyledSidebar = styled.div`
   display: flex;
@@ -73,11 +74,19 @@ const Sidebar = () => (
         <SidebarNavigation />
         {context.user.username ? (
           <LogoutWrapper>
-            <StyledLink onClick={e => context.logout(e)} to={appLink + `/`} logout>
+            <StyledLink
+              onClick={e => context.logout(e)}
+              to={appLink + `/`}
+              logout>
               <img src={logoutImage} alt="" />
               Wyloguj
             </StyledLink>
-            <Version>v. 1.0.2</Version>
+            <Version
+              href="https://github.com/roxartpl/roxart-offer-front"
+              target="_blank"
+              rel="noopener noreferrer">
+              v. 1.0.2
+            </Version>
           </LogoutWrapper>
         ) : null}
       </StyledSidebar>
