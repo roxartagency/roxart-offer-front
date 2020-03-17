@@ -13,7 +13,13 @@ class BriefFormView extends React.Component {
 
   state = {
     kategoria: `1`,
-    czy_pilne: `0`
+    czy_pilne: `0`,
+    wsp_wlasne_pole: [
+      // {
+      //   field_label: "Testowe pierwsze Pytanie",
+      //   field_text: "Testowa pierwsza odpowiedź"
+      // }
+    ]
   };
 
   handleInputChange = e => {
@@ -22,6 +28,43 @@ class BriefFormView extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+  };
+
+  handleInputChangeTwo = e => {
+    console.log(this.state);
+
+    this.setState(prevState => ({
+      wsp_wlasne_pole: [
+        ...prevState.wsp_wlasne_pole,
+        {
+          [e.target.name]: e.target.value
+        }
+      ]
+    }));
+  };
+
+  addField = e => {
+    // this.setState({
+    //   wsp_wlasne_pole: [
+    //     ...this,
+    //     {
+    //       field_label: "Tu wpisz pytanie",
+    //       field_text: "Tu wpisz odpowiedź"
+    //     }
+    //   ]
+    // });
+
+    e.preventDefault();
+
+    this.setState(prevState => ({
+      wsp_wlasne_pole: [
+        ...prevState.wsp_wlasne_pole,
+        {
+          field_label: "Tu wpisz pytanie",
+          field_text: "Tu wpisz odpowiedź"
+        }
+      ]
+    }));
   };
 
   render() {
@@ -43,6 +86,7 @@ class BriefFormView extends React.Component {
                 <option value="4">Sklep</option>
                 <option value="5">Wideo</option>
                 <option value="6">Animacja</option>
+                <option value="7">Niestandardowy brief</option>
               </Select>
 
               <Input
@@ -1050,6 +1094,34 @@ class BriefFormView extends React.Component {
                     label="Czy otrzymamy scenariusz / tekst dla lektora (jeżeli wymagane)?"
                     marginbottom="30px"
                   />
+                </>
+              ) : null}
+
+              {this.state.kategoria === "7" ? (
+                <>
+                  <Button onClick={e => this.addField(e)}>Dodaj pole</Button>
+                  {this.state.wsp_wlasne_pole.map(field => (
+                    // <div key={field.field_label}>
+                    <>
+                      <Input
+                        onChange={this.handleInputChangeTwo}
+                        tag="textarea"
+                        name="field_label"
+                        value={field.field_label}
+                        label="Pytanie"
+                        marginbottom="30px"
+                      />
+                      <Input
+                        onChange={this.handleInputChangeTwo}
+                        tag="textarea"
+                        name="field_text"
+                        value={field.field_text}
+                        label="Odpowiedź"
+                        marginbottom="30px"
+                      />
+                    </>
+                    // </div>
+                  ))}
                 </>
               ) : null}
 

@@ -3134,6 +3134,23 @@ class SingleBriefView extends React.Component {
                               </>
                             ) : null}
 
+                            {item.kategoria.id === 7 ? (
+                              <>
+                                {item.wsp_wlasne_pole.map(field => (
+                                  <>
+                                    <Row key={field.id}>
+                                      <Label>{field.field_label}</Label>
+                                      <Content>
+                                        <StaticInfo>
+                                          {field.field_text}
+                                        </StaticInfo>
+                                      </Content>
+                                    </Row>
+                                  </>
+                                ))}
+                              </>
+                            ) : null}
+
                             <Row>
                               <Label>Inne ważne uwagi:</Label>
                               <Content>
