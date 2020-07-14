@@ -86,7 +86,7 @@ class BriefFormView extends React.Component {
                 <option value="4">Sklep</option>
                 <option value="5">Wideo</option>
                 <option value="6">Animacja</option>
-                <option value="7">Niestandardowy brief</option>
+                {/* <option value="7">Niestandardowy brief</option> */}
               </Select>
 
               <Input
