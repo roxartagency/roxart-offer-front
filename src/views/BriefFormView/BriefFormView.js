@@ -103,6 +103,7 @@ class BriefFormView extends React.Component {
                 value={this.state.wsp_adres}
                 label="Adres firmy"
                 marginbottom="30px"
+                color="#ff28281a"
               />
               <Input
                 onChange={this.handleInputChange}
@@ -110,6 +111,7 @@ class BriefFormView extends React.Component {
                 value={this.state.wsp_nip}
                 label="NIP firmy"
                 marginbottom="30px"
+                color="#ff28281a"
               />
               <Input
                 onChange={this.handleInputChange}
@@ -117,6 +119,7 @@ class BriefFormView extends React.Component {
                 value={this.state.wsp_osoba}
                 label="Imię i nazwisko osoby kontaktowej"
                 marginbottom="30px"
+                color="#ff28281a"
               />
               <Input
                 onChange={this.handleInputChange}
@@ -124,6 +127,7 @@ class BriefFormView extends React.Component {
                 value={this.state.wsp_telefon}
                 label="Numer telefonu osoby kontaktowej"
                 marginbottom="30px"
+                color="#ff28281a"
               />
               <Input
                 onChange={this.handleInputChange}
@@ -131,6 +135,7 @@ class BriefFormView extends React.Component {
                 value={this.state.wsp_email}
                 label="E-mail osoby kontaktowej"
                 marginbottom="30px"
+                color="#ff28281a"
               />
               <Input
                 onChange={this.handleInputChange}
@@ -195,6 +200,7 @@ class BriefFormView extends React.Component {
                 value={this.state.wsp_budzet}
                 label="Jaki jest określony budżet na realizację projektu netto?"
                 marginbottom="30px"
+                color="#ff28281a"
               />
               <Input
                 onChange={this.handleInputChange}

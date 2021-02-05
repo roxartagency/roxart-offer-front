@@ -16,7 +16,7 @@ const StyledInput = styled.input`
   border: 1px solid ${props => `${props.theme.colors.grey}`};
   border-radius: 15px;
   line-height: 1.2;
-  background: ${props => `${props.theme.colors.white}`};
+  background: ${(props) => props.color || `${props.theme.colors.white}`};
   transition: 0.2s ease-out all;
   margin-bottom: ${props => props.marginbottom || "unset"};
   width: ${props => props.width || "100%"};
@@ -41,7 +41,7 @@ const StyledTextarea = styled(TextareaAutosize)`
   border: 1px solid ${props => `${props.theme.colors.grey}`};
   border-radius: 15px;
   line-height: 24px;
-  background: ${props => `${props.theme.colors.white}`};
+  background: ${(props) => props.color || `${props.theme.colors.white}`};
   transition: 0.2s ease-out all;
   margin-bottom: ${props => props.marginbottom || "unset"};
   width: ${props => props.width || "100%"};

@@ -85,7 +85,7 @@ const Sidebar = () => (
               href="https://github.com/roxartpl/roxart-offer-front"
               target="_blank"
               rel="noopener noreferrer">
-              v. 1.0.2
+              v. 1.0.3
             </Version>
           </LogoutWrapper>
         ) : null}

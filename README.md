@@ -11,6 +11,9 @@
 
 <b>CHANGELOG:</b>
 
+1.0.3 - 5.02.2021 r.
+- oznaczono czerwonym tłem pola w formularzu, których nie widzą specjaliści podczas wyceny
+
 1.0.2 - 17.03.2020 r.
 - dodano możliwość generowania PDF z briefów w dowolnym momencie, służą do tego przyciski "Pobierz brief dla klienta" oraz "Pobierz brief wewnętrzny" - różnią się ilością informacji
 
